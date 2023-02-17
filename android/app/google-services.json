@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "984228719401",
+    "project_id": "paulineife",
+    "storage_bucket": "paulineife.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984228719401:android:e0b31aea86a54459106538",
+        "android_client_info": {
+          "package_name": "org.microprogramers.paulineife_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984228719401-9et9hko7v5s3g41qr0mfaelqmsmomf3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6TxToVdkYJCjm-6vFyhPSuRjhumF3tr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984228719401-9et9hko7v5s3g41qr0mfaelqmsmomf3t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
