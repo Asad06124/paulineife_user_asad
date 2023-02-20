@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/views/screens/screen_login.dart';
 
 class ScreenOnboarding extends StatefulWidget {
@@ -160,7 +161,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                   ),
                   currentIndex != 2 ?  TextButton(
                     onPressed: () {
-                      Get.offAll(ScreenLogin());
+                      Get.offAll(HomeScreen());
                     },
                     child: Text(
                       "Skip",
