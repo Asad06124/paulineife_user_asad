@@ -28,8 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
       screens: [
         HomeLayout(),
         SearchLayout(),
-        NotificationLayouts(),
         HomeLayout(),
+        NotificationLayouts(),
         ProfileLayout(),
       ],
       items: [

@@ -1,13 +1,13 @@
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart' as auth;
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart' as auth;
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/src/platform/platform.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 var dbInstance = FirebaseFirestore.instance;
-var uid = FirebaseAuth.instance.currentUser!.uid;
+// var uid = FirebaseAuth.instance.currentUser!.uid;
 
 CollectionReference userRef = dbInstance.collection("users");
 CollectionReference postRef = dbInstance.collection("posts");

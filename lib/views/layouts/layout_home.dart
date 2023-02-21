@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
-import 'package:status_view/status_view.dart';
+
+import '../../widgets/status_view_custom.dart';
 
 class HomeLayout extends StatelessWidget {
-  const HomeLayout({Key? key}) : super(key: key);
+   HomeLayout({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List StoryCount = [2,5,6,8];
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -38,21 +42,25 @@ class HomeLayout extends StatelessWidget {
             preferredSize: Size.fromHeight(size.height / 10),
             child: Expanded(
                 child: ListView.builder(
-              itemCount: 10,
+              itemCount: StoryCount.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: EdgeInsets.all(4.sp),
-                  child: StatusView(
+                  child: StatusViewCustom(
+                    onTap: (){
+                      Get.to(StoryViewScreen(StryCount: StoryCount[index],));
+                    },
                     radius: 25.sp,
                     spacing: 8.sp,
                     strokeWidth: 2,
                     indexOfSeenStatus: 3,
-                    numberOfStatus: 10,
+                    numberOfStatus: StoryCount[index],
                     padding: 4,
                     centerImageUrl:
                         'https://scontent.fmux2-1.fna.fbcdn.net/v/t39.30808-1/272115146_318883370152289_959529854943140445_n.jpg?stp=dst-jpg_p320x320&_nc_cat=108&ccb=1-7&_nc_sid=7206a8&_nc_eui2=AeER8e_80iKZdwjcaOaYxI1TpAWJ6Ibe0aGkBYnoht7RoZqJnOjYQAQ8zZmMfQAlOpcuioT9QJUL6AWxPJjtPD4c&_nc_ohc=PbdR0oi8fO4AX-4bc1j&_nc_oc=AQlJbCFHjlYmIgzWZ16z2DhDZDL3Tqq8R1tDCrbL2sXH0GTClKrsojCaWXETXFnfeuc&_nc_ht=scontent.fmux2-1.fna&oh=00_AfDDCBXpYFxdoHdqf5NwfzCB03Buq9J3bUP3KUnqO17WCQ&oe=63F67873',
                     seenColor: Colors.grey,
+
                     unSeenColor: Colors.red,
                   ),
                 );

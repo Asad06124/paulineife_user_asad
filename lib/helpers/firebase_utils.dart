@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:paulineife_user/helpers/num_extensions.dart';
 
@@ -60,7 +60,7 @@ class FirebaseUtils {
     return urls;
   }
 
-  static String get myId => FirebaseAuth.instance.currentUser!.uid;
+  // static String get myId => FirebaseAuth.instance.currentUser!.uid;
 
   static int get newId => DateTime.now().millisecondsSinceEpoch;
 }
