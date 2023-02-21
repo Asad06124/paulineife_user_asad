@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:paulineife_user/views/layouts/layout_home.dart';
 import 'package:paulineife_user/views/layouts/layout_notification.dart';
+import 'package:paulineife_user/views/layouts/layout_profile.dart';
 import 'package:paulineife_user/views/layouts/layout_search.dart';
 import 'package:sizer/sizer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
         SearchLayout(),
         NotificationLayouts(),
         HomeLayout(),
-        HomeLayout(),
+        ProfileLayout(),
       ],
       items: [
         PersistentBottomNavBarItem(
