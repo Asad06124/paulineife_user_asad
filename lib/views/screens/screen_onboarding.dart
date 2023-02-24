@@ -127,10 +127,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                     onTap: () async {
                       print(index);
                       if (index == screens.length - 1) {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ScreenLogin()));
+                        Get.offAll(ScreenLogin());
                       }
 
                       _pageController.nextPage(
@@ -161,7 +158,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                   ),
                   currentIndex != 2 ?  TextButton(
                     onPressed: () {
-                      Get.offAll(HomeScreen());
+                      Get.offAll(ScreenLogin());
                     },
                     child: Text(
                       "Skip",

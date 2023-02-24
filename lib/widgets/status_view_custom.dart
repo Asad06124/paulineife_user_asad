@@ -48,7 +48,7 @@ class StatusViewCustom extends StatelessWidget {
             ),
             CircleAvatar(
               radius: radius - padding,
-              backgroundImage: NetworkImage(centerImageUrl),
+              backgroundImage: AssetImage(centerImageUrl),
             ),
           ],
         ),

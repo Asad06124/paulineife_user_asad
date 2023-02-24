@@ -6,6 +6,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
+import 'package:paulineife_user/views/screens/screen_signup_google.dart';
+import 'package:paulineife_user/views/screens/screen_signup_with_layouts.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../widgets/custom_buttom.dart';
@@ -71,30 +73,35 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             textAlign: TextAlign.start,
                           ),
                         ),
-                        Container(
-                          height: WHeight.height / 20,
-                          child: TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            maxLines: 1,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return "Text is required";
-                              }
-                              return null;
-                            },
-                            decoration: InputDecoration(
-                              hintText: 'example@gmail.com',
-                              hintStyle: TextStyle(
-                                  fontFamily: 'DMSansR',
-                                  color: Color(0xff000000),
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding: EdgeInsets.only(left: 5),
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
+                        GestureDetector(
+                          onTap: (){
+
+                          },
+                          child: Container(
+                            height: WHeight.height / 20,
+                            child: TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              maxLines: 1,
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return "Text is required";
+                                }
+                                return null;
+                              },
+                              decoration: InputDecoration(
+                                hintText: 'example@gmail.com',
+                                hintStyle: TextStyle(
+                                    fontFamily: 'DMSansR',
+                                    color: Color(0xff000000),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400),
+                                contentPadding: EdgeInsets.only(left: 5),
+                                border: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                enabledBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                disabledBorder: InputBorder.none,
+                              ),
                             ),
                           ),
                         ),
@@ -253,12 +260,35 @@ class _ScreenLoginState extends State<ScreenLogin> {
                         borderRadius: BorderRadius.all(Radius.circular(25.sp)),
                         side: BorderSide(color: Color(0xff97A1B4))),
                     text: "Sign up with Google",
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(SignUpGoogleScreen());
+                    },
                   ),
                   width: WHeight.width / 1.2,
                   height: WHeight.height / 15,
                 ),
-                TextButton(onPressed: (){}, child: RichText( text: TextSpan(text:'Don’t have an account?',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w700,fontFamily: 'DMSansR',color: Color(0xff000000)),children: [TextSpan(text: ' Sign up',style: TextStyle(fontSize: 12,fontWeight: FontWeight.w700,fontFamily: 'DMSansR',color: Color(0xff2A70C8)))]),))
+                TextButton(
+                    onPressed: () {
+                      Get.to(ScreeSignUpWithLayouts());
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                          text: 'Don’t have an account?',
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'DMSansR',
+                              color: Color(0xff000000)),
+                          children: [
+                            TextSpan(
+                                text: ' Sign up',
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'DMSansR',
+                                    color: Color(0xff2A70C8)))
+                          ]),
+                    ))
               ],
             ),
           ),
