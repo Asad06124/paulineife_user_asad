@@ -87,8 +87,10 @@ class HomeLayout extends StatelessWidget {
                         fit: BoxFit.cover),
                   ),
                   child: ListTile(
-                    leading: Image(
-                      image: AssetImage('assets/images/profile.png'),
+                    leading: CircleAvatar(
+                      child: Image(
+                        image: AssetImage('assets/images/12.png'),
+                      ),
                     ),
                     title: Text(
                       'Asad Ullah',

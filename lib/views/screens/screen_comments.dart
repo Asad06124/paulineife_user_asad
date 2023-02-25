@@ -106,6 +106,64 @@ class CommentsScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: Row (
+
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.grey.shade100),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormField(
+                          style: TextStyle(
+                              fontSize: 16, color: Color(0xff9C9EB9)),
+                          onChanged: (value) {},
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 0.0),
+                            hintText: 'Message...',
+                            hintStyle: TextStyle(
+                              color: Color(0xff8E8E93),
+                            ),
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      Icon(Icons.attach_file),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Icon(Icons.camera_alt),
+                      SizedBox(
+                        width: 5,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+           CircleAvatar(
+             backgroundColor: Colors.black,
+            radius: 20,
+            child: Icon(
+              Icons.mic,
+              size: 19,
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

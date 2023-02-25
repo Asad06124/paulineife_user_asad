@@ -2,9 +2,10 @@ import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+// import 'package:firebase_core/firebase_core.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:paulineife_user/helpers/helpers.dart';
 import 'package:paulineife_user/views/screens/screen_login.dart';
 import 'package:paulineife_user/views/screens/screen_onboarding.dart';
@@ -15,9 +16,11 @@ import 'helpers/fcm.dart';
 import 'helpers/helpers.dart';
 /*Created Project "paulineife_user" by MicroProgramers - https://microprogramers.org*/
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   // await Future.delayed(Duration(seconds: 2));
   // colorConfig();
   // await Firebase.initializeApp();
@@ -52,8 +55,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
-
   // @override
   // void initState() {
   //   setupInteractedMessage();
@@ -81,7 +82,6 @@ class _MyAppState extends State<MyApp> {
   // void _handleMessage(RemoteMessage message) {
   //   if (message.data['type'] == 'chat') {}
   // }
-
 
   // void setupNotificationChannel() async {
   //   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
@@ -203,12 +203,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Sizer(
-      builder: (BuildContext context, Orientation orientation, DeviceType deviceType) {
+      builder: (BuildContext context, Orientation orientation,
+          DeviceType deviceType) {
         return GetMaterialApp(
           home: ScreenOnboarding(),
           locale: Locale('en', 'US'),
           debugShowCheckedModeBanner: false,
-          title: "$appName",
+          title: "Paulineife",
           theme: ThemeData(
             fontFamily: 'SegeoUi',
             primarySwatch: appPrimaryColor,
@@ -223,9 +224,13 @@ class _MyAppState extends State<MyApp> {
             appBarTheme: AppBarTheme(
               color: Colors.white,
               elevation: 0,
-              titleTextStyle: normal_h1Style_bold.copyWith(color: Colors.black, fontWeight: FontWeight.bold, fontFamily: "SegeoUi"),
+              titleTextStyle: normal_h1Style_bold.copyWith(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "SegeoUi"),
               centerTitle: false,
-              systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+              systemOverlayStyle:
+                  SystemUiOverlayStyle(statusBarColor: Colors.transparent),
               iconTheme: IconThemeData(color: Colors.black),
             ),
             dividerColor: Colors.transparent,
@@ -236,7 +241,8 @@ class _MyAppState extends State<MyApp> {
             ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
               return CustomError(errorDetails: errorDetails);
             };
-            return ScrollConfiguration(behavior: NoColorScrollBehavior(), child: widget!);
+            return ScrollConfiguration(
+                behavior: NoColorScrollBehavior(), child: widget!);
             // return widget!;
             // return ScrollConfiguration(behavior: ScrollBehaviorModified(), child: widget!);
           },
@@ -273,7 +279,8 @@ class ScrollBehaviorModified extends ScrollBehavior {
 
 class NoColorScrollBehavior extends ScrollBehavior {
   @override
-  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
+  Widget buildOverscrollIndicator(
+      BuildContext context, Widget child, ScrollableDetails details) {
     return child;
   }
 }
