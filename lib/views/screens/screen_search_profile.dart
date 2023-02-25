@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_follower.dart';
 import 'package:paulineife_user/views/screens/screen_following.dart';
+import 'package:paulineife_user/views/screens/screen_report.dart';
 import 'package:paulineife_user/views/screens/screen_setting.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:sizer/sizer.dart';
@@ -60,16 +61,45 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.all(8.sp),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.settings,
-                      color: Colors.black,
-                      size: 30.sp,
-                    ), onPressed: () { Get.to(SettingScreen()); },
+                PopupMenuButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.sp),
                   ),
-                ),
+                  icon: Icon(
+                    Icons.more_vert,
+                    color: Colors.black,
+                  ),
+                  itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                    PopupMenuItem(
+                      onTap: () {
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          Get.to(ReportScreen());
+                        });
+                      },
+                      child: Text(
+                        'Report',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xffFF0000),
+                            fontFamily: 'DMSansR'),
+                      ),
+                    ),
+                    PopupMenuItem(
+                      onTap: () {
+                        Get.back();
+                      },
+                      child: Text(
+                        'Block',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff000000),
+                            fontFamily: 'DMSansR'),
+                      ),
+                    ),
+                  ],
+                )
               ]),
           SizedBox(),
           RichText(

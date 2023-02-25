@@ -6,15 +6,16 @@ import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../widgets/custom_buttom.dart';
+import '../screens/screen_new_password.dart';
 
-class SignUpPhoneScreen extends StatefulWidget {
-  SignUpPhoneScreen({Key? key}) : super(key: key);
+class ForgetPasswordPhoneScreen extends StatefulWidget {
+  ForgetPasswordPhoneScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignUpPhoneScreen> createState() => _SignUpPhoneScreenState();
+  State<ForgetPasswordPhoneScreen> createState() => _ForgetPasswordPhoneScreenState();
 }
 
-class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
+class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController controller = TextEditingController();
   late CountryPicker c;
@@ -251,7 +252,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                 width: Get.width / 2.3,
                 color: Color(0xff2A70C8),
                 onPressed: () {
-                  Get.to(SignUpPhoneDetailsScreen());
+                  Get.to(NewPasswordScreen());
                 }),
           ],
         ),

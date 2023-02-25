@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,12 +8,39 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 import '../../controller/registration_controller.dart';
+import 'package:appinio_video_player/appinio_video_player.dart' as appinio;
 
 
-class PostImageScreen extends StatelessWidget {
-  PostImageScreen({Key? key,}) : super(key: key);
+
+class PostVideoScreen extends StatefulWidget {
+  PostVideoScreen({Key? key,}) : super(key: key);
+
+  @override
+  State<PostVideoScreen> createState() => _PostVideoScreenState();
+}
+
+class _PostVideoScreenState extends State<PostVideoScreen> {
   var controller = Get.put(RegistrationController());
 
+  late VideoPlayerController videoPlayerController;
+  late CustomVideoPlayerController _customVideoPlayerController;
+
+  @override
+  void initState() {
+    super.initState();
+    videoPlayerController = VideoPlayerController.file(controller.vid!)
+      ..initialize().then((value) => setState(() {}));
+    _customVideoPlayerController = CustomVideoPlayerController(
+      context: context,
+      videoPlayerController: videoPlayerController,
+    );
+  }
+
+  @override
+  void dispose() {
+    _customVideoPlayerController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     bool swtch = true;
@@ -63,26 +91,20 @@ class PostImageScreen extends StatelessWidget {
                 ),
                 trailing: StatefulBuilder(
                     builder: (BuildContext context, StateSetter setState) {
-                  return Switch(
-                      value: swtch,
-                      onChanged: (val) {
-                        setState(() {
-                          swtch = val;
-                        });
-                      });
-                }),
+                      return Switch(
+                          value: swtch,
+                          onChanged: (val) {
+                            setState(() {
+                              swtch = val;
+                            });
+                          });
+                    }),
               ),
               Container(
                 height: 60.h,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: FileImage(
-                     File(controller.img!.path)
-                    ),
-                    fit: BoxFit.cover
-                  ),
-                ),
-              ),
+                child: CustomVideoPlayer(
+                    customVideoPlayerController: _customVideoPlayerController
+                ),),
               CustomInputField1(
                 hint: 'Add a caption',
                 maxLines: 5,

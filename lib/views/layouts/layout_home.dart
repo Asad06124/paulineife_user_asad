@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/views/screens/screen_chat_list.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
 
@@ -31,7 +32,9 @@ class HomeLayout extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 2.sp),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(ChatListScreen());
+                },
                 icon: Icon(Icons.mail),
               ),
             ),
@@ -71,52 +74,54 @@ class HomeLayout extends StatelessWidget {
         backgroundColor: Colors.white,
         body: Padding(
           padding: EdgeInsets.all(10.sp),
-          child: Column(
-            children: [
-              Container(
-                height: size.height / 1.7 + 15,
-                alignment: Alignment.bottomLeft,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.sp),
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/post.png'),
-                      fit: BoxFit.cover),
-                ),
-                child: ListTile(
-                  leading: Image(
-                    image: AssetImage('assets/images/profile.png'),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  height: size.height / 1.7 + 15,
+                  alignment: Alignment.bottomLeft,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.sp),
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/post.png'),
+                        fit: BoxFit.cover),
                   ),
-                  title: Text(
-                    'Asad Ullah',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'DMSansR',
-                      color: Colors.white,
+                  child: ListTile(
+                    leading: Image(
+                      image: AssetImage('assets/images/profile.png'),
+                    ),
+                    title: Text(
+                      'Asad Ullah',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'DMSansR',
+                        color: Colors.white,
+                      ),
+                    ),
+                    subtitle: Text(
+                      '2 hours ago',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'DMSansR',
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  subtitle: Text(
-                    '2 hours ago',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'DMSansR',
-                      color: Colors.white,
-                    ),
-                  ),
                 ),
-              ),
-              SizedBox(
-                height: size.height / 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SvgPicture.asset('assets/images/refresh.svg'),
-                  SvgPicture.asset('assets/images/repeat.svg'),
-                ],
-              ),
-            ],
+                SizedBox(
+                  height: size.height / 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SvgPicture.asset('assets/images/refresh.svg'),
+                    SvgPicture.asset('assets/images/repeat.svg'),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -5,6 +5,7 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
+import 'package:paulineife_user/views/screens/screen_forget_password_with_layouts.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/views/screens/screen_signup_google.dart';
 import 'package:paulineife_user/views/screens/screen_signup_with_layouts.dart';
@@ -210,7 +211,9 @@ class _ScreenLoginState extends State<ScreenLogin> {
                 Padding(
                   padding: EdgeInsets.only(top: 3, right: 26.sp),
                   child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(ScreeForgetPasswordWithLayouts());
+                      },
                       child: Align(
                           alignment: Alignment.centerRight,
                           child: Text(

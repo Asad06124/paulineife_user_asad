@@ -76,6 +76,7 @@ dependencies:
   intl_phone_number_input: ^0.7.2
   ola_like_country_picker: ^0.1.2
   pinput: any
+  appinio_video_player: ^1.2.0
 
 
 

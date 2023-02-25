@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:paulineife_user/views/layouts/layout_signup_email.dart';
-import 'package:paulineife_user/views/layouts/layout_signup_phone.dart';
 import 'package:sizer/sizer.dart';
+import '../layouts/layout_forget_password_email.dart';
+import '../layouts/layout_forget_password_phone.dart';
 
-class ScreeSignUpWithLayouts extends StatefulWidget {
-  const ScreeSignUpWithLayouts({Key? key}) : super(key: key);
+class ScreeForgetPasswordWithLayouts extends StatefulWidget {
+  const ScreeForgetPasswordWithLayouts({Key? key}) : super(key: key);
 
   @override
-  State<ScreeSignUpWithLayouts> createState() => _ScreeSignUpWithLayoutsState();
+  State<ScreeForgetPasswordWithLayouts> createState() => _ScreeForgetPasswordWithLayoutsState();
 }
 
-class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
+class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWithLayouts> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -22,7 +22,7 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
             title: Padding(
               padding: EdgeInsets.only(top: 10.sp),
               child: Text(
-                'Sign Up',
+                'Forget Password',
                 style: TextStyle(
                     fontSize: 21.sp,
                     fontWeight: FontWeight.w700,
@@ -64,12 +64,12 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
                   indicatorWeight: 2,
                   indicatorColor: Color(0xff2A70C8),
                   padding:
-                      EdgeInsets.only(top: 25, left: 40, right: 40, bottom: 45),
+                  EdgeInsets.only(top: 25, left: 40, right: 40, bottom: 45),
                 ),
                 Expanded(
                   child: TabBarView(children: [
-                    SignUpPhoneScreen(),
-                    SignUpEmailScreen()
+                    ForgetPasswordPhoneScreen(),
+                    ForgetPasswordEmailScreen()
                   ]),
                 ),
               ],

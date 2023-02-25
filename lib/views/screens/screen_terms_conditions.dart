@@ -15,7 +15,7 @@ class TermsConditionsScreen extends StatelessWidget {
         title: Padding(
           padding: EdgeInsets.only(top: 10.sp),
           child: Text(
-            'Sign Up',
+            'Terms & Conditions',
             style: TextStyle(
                 fontSize: 21.sp,
                 fontWeight: FontWeight.w700,

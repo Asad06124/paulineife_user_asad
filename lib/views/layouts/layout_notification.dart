@@ -47,7 +47,7 @@ class NotificationLayouts extends StatelessWidget {
                     title: Text(
                       'Asad commented on your post.',
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w700,
                           color: Color(0xff000000),
                           fontFamily: 'DMSansR'),

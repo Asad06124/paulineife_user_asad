@@ -10,6 +10,8 @@ import 'package:paulineife_user/views/layouts/layout_notification.dart';
 import 'package:paulineife_user/views/layouts/layout_profile.dart';
 import 'package:paulineife_user/views/layouts/layout_search.dart';
 import 'package:paulineife_user/views/screens/screen_post_image.dart';
+import 'package:paulineife_user/views/screens/screen_post_text.dart';
+import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:sizer/sizer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -168,7 +170,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       thickness: 2.sp,
                     ),
                     ListTile(
-                      onTap: (){},
+                      onTap: (){
+                        Get.to(PostTextScreen());
+                      },
                       leading: Icon(
                         Icons.text_snippet_outlined,
                         color: Color(0xff97A1B4,),
@@ -334,6 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     if (pickedFile != null) {
      setState(() {
+       Get.to(PostVideoScreen());
        controller.vid = File(pickedFile.path);
      });
     }
@@ -346,6 +351,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     if (pickedFile != null) {
     setState(() {
+      Get.to(PostVideoScreen());
       controller.vid = File(pickedFile.path);
     });
     }
