@@ -1,15 +1,36 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_edit_profile.dart';
 import 'package:paulineife_user/views/screens/screen_following.dart';
+import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:sizer/sizer.dart';
 import '../../constant/constant.dart';
 import '../screens/screen_follower.dart';
 import '../screens/screen_setting.dart';
 
-class ProfileLayout extends StatelessWidget {
+class ProfileLayout extends StatefulWidget {
   const ProfileLayout({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileLayout> createState() => _ProfileLayoutState();
+}
+
+class _ProfileLayoutState extends State<ProfileLayout> {
+  List<int> numbers = [10,12,15,5,8,7,9,6];
+  int randomNumber = 0;
+
+  void _generateRandomNumber() {
+    // Generate a random index using the Random class
+    int randomIndex = Random().nextInt(numbers.length);
+
+    // Access the element at the random index
+    setState(() {
+      randomNumber = numbers[randomIndex];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -194,31 +215,37 @@ class ProfileLayout extends StatelessWidget {
                     crossAxisSpacing: 2.sp,
                     mainAxisSpacing: 2.sp),
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    alignment: Alignment.bottomRight,
-                    padding: EdgeInsets.only(bottom: 5),
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/12.png'),
-                          fit: BoxFit.cover),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(
-                          Icons.remove_red_eye_outlined,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          '20.5K',
-                          style: TextStyle(
+                  return GestureDetector(
+                    onTap: () {
+                      _generateRandomNumber();
+                      Get.to(StoryViewScreen(StryCount: randomNumber));
+                    },
+                    child: Container(
+                      alignment: Alignment.bottomRight,
+                      padding: EdgeInsets.only(bottom: 5),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/12.png'),
+                            fit: BoxFit.cover),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Icon(
+                            Icons.remove_red_eye_outlined,
                             color: Colors.white,
-                            fontSize: 6.sp,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: fontFamilyD,
                           ),
-                        ),
-                      ],
+                          Text(
+                            '20.5K',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 6.sp,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: fontFamilyD,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },

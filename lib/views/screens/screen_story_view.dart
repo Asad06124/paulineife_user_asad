@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
@@ -162,7 +163,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
           Column(
             children: [
               SizedBox(
-                height: 45.sp,
+                height: 10.sp,
               ),
               ListTile(
                 leading: CircleAvatar(
@@ -318,7 +319,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                       child: Column(
                         children: [
                           Icon(
-                            Icons.add_comment_sharp,
+                            CupertinoIcons.chat_bubble,
                             color: Colors.white,
                             size: 25.sp,
                           ),

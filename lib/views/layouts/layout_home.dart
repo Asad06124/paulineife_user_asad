@@ -77,78 +77,77 @@ class _HomeLayoutState extends State<HomeLayout> {
                               top: 1.sp, bottom: 2.sp, left: 4.sp, right: 4.sp),
                           child: StatusViewCustom(
                             onTap: () {
-                              controller.StoryImg == null
+                              index != 0
+                                  ? Get.to(StoryViewScreen(
+                                      StryCount: StoryCount[index],
+                                    ))
+                                  : controller.StoryImg == null||index == 0
                                   ? Get.bottomSheet(
-                                      Container(
-                                        height: 18.h,
-                                        child: Column(
-                                          children: [
-                                            ListTile(
-                                              onTap: () {
-                                                Get.back();
-                                                getFromCameraimg();
-                                              },
-                                              leading: Icon(
-                                                Icons.camera_alt_outlined,
-                                                color: Color(
-                                                  0xff97A1B4,
-                                                ),
-                                                size: 20.sp,
-                                              ),
-                                              title: Text(
-                                                'Camera',
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Color(
-                                                    0xff000000,
-                                                  ),
-                                                  fontFamily: 'DMSansR',
-                                                ),
-                                              ),
+                                Container(
+                                  height: 18.h,
+                                  child: Column(
+                                    children: [
+                                      ListTile(
+                                        onTap: () {
+                                          Get.back();
+                                          getFromCameraimg();
+                                        },
+                                        leading: Icon(
+                                          Icons.camera_alt_outlined,
+                                          color: Color(
+                                            0xff97A1B4,
+                                          ),
+                                          size: 20.sp,
+                                        ),
+                                        title: Text(
+                                          'Camera',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(
+                                              0xff000000,
                                             ),
-                                            Divider(
-                                              color: Color(0xffE2E4EB),
-                                              thickness: 2.sp,
-                                            ),
-                                            ListTile(
-                                              onTap: () {
-                                                Get.back();
-
-                                                getFromGalleryimg();
-                                              },
-                                              leading: Icon(
-                                                Icons.photo,
-                                                color: Color(
-                                                  0xff97A1B4,
-                                                ),
-                                                size: 20.sp,
-                                              ),
-                                              title: Text(
-                                                'Gallery',
-                                                style: TextStyle(
-                                                  fontSize: 16,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Color(
-                                                    0xff000000,
-                                                  ),
-                                                  fontFamily: 'DMSansR',
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                            fontFamily: 'DMSansR',
+                                          ),
                                         ),
                                       ),
-                                      backgroundColor: Color(0xffffffff),
-                                      elevation: 0,
-                                    )
-                                  : index != 0
-                                      ? Get.to(StoryViewScreen(
-                                          StryCount: StoryCount[index],
-                                        ))
-                                      : Get.to(StoryViewScreen(
-                                          StryCount: 1,
-                                        ));
+                                      Divider(
+                                        color: Color(0xffE2E4EB),
+                                        thickness: 2.sp,
+                                      ),
+                                      ListTile(
+                                        onTap: () {
+                                          Get.back();
+
+                                          getFromGalleryimg();
+                                        },
+                                        leading: Icon(
+                                          Icons.photo,
+                                          color: Color(
+                                            0xff97A1B4,
+                                          ),
+                                          size: 20.sp,
+                                        ),
+                                        title: Text(
+                                          'Gallery',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w400,
+                                            color: Color(
+                                              0xff000000,
+                                            ),
+                                            fontFamily: 'DMSansR',
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                backgroundColor: Color(0xffffffff),
+                                elevation: 0,
+                              ): Get.to(StoryViewScreen(
+                                      StryCount: 1,
+                                    ));
                               ;
                             },
                             radius: 25.sp,
