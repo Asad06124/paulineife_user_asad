@@ -118,6 +118,7 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/
+    - assets/svgs/
 
   fonts:
     - family: DMSan

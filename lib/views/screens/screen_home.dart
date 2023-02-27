@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
-          icon: Icon(CupertinoIcons.search),
+          icon: SvgPicture.asset("assets/svgs/Search.svg"),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -296,13 +296,13 @@ class _HomeScreenState extends State<HomeScreen> {
               elevation: 0,
             );
           },
-          icon: Icon(CupertinoIcons.plus_circle_fill),
+          icon: SvgPicture.asset("assets/svgs/add.svg"),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
-          icon: Icon(CupertinoIcons.bell),
+          icon: SvgPicture.asset("assets/svgs/Notification.svg"),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,

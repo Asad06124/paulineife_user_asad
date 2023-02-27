@@ -48,10 +48,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                 onPressed: () {
                   Get.to(ChatListScreen());
                 },
-                icon: Icon(
-                  Icons.mail,
-                  color: Color(0xff2A70C8),
-                ),
+                icon: SvgPicture.asset("assets/svgs/email.svg"),
               ),
             ),
           ],

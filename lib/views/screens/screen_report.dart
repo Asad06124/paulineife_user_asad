@@ -54,10 +54,10 @@ class ReportScreen extends StatelessWidget {
               Text(
                 "Your report is anonymous, except if you're reporting an intellectual property infringement. If someone is in immediate danger, call the local emergency services - don't wait.",
                 style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 11.sp,
+                    fontWeight: FontWeight.w400,
                     color: Color(0xff79869F),
-                    fontFamily: 'DMSansR'),
+                    ),
               ),
               Expanded(
                 child: ListView.builder(
@@ -65,23 +65,27 @@ class ReportScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return StatefulBuilder(
                         builder: (BuildContext context, StateSetter setState) {
-                          return CheckboxListTile(
+                          return SizedBox(
+                            height: 28.sp,
+                            child: CheckboxListTile(
 
-                            title: Text(
-                              txt[index],
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff000000),
-                                  fontFamily: 'DMSansR'),
+                              controlAffinity:ListTileControlAffinity.leading,
+                              title: Text(
+                                txt[index],
+                                style: TextStyle(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xff000000),
+                                ),
+                              ),
+                              value: controller.isChecked.value,
+                              onChanged: (newValue) {
+                                setState((){
+                                  controller.isChecked.value = newValue!;
+                                });
+
+                              },
                             ),
-                            value: controller.isChecked.value,
-                            onChanged: (newValue) {
-                              setState((){
-                                controller.isChecked.value = newValue!;
-                              });
-
-                            },
                           );
                         }
                     )

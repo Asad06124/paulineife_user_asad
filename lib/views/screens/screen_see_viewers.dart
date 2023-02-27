@@ -20,7 +20,7 @@ class SeeViewersScreen extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.black,
-                fontFamily: 'DMSansR'),
+            ),
           ),
           centerTitle: true,
         ),
@@ -89,18 +89,18 @@ class SeeViewersScreen extends StatelessWidget {
                     title: Text(
                       'Asad',
                       style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 13.sp,
                           fontWeight: FontWeight.w700,
                           color: Color(0xff000000),
-                          fontFamily: 'DMSansR'),
+                      ),
                     ),
                     subtitle: Text(
                       '@asad',
                       style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 11.sp,
                           fontWeight: FontWeight.w400,
                           color: Color(0xff2A70C8),
-                          fontFamily: 'DMSansR'),
+                      ),
                     ),
                     trailing: ElevatedButton(
                       child: Text(
