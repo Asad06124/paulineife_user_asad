@@ -13,140 +13,168 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Asad'),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        radius: 30.sp,
-                        backgroundImage: AssetImage(
-                            'assets/images/12.png'),
+    return SafeArea(
+
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: Text('Asad'),
+          centerTitle: true,
+        ),
+        body: Column(
+          children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 30.sp,
+                          backgroundImage: AssetImage(
+                              'assets/images/12.png'),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              text: 'Asad\n',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'DMSansR',
+                                color: Color(0xff000000),
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: '@asad',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: 'DMSans-Bold',
+                                    color: Color(0xff2A70C8),
+                                  ),
+                                )
+                              ]),
+                        ),
+                      ],
+                    ),
+                  ),
+                  PopupMenuButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.sp),
+                    ),
+                    icon: Icon(
+                      Icons.more_vert,
+                      color: Colors.black,
+                    ),
+                    itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                      PopupMenuItem(
+                        onTap: () {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            Get.to(ReportScreen());
+                          });
+                        },
+                        child: Text(
+                          'Report',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xffFF0000),
+                              fontFamily: 'DMSansR'),
+                        ),
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                            text: 'Asad\n',
-                            style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'DMSansR',
+                      PopupMenuItem(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Text(
+                          'Block',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
                               color: Color(0xff000000),
-                            ),
-                            children: [
-                              TextSpan(
-                                text: '@asad',
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: 'DMSans-Bold',
-                                  color: Color(0xff2A70C8),
-                                ),
-                              )
-                            ]),
+                              fontFamily: 'DMSansR'),
+                        ),
                       ),
                     ],
-                  ),
-                ),
-                PopupMenuButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.sp),
-                  ),
-                  icon: Icon(
-                    Icons.more_vert,
-                    color: Colors.black,
-                  ),
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                    PopupMenuItem(
-                      onTap: () {
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          Get.to(ReportScreen());
-                        });
-                      },
-                      child: Text(
-                        'Report',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xffFF0000),
-                            fontFamily: 'DMSansR'),
-                      ),
-                    ),
-                    PopupMenuItem(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: Text(
-                        'Block',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
-                      ),
-                    ),
-                  ],
-                )
-              ]),
-          SizedBox(),
-          RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-                text:
-                'Lorem ipsum dolor sit amet, consectetur eliteita adipiscing elit. Morbi at malesuada mi.',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  fontFamily: 'DMSansR',
-                  color: Color(0xff000000),
-                ),
-                children: [
-                  TextSpan(
-                    text: '\nwww.google.com',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'DMSans-Bold',
-                      color: Color(0xff2A70C8),
-                    ),
                   )
                 ]),
-          ),
-          SizedBox(
-            height: Get.height / 20,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(),
-              GestureDetector(
-                onTap: (){Get.to(FollowerScreen());},
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                      text: '10k\n',
+            SizedBox(),
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                  text:
+                  'Lorem ipsum dolor sit amet, consectetur eliteita adipiscing elit. Morbi at malesuada mi.',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'DMSansR',
+                    color: Color(0xff000000),
+                  ),
+                  children: [
+                    TextSpan(
+                      text: '\nwww.google.com',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        fontFamily: 'DMSans-Bold',
+                        color: Color(0xff2A70C8),
+                      ),
+                    )
+                  ]),
+            ),
+            SizedBox(
+              height: Get.height / 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(),
+                GestureDetector(
+                  onTap: (){Get.to(FollowerScreen());},
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                        text: '10k\n',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'DMSans-Bold',
+                          color: Color(0xff000000),
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'Followers',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'DMSansR',
+                              color: Color(0xff79869F),
+                            ),
+                          )
+                        ]),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: (){Get.to(FollowingScreen());},
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      text: '1.1k\n',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        fontFamily: 'DMSans-Bold',
+                        fontFamily: 'DMSansR-Bold',
                         color: Color(0xff000000),
                       ),
                       children: [
                         TextSpan(
-                          text: 'Followers',
+                          text: 'Following',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
@@ -154,91 +182,67 @@ class ProfileScreen extends StatelessWidget {
                             color: Color(0xff79869F),
                           ),
                         )
-                      ]),
-                ),
-              ),
-              GestureDetector(
-                onTap: (){Get.to(FollowingScreen());},
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    text: '1.1k\n',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      fontFamily: 'DMSansR-Bold',
-                      color: Color(0xff000000),
+                      ],
                     ),
-                    children: [
-                      TextSpan(
-                        text: 'Following',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: 'DMSansR',
-                          color: Color(0xff79869F),
-                        ),
-                      )
-                    ],
                   ),
                 ),
-              ),
-              SizedBox(),
-            ],
-          ),
-          Row(
-            children:[
-              CustomButton1(
-                  text: '+ Follow',
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.sp),
-                  ),
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'DMSansR',
-                    color: Colors.white,
-                  ),
-                  elevation: 0,
-                  height: Get.height / 16,
-                  width: Get.width / 2.3,
-                  color: Color(0xff2A70C8),
-                  onPressed: () {}),
-              CustomButton1(
-                  text: 'Message',
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.sp),
-                  ),
-                  textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: 'DMSansR',
-                    color: Colors.black,
-                  ),
-                  elevation: 0,
-                  height: Get.height / 16,
-                  width: Get.width / 2.3,
-                  color: Color(0xffffffff),
-                  onPressed: () {}),
-            ],
-          ),
-          Divider(
-            color: Color(0xffa4a4a4),
-          ),
-          SizedBox(
-            height: 10.sp,
-          ),
-          Expanded(
-            child: Text(
-              'No Posts',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR',
-                  color: Colors.black),
+                SizedBox(),
+              ],
             ),
-          ),
-        ],
+            Row(
+              children:[
+                CustomButton1(
+                    text: '+ Follow',
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.sp),
+                    ),
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'DMSansR',
+                      color: Colors.white,
+                    ),
+                    elevation: 0,
+                    height: Get.height / 16,
+                    width: Get.width / 2.3,
+                    color: Color(0xff2A70C8),
+                    onPressed: () {}),
+                CustomButton1(
+                    text: 'Message',
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.sp),
+                    ),
+                    textStyle: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'DMSansR',
+                      color: Colors.black,
+                    ),
+                    elevation: 0,
+                    height: Get.height / 16,
+                    width: Get.width / 2.3,
+                    color: Color(0xffffffff),
+                    onPressed: () {}),
+              ],
+            ),
+            Divider(
+              color: Color(0xffa4a4a4),
+            ),
+            SizedBox(
+              height: 10.sp,
+            ),
+            Expanded(
+              child: Text(
+                'No Posts',
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'DMSansR',
+                    color: Colors.black),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

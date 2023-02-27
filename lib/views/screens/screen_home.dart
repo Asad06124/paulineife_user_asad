@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: (val) {
             Get.bottomSheet(
               Container(
-                height: 35.h+5,
+                height: 35.h + 5,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.sp),
@@ -84,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 15.sp,
                     ),
                     ListTile(
-                      onTap: (){
+                      onTap: () {
                         setState(() {
                           Get.bottomSheet(
                             Container(
@@ -92,13 +92,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Column(
                                 children: [
                                   ListTile(
-                                    onTap: (){
+                                    onTap: () {
                                       Get.back();
                                       getFromCameraimg();
                                     },
                                     leading: Icon(
                                       Icons.camera_alt_outlined,
-                                      color: Color(0xff97A1B4,),
+                                      color: Color(
+                                        0xff97A1B4,
+                                      ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -118,14 +120,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                     thickness: 2.sp,
                                   ),
                                   ListTile(
-                                    onTap: (){
+                                    onTap: () {
                                       Get.back();
 
                                       getFromGalleryimg();
                                     },
                                     leading: Icon(
                                       Icons.photo,
-                                      color: Color(0xff97A1B4,),
+                                      color: Color(
+                                        0xff97A1B4,
+                                      ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -150,7 +154,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       leading: Icon(
                         Icons.camera_alt_outlined,
-                        color: Color(0xff97A1B4,),
+                        color: Color(
+                          0xff97A1B4,
+                        ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -170,12 +176,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       thickness: 2.sp,
                     ),
                     ListTile(
-                      onTap: (){
+                      onTap: () {
                         Get.to(PostTextScreen());
                       },
                       leading: Icon(
                         Icons.text_snippet_outlined,
-                        color: Color(0xff97A1B4,),
+                        color: Color(
+                          0xff97A1B4,
+                        ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -195,7 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       thickness: 2.sp,
                     ),
                     ListTile(
-                      onTap: (){
+                      onTap: () {
                         setState(() {
                           Get.bottomSheet(
                             Container(
@@ -203,13 +211,15 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Column(
                                 children: [
                                   ListTile(
-                                    onTap: (){
+                                    onTap: () {
                                       Get.back();
                                       getFromCameravid();
                                     },
                                     leading: Icon(
                                       Icons.camera_alt_outlined,
-                                      color: Color(0xff97A1B4,),
+                                      color: Color(
+                                        0xff97A1B4,
+                                      ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -229,13 +239,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                     thickness: 2.sp,
                                   ),
                                   ListTile(
-                                    onTap: (){
+                                    onTap: () {
                                       Get.back();
                                       getFromGalleryvid();
                                     },
                                     leading: Icon(
                                       Icons.photo,
-                                      color: Color(0xff97A1B4,),
+                                      color: Color(
+                                        0xff97A1B4,
+                                      ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -260,7 +272,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       leading: Icon(
                         Icons.videocam_outlined,
-                        color: Color(0xff97A1B4,),
+                        color: Color(
+                          0xff97A1B4,
+                        ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -332,32 +346,30 @@ class _HomeScreenState extends State<HomeScreen> {
           NavBarStyle.style13, // Choose the nav bar style with this property.
     );
   }
+
   void getFromGalleryvid() async {
     final pickedFile = await ImagePicker().pickVideo(
       source: ImageSource.gallery,
     );
     if (pickedFile != null) {
-     setState(() {
-       Get.to(PostVideoScreen());
-       controller.vid = File(pickedFile.path);
-     });
+      setState(() {
+        Get.to(PostVideoScreen());
+        controller.vid = File(pickedFile.path);
+      });
     }
   }
 
   void getFromCameravid() async {
     final pickedFile = await ImagePicker().pickVideo(
       source: ImageSource.camera,
-
     );
     if (pickedFile != null) {
-    setState(() {
-      Get.to(PostVideoScreen());
-      controller.vid = File(pickedFile.path);
-    });
+      setState(() {
+        Get.to(PostVideoScreen());
+        controller.vid = File(pickedFile.path);
+      });
     }
   }
-
-
 
   void getFromGalleryimg() async {
     final pickedFile = await ImagePicker().pickImage(
@@ -380,10 +392,10 @@ class _HomeScreenState extends State<HomeScreen> {
       maxHeight: 1800,
     );
     if (pickedFile != null) {
-     setState(() {
-       Get.to(PostImageScreen());
-       controller.img = File(pickedFile.path);
-     });
+      setState(() {
+        Get.to(PostImageScreen());
+        controller.img = File(pickedFile.path);
+      });
     }
   }
 }

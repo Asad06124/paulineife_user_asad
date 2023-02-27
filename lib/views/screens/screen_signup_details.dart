@@ -29,7 +29,6 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           centerTitle: true,
           elevation: 0,
-
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -194,7 +193,9 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 8.h,),
+              SizedBox(
+                height: 8.h,
+              ),
               CustomButton1(
                 text: 'Sign in',
                 color: Color(0xff2A70C8),

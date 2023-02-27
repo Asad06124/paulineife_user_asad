@@ -211,7 +211,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: "Paulineife",
           theme: ThemeData(
-            fontFamily: 'SegeoUi',
+            fontFamily: 'DMSansR',
             primarySwatch: appPrimaryColor,
             checkboxTheme: CheckboxThemeData(
               checkColor: MaterialStateProperty.all(Colors.white),
@@ -227,7 +227,7 @@ class _MyAppState extends State<MyApp> {
               titleTextStyle: normal_h1Style_bold.copyWith(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
-                  fontFamily: "SegeoUi"),
+                  fontFamily: "DMSansR"),
               centerTitle: false,
               systemOverlayStyle:
                   SystemUiOverlayStyle(statusBarColor: Colors.transparent),

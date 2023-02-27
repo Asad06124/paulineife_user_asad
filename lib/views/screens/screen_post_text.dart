@@ -21,6 +21,7 @@ class PostTextScreen extends StatelessWidget {
     bool swtch = true;
     return SafeArea(
       child: Scaffold(
+
         appBar: AppBar(
           title: Text('Create Post'),
           centerTitle: true,

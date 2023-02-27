@@ -7,11 +7,12 @@ import '../../controller/registration_controller.dart';
 import '../../widgets/custom_buttom.dart';
 
 class NewPasswordScreen extends StatelessWidget {
-   NewPasswordScreen({Key? key}) : super(key: key);
-   bool isPasswordField = false;
-   final _formKey = GlobalKey<FormState>();
+  NewPasswordScreen({Key? key}) : super(key: key);
+  bool isPasswordField = false;
+  final _formKey = GlobalKey<FormState>();
 
-   var controller = Get.put(RegistrationController());
+  var controller = Get.put(RegistrationController());
+
   @override
   Widget build(BuildContext context) {
     var WHeight = MediaQuery.of(context).size;
@@ -35,8 +36,10 @@ class NewPasswordScreen extends StatelessWidget {
           elevation: 0,
         ),
         body: Column(
-          children:[
-            SizedBox(height: 10.h,),
+          children: [
+            SizedBox(
+              height: 10.h,
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.sp),
               child: Container(
@@ -65,67 +68,72 @@ class NewPasswordScreen extends StatelessWidget {
                         textAlign: TextAlign.start,
                       ),
                     ),
-                    StatefulBuilder(builder: (BuildContext context, void Function(void Function()) setState) { return  Container(
-                      height: WHeight.height / 18,
-                      child: TextFormField(
-                        obscureText: isPasswordField,
-                        keyboardType: TextInputType.emailAddress,
-                        maxLines: 1,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Text is required";
-                          }
-                          return null;
-                        },
-
-                        decoration: InputDecoration(
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                isPasswordField = !isPasswordField;
-                              });
+                    StatefulBuilder(
+                      builder: (BuildContext context,
+                          void Function(void Function()) setState) {
+                        return Container(
+                          height: WHeight.height / 18,
+                          child: TextFormField(
+                            obscureText: isPasswordField,
+                            keyboardType: TextInputType.emailAddress,
+                            maxLines: 1,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Text is required";
+                              }
+                              return null;
                             },
-                            icon: Icon(isPasswordField
-                                ? Icons.visibility
-                                : Icons.visibility_off),
-                          ),
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          border: InputBorder.none,
-                          hintText: '........',
-                          hintStyle: TextStyle(
-                              fontFamily: 'DMSansR',
-                              color: Color(0xff000000),
-                              fontSize: 30.sp,
-                              fontWeight: FontWeight.w400),
-                          contentPadding:
-                          EdgeInsets.only(left: 5, bottom: 5),
-                        ),
 
-                        // decoration: InputDecoration(
-                        //   suffixIcon: IconButton(
-                        //     onPressed: () {
-                        //       visible = !visible;
-                        //     },
-                        //     icon: visible == false
-                        //         ? Icon(Icons.visibility)
-                        //         : Icon(Icons.visibility_off),
-                        //   ),
-                        //   hintText: '.......',
-                        //   hintStyle: TextStyle(
-                        //       fontFamily: 'DMSansR',
-                        //       color: Color(0xff000000),
-                        //       fontSize: 20.sp,
-                        //       fontWeight: FontWeight.w400),
-                        //   contentPadding: EdgeInsets.only(left: 5),
-                        //   border: InputBorder.none,
-                        //   focusedBorder: InputBorder.none,
-                        //   enabledBorder: InputBorder.none,
-                        //   errorBorder: InputBorder.none,
-                        //   disabledBorder: InputBorder.none,
-                        // ),
-                      ),
-                    ); },),
+                            decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isPasswordField = !isPasswordField;
+                                  });
+                                },
+                                icon: Icon(isPasswordField
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                              ),
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              border: InputBorder.none,
+                              hintText: '........',
+                              hintStyle: TextStyle(
+                                  fontFamily: 'DMSansR',
+                                  color: Color(0xff000000),
+                                  fontSize: 30.sp,
+                                  fontWeight: FontWeight.w400),
+                              contentPadding:
+                                  EdgeInsets.only(left: 5, bottom: 5),
+                            ),
+
+                            // decoration: InputDecoration(
+                            //   suffixIcon: IconButton(
+                            //     onPressed: () {
+                            //       visible = !visible;
+                            //     },
+                            //     icon: visible == false
+                            //         ? Icon(Icons.visibility)
+                            //         : Icon(Icons.visibility_off),
+                            //   ),
+                            //   hintText: '.......',
+                            //   hintStyle: TextStyle(
+                            //       fontFamily: 'DMSansR',
+                            //       color: Color(0xff000000),
+                            //       fontSize: 20.sp,
+                            //       fontWeight: FontWeight.w400),
+                            //   contentPadding: EdgeInsets.only(left: 5),
+                            //   border: InputBorder.none,
+                            //   focusedBorder: InputBorder.none,
+                            //   enabledBorder: InputBorder.none,
+                            //   errorBorder: InputBorder.none,
+                            //   disabledBorder: InputBorder.none,
+                            // ),
+                          ),
+                        );
+                      },
+                    ),
                     SizedBox(),
                   ],
                 ),
@@ -162,67 +170,72 @@ class NewPasswordScreen extends StatelessWidget {
                         textAlign: TextAlign.start,
                       ),
                     ),
-                   StatefulBuilder(builder: (BuildContext context, void Function(void Function()) setState) { return  Container(
-                     height: WHeight.height / 18,
-                     child: TextFormField(
-                       obscureText: isPasswordField,
-                       keyboardType: TextInputType.emailAddress,
-                       maxLines: 1,
-                       validator: (value) {
-                         if (value == null || value.isEmpty) {
-                           return "Text is required";
-                         }
-                         return null;
-                       },
+                    StatefulBuilder(
+                      builder: (BuildContext context,
+                          void Function(void Function()) setState) {
+                        return Container(
+                          height: WHeight.height / 18,
+                          child: TextFormField(
+                            obscureText: isPasswordField,
+                            keyboardType: TextInputType.emailAddress,
+                            maxLines: 1,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Text is required";
+                              }
+                              return null;
+                            },
 
-                       decoration: InputDecoration(
-                         suffixIcon: IconButton(
-                           onPressed: () {
-                             setState(() {
-                               isPasswordField = !isPasswordField;
-                             });
-                           },
-                           icon: Icon(isPasswordField
-                               ? Icons.visibility
-                               : Icons.visibility_off),
-                         ),
-                         enabledBorder: InputBorder.none,
-                         focusedBorder: InputBorder.none,
-                         border: InputBorder.none,
-                         hintText: '........',
-                         hintStyle: TextStyle(
-                             fontFamily: 'DMSansR',
-                             color: Color(0xff000000),
-                             fontSize: 30.sp,
-                             fontWeight: FontWeight.w400),
-                         contentPadding:
-                         EdgeInsets.only(left: 5, bottom: 5),
-                       ),
+                            decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    isPasswordField = !isPasswordField;
+                                  });
+                                },
+                                icon: Icon(isPasswordField
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
+                              ),
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              border: InputBorder.none,
+                              hintText: '........',
+                              hintStyle: TextStyle(
+                                  fontFamily: 'DMSansR',
+                                  color: Color(0xff000000),
+                                  fontSize: 30.sp,
+                                  fontWeight: FontWeight.w400),
+                              contentPadding:
+                                  EdgeInsets.only(left: 5, bottom: 5),
+                            ),
 
-                       // decoration: InputDecoration(
-                       //   suffixIcon: IconButton(
-                       //     onPressed: () {
-                       //       visible = !visible;
-                       //     },
-                       //     icon: visible == false
-                       //         ? Icon(Icons.visibility)
-                       //         : Icon(Icons.visibility_off),
-                       //   ),
-                       //   hintText: '.......',
-                       //   hintStyle: TextStyle(
-                       //       fontFamily: 'DMSansR',
-                       //       color: Color(0xff000000),
-                       //       fontSize: 20.sp,
-                       //       fontWeight: FontWeight.w400),
-                       //   contentPadding: EdgeInsets.only(left: 5),
-                       //   border: InputBorder.none,
-                       //   focusedBorder: InputBorder.none,
-                       //   enabledBorder: InputBorder.none,
-                       //   errorBorder: InputBorder.none,
-                       //   disabledBorder: InputBorder.none,
-                       // ),
-                     ),
-                   ); },),
+                            // decoration: InputDecoration(
+                            //   suffixIcon: IconButton(
+                            //     onPressed: () {
+                            //       visible = !visible;
+                            //     },
+                            //     icon: visible == false
+                            //         ? Icon(Icons.visibility)
+                            //         : Icon(Icons.visibility_off),
+                            //   ),
+                            //   hintText: '.......',
+                            //   hintStyle: TextStyle(
+                            //       fontFamily: 'DMSansR',
+                            //       color: Color(0xff000000),
+                            //       fontSize: 20.sp,
+                            //       fontWeight: FontWeight.w400),
+                            //   contentPadding: EdgeInsets.only(left: 5),
+                            //   border: InputBorder.none,
+                            //   focusedBorder: InputBorder.none,
+                            //   enabledBorder: InputBorder.none,
+                            //   errorBorder: InputBorder.none,
+                            //   disabledBorder: InputBorder.none,
+                            // ),
+                          ),
+                        );
+                      },
+                    ),
                     SizedBox(),
                   ],
                 ),

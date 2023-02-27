@@ -48,6 +48,7 @@ class _CustomButton1State extends State<CustomButton1> {
     return GestureDetector(
       onTap: widget.onPressed,
       child: Container(
+        // padding: EdgeInsets.symmetric(horizontal: 10.sp),
         margin: widget.margin ??
             const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         height: widget.height,
