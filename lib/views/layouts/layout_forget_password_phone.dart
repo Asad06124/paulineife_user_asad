@@ -201,37 +201,38 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
               //   child: ,
               // ),
               SizedBox(height: 10.sp,),
-              Pinput(
-                controller: pinController,
-                focusNode: focusNode,
-                androidSmsAutofillMethod:
-                AndroidSmsAutofillMethod.smsUserConsentApi,
-                listenForMultipleSmsOnAndroid: true,
-                length: 6,
-                preFilledWidget: Text('2'),
-                // validator: (value) {
-                //   return value == '222222' ? null : 'Pin is incorrect';
-                // },
-                // onClipboardFound: (value) {
-                //   debugPrint('onClipboardFound: $value');
-                //   pinController.setText(value);
-                // },
-                hapticFeedbackType: HapticFeedbackType.lightImpact,
-                onCompleted: (pin) {
-                  debugPrint('onCompleted: $pin');
-                },
-                onChanged: (value) {
-                  debugPrint('onChanged: $value');
-                },
-                cursor: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 9),
-                      width: 22,
-                      height: 1,
-                    ),
-                  ],
+              Container(
+                height: 40.sp,
+                width: Get.width*.8,
+                // padding: EdgeInsets.symmetric(vertical: 10.sp,horizontal: 20.sp),
+                child: Pinput(
+                  scrollPadding: EdgeInsets.all(10.sp),
+                  controller: pinController,
+                  focusNode: focusNode,
+                  androidSmsAutofillMethod:
+                  AndroidSmsAutofillMethod.smsUserConsentApi,
+                  listenForMultipleSmsOnAndroid: true,
+                  length: 6,
+                  preFilledWidget: Text('2',style: TextStyle(color: Colors.black,fontFamily: 'DMSansR'),),
+                  // validator: (value) {
+                  //   return value == '222222' ? null : 'Pin is incorrect';
+                  // },
+                  // onClipboardFound: (value) {
+                  //   debugPrint('onClipboardFound: $value');
+                  //   pinController.setText(value);
+                  // },
+                  hapticFeedbackType: HapticFeedbackType.lightImpact,
+                  onCompleted: (pin) {
+                    debugPrint('onCompleted: $pin');
+                  },
+                  onChanged: (value) {
+                    debugPrint('onChanged: $value');
+                  },
+                  // cursor: Container(
+                  //   margin: const EdgeInsets.only(bottom: 9),
+                  //   width: 22,
+                  //   height: 1,
+                  // ),
                 ),
               ),
               SizedBox(
