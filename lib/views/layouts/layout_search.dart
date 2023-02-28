@@ -27,7 +27,7 @@ class SearchLayout extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
                 fillColor: Color(0xffE2E4EB),
-                suffix: Icon(Icons.search),
+                prefix: Icon(Icons.search),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                 hint: 'Search',
