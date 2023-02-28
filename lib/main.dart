@@ -210,8 +210,11 @@ class _MyAppState extends State<MyApp> {
           locale: Locale('en', 'US'),
           debugShowCheckedModeBanner: false,
           title: "Paulineife",
+          routingCallback: (route){
+            print(route?.current);
+          },
           theme: ThemeData(
-            fontFamily: 'DMSans',
+            fontFamily: 'DMSan',
             primarySwatch: appPrimaryColor,
             checkboxTheme: CheckboxThemeData(
               checkColor: MaterialStateProperty.all(Colors.white),
@@ -227,7 +230,7 @@ class _MyAppState extends State<MyApp> {
               titleTextStyle: normal_h1Style_bold.copyWith(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
-                  fontFamily: "DMSans"),
+                  fontFamily: "DMSan"),
               centerTitle: false,
               systemOverlayStyle:
                   SystemUiOverlayStyle(statusBarColor: Colors.transparent),
