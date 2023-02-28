@@ -19,19 +19,31 @@ class NotificationLayouts extends StatelessWidget {
                 color: Color(0xff000000),
                 fontFamily: 'DMSansR'),
           ),
+          centerTitle: true,
+          automaticallyImplyLeading: true,
+          leading: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.black,
+            ),
+          ),
         ),
         body: Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
-            children:[
-              Text(
-                'Recent Searches',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff000000),
-                    fontFamily: 'DMSansR'),
+            children: [
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  'Today',
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff000000),
+                      fontFamily: 'DMSansR'),
+                ),
               ),
               Expanded(
                 flex: 1,
@@ -42,16 +54,35 @@ class NotificationLayouts extends StatelessWidget {
                       contentPadding: EdgeInsets.symmetric(horizontal: 0),
                       leading: CircleAvatar(
                         radius: 25.sp,
-                        backgroundImage: AssetImage(
-                            'assets/images/12.png'),
+                        backgroundImage: AssetImage('assets/images/12.png'),
                       ),
-                      title: Text(
-                        'Asad commented on your post.',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
+                      title: RichText(
+                        text: TextSpan(
+                          text: 'Asad',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xff000000),
+                              fontFamily: 'DMSansR'),
+                          children: [
+                            TextSpan(
+                            text: ' commented on your ',
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xff000000),
+                                fontFamily: 'DMSansR'),
+                          ),
+                            TextSpan(
+                            text: ' post.' ,
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xff000000),
+                                fontFamily: 'DMSansR'),
+                          ),
+                          ]
+                        ),
                       ),
                       subtitle: Text(
                         '45 minutes ago',
@@ -61,7 +92,7 @@ class NotificationLayouts extends StatelessWidget {
                             color: Color(0xff79869F),
                             fontFamily: 'DMSansR'),
                       ),
-                      trailing: SvgPicture.asset('assets/images/Vector.svg'),
+                      trailing: Icon(Icons.more_vert,color: Color(0xff97A1B4),)
                     );
                   },
                 ),

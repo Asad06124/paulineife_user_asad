@@ -14,6 +14,7 @@ class CustomButton1 extends StatefulWidget {
   final TextStyle? textStyle;
   final TextAlign? textAlign;
   final OutlinedBorder? shape;
+  final BoxDecoration? decuration;
   final bool? enabled;
   final bool? loading;
   final double? elevation;
@@ -26,6 +27,7 @@ class CustomButton1 extends StatefulWidget {
       required this.onPressed,
       this.width,
       this.margin,
+        this.decuration,
       this.height,
       this.textStyle,
       this.shape,
@@ -53,6 +55,7 @@ class _CustomButton1State extends State<CustomButton1> {
             const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         height: widget.height,
         width: widget.width,
+        decoration: widget.decuration,
         child: ElevatedButton(
           onLongPress: widget.onLongPressed,
           onPressed: ((widget.enabled != null && !widget.enabled!) ||

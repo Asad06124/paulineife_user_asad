@@ -12,15 +12,15 @@ class ChatListScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 10.sp,
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.sp),
-              child: CustomInputField1(
+        body: Padding(
+          padding:  EdgeInsets.all(12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 10.sp,
+              ),
+              CustomInputField1(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,
@@ -36,11 +36,9 @@ class ChatListScreen extends StatelessWidget {
                     fontFamily: 'DMSansR',
                     color: Color(0xff79869F)),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.sp),
-              child: Text(
-                'Search Result',
+              SizedBox(height: 10.sp,),
+              Text(
+                'Messgaes',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     fontSize: 18,
@@ -48,43 +46,54 @@ class ChatListScreen extends StatelessWidget {
                     color: Color(0xff000000),
                     fontFamily: 'DMSansR'),
               ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 12,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    onTap: (){Get.to(ChatScreen());},
-                    leading: CircleAvatar(
-                      radius: 25.sp,
-                      backgroundImage: AssetImage(
-                          'assets/images/12.png'),
-                    ),
-                    title: Text(
-                      'Asad',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xff000000),
-                          fontFamily: 'DMSansR'),
-                    ),
-                    subtitle: Text(
-                      'Hi, Asad how are you',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+              SizedBox(height: 10.sp,),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 12,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                      onTap: (){Get.to(ChatScreen());},
+                      leading: CircleAvatar(
+                        radius: 25.sp,
+                        backgroundImage: AssetImage(
+                            'assets/images/12.png'),
+                      ),
+                      title: Text(
+                        'Asad',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff000000),
+                            fontFamily: 'DMSansR'),
+                      ),
+                      subtitle: Text(
+                        'Hi, Asad how are you',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff79869F),
+                            fontFamily: 'DMSansR'),
+                      ),
+                      trailing: Column(
+                        children: [
+                          Text('10:12 am',style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
                           color: Color(0xff79869F),
-                          fontFamily: 'DMSansR'),
-                    ),
-                    trailing: Badge(
-                      label: Text('1'),
-                      backgroundColor: Colors.blue,
-                    ),
-                  );
-                },
+                          fontFamily: 'DMSansR'),),
+                          Badge(
+                            label: Text('1'),
+                            backgroundColor: Colors.blue,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

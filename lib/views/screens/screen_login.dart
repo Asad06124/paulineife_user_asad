@@ -181,8 +181,8 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                     });
                                   },
                                   icon: Icon(isPasswordField
-                                      ? Icons.visibility
-                                      : Icons.visibility_off),
+                                      ? Icons.visibility_outlined
+                                      : Icons.visibility_off_outlined,color:Color(0xff79869F) ,),
                                 ),
                                 enabledBorder: InputBorder.none,
                                 focusedBorder: InputBorder.none,
@@ -204,7 +204,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               //     },
                               //     icon: visible == false
                               //         ? Icon(Icons.visibility)
-                              //         : Icon(Icons.visibility_off),
+                              //         : Icon(Icons.visibility_off_outlined),
                               //   ),
                               //   hintText: '.......',
                               //   hintStyle: TextStyle(
@@ -294,19 +294,19 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       text: TextSpan(
                           text: 'Don’t have an account?',
                           style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              fontFamily: 'DMSansR',
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w500,
+
                               color: Color(0xff000000)),
                           children: [
-                            TextSpan(text: '  '),
+                            TextSpan(text: ' '),
                             TextSpan(
-                                text: ' Sign up',
+                                text: 'Sign up',
                                 recognizer: _longPressRecognizer,
                                 style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w700,
-                                    fontFamily: 'DMSansR',
+                                    fontSize: 10.sp,
+                                    fontWeight: FontWeight.w500,
+
                                     color: Color(0xff2A70C8)))
                           ]),
                     ),

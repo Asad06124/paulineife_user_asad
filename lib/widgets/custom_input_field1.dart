@@ -10,6 +10,8 @@ class CustomInputField1 extends StatefulWidget {
   final String? label;
   final bool? isPasswordField;
   final TextStyle? textStyle;
+  final TextAlign? textAlign;
+  final ScrollController? scrollController;
   final TextStyle? hintStyle;
   final Function(String? value)? onChange;
   final TextInputType? keyboardType;
@@ -41,7 +43,9 @@ class CustomInputField1 extends StatefulWidget {
 
   CustomInputField1(
       {this.hint,
+        this.scrollController,
       this.isPasswordField,
+        this.textAlign,
       this.onChange,
       this.keyboardType,
       this.prefix,
@@ -121,6 +125,8 @@ class _CustomInputField1State extends State<CustomInputField1> {
     return Container(
       margin: widget.margin ?? EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
+        scrollController: widget.scrollController,
+        textAlign: widget.textAlign==null?TextAlign.start:widget.textAlign!,
         maxLength: widget.limit,
         key: widget.key,
         onChanged: widget.asyncValidator == null
@@ -176,7 +182,7 @@ class _CustomInputField1State extends State<CustomInputField1> {
         //     },
         //     icon: visible == false
         //         ? Icon(Icons.visibility)
-        //         : Icon(Icons.visibility_off),
+        //         : Icon(Icons.visibility_off_outlined),
         //   ),
         //   hintText: '.......',
         //   hintStyle: TextStyle(
@@ -221,7 +227,7 @@ class _CustomInputField1State extends State<CustomInputField1> {
                             isPasswordField
                                 ? (_isHidden
                                     ? Icons.visibility
-                                    : Icons.visibility_off)
+                                    : Icons.visibility_off_outlined)
                                 : null,
                           ),
                         ),

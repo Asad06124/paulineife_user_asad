@@ -86,7 +86,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                           fontSize: 24.0,
                           fontWeight: FontWeight.w700,
                           fontFamily: 'DMSans-Bold',
-                          color: index % 2 == 0 ? kblack : kblack,
+                          color:  Color(0xff000000),
                         ),
                       ),
                       Text(

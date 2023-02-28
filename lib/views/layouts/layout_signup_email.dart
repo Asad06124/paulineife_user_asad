@@ -46,7 +46,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
     var WHeight = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xfff9f9f9),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -62,10 +62,13 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                       border: Border.all(
                         color: Color(0xffD6D9E3),
                       ),
+                      color:  Color(0xffFFFFFF),
                       borderRadius: BorderRadius.circular(10)),
                   child: TextFormField(
                     controller: TextEditingController(text: 'example@gmail.com'),
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffFFFFFF),
                       label: Text('Email'),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),

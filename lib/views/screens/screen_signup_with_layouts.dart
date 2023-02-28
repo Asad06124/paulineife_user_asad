@@ -17,7 +17,7 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
       child: DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Color(0xfff9f9f9),
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               title: Padding(
@@ -34,6 +34,7 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
               automaticallyImplyLeading: false,
               centerTitle: true,
               elevation: 0,
+              backgroundColor: Color(0xfff9f9f9),
             ),
             body: Center(
               child: Column(

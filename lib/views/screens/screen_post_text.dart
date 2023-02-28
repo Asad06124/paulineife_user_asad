@@ -15,54 +15,70 @@ class PostTextScreen extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   var controller = Get.put(RegistrationController());
-
+  final scrollController = ScrollController(
+      initialScrollOffset:
+          9); // set the initial scroll offset to start at line 10
   @override
   Widget build(BuildContext context) {
     bool swtch = true;
     return SafeArea(
       child: Scaffold(
-
         appBar: AppBar(
           title: Text('Create Post'),
           centerTitle: true,
-          toolbarHeight: 60.sp,
         ),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(
-                height: 5.h,
+                height: 2.h,
               ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.chat_bubble,
-                  color: Colors.black,
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      CupertinoIcons.chat_bubble,
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      width: 6.sp,
+                    ),
+                    Text(
+                      'Allow Comments',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'DMSansR',
+                          color: Colors.black),
+                    ),
+                    Spacer(),
+                    StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setState) {
+                      return Switch(
+                          activeColor: Color(0xff3AA0FF),
+                          activeTrackColor: Color(0xffD5EBFF),
+                          value: swtch,
+                          onChanged: (val) {
+                            setState(() {
+                              swtch = val;
+                            });
+                          });
+                    }),
+                  ],
                 ),
-                title: Text(
-                  'Allow Comments',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'DMSansR',
-                      color: Colors.black),
-                ),
-                trailing: StatefulBuilder(
-                    builder: (BuildContext context, StateSetter setState) {
-                  return Switch(
-                      value: swtch,
-                      onChanged: (val) {
-                        setState(() {
-                          swtch = val;
-                        });
-                      });
-                }),
               ),
               Container(
-                height: 65.h,
+                height: 53.5.h,
                 color: Colors.black,
                 child: CustomInputField1(
-                  textStyle: TextStyle(color: Colors.white),
+                  scrollController: scrollController,
+                  textAlign: TextAlign.center,
+                  textStyle: TextStyle(
+                    color: Colors.white,
+                  ),
                   contentPadding: EdgeInsets.all(8),
                   focusedBorder:
                       OutlineInputBorder(borderSide: BorderSide.none),
@@ -71,18 +87,64 @@ class PostTextScreen extends StatelessWidget {
                   maxLines: 15,
                   hint: 'Type Here',
                   hintStyle: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'DMSansR',
-                      color: Colors.white,
-
+                    fontSize: 22,
+                    fontWeight: FontWeight.w500,
+                    fontFamily: 'DMSansR',
+                    color: Colors.white,
                   ),
                 ),
               ),
               SizedBox(
                 height: 10.sp,
               ),
-
+              Container(
+                height: 75.sp,
+                child: ListView.builder(
+                  itemCount: 5,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      margin: EdgeInsets.all(8.sp),
+                      alignment: Alignment.center,
+                      height: 70.sp,
+                      width: 50.sp,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.sp),
+                        color: Color(0xff000000),
+                      ),
+                      child: index == 0
+                          ? Icon(
+                              Icons.add_circle_outline_outlined,
+                              color: Colors.white,
+                            )
+                          : Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.text_snippet_outlined,
+                                  color: Colors.white,
+                                  size: 20.sp,
+                                ),
+                                SizedBox(height: 2.sp,),
+                                Text(
+                                  'Type Here',
+                                  style: TextStyle(
+                                    fontSize: 6.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            ),
+                    );
+                  },
+                ),
+              ),
+              SizedBox(
+                height: 58.sp,
+              ),
             ],
           ),
         ),
@@ -93,7 +155,7 @@ class PostTextScreen extends StatelessWidget {
             onPressed: () {
               Get.bottomSheet(
                 Container(
-                  height: 32.h+5,
+                  height: 34.h + 5,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20.sp),
@@ -103,7 +165,7 @@ class PostTextScreen extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 15.sp),
+                        padding: EdgeInsets.only(top: 35.sp),
                         child: Text(
                           'Post',
                           style: TextStyle(
@@ -128,12 +190,14 @@ class PostTextScreen extends StatelessWidget {
                         height: 15.sp,
                       ),
                       ListTile(
-                        onTap: (){
+                        onTap: () {
                           Get.to(HomeScreen());
                         },
                         leading: Icon(
                           Icons.text_snippet_outlined,
-                          color: Color(0xff97A1B4,),
+                          color: Color(
+                            0xff97A1B4,
+                          ),
                           size: 20.sp,
                         ),
                         title: Text(
@@ -153,16 +217,12 @@ class PostTextScreen extends StatelessWidget {
                         thickness: 2.sp,
                       ),
                       ListTile(
-                        onTap: (){
+                        onTap: () {
                           Get.to(HomeScreen());
                         },
-                        leading: Icon(
-                          Icons.layers_outlined,
-                          color: Color(0xff97A1B4,),
-                          size: 20.sp,
-                        ),
+                        leading: SvgPicture.asset('assets/svgs/thread.svg'),
                         title: Text(
-                          'Text Post',
+                          'Thread',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
@@ -180,7 +240,7 @@ class PostTextScreen extends StatelessWidget {
                 elevation: 0,
               );
             },
-            child: SvgPicture.asset('assets/images/Vector.svg'),
+            child: SvgPicture.asset('assets/svgs/Vector.svg'),
             backgroundColor: Color(0xff2A70C8),
           ),
         ),

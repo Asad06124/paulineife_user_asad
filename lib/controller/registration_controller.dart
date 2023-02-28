@@ -15,6 +15,8 @@ import '../models/user.dart';
 class RegistrationController extends GetxController {
   RxBool isChecked = false.obs;
   File? img;
+  List<File> images = [];
   File? StoryImg;
   File? vid;
+  RxBool liked = true.obs;
 }

@@ -34,11 +34,10 @@ class TermsConditionsScreen extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.all(24.sp),
-
               child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo, vel volutpat lectus\n.Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris.\nCras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. ',
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo, vel volutpat lectus\n\n.Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris.\n\nCras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. ',
                 style: TextStyle(
-                    fontSize: 16.sp,
+                    fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
                     fontFamily: 'DMSansR',
                     color: Colors.black),
@@ -55,7 +54,7 @@ class TermsConditionsScreen extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(25.sp)),
               ),
               textStyle: TextStyle(
-                  fontSize: 16,
+                  fontSize: 13.sp,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'DMSansR'),
               onPressed: () {

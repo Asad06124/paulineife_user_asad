@@ -27,21 +27,21 @@ class FollowerScreen extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 10.sp,
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.sp),
-              child: CustomInputField1(
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 14.sp,vertical: 10.sp),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 5.sp,
+              ),
+              CustomInputField1(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,
                 ),
                 fillColor: Color(0xffE2E4EB),
-                suffix: Icon(Icons.search),
+                prefix: Icon(Icons.search),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                 hint: 'Search',
@@ -51,67 +51,66 @@ class FollowerScreen extends StatelessWidget {
                     fontFamily: 'DMSansR',
                     color: Color(0xff79869F)),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.sp),
-              child: Text(
-                'Search Result',
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xff000000),
-                    fontFamily: 'DMSansR'),
-              ),
-            ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 12,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    leading: CircleAvatar(
-                      radius: 25.sp,
-                      backgroundImage: AssetImage(
-                          'assets/images/profile.png'),
-                    ),
-                    title: Text(
-                      'Asad',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xff000000),
-                          fontFamily: 'DMSansR'),
-                    ),
-                    subtitle: Text(
-                      '@asad',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff2A70C8),
-                          fontFamily: 'DMSansR'),
-                    ),
-                    trailing: ElevatedButton(
-                      child: Text(
-                        'Follow',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: 'DMSansR',
-                          color: Colors.white,
+
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 12,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                      leading: Container(
+                        padding: EdgeInsets.all(2.sp),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              width: 1.sp,
+                              color: Color(0xff2A70C8),
+                            )),
+                        child: CircleAvatar(
+                          radius: 25.sp,
+                          backgroundImage: AssetImage(
+                              'assets/images/12.png'),
                         ),
                       ),
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        elevation: MaterialStateProperty.all(0),
-                        backgroundColor:
-                            MaterialStateProperty.all(Color(0xdff2A70C8)),
+                      title: Text(
+                        'Asad',
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Color(0xff000000),
+                            fontFamily: 'DMSansR'),
                       ),
-                    ),
-                  );
-                },
+                      subtitle: Text(
+                        '@asad',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff2A70C8),
+                            fontFamily: 'DMSansR'),
+                      ),
+                      trailing: ElevatedButton(
+                        child: Text(
+                          'Follow',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'DMSansR',
+                            color: Colors.white,
+                          ),
+                        ),
+                        onPressed: () {},
+                        style: ButtonStyle(
+                          elevation: MaterialStateProperty.all(0),
+                          backgroundColor:
+                              MaterialStateProperty.all(Color(0xdff2A70C8)),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -23,9 +23,9 @@ class NewPasswordScreen extends StatelessWidget {
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
             child: Text(
-              'Forget Password',
+              'Enter Password',
               style: TextStyle(
-                  fontSize: 21.sp,
+                  fontSize: 19.sp,
                   fontWeight: FontWeight.w700,
                   fontFamily: 'DMSansR',
                   color: Colors.black),
@@ -93,7 +93,7 @@ class NewPasswordScreen extends StatelessWidget {
                                 },
                                 icon: Icon(isPasswordField
                                     ? Icons.visibility
-                                    : Icons.visibility_off),
+                                    : Icons.visibility_off_outlined),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -115,7 +115,7 @@ class NewPasswordScreen extends StatelessWidget {
                             //     },
                             //     icon: visible == false
                             //         ? Icon(Icons.visibility)
-                            //         : Icon(Icons.visibility_off),
+                            //         : Icon(Icons.visibility_off_outlined),
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
@@ -195,7 +195,7 @@ class NewPasswordScreen extends StatelessWidget {
                                 },
                                 icon: Icon(isPasswordField
                                     ? Icons.visibility
-                                    : Icons.visibility_off),
+                                    : Icons.visibility_off_outlined),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -217,7 +217,7 @@ class NewPasswordScreen extends StatelessWidget {
                             //     },
                             //     icon: visible == false
                             //         ? Icon(Icons.visibility)
-                            //         : Icon(Icons.visibility_off),
+                            //         : Icon(Icons.visibility_off_outlined),
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
@@ -242,6 +242,7 @@ class NewPasswordScreen extends StatelessWidget {
               ),
             ),
             CustomButton1(
+              margin: EdgeInsets.only(top: 40.sp),
               text: 'Save',
               color: Color(0xff2A70C8),
               width: WHeight.width / 1.2,

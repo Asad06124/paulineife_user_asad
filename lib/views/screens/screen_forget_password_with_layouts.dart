@@ -17,15 +17,15 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
       child: DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: Colors.white,
+            backgroundColor: Color(0xfff9f9f9),
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               title: Padding(
                 padding: EdgeInsets.only(top: 10.sp),
                 child: Text(
-                  'Enter Password',
+                  'Forget Password',
                   style: TextStyle(
-                      fontSize: 21.sp,
+                      fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
                       fontFamily: 'DMSansR',
                       color: Colors.black),
@@ -34,6 +34,7 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
               automaticallyImplyLeading: false,
               centerTitle: true,
               elevation: 0,
+              backgroundColor: Color(0xfff9f9f9),
             ),
             body: Center(
               child: Column(

@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:paulineife_user/views/screens/screen_comments.dart';
@@ -111,17 +112,30 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
         children: [
           ListTile(
             contentPadding: EdgeInsets.all(10.sp),
-            leading: CircleAvatar(
-              radius: 20.sp,
-              backgroundImage: AssetImage('assets/images/12.png'),
+            leading: Container(
+              padding: EdgeInsets.all(2.sp),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    width: 1.sp,
+                    color: Color(0xff2A70C8),
+                  )),
+              child: CircleAvatar(
+                radius: 20.sp,
+                backgroundImage: AssetImage('assets/images/12.png'),
+              ),
             ),
             title: Text(
               'Asad_Official',
               style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 11.sp,
+                  fontWeight: FontWeight.w700,
                   fontFamily: 'DMSansR',
                   color: Colors.black),
+            ),
+            trailing: Icon(
+              Icons.more_vert,
+              color: Color(0xff97A1B4),
             ),
           ),
           Padding(
@@ -130,12 +144,12 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
               child: Container(
                 height: 70.h,
                 child: AutoSizeText(
-                  '''Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.''',
+                  '''Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.''',
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.start,
                   maxLines: 40,
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 11.sp,
                       fontWeight: FontWeight.w400,
                       fontFamily: 'DMSansR',
                       color: Colors.black),
@@ -146,29 +160,44 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
         ],
       );
 
-  Widget _buildGridList() => Stack(
-        children: [
-          StoryView(
-            storyItems: storyItems,
-            controller: controller,
-            onVerticalSwipeComplete: (direction) {
-              if (direction == Direction.down) {
-                Navigator.pop(context);
-              }
-            },
-            onComplete: () {
-              Navigator.pop(context);
-            },
-          ),
-          Column(
-            children: [
-              SizedBox(
-                height: 10.sp,
+  Widget _buildGridList() => Container(
+        height: Get.height,
+        width: Get.width,
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: StoryView(
+                storyItems: storyItems,
+                controller: controller,
+                onVerticalSwipeComplete: (direction) {
+                  if (direction == Direction.down) {
+                    Navigator.pop(context);
+                  }
+                },
+                onComplete: () {
+                  Navigator.pop(context);
+                },
+                indicatorColor: Colors.white,
               ),
-              ListTile(
-                leading: CircleAvatar(
-                  radius: 20.sp,
-                  backgroundImage: AssetImage('assets/images/12.png'),
+            ),
+            Positioned(
+              top: 10.sp,
+              left: 0,
+              right: 0,
+              child: ListTile(
+                contentPadding: EdgeInsets.only(right: 0, left: 10.sp),
+                leading: Container(
+                  padding: EdgeInsets.all(2.sp),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        width: 1.sp,
+                        color: Color(0xffffffff),
+                      )),
+                  child: CircleAvatar(
+                    radius: 20.sp,
+                    backgroundImage: AssetImage('assets/images/12.png'),
+                  ),
                 ),
                 title: Text(
                   'Asad',
@@ -178,124 +207,133 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                       fontFamily: 'DMSansR',
                       color: Colors.white),
                 ),
-                subtitle: Text('5h',
-                    style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w500,
-                        fontFamily: 'DMSansR',
-                        color: Colors.white)),
-                trailing: PopupMenuButton(
-                  onOpened: () {
-                    controller.pause();
-                  },
-                  onCanceled: () {
-                    controller.play();
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.sp),
-                  ),
-                  icon: Icon(
-                    Icons.more_vert,
-                    color: Colors.white,
-                  ),
-                  itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                    PopupMenuItem(
-                      onTap: () {
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          Get.to(ReportScreen());
-                        });
-                      },
-                      child: Text(
-                        'Report',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xffFF0000),
-                            fontFamily: 'DMSansR'),
-                      ),
-                    ),
-                    PopupMenuItem(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: Text(
-                        'Block',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
-                      ),
-                    ),
-                    PopupMenuItem(
-                      onTap: () {
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          Get.off(ChatScreen());
-                        });
-                      },
-                      child: Text(
-                        'Message',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
-                      ),
-                    ),
-                    PopupMenuItem(
-                      child: Text(
-                        'Share',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
-                      ),
-                    ),
-                  ],
+                subtitle: RichText(
+                  text: TextSpan(
+                      text: 'Good Football   ',
+                      style: TextStyle(
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'DMSansR',
+                          color: Colors.white),
+                      children: [
+                        TextSpan(
+                          text: '5h',
+                          style: TextStyle(
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'DMSansR',
+                              color: Colors.white),
+                        ),
+                      ]),
                 ),
-              ),
-              SizedBox(
-                height: Get.height / 1.9,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  left: Get.width / 1.2,
-                ),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.off(SeeViewersScreen());
-                      },
-                      child: Column(
-                        children: [
-                          Icon(
-                            Icons.remove_red_eye_outlined,
-                            color: Colors.white,
-                            size: 25.sp,
+                trailing: Container(
+                  height: 30.sp,
+                  width: 100.sp,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.all(5.sp),
+                        height: 20.sp,
+                        width: 40.sp,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              4.sp,
+                            ),
+                            color: Color(0x5effffff)),
+                        child: Text(
+                          '2/5',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      PopupMenuButton(
+                        onOpened: () {
+                          controller.pause();
+                        },
+                        onCanceled: () {
+                          controller.play();
+                        },
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.sp),
+                        ),
+                        icon: Icon(
+                          Icons.more_vert,
+                          color: Colors.white,
+                        ),
+                        itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                          PopupMenuItem(
+                            onTap: () {
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                Get.to(ReportScreen());
+                              });
+                            },
+                            child: Text(
+                              'Report',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xffFF0000),
+                                  fontFamily: 'DMSansR'),
+                            ),
                           ),
-                          Text(
-                            '10.9k',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'DMSansR',
-                                color: Colors.white),
+                          PopupMenuItem(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: Text(
+                              'Block',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xff000000),
+                                  fontFamily: 'DMSansR'),
+                            ),
+                          ),
+                          PopupMenuItem(
+                            onTap: () {
+                              WidgetsBinding.instance.addPostFrameCallback((_) {
+                                Get.off(ChatScreen());
+                              });
+                            },
+                            child: Text(
+                              'Message',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xff000000),
+                                  fontFamily: 'DMSansR'),
+                            ),
+                          ),
+                          PopupMenuItem(
+                            child: Text(
+                              'Share',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xff000000),
+                                  fontFamily: 'DMSansR'),
+                            ),
                           ),
                         ],
                       ),
-                    ),
-                    SizedBox(
-                      height: 15.sp,
-                    ),
-                    Column(
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 10.sp,
+              bottom: 90.sp,
+              child: Column(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Get.off(SeeViewersScreen());
+                    },
+                    child: Column(
                       children: [
-                        Icon(
-                          Icons.favorite_outlined,
-                          color: Colors.white,
-                          size: 25.sp,
-                        ),
+                        SvgPicture.asset('assets/svgs/view.svg'),
                         Text(
                           '10.9k',
                           style: TextStyle(
@@ -306,39 +344,51 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 15.sp,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(CommentsScreen(
-                          COntroller: controller,
-                        ));
-                        controller.pause();
-                      },
-                      child: Column(
-                        children: [
-                          Icon(
-                            CupertinoIcons.chat_bubble,
-                            color: Colors.white,
-                            size: 25.sp,
-                          ),
-                          Text(
-                            '1.5k',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'DMSansR',
-                                color: Colors.white),
-                          ),
-                        ],
+                  ),
+                  SizedBox(
+                    height: 15.sp,
+                  ),
+                  Column(
+                    children: [
+                      SvgPicture.asset('assets/svgs/like.svg'),
+                      Text(
+                        '10.9k',
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'DMSansR',
+                            color: Colors.white),
                       ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15.sp,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(CommentsScreen(
+                        COntroller: controller,
+                      ));
+                      controller.pause();
+                    },
+                    child: Column(
+                      children: [
+                        SvgPicture.asset('assets/svgs/comment.svg'),
+                        Text(
+                          '1.5k',
+                          style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'DMSansR',
+                              color: Colors.white),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ],
+            ),
+          ],
+        ),
       );
 }

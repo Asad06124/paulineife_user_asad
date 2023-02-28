@@ -10,6 +10,7 @@ import '../../../widgets/custom_input_field1.dart';
 
 class ChatScreen extends StatelessWidget {
   ChatScreen({Key? key}) : super(key: key);
+
   // var controller =Get.put(BusinessControllers());
   @override
   Widget build(BuildContext context) {
@@ -18,77 +19,111 @@ class ChatScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-          leading: IconButton(icon:Icon(Icons.arrow_back),color: Colors.black, onPressed: () { Get.off(ChatListScreen()); },),
-          bottom: PreferredSize(
-            preferredSize: Size.fromHeight(8.h),
-            child: Container(
-              height: 10.h,
-              alignment: Alignment.center,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 3.w),
-                        child: ClipOval(
-                            child: SizedBox(
-                                height: 50.sp,
-                                width: 50.sp,
-                                child: Image.asset(
-                                  'assets/images/12.png',
-                                  fit: BoxFit.fill,
-                                ),),),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Asad',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14.sp,
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Icon(
-                                Icons.circle,
-                                size: 6.sp,
-                                color: Colors.green,
-                              ),
-                              SizedBox(
-                                width: 2.w,
-                              ),
-                              Text(
-                                'Online',
-                                style: TextStyle(
-                                  color: hintColor,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 11.sp,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  // Padding(
-                  //   padding: EdgeInsets.only(right: 4.w),
-                  //   child: IconButton(
-                  //       onPressed: () {},
-                  //       icon: Icon(
-                  //         Icons.search,
-                  //         color: greenC,
-                  //       )),
-                  // ),
-                ],
+          leadingWidth: 20.sp,
+          // bottom: PreferredSize(
+          //   preferredSize: Size.fromHeight(8.h),
+          //   child: Container(
+          //     height: 10.h,
+          //     alignment: Alignment.center,
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //       children: [
+          //         Row(
+          //           children: [
+          //             Padding(
+          //               padding: EdgeInsets.symmetric(horizontal: 3.w),
+          //               child: ClipOval(
+          //                   child: SizedBox(
+          //                       height: 50.sp,
+          //                       width: 50.sp,
+          //                       child: Image.asset(
+          //                         'assets/images/12.png',
+          //                         fit: BoxFit.fill,
+          //                       ),),),
+          //             ),
+          //             Column(
+          //               mainAxisAlignment: MainAxisAlignment.center,
+          //               crossAxisAlignment: CrossAxisAlignment.start,
+          //               children: [
+          //                 Text(
+          //                   'Asad',
+          //                   style: TextStyle(
+          //                     color: Colors.black,
+          //                     fontWeight: FontWeight.w500,
+          //                     fontSize: 14.sp,
+          //                   ),
+          //                 ),
+          //                 Row(
+          //                   mainAxisSize: MainAxisSize.min,
+          //                   children: [
+          //                     Icon(
+          //                       Icons.circle,
+          //                       size: 6.sp,
+          //                       color: Colors.green,
+          //                     ),
+          //                     SizedBox(
+          //                       width: 2.w,
+          //                     ),
+          //                     Text(
+          //                       'Online',
+          //                       style: TextStyle(
+          //                         color: hintColor,
+          //                         fontWeight: FontWeight.w400,
+          //                         fontSize: 11.sp,
+          //                       ),
+          //                     ),
+          //                   ],
+          //                 ),
+          //               ],
+          //             )
+          //           ],
+          //         ),
+          //         // Padding(
+          //         //   padding: EdgeInsets.only(right: 4.w),
+          //         //   child: IconButton(
+          //         //       onPressed: () {},
+          //         //       icon: Icon(
+          //         //         Icons.search,
+          //         //         color: greenC,
+          //         //       )),
+          //         // ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+          title: Row(
+            children: [
+              CircleAvatar(
+                backgroundImage: AssetImage(
+                  'assets/images/12.png',
+                ),
               ),
-            ),
+              SizedBox(
+                width: 5.sp,
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Asad',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14.sp,
+                    ),
+                  ),
+                  Text(
+                    'Online',
+                    style: TextStyle(
+                      color: hintColor,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 11.sp,
+                    ),
+                  ),
+                ],
+              )
+            ],
           ),
           foregroundColor: Colors.black,
           actions: [
@@ -96,9 +131,11 @@ class ChatScreen extends StatelessWidget {
               onPressed: () {},
               icon: Icon(
                 Icons.more_vert_outlined,
+                color: Color(0xff97A1B4),
               ),
             ),
           ],
+          elevation: 4,
         ),
         body: Column(
           children: [
@@ -137,11 +174,11 @@ class ChatScreen extends StatelessWidget {
                             seen: true,
                             bubbleRadius: 12,
                             sent: true,
-                            color: Colors.green,
+                            color: Color(0xffE2E4EB),
                             tail: true,
                             textStyle: TextStyle(
                               fontSize: 12.sp,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                           Padding(
@@ -176,32 +213,36 @@ class ChatScreen extends StatelessWidget {
                                   padding: EdgeInsets.only(left: 4.w),
                                   child: ClipOval(
                                     child: SizedBox(
-                                        height: 20.sp,
-                                        width: 20.sp,
-                                        child: Image.asset(
-                                    'assets/images/12.png',
-                                    fit: BoxFit.fill,
-                                  ),),
+                                      height: 20.sp,
+                                      width: 20.sp,
+                                      child: Image.asset(
+                                        'assets/images/12.png',
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 BubbleNormal(
-                                  text: 'Oh yes, please send your CV/Resume here',
+                                  text:
+                                      'Oh yes, please send your CV/Resume here',
                                   isSender: false,
                                   // seen: true,
                                   delivered: false,
                                   bubbleRadius: 12,
                                   // sent: true,
-                                  color: Colors.greenAccent,
+                                  color: Color(0xff3AA0FF),
                                   tail: true,
                                   textStyle: TextStyle(
                                     fontSize: 12.sp,
-                                    color: Colors.green,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(height: 1.h,),
+                          SizedBox(
+                            height: 1.h,
+                          ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 15.w),
                             child: Text(
@@ -218,17 +259,51 @@ class ChatScreen extends StatelessWidget {
                       SizedBox(
                         height: 2.h,
                       ),
-                      BubbleNormalImage(
-                        id: 'id001',
-                        // image: _image(),
-                        color: Colors.blue.withOpacity(.8),
-                        // tail: true,
-                        // delivered: true,
-                        image: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Image.asset(
-                            'assets/images/12.png',
-                            fit: BoxFit.fill,
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          padding: EdgeInsets.only(right: 5.sp),
+                          height: Get.height / 3,
+                          width: Get.width / 1.4,
+                          child: Row(
+                            children: [
+                              SvgPicture.asset('assets/svgs/share.svg'),
+                              SizedBox(
+                                width: 15.sp,
+                              ),
+                              Column(
+                                children: [
+                                  Container(
+                                    height: Get.height / 3.6,
+                                    width: Get.width / 1.8,
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                            'assets/images/12.png',
+                                          ),
+                                          fit: BoxFit.cover),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: Radius.circular(10.sp),
+                                        topLeft: Radius.circular(10.sp),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    alignment: Alignment.center,
+                                    height: Get.height / 20,
+                                    width: Get.width / 1.8,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10.sp),
+                                        ),
+                                        color: Color(0xffE2E4EB)),
+                                    child: Text(
+                                      'Hey, Check it out!!',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -241,16 +316,17 @@ class ChatScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           BubbleNormal(
-                            text:'I saw the Api Developer vacancy that you uploaded on linkedin yesterday and I am interested in joining your company.',
+                            text:
+                                'I saw the Api Developer vacancy that you uploaded on linkedin yesterday and I am interested in joining your company.',
                             isSender: true,
                             seen: true,
                             bubbleRadius: 12,
                             sent: true,
-                            color: Colors.green,
+                            color: Color(0xffE2E4EB),
                             tail: true,
                             textStyle: TextStyle(
                               fontSize: 12.sp,
-                              color: Colors.greenAccent,
+                              color: Colors.black,
                             ),
                           ),
                           Padding(
@@ -285,231 +361,36 @@ class ChatScreen extends StatelessWidget {
                                   padding: EdgeInsets.only(left: 4.w),
                                   child: ClipOval(
                                     child: SizedBox(
-                                        height: 20.sp,
-                                        width: 20.sp,
-                                        child: Image.asset(
-                                          'assets/images/12.png',
-                                          fit: BoxFit.fill,
-                                        ),),
+                                      height: 20.sp,
+                                      width: 20.sp,
+                                      child: Image.asset(
+                                        'assets/images/12.png',
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 BubbleNormal(
                                   text:
-                                  'I saw the Api Developer vacancy that you uploaded on linkedin yesterday and I am interested in joining your company.',
+                                      'I saw the Api Developer vacancy that you uploaded on linkedin yesterday and I am interested in joining your company.',
                                   isSender: false,
                                   // seen: true,
                                   delivered: false,
                                   bubbleRadius: 12,
                                   // sent: true,
-                                  color: Colors.greenAccent,
+                                  color: Color(0xff3AA0FF),
                                   tail: true,
                                   textStyle: TextStyle(
                                     fontSize: 12.sp,
-                                    color: Colors.green,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          SizedBox(height: 1.h,),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Text(
-                              '9:32 am',
-                              style: TextStyle(
-                                color: hintColor,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10.sp,
-                              ),
-                            ),
-                          ),
                         ],
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          BubbleNormal(
-                            text: 'Hello sir, Good Morning',
-                            isSender: true,
-                            seen: true,
-                            bubbleRadius: 12,
-                            sent: true,
-                            color: Colors.green,
-                            tail: true,
-                            textStyle: TextStyle(
-                              fontSize: 12.sp,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 4.w),
-                            child: Text(
-                              '9:32 am',
-                              style: TextStyle(
-                                color: hintColor,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10.sp,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: FractionalOffset.centerLeft,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(left: 4.w),
-                                  child: ClipOval(
-                                    child: SizedBox(
-                                        height: 20.sp,
-                                        width: 20.sp,
-                                        child: Image.asset(
-                                          'assets/images/12.png',
-                                          fit: BoxFit.fill,
-                                        ),),
-                                  ),
-                                ),
-                                BubbleNormal(
-                                  text: 'Oh yes, please send your CV/Resume here',
-                                  isSender: false,
-                                  // seen: true,
-                                  delivered: false,
-                                  bubbleRadius: 12,
-                                  // sent: true,
-                                  color: Colors.greenAccent,
-                                  tail: true,
-                                  textStyle: TextStyle(
-                                    fontSize: 12.sp,
-                                    color: Colors.green,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 1.h,),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Text(
-                              '9:30 am',
-                              style: TextStyle(
-                                color: hintColor,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10.sp,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          BubbleNormal(
-                            text:'I saw the Api Developer vacancy that you uploaded on linkedin yesterday and I am interested in joining your company.',
-                            isSender: true,
-                            seen: true,
-                            bubbleRadius: 12,
-                            sent: true,
-                            color: Colors.greenAccent,
-                            tail: true,
-                            textStyle: TextStyle(
-                              fontSize: 12.sp,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 4.w),
-                            child: Text(
-                              '9:32 am',
-                              style: TextStyle(
-                                color: hintColor,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10.sp,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Align(
-                            alignment: FractionalOffset.centerLeft,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(left: 4.w),
-                                  child: ClipOval(
-                                    child: SizedBox(
-                                        height: 20.sp,
-                                        width: 20.sp,
-                                        child: Image.asset(
-                                    'assets/images/12.png',
-                                    fit: BoxFit.fill,
-                                  ),),
-                                  ),
-                                ),
-                                BubbleNormal(
-                                  text:
-                                  'I saw the Api Developer vacancy that you uploaded on linkedin yesterday and I am interested in joining your company.',
-                                  isSender: false,
-                                  // seen: true,
-                                  delivered: false,
-                                  bubbleRadius: 12,
-                                  // sent: true,
-                                  color: Colors.greenAccent,
-                                  tail: true,
-                                  textStyle: TextStyle(
-                                    fontSize: 12.sp,
-                                    color: Colors.green,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 1.h,),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 15.w),
-                            child: Text(
-                              '9:32 am',
-                              style: TextStyle(
-                                color: hintColor,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 10.sp,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+
                       // DateChip(
                       //   date: new DateTime(2021, 5, 7),
                       //   color: Color(0x558AD3D5),
@@ -597,39 +478,65 @@ class ChatScreen extends StatelessWidget {
                       // SizedBox(
                       //   height: 100,
                       // )
+                      SizedBox(
+                        height: 5.sp,
+                      ),
                     ],
                   ),
                 ),
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 4.w,vertical: 1.h),
-              decoration: BoxDecoration(
-                  color:Color(0xFFFAFBFF)
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: CustomInputField1(
-                      hint: 'Write your massage',
-                      prefix:IconButton(onPressed: () {  }, icon:  Icon(Icons.attach_file_outlined),
-
+                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
+                decoration: BoxDecoration(color: Color(0xFFFAFBFF)),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Color(0xffE2E4EB)),
+                  child: TextFormField(
+                    style: TextStyle(fontSize: 16, color: Color(0xff9C9EB9)),
+                    onChanged: (value) {},
+                    decoration: InputDecoration(
+                      // prefixIconConstraints: BoxConstraints(
+                      //   maxWidth: 150,
+                      //   minWidth: 50
+                      // ),
+                      prefixIcon: IntrinsicHeight(
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            SvgPicture.asset(
+                              'assets/svgs/camera.svg',
+                            ),
+                            VerticalDivider(
+                              thickness: 1.sp,
+                              indent: 14.sp,
+                              endIndent: 14.sp,
+                              color: Color(0xffBBBFD0),
+                            ),
+                            SvgPicture.asset('assets/svgs/imoj.svg'),
+                            SizedBox(width: 10.sp,),
+                          ],
+                        ),
                       ),
+                      suffixIcon: IconButton(
+                        onPressed: () {},
+                        icon: SvgPicture.asset('assets/svgs/send.svg'),
+                      ),
+                      contentPadding:
+                          EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
+                      hintText: 'Type Message...',
+                      hintStyle: TextStyle(
+                        color: Color(0xff8E8E93),
+                      ),
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
                     ),
                   ),
-                  SizedBox(width: 2.w,),
-                  Container(
-                    padding: EdgeInsets.all(8.sp),
-                    decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(12)
-                    ),
-                    child: Icon(Icons.send_outlined,color: Colors.white,),
-                  ),
-                ],),
-            )
+                ))
             // MessageBar(
             //   onSend: (_) => print(_),
             //   actions: [

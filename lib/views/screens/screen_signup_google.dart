@@ -51,7 +51,11 @@ class SignUpGoogleScreen extends StatelessWidget {
                 child: TextFormField(
                   controller: TextEditingController(text: 'Example_123'),
                   decoration: InputDecoration(
-                    label: Text('Username'),
+                    label: Text('Username',style: TextStyle(
+                        fontFamily: 'DMSansR',
+                        color: Color(0xff79869F),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500),),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       borderSide: BorderSide.none,
@@ -81,7 +85,11 @@ class SignUpGoogleScreen extends StatelessWidget {
                   child: TextFormField(
                     controller: TextEditingController(text: 'Example'),
                     decoration: InputDecoration(
-                      label: Text('First Name'),
+                      label: Text('First Name',style: TextStyle(
+                          fontFamily: 'DMSansR',
+                          color: Color(0xff79869F),
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500),),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         borderSide: BorderSide.none,
@@ -106,7 +114,11 @@ class SignUpGoogleScreen extends StatelessWidget {
                   child: TextFormField(
                     controller: TextEditingController(text: 'Example'),
                     decoration: InputDecoration(
-                      label: Text('Last Name'),
+                      label: Text('Last Name',style: TextStyle(
+                          fontFamily: 'DMSansR',
+                          color: Color(0xff79869F),
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w500),),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         borderSide: BorderSide.none,
@@ -144,18 +156,18 @@ class SignUpGoogleScreen extends StatelessWidget {
                 onPressed: () {},
                 child: RichText(
                   text: TextSpan(
-                      text: 'Don’t have an account?',
+                      text: 'Already Have an Account?',
                       style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w400,
                           fontFamily: 'DMSansR',
                           color: Color(0xff000000)),
                       children: [
                         TextSpan(
-                            text: ' Sign up',
+                            text: ' Sign In',
                             style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
+                                fontSize: 11.sp,
+                                fontWeight: FontWeight.w600,
                                 fontFamily: 'DMSansR',
                                 color: Color(0xff2A70C8)))
                       ]),

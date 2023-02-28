@@ -10,10 +10,10 @@ import 'package:sizer/sizer.dart';
 import '../../controller/registration_controller.dart';
 import 'package:appinio_video_player/appinio_video_player.dart' as appinio;
 
-
-
 class PostVideoScreen extends StatefulWidget {
-  PostVideoScreen({Key? key,}) : super(key: key);
+  PostVideoScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<PostVideoScreen> createState() => _PostVideoScreenState();
@@ -41,20 +41,20 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
     _customVideoPlayerController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     bool swtch = true;
     return SafeArea(
       child: Scaffold(
-
         appBar: AppBar(
           title: Text('Create Post'),
           centerTitle: true,
           actions: [
             CustomButton1(
-              text: 'post',
+              text: 'Post',
               textStyle: TextStyle(
-                  fontSize: 16,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
                   fontFamily: 'DMSansR',
                   color: Colors.white),
@@ -62,13 +62,13 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                 Get.to(HomeLayout());
               },
               color: Color(0xff2A70C8),
-              height: 45.sp,
+              height: 35.sp,
               width: 60.sp,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(19)),
+                  borderRadius: BorderRadius.circular(30)),
             ),
           ],
-          toolbarHeight: 60.sp,
+          toolbarHeight: 65.sp,
         ),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -77,22 +77,30 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
               SizedBox(
                 height: 8.h,
               ),
-              ListTile(
-                leading: Icon(
-                  CupertinoIcons.chat_bubble,
-                  color: Colors.black,
-                ),
-                title: Text(
-                  'Allow Comments',
-                  style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'DMSansR',
-                      color: Colors.black),
-                ),
-                trailing: StatefulBuilder(
-                    builder: (BuildContext context, StateSetter setState) {
+              Padding(
+                padding:  EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      CupertinoIcons.chat_bubble,
+                      color: Colors.black,
+                    ),
+                    SizedBox(width: 6.sp,),
+                    Text(
+                      'Allow Comments',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          fontFamily: 'DMSansR',
+                          color: Colors.black),
+                    ),
+                    Spacer(),
+                    StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setState) {
                       return Switch(
+                          activeColor: Color(0xff3AA0FF),
+                          activeTrackColor: Color(0xffD5EBFF),
                           value: swtch,
                           onChanged: (val) {
                             setState(() {
@@ -100,19 +108,27 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                             });
                           });
                     }),
+                  ],
+                ),
               ),
               Container(
                 height: 60.h,
                 child: CustomVideoPlayer(
-                    customVideoPlayerController: _customVideoPlayerController
-                ),),
-              CustomInputField1(
-                hint: 'Add a caption',
-                maxLines: 5,
-                minLines: 1,
-                contentPadding: EdgeInsets.only(left: 5,right: 5),
+                    customVideoPlayerController: _customVideoPlayerController),
               ),
-              SizedBox(height: 10.sp,),
+              Container(
+                padding: EdgeInsets.all(10.sp),
+                child: CustomInputField1(
+                  textAlign: TextAlign.start,
+                  hint: 'Add a caption',
+                  maxLines: 5,
+                  minLines: 1,
+                  contentPadding: EdgeInsets.only(left: 5, right: 5),
+                ),
+              ),
+              SizedBox(
+                height: 10.sp,
+              ),
             ],
           ),
         ),

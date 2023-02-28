@@ -19,7 +19,7 @@ class ProfileLayout extends StatefulWidget {
 }
 
 class _ProfileLayoutState extends State<ProfileLayout> {
-  List<int> numbers = [10,12,15,5,8,7,9,6];
+  List<int> numbers = [10, 12, 15, 5, 8, 7, 9, 6];
   int randomNumber = 0;
 
   void _generateRandomNumber() {
@@ -38,7 +38,14 @@ class _ProfileLayoutState extends State<ProfileLayout> {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('Asad'),
+          title: Text(
+            'Asad',
+            style: TextStyle(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w500,
+                fontFamily: 'DMSansR',
+                color: Colors.black),
+          ),
           centerTitle: true,
           leading: Icon(Icons.arrow_back_rounded),
         ),
@@ -52,9 +59,15 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                   children: [
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 30.sp,
-                          backgroundImage: AssetImage('assets/images/12.png'),
+                        Container(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                  color: Color(0xff3AA0FF), width: 3.sp)),
+                          child: CircleAvatar(
+                            radius: 30.sp,
+                            backgroundImage: AssetImage('assets/images/12.png'),
+                          ),
                         ),
                         SizedBox(
                           width: 5,
@@ -94,7 +107,9 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                       },
                     ),
                   ]),
-              SizedBox(),
+              SizedBox(
+                height: 10.sp,
+              ),
               RichText(
                 textAlign: TextAlign.justify,
                 text: TextSpan(
@@ -227,22 +242,51 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                         image: DecorationImage(
                             image: AssetImage('assets/images/12.png'),
                             fit: BoxFit.cover),
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xff000000),
+                            Color(0xffe00000),
+                          ],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                        ),
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                      child: Column(
                         children: [
-                          Icon(
-                            Icons.remove_red_eye_outlined,
-                            color: Colors.white,
-                          ),
-                          Text(
-                            '20.5K',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 6.sp,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: fontFamilyD,
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              margin: EdgeInsets.all(5.sp),
+                              height: 20.sp,
+                              width: 20.sp,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    4.sp,
+                                  ),
+                                  color: Color(0x5effffff)),
+                              child: Text('5',style: TextStyle(color: Colors.white),),
                             ),
+                          ),
+                          Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Icon(
+                                Icons.remove_red_eye_outlined,
+                                color: Colors.white,
+                                size: 15.sp,
+                              ),
+                              Text(
+                                '20.5K',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 6.sp,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: fontFamilyD,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

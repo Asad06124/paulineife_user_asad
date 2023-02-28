@@ -132,11 +132,11 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                     width: 30.sp,
                   ),
                   title: Text(
-                    'Continue with Phone/Email',
+                    'Continue with Google ',
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 14,
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w700,
                       fontFamily: 'DMSansR',
                     ),
                   ),
@@ -152,8 +152,8 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
               text: TextSpan(
                   text: 'Already Have an Account?',
                   style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w700,
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w400,
                       fontFamily: 'DMSansR',
                       color: Color(0xff000000)),
                   children: [
@@ -162,8 +162,8 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                         text: 'Sign In',
                         recognizer: _longPressRecognizer,
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
+                            fontSize: 11.sp,
+                            fontWeight: FontWeight.w600,
                             fontFamily: 'DMSansR',
                             color: Color(0xff2A70C8)))
                   ]),

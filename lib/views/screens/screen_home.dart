@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,9 +13,7 @@ import 'package:paulineife_user/views/screens/screen_post_text.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:sizer/sizer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-
 import '../../controller/registration_controller.dart';
-import '../../widgets/custom_buttom.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -36,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return PersistentTabView(
       context,
       controller: _controller,
+
       screens: [
         HomeLayout(),
         SearchLayout(),
@@ -45,14 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       items: [
         PersistentBottomNavBarItem(
-          icon: Icon(Icons.home_filled),
-          title: ("Home"),
+          icon: SvgPicture.asset("assets/svgs/Home.svg"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
           icon: SvgPicture.asset("assets/svgs/Search.svg"),
-          title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -60,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: (val) {
             Get.bottomSheet(
               Container(
-                height: 35.h + 5,
+                height: 38.h + 5,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.sp),
@@ -70,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 15.sp),
+                      padding: EdgeInsets.only(top: 30.sp),
                       child: Text(
                         'Create Post',
                         style: TextStyle(
@@ -302,13 +298,20 @@ class _HomeScreenState extends State<HomeScreen> {
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
-          icon: SvgPicture.asset("assets/svgs/Notification.svg"),
+          icon: Badge(
+              label: Text('1'),
+              child: SvgPicture.asset("assets/svgs/Notification.svg")),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
-          icon: Icon(CupertinoIcons.profile_circled),
+          icon: Container(
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: Color(0xff3AA0FF), width: 3.sp)),
+              child: CircleAvatar(backgroundImage: AssetImage('assets/images/12.png'),)),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -372,15 +375,17 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getFromGalleryimg() async {
-    final pickedFile = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
+    final pickedFile = await ImagePicker().pickMultiImage(
       maxWidth: 1800,
       maxHeight: 1800,
     );
     if (pickedFile != null) {
       setState(() {
+        pickedFile.forEach((element) {
+          controller.images.add(File(element.path));
+        });
         Get.to(PostImageScreen());
-        controller.img = File(pickedFile.path);
+        controller.img = controller.images[0];
       });
     }
   }

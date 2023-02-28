@@ -37,6 +37,7 @@ class SearchLayout extends StatelessWidget {
                     fontFamily: 'DMSansR',
                     color: Color(0xff79869F)),
               ),
+              SizedBox(height: 10.sp,),
               Text(
                 'Search Result',
                 textAlign: TextAlign.left,
