@@ -26,7 +26,7 @@ class ChatListScreen extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
                 fillColor: Color(0xffE2E4EB),
-                prefix Icon(Icons.search),
+                prefix: Icon(Icons.search),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                 hint: 'Search',
@@ -76,6 +76,9 @@ class ChatListScreen extends StatelessWidget {
                             fontFamily: 'DMSansR'),
                       ),
                       trailing: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
+
                         children: [
                           Text('10:12 am',style: TextStyle(
                           fontSize: 12,

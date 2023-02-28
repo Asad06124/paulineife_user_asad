@@ -237,24 +237,37 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                     },
                     child: Container(
                       alignment: Alignment.bottomRight,
-                      padding: EdgeInsets.only(bottom: 5),
+                      // padding: EdgeInsets.only(bottom: 5),
                       decoration: BoxDecoration(
                         image: DecorationImage(
                             image: AssetImage('assets/images/12.png'),
                             fit: BoxFit.cover),
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(0xff000000),
-                            Color(0xffe00000),
-                          ],
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                        ),
                       ),
-                      child: Column(
+                      child: Stack(
                         children: [
-                          Align(
-                            alignment: Alignment.topRight,
+                          Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: Container(
+                                width: Get.width,
+                                height: Get.height,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Color(0x0),
+                                      Color(0xeb000000),
+                                    ],
+                                    stops: [0.6, 10.0,],
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                  ),
+                                ),
+                              )),
+                          Positioned(
+                            top: 2.sp,
+                            right: 2.sp,
                             child: Container(
                               margin: EdgeInsets.all(5.sp),
                               height: 20.sp,
@@ -265,28 +278,34 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                     4.sp,
                                   ),
                                   color: Color(0x5effffff)),
-                              child: Text('5',style: TextStyle(color: Colors.white),),
+                              child: Text(
+                                '5',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
                           ),
-                          Spacer(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Icon(
-                                Icons.remove_red_eye_outlined,
-                                color: Colors.white,
-                                size: 15.sp,
-                              ),
-                              Text(
-                                '20.5K',
-                                style: TextStyle(
+                          Positioned(
+                            bottom: 5.sp,
+                            right: 5.sp,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Icon(
+                                  Icons.remove_red_eye_outlined,
                                   color: Colors.white,
-                                  fontSize: 6.sp,
-                                  fontWeight: FontWeight.w500,
-                                  fontFamily: fontFamilyD,
+                                  size: 15.sp,
                                 ),
-                              ),
-                            ],
+                                Text(
+                                  '20.5K',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 6.sp,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: fontFamilyD,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

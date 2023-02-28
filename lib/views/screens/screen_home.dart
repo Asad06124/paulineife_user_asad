@@ -43,17 +43,32 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       items: [
         PersistentBottomNavBarItem(
-          icon: SvgPicture.asset("assets/svgs/Home.svg"),
+          onPressed: (val){
+            setState(() {
+              _controller.index = 0;
+            });
+          },
+          icon:_controller.index == 0? SvgPicture.asset("assets/svgs/Home_opened.svg"):SvgPicture.asset("assets/svgs/Home_closed.svg"),
           activeColorPrimary: CupertinoColors.black,
+          title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
-          icon: SvgPicture.asset("assets/svgs/Search.svg"),
+          onPressed: (val){
+            setState(() {
+              _controller.index = 1;
+            });
+          },
+          icon:_controller.index == 1? SvgPicture.asset("assets/svgs/search_opened.svg"):SvgPicture.asset("assets/svgs/search_closed.svg"),
           activeColorPrimary: CupertinoColors.black,
+          title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
           onPressed: (val) {
+            setState(() {
+              _controller.index = 2;
+            });
             Get.bottomSheet(
               Container(
                 height: 38.h + 5,
@@ -298,14 +313,24 @@ class _HomeScreenState extends State<HomeScreen> {
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
+          onPressed: (val){
+            setState(() {
+              _controller.index = 3;
+            });
+          },
           icon: Badge(
               label: Text('1'),
-              child: SvgPicture.asset("assets/svgs/Notification.svg")),
+              child: _controller.index == 3? SvgPicture.asset("assets/svgs/Notification_opened.svg"):SvgPicture.asset("assets/svgs/Notification_closed.svg"),),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
+          onPressed: (val){
+            setState(() {
+              _controller.index = 4;
+            });
+          },
           icon: Container(
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
