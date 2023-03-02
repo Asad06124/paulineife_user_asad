@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:paulineife_user/views/screens/screen_follower.dart';
 import 'package:paulineife_user/views/screens/screen_following.dart';
 import 'package:paulineife_user/views/screens/screen_report.dart';
@@ -21,18 +22,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  List<int> numbers = [10, 12, 15, 5, 8, 7, 9, 6];
-  int randomNumber = 0;
 
-  void _generateRandomNumber() {
-    // Generate a random index using the Random class
-    int randomIndex = Random().nextInt(numbers.length);
-
-    // Access the element at the random index
-    setState(() {
-      randomNumber = numbers[randomIndex];
-    });
-  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -223,7 +213,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       height: Get.height / 16,
                       width: Get.width / 2.5,
                       color: Color(0xffffffff),
-                      onPressed: () {}),
+                      onPressed: () {Get.to(ChatScreen());}),
                 ],
               ),
               Divider(
@@ -233,78 +223,96 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 height: 10.sp,
               ),
               Expanded(
-                child:  GridView.builder(
-                  itemCount: 16,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 2.sp,
-                      mainAxisSpacing: 2.sp),
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        _generateRandomNumber();
-                        Get.to(StoryViewScreen(StryCount: randomNumber));
-                      },
-                      child: Container(
-                        alignment: Alignment.bottomRight,
-                        padding: EdgeInsets.only(bottom: 5),
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/12.png'),
-                              fit: BoxFit.cover),
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0xff000000),
-                              Color(0xffe00000),
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter,
+                  child: GridView.builder(
+                    itemCount: 16,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                        crossAxisSpacing: 2.sp,
+                        mainAxisSpacing: 2.sp),
+                    itemBuilder: (BuildContext context, int index) {
+                      return GestureDetector(
+                        onTap: () {
+                          // _generateRandomNumber();
+                          Get.to(StoryViewScreen());
+                        },
+                        child: Container(
+                          alignment: Alignment.bottomRight,
+                          // padding: EdgeInsets.only(bottom: 5),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/12.png'),
+                                fit: BoxFit.cover),
                           ),
-                        ),
-                        child: Column(
-                          children: [
-                            Align(
-                              alignment: Alignment.topRight,
-                              child: Container(
-                                margin: EdgeInsets.all(5.sp),
-                                height: 20.sp,
-                                width: 20.sp,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                      4.sp,
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                  top: 0,
+                                  left: 0,
+                                  right: 0,
+                                  bottom: 0,
+                                  child: Container(
+                                    width: Get.width,
+                                    height: Get.height,
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color(0x0),
+                                          Color(0xeb000000),
+                                        ],
+                                        stops: [0.6, 10.0,],
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                      ),
                                     ),
-                                    color: Color(0x5effffff)),
-                                child: Text('5',style: TextStyle(color: Colors.white),),
-                              ),
-                            ),
-                            Spacer(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Icon(
-                                  Icons.remove_red_eye_outlined,
-                                  color: Colors.white,
-                                  size: 15.sp,
-                                ),
-                                Text(
-                                  '20.5K',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 6.sp,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: fontFamilyD,
+                                  )),
+                              Positioned(
+                                top: 2.sp,
+                                right: 2.sp,
+                                child: Container(
+                                  margin: EdgeInsets.all(5.sp),
+                                  height: 20.sp,
+                                  width: 20.sp,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                        4.sp,
+                                      ),
+                                      color: Color(0x5effffff)),
+                                  child: Text(
+                                    '5',
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ],
+                              ),
+                              Positioned(
+                                bottom: 5.sp,
+                                right: 5.sp,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Icon(
+                                      Icons.remove_red_eye_outlined,
+                                      color: Colors.white,
+                                      size: 15.sp,
+                                    ),
+                                    Text(
+                                      '20.5K',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 6.sp,
+                                        fontWeight: FontWeight.w500,
+                                        fontFamily: fontFamilyD,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                )
-              ),
+                      );
+                    },
+                  )),
             ],
           ),
         ),

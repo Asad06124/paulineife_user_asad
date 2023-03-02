@@ -19,18 +19,7 @@ class ProfileLayout extends StatefulWidget {
 }
 
 class _ProfileLayoutState extends State<ProfileLayout> {
-  List<int> numbers = [10, 12, 15, 5, 8, 7, 9, 6];
-  int randomNumber = 0;
 
-  void _generateRandomNumber() {
-    // Generate a random index using the Random class
-    int randomIndex = Random().nextInt(numbers.length);
-
-    // Access the element at the random index
-    setState(() {
-      randomNumber = numbers[randomIndex];
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -232,8 +221,8 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                 itemBuilder: (BuildContext context, int index) {
                   return GestureDetector(
                     onTap: () {
-                      _generateRandomNumber();
-                      Get.to(StoryViewScreen(StryCount: randomNumber));
+
+                      Get.to(StoryViewScreen());
                     },
                     child: Container(
                       alignment: Alignment.bottomRight,

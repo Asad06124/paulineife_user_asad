@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:paulineife_user/views/screens/screen_chat_list.dart';
+import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
 
@@ -78,9 +79,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                           child: StatusViewCustom(
                             onTap: () {
                               index != 0
-                                  ? Get.to(StoryViewScreen(
-                                      StryCount: StoryCount[index],
-                                    ))
+                                  ? Get.to(StoryViewScreen())
                                   : controller.StoryImg == null || index == 0
                                       ? Get.bottomSheet(
                                           Container(
@@ -148,21 +147,19 @@ class _HomeLayoutState extends State<HomeLayout> {
                                           backgroundColor: Color(0xffffffff),
                                           elevation: 0,
                                         )
-                                      : Get.to(StoryViewScreen(
-                                          StryCount: 1,
-                                        ));
+                                      : Get.to(StoryViewScreen());
                               ;
                             },
                             radius: 25.sp,
                             spacing: 8.sp,
                             strokeWidth: 2,
-                            indexOfSeenStatus: 3,
-                            numberOfStatus: StoryCount[index],
+                            indexOfSeenStatus: 1,
+                            numberOfStatus: 1,
                             padding: 4,
                             centerImageUrl: index != 0
                                 ? 'assets/images/12.png'
                                 : 'assets/images/camera.png',
-                            seenColor: Colors.grey,
+                            seenColor: Color(0xff3AA0FF),
                             unSeenColor: Colors.red,
                           ),
                         ),
@@ -191,30 +188,40 @@ class _HomeLayoutState extends State<HomeLayout> {
                             image: AssetImage('assets/images/post.png'),
                             fit: BoxFit.cover),
                       ),
-                      child: ListTile(
-                        leading: Container(
-                          padding: EdgeInsets.all(2.sp),
-                          decoration: BoxDecoration(shape: BoxShape.circle,border: Border.all(color: Colors.white,)),
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage('assets/images/12.png'),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.to(ProfileScreen());
+                        },
+                        child: ListTile(
+                          leading: Container(
+                            padding: EdgeInsets.all(2.sp),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors.white,
+                                )),
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/12.png'),
+                            ),
                           ),
-                        ),
-                        title: Text(
-                          'Asad Ullah',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: 'DMSansR',
-                            color: Colors.white,
+                          title: Text(
+                            'Asad Ullah',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'DMSansR',
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        subtitle: Text(
-                          '2 hours ago',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
-                            fontFamily: 'DMSansR',
-                            color: Colors.white,
+                          subtitle: Text(
+                            '2 hours ago',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'DMSansR',
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -226,7 +233,12 @@ class _HomeLayoutState extends State<HomeLayout> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SvgPicture.asset('assets/images/refresh.svg'),
-                        SvgPicture.asset('assets/images/repeat.svg'),
+                        GestureDetector(
+                            onTap: () {
+                              Get.to(StoryViewScreen());
+                            },
+                            child:
+                                SvgPicture.asset('assets/images/repeat.svg')),
                       ],
                     ),
                   ],

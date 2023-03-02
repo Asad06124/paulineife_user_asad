@@ -65,7 +65,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: WHeight.height / 8,
+                      height: WHeight.height / 12,
                     ),
                     SvgPicture.asset('assets/images/logos.svg'),
                     SizedBox(
@@ -310,6 +310,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                     color: Color(0xff2A70C8)))
                           ]),
                     ),
+                    SizedBox(height: 10.sp,),
                   ],
                 ),
               ),

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:fetch_all_videos/fetch_all_videos.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +12,7 @@ import 'package:paulineife_user/views/layouts/layout_search.dart';
 import 'package:paulineife_user/views/screens/screen_post_image.dart';
 import 'package:paulineife_user/views/screens/screen_post_text.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
+import 'package:paulineife_user/views/screens/screen_video_gallery.dart';
 import 'package:sizer/sizer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../controller/registration_controller.dart';
@@ -68,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: (val) {
             setState(() {
               _controller.index = 2;
+              _controller.index = 0;
             });
             Get.bottomSheet(
               Container(
@@ -215,70 +218,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ListTile(
                       onTap: () {
-                        setState(() {
-                          Get.bottomSheet(
-                            Container(
-                              height: 18.h,
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    onTap: () {
-                                      Get.back();
-                                      getFromCameravid();
-                                    },
-                                    leading: Icon(
-                                      Icons.camera_alt_outlined,
-                                      color: Color(
-                                        0xff97A1B4,
-                                      ),
-                                      size: 20.sp,
-                                    ),
-                                    title: Text(
-                                      'Camera',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(
-                                          0xff000000,
-                                        ),
-                                        fontFamily: 'DMSansR',
-                                      ),
-                                    ),
-                                  ),
-                                  Divider(
-                                    color: Color(0xffE2E4EB),
-                                    thickness: 2.sp,
-                                  ),
-                                  ListTile(
-                                    onTap: () {
-                                      Get.back();
-                                      getFromGalleryvid();
-                                    },
-                                    leading: Icon(
-                                      Icons.photo,
-                                      color: Color(
-                                        0xff97A1B4,
-                                      ),
-                                      size: 20.sp,
-                                    ),
-                                    title: Text(
-                                      'Gallery',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: Color(
-                                          0xff000000,
-                                        ),
-                                        fontFamily: 'DMSansR',
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            backgroundColor: Color(0xffffffff),
-                            elevation: 0,
-                          );
+                        setState(() async {
+
+                          FetchAllVideos ob =  FetchAllVideos();
+                          controller.videos =  await ob.getAllVideos();
+                          if (controller.videos.length>=1) {
+                            Get.to(VideoGalleryScreen(videosList: controller.videos,));
+                          }
                         });
                       },
                       leading: Icon(
@@ -308,7 +254,6 @@ class _HomeScreenState extends State<HomeScreen> {
             );
           },
           icon: SvgPicture.asset("assets/svgs/add.svg"),
-          title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -320,6 +265,7 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: Badge(
               label: Text('1'),
+              smallSize: 5.sp,
               child: _controller.index == 3? SvgPicture.asset("assets/svgs/Notification_opened.svg"):SvgPicture.asset("assets/svgs/Notification_closed.svg"),),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,

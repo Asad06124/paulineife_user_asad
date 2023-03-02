@@ -2,8 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="org.microprogramers.paulineife_user">
 
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
 
@@ -33,10 +37,12 @@
 
     <application
         android:name="${applicationName}"
+
         android:icon="@mipmap/ic_launcher"
         android:label="Paulineife"
         android:requestLegacyExternalStorage="true">
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+
 
         <activity
             android:name=".MainActivity"
@@ -108,4 +114,5 @@
         <!-- declare customized Initializer -->
 
     </application>
+
 </manifest>

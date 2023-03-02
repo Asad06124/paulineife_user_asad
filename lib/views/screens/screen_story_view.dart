@@ -1,5 +1,6 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'dart:math';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -12,12 +13,14 @@ import 'package:sliding_top_panel/sliding_top_panel.dart';
 import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/utils.dart';
 import 'package:story_view/widgets/story_view.dart';
-import 'dart:math' as math;
+
+
+
+import 'screen_story_view_more_text.dart';
 
 class StoryViewScreen extends StatefulWidget {
-  StoryViewScreen({required this.StryCount});
 
-  var StryCount;
+
 
   @override
   State<StoryViewScreen> createState() => _StoryViewScreenState();
@@ -29,13 +32,29 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
 
   StoryController controller = StoryController();
   List<StoryItem> storyItems = [];
+  int randomNumber = 1;
+  var StryCount ;
 
   @override
   void initState() {
     super.initState();
+    _generateRandomNumber();
+    StryCount = randomNumber;
     super.initState();
     _controller.addListener(listenerController);
     initStoryPageItems();
+  }
+  List<int> numbers = [10, 12, 15, 5, 8, 7, 9, 6];
+
+
+  void _generateRandomNumber() {
+    // Generate a random index using the Random class
+    int randomIndex = Random().nextInt(numbers.length);
+
+    // Access the element at the random index
+    setState(() {
+      randomNumber = numbers[randomIndex];
+    });
   }
 
   void listenerController() {
@@ -50,7 +69,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
   }
 
   void initStoryPageItems() {
-    for (int i = 0; i < widget.StryCount; i++) {
+    for (int i = 0; i < StryCount; i++) {
       storyItems.add(StoryItem.pageImage(
         url:
             'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
@@ -59,17 +78,19 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
     }
   }
 
+  bool isExpanded = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: SlidingTopPanel(
-          maxHeight: Get.height / 1.18,
+        body:SlidingTopPanel(
+          maxHeight: 35.h ,
           decorationPanel: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10),
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
             ),
           ),
           controller: _controller,
@@ -108,7 +129,8 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
     );
   }
 
-  Widget _buildListPanel() => Column(
+  Widget _buildListPanel() =>
+      Column(
         children: [
           ListTile(
             contentPadding: EdgeInsets.all(10.sp),
@@ -140,20 +162,12 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
           ),
           Padding(
             padding: EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-              child: Container(
-                height: 70.h,
-                child: AutoSizeText(
-                  '''Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.''',
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.start,
-                  maxLines: 40,
-                  style: TextStyle(
-                      fontSize: 11.sp,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'DMSansR',
-                      color: Colors.black),
-                ),
+            child: Container(
+
+              child: ReadMoreText(
+                text:
+                    '''Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.''',
+                maxLength: 250,
               ),
             ),
           ),
@@ -390,5 +404,47 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
             ),
           ],
         ),
+      );
+
+  Widget ReadMoreText({
+    required String text,
+    required int maxLength,
+  }) =>
+      Column(
+        children: [
+          RichText(
+            text: TextSpan(
+              text: isExpanded ? text : text.substring(0, maxLength) + '...',
+              style: TextStyle(
+                  fontSize: 11.sp,
+                  fontWeight: FontWeight.w400,
+                  fontFamily: 'DMSansR',
+                  color: Colors.black),
+              children: [
+                TextSpan(
+                  text: isExpanded ? '' : 'more',
+                  style: TextStyle(
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w500,
+                      fontFamily: 'DMSansR',
+                      color: Color(0xff2A70C8)),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Get.to(StoryTextViewScreen(strl: _controller,));
+                    },
+                ),
+              ],
+            ),
+          ),
+          Visibility(
+            visible: isExpanded==false?true:false,
+            child: TextButton(
+              onPressed: () {
+                Get.to(StoryTextViewScreen(strl: _controller,));
+              },
+              child: Icon(Icons.keyboard_arrow_down_sharp,color: Color(0xff79869F),),
+            ),
+          ),
+        ],
       );
 }
