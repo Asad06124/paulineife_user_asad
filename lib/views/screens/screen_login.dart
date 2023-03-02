@@ -7,6 +7,7 @@ import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
+import 'package:paulineife_user/helpers/theme.dart';
 import 'package:paulineife_user/views/screens/screen_forget_password_with_layouts.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/views/screens/screen_signup_google.dart';
@@ -54,7 +55,8 @@ class _ScreenLoginState extends State<ScreenLogin> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -114,7 +116,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                   hintText: 'example@gmail.com',
                                   hintStyle: TextStyle(
                                       
-                                      color: Color(0xff000000),
+                                      color: Themes.setColor(context) ? Colors.white :  Color(0xff000000),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400),
                                   contentPadding: EdgeInsets.only(left: 5),
@@ -190,7 +192,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                 hintText: '........',
                                 hintStyle: TextStyle(
                                     
-                                    color: Color(0xff000000),
+                                    color:Themes.setColor(context) ? Colors.white :  Color(0xff000000),
                                     fontSize: 30.sp,
                                     fontWeight: FontWeight.w400),
                                 contentPadding:
@@ -253,6 +255,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       textStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
+                        color: Colors.white
                           ),
                       onPressed: () {
                         Get.to(HomeScreen());
@@ -263,29 +266,51 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xff79869F),
+                          color:Themes.setColor(context) ? Colors.white : Color(0xff79869F) ,
                           ),
                     ),
                     SizedBox(
                       height: 15.sp,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25.sp),
+                    Align(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                        onTap: (){Get.to(HomeScreen());},
+                        child: Container(
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.only(top: 20.sp),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(25.sp),
+                            color: Color(0xffE2E4EB),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+
+
+                               Image.network(
+                                  'http://pngimg.com/uploads/google/google_PNG19635.png',
+                                  fit: BoxFit.cover,
+                                  height: 30.sp,
+                                  width: 30.sp,
+                                ),
+                                SizedBox(width: 10.sp,),
+                                Text(
+                                  'Continue with Google ',
+                                  style: TextStyle(
+                                    color: Themes.setColor(context) ? Colors.white : Colors.black,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+
+                                  ),
+                                ),
+
+                            ],
+                          ),
+                          width: WHeight.width / 1.2,
+                          height: WHeight.height / 13.2,
+                        ),
                       ),
-                      child: SignInButton(
-                        Buttons.Google,
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(25.sp)),
-                            side: BorderSide(color: Color(0xff97A1B4))),
-                        text: "Sign in with Google",
-                        onPressed: () {
-                          Get.to(HomeScreen());
-                        },
-                      ),
-                      width: WHeight.width / 1.2,
-                      height: WHeight.height / 15,
                     ),
                     SizedBox(
                       height: 40.sp,
@@ -297,7 +322,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w500,
 
-                              color: Color(0xff000000)),
+                              color: Themes.setColor(context) ? Colors.white : Color(0xff000000)),
                           children: [
                             TextSpan(text: ' '),
                             TextSpan(

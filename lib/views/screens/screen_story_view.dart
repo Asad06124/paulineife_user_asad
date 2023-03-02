@@ -113,7 +113,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
     return SafeArea(
       child: Scaffold(
         body:SlidingTopPanel(
-          maxHeight: 35.h ,
+          maxHeight: 27.h ,
           decorationPanel: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -159,6 +159,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
 
   Widget _buildListPanel() =>
       Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
             contentPadding: EdgeInsets.all(10.sp),
@@ -471,8 +472,8 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
           ),
           Visibility(
             visible: isExpanded==false?true:false,
-            child: TextButton(
-              onPressed: () {
+            child: GestureDetector(
+              onTap: () {
                 Get.to(StoryTextViewScreen(strl: _controller,));
               },
               child: Icon(Icons.keyboard_arrow_down_sharp,color: Color(0xff79869F),),

@@ -179,48 +179,76 @@ class _HomeLayoutState extends State<HomeLayout> {
               SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
-                      height: size.height / 1.8 + 15,
-                      alignment: Alignment.bottomLeft,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.sp),
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/post.png'),
-                            fit: BoxFit.cover),
-                      ),
-                      child: GestureDetector(
-                        onTap: () {
-                          Get.to(ProfileScreen());
-                        },
-                        child: ListTile(
-                          leading: Container(
-                            padding: EdgeInsets.all(2.sp),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Colors.white,
-                                )),
-                            child: CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/12.png'),
-                            ),
-                          ),
-                          title: Text(
-                            'Asad Ullah',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              
-                              color: Colors.white,
-                            ),
-                          ),
-                          subtitle: Text(
-                            '2 hours ago',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              
-                              color: Colors.white,
+                    GestureDetector(
+                      onTap:(){Get.to(StoryViewScreen());},
+                      child: Container(
+                        height: size.height / 1.8 + 15,
+                        alignment: Alignment.bottomLeft,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.sp),
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/post.png'),
+                              fit: BoxFit.cover),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            Get.to(ProfileScreen());
+                          },
+                          child: Container(
+
+                            color: Colors.transparent,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+
+                                  Container(
+                                    height: 40.sp,
+                                      width: 40.sp,
+                                      padding: EdgeInsets.all(2.sp),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                            color: Colors.white,
+                                          )),
+                                      child: CircleAvatar(
+                                        backgroundImage:
+                                            AssetImage('assets/images/12.png'),
+                                      ),
+                                    ),
+                                  SizedBox(width: 10 .sp,),
+                                  Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [Text(
+                                    'Asad Ullah',
+                                      textAlign:TextAlign.start,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                    SizedBox(height: 2.sp,),
+                                    Text(
+                                      '2 hours ago',
+                                      textAlign:TextAlign.start,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500,
+
+                                        color: Colors.white,
+                                      ),
+                                    ),],)
+
+
+                                ],
+                              ),
                             ),
                           ),
                         ),

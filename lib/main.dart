@@ -14,6 +14,8 @@ import 'package:paulineife_user/widgets/custom_error.dart';
 import 'package:paulineife_user/helpers/local_notifications_helper.dart';
 import 'helpers/fcm.dart';
 import 'helpers/helpers.dart';
+import 'helpers/theme.dart';
+import 'helpers/theme_service.dart';
 /*Created Project "paulineife_user" by MicroProgramers - https://microprogramers.org*/
 
 void main() async {
@@ -213,34 +215,9 @@ class _MyAppState extends State<MyApp> {
           routingCallback: (route){
             print(route?.current);
           },
-          
-          theme: ThemeData(
-            fontFamily: 'DMSan',
-            primarySwatch: appPrimaryColor,
-            checkboxTheme: CheckboxThemeData(
-              checkColor: MaterialStateProperty.all(Colors.white),
-              fillColor: MaterialStateProperty.all(appPrimaryColor),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              side: BorderSide(color: Color(0xff585858), width: 1),
-            ),
-            appBarTheme: AppBarTheme(
-              color: Colors.white,
-              elevation: 0,
-              titleTextStyle: normal_h1Style_bold.copyWith(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "DMSan"),
-              centerTitle: false,
-              systemOverlayStyle:
-                  SystemUiOverlayStyle(statusBarColor: Colors.transparent),
-              iconTheme: IconThemeData(color: Colors.black),
-            ),
-            dividerColor: Colors.transparent,
-            scaffoldBackgroundColor: Color(0xFFFAFBFF),
-            backgroundColor: Color(0xFFFAFBFF),
-          ),
+          themeMode: ThemeService.getThemeMode(),
+          theme: Themes().lightTheme,
+          darkTheme: Themes().darkTheme,
           builder: (context, widget) {
             ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
               return CustomError(errorDetails: errorDetails);
