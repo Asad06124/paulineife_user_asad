@@ -27,7 +27,7 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
                   style: TextStyle(
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      fontFamily: 'DMSansR',
+                      
                       color: Colors.black),
                 ),
               ),
@@ -49,14 +49,14 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       Text(
                         "Email",
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                     ],
                     splashFactory: InkSplash.splashFactory,

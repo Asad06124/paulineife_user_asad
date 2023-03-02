@@ -90,7 +90,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             child: Text(
                               'Phone / Username / Email',
                               style: TextStyle(
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff79869F),
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500),
@@ -113,7 +113,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                 decoration: InputDecoration(
                                   hintText: 'example@gmail.com',
                                   hintStyle: TextStyle(
-                                      fontFamily: 'DMSansR',
+                                      
                                       color: Color(0xff000000),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400),
@@ -153,7 +153,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             child: Text(
                               'Password',
                               style: TextStyle(
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff79869F),
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500),
@@ -189,7 +189,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                 border: InputBorder.none,
                                 hintText: '........',
                                 hintStyle: TextStyle(
-                                    fontFamily: 'DMSansR',
+                                    
                                     color: Color(0xff000000),
                                     fontSize: 30.sp,
                                     fontWeight: FontWeight.w400),
@@ -208,7 +208,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               //   ),
                               //   hintText: '.......',
                               //   hintStyle: TextStyle(
-                              //       fontFamily: 'DMSansR',
+                              //       
                               //       color: Color(0xff000000),
                               //       fontSize: 20.sp,
                               //       fontWeight: FontWeight.w400),
@@ -237,7 +237,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: Color(0xff79869F),
-                              fontFamily: 'DMSansR'),
+                              ),
                         ),
                       ),
                     ),
@@ -253,7 +253,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       textStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                          fontFamily: 'DMSansR'),
+                          ),
                       onPressed: () {
                         Get.to(HomeScreen());
                       },
@@ -264,7 +264,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: Color(0xff79869F),
-                          fontFamily: 'DMSansR'),
+                          ),
                     ),
                     SizedBox(
                       height: 15.sp,

@@ -31,7 +31,7 @@ class PostImageScreen extends StatelessWidget {
               textStyle: TextStyle(
                   fontSize: 12.sp,
                   fontWeight: FontWeight.w400,
-                  fontFamily: 'DMSansR',
+                  
                   color: Colors.white),
               onPressed: () {
                 Get.bottomSheet(
@@ -53,7 +53,7 @@ class PostImageScreen extends StatelessWidget {
                                 fontSize: 22,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w700,
-                                fontFamily: 'DMSansR'),
+                                ),
                           ),
                         ),
                         Padding(
@@ -64,7 +64,7 @@ class PostImageScreen extends StatelessWidget {
                                 fontSize: 16,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w400,
-                                fontFamily: 'DMSansR'),
+                                ),
                           ),
                         ),
                         SizedBox(
@@ -83,7 +83,7 @@ class PostImageScreen extends StatelessWidget {
                               color: Color(
                                 0xff000000,
                               ),
-                              fontFamily: 'DMSansR',
+                              
                             ),
                           ),
                         ),
@@ -104,7 +104,7 @@ class PostImageScreen extends StatelessWidget {
                               color: Color(
                                 0xff000000,
                               ),
-                              fontFamily: 'DMSansR',
+                              
                             ),
                           ),
                         ),
@@ -150,7 +150,7 @@ class PostImageScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'DMSansR',
+                            
                             color: Colors.black),
                       ),
                       Spacer(),

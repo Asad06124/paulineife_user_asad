@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:fetch_all_videos/fetch_all_videos.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:badges/badges.dart';
@@ -17,6 +16,7 @@ import 'package:paulineife_user/views/screens/screen_video_gallery.dart';
 import 'package:sizer/sizer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../controller/registration_controller.dart';
+import '../../helpers/fetch_all_videos.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -105,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontSize: 22,
                             color: Colors.black,
                             fontWeight: FontWeight.w700,
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                     ),
                     SizedBox(
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: Color(
                                           0xff000000,
                                         ),
-                                        fontFamily: 'DMSansR',
+                                        
                                       ),
                                     ),
                                   ),
@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: Color(
                                           0xff000000,
                                         ),
-                                        fontFamily: 'DMSansR',
+                                        
                                       ),
                                     ),
                                   ),
@@ -195,7 +195,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Color(
                             0xff000000,
                           ),
-                          fontFamily: 'DMSansR',
+                          
                         ),
                       ),
                     ),
@@ -222,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Color(
                             0xff000000,
                           ),
-                          fontFamily: 'DMSansR',
+                          
                         ),
                       ),
                     ),
@@ -257,7 +257,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: Color(
                             0xff000000,
                           ),
-                          fontFamily: 'DMSansR',
+                          
                         ),
                       ),
                     ),

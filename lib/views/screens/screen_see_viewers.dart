@@ -81,7 +81,7 @@ class SeeViewersScreen extends StatelessWidget {
                 hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    fontFamily: 'DMSansR',
+                    
                     color: Color(0xff79869F)),
               ),
               Expanded(
@@ -125,7 +125,7 @@ class SeeViewersScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            fontFamily: 'DMSansR',
+                            
                             color: Colors.white,
                           ),
                         ),

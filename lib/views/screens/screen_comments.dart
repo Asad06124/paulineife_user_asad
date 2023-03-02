@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:sizer/sizer.dart';
-import 'package:social_media_recorder/audio_encoder_type.dart';
-import 'package:social_media_recorder/screen/social_media_recorder.dart';
+import '../../helpers/social_media_recorder/audio_encoder_type.dart';
+import '../../helpers/social_media_recorder/screen/social_media_recorder.dart';
 import '../../test_audio.dart';
 
 const url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3';
@@ -16,6 +16,7 @@ class CommentsScreen extends StatefulWidget {
   @override
   State<CommentsScreen> createState() => _CommentsScreenState();
 }
+
 class _CommentsScreenState extends State<CommentsScreen> {
   var controller = Get.put(RegistrationController());
 
@@ -53,8 +54,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                             padding: EdgeInsets.only(left: 5.sp, top: 10.sp),
                             child: CircleAvatar(
                               radius: 20.sp,
-                              backgroundImage:
-                                  AssetImage('assets/images/12.png'),
+                              backgroundImage: AssetImage('assets/images/12.png'),
                             ),
                           ),
                           Padding(
@@ -73,7 +73,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                           style: TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w700,
-                                            fontFamily: 'DMSansR',
                                             color: Color(0xff000000),
                                           ),
                                           children: [
@@ -82,7 +81,6 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                               style: TextStyle(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w500,
-                                                fontFamily: 'DMSans-Bold',
                                                 color: Color(0xff97A1B4),
                                               ),
                                             )
@@ -91,20 +89,22 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       ),
                                     ),
                                     Container(
-                                      padding: EdgeInsets.only(
-                                          left: 10.sp, right: 10.sp),
+                                      padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
                                       width: 65.w,
                                       child: index == 2
                                           ? Container(
-                                        width: 20.w,
-                                             child: ItemAudioPlay(url: url,),)
+                                              width: 20.w,
+                                              child: ItemAudioPlay(
+                                                url: url,
+                                              ),
+                                            )
                                           : Text(
                                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo.',
                                               style: TextStyle(
-                                                  fontSize: 9.sp,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.black,
-                                                  fontFamily: 'DMSansR'),
+                                                fontSize: 9.sp,
+                                                fontWeight: FontWeight.w400,
+                                                color: Colors.black,
+                                              ),
                                               textAlign: TextAlign.justify,
                                             ),
                                     ),
@@ -124,18 +124,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       child: Obx(() {
                                         return IconButton(
                                           onPressed: () {
-                                            controller.liked.value =
-                                                !controller.liked.value;
+                                            controller.liked.value = !controller.liked.value;
                                             controller.update();
                                           },
                                           icon: Icon(
-                                            controller.liked.value == true
-                                                ? Icons.favorite_outlined
-                                                : Icons.favorite_outline,
-                                            color:
-                                                controller.liked.value == true
-                                                    ? Colors.red
-                                                    : Colors.grey,
+                                            controller.liked.value == true ? Icons.favorite_outlined : Icons.favorite_outline,
+                                            color: controller.liked.value == true ? Colors.red : Colors.grey,
                                           ),
                                         );
                                       }),
@@ -154,20 +148,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                           ),
                           Text(
                             '22 Likes',
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff79869F)),
+                            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
                           ),
                           SizedBox(
                             width: 8.sp,
                           ),
                           Text(
                             'Reply',
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xff79869F)),
+                            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
                           ),
                         ],
                       ),
@@ -182,10 +170,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                   ),
                                   Text(
                                     'View 6 Replies',
-                                    style: TextStyle(
-                                        fontSize: 9.sp,
-                                        color: Color(0xff2A70C8),
-                                        fontWeight: FontWeight.w500),
+                                    style: TextStyle(fontSize: 9.sp, color: Color(0xff2A70C8), fontWeight: FontWeight.w500),
                                   ),
                                   Icon(
                                     Icons.keyboard_arrow_down_outlined,
@@ -197,16 +182,13 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                 Container(
                                   width: Get.width / 1.2,
                                   child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.only(
-                                            left: 5.sp, top: 10.sp),
+                                        padding: EdgeInsets.only(left: 5.sp, top: 10.sp),
                                         child: CircleAvatar(
                                           radius: 20.sp,
-                                          backgroundImage: AssetImage(
-                                              'assets/images/12.png'),
+                                          backgroundImage: AssetImage('assets/images/12.png'),
                                         ),
                                       ),
                                       Padding(
@@ -214,35 +196,26 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                         child: Row(
                                           children: [
                                             Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 3.5.w),
+                                                  padding: EdgeInsets.only(left: 3.5.w),
                                                   child: RichText(
                                                     textAlign: TextAlign.center,
                                                     text: TextSpan(
                                                       text: 'Asad . ',
                                                       style: TextStyle(
                                                         fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        fontFamily: 'DMSansR',
-                                                        color:
-                                                            Color(0xff000000),
+                                                        fontWeight: FontWeight.w700,
+                                                        color: Color(0xff000000),
                                                       ),
                                                       children: [
                                                         TextSpan(
                                                           text: ' 5h ago',
                                                           style: TextStyle(
                                                             fontSize: 13,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontFamily:
-                                                                'DMSans-Bold',
-                                                            color: Color(
-                                                                0xff97A1B4),
+                                                            fontWeight: FontWeight.w500,
+                                                            color: Color(0xff97A1B4),
                                                           ),
                                                         )
                                                       ],
@@ -250,20 +223,16 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  padding: EdgeInsets.only(
-                                                      left: 10.sp,
-                                                      right: 10.sp),
+                                                  padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
                                                   width: 50.w,
                                                   child: Text(
                                                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo.',
                                                     style: TextStyle(
-                                                        fontSize: 9.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black,
-                                                        fontFamily: 'DMSansR'),
-                                                    textAlign:
-                                                        TextAlign.justify,
+                                                      fontSize: 9.sp,
+                                                      fontWeight: FontWeight.w400,
+                                                      color: Colors.black,
+                                                    ),
+                                                    textAlign: TextAlign.justify,
                                                   ),
                                                 ),
                                               ],
@@ -278,29 +247,16 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                   height: 1.5.h,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(
-                                                      right: 10.sp),
+                                                  padding: EdgeInsets.only(right: 10.sp),
                                                   child: Obx(() {
                                                     return IconButton(
                                                       onPressed: () {
-                                                        controller.liked.value =
-                                                            !controller
-                                                                .liked.value;
+                                                        controller.liked.value = !controller.liked.value;
                                                         controller.update();
                                                       },
                                                       icon: Icon(
-                                                        controller.liked
-                                                                    .value ==
-                                                                true
-                                                            ? Icons
-                                                                .favorite_outlined
-                                                            : Icons
-                                                                .favorite_outline,
-                                                        color: controller.liked
-                                                                    .value ==
-                                                                true
-                                                            ? Colors.red
-                                                            : Colors.grey,
+                                                        controller.liked.value == true ? Icons.favorite_outlined : Icons.favorite_outline,
+                                                        color: controller.liked.value == true ? Colors.red : Colors.grey,
                                                       ),
                                                     );
                                                   }),
@@ -322,20 +278,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       ),
                                       Text(
                                         '22 Likes',
-                                        style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
                                       ),
                                       Text(
                                         'Reply',
-                                        style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
@@ -343,16 +293,13 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                 Container(
                                   width: Get.width / 1.2,
                                   child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.only(
-                                            left: 5.sp, top: 10.sp),
+                                        padding: EdgeInsets.only(left: 5.sp, top: 10.sp),
                                         child: CircleAvatar(
                                           radius: 20.sp,
-                                          backgroundImage: AssetImage(
-                                              'assets/images/12.png'),
+                                          backgroundImage: AssetImage('assets/images/12.png'),
                                         ),
                                       ),
                                       Padding(
@@ -360,35 +307,26 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                         child: Row(
                                           children: [
                                             Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 3.5.w),
+                                                  padding: EdgeInsets.only(left: 3.5.w),
                                                   child: RichText(
                                                     textAlign: TextAlign.center,
                                                     text: TextSpan(
                                                       text: 'Asad . ',
                                                       style: TextStyle(
                                                         fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        fontFamily: 'DMSansR',
-                                                        color:
-                                                            Color(0xff000000),
+                                                        fontWeight: FontWeight.w700,
+                                                        color: Color(0xff000000),
                                                       ),
                                                       children: [
                                                         TextSpan(
                                                           text: ' 5h ago',
                                                           style: TextStyle(
                                                             fontSize: 13,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontFamily:
-                                                                'DMSans-Bold',
-                                                            color: Color(
-                                                                0xff97A1B4),
+                                                            fontWeight: FontWeight.w500,
+                                                            color: Color(0xff97A1B4),
                                                           ),
                                                         )
                                                       ],
@@ -396,20 +334,16 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  padding: EdgeInsets.only(
-                                                      left: 10.sp,
-                                                      right: 10.sp),
+                                                  padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
                                                   width: 50.w,
                                                   child: Text(
                                                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo.',
                                                     style: TextStyle(
-                                                        fontSize: 9.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black,
-                                                        fontFamily: 'DMSansR'),
-                                                    textAlign:
-                                                        TextAlign.justify,
+                                                      fontSize: 9.sp,
+                                                      fontWeight: FontWeight.w400,
+                                                      color: Colors.black,
+                                                    ),
+                                                    textAlign: TextAlign.justify,
                                                   ),
                                                 ),
                                               ],
@@ -424,29 +358,16 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                   height: 1.5.h,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(
-                                                      right: 10.sp),
+                                                  padding: EdgeInsets.only(right: 10.sp),
                                                   child: Obx(() {
                                                     return IconButton(
                                                       onPressed: () {
-                                                        controller.liked.value =
-                                                            !controller
-                                                                .liked.value;
+                                                        controller.liked.value = !controller.liked.value;
                                                         controller.update();
                                                       },
                                                       icon: Icon(
-                                                        controller.liked
-                                                                    .value ==
-                                                                true
-                                                            ? Icons
-                                                                .favorite_outlined
-                                                            : Icons
-                                                                .favorite_outline,
-                                                        color: controller.liked
-                                                                    .value ==
-                                                                true
-                                                            ? Colors.red
-                                                            : Colors.grey,
+                                                        controller.liked.value == true ? Icons.favorite_outlined : Icons.favorite_outline,
+                                                        color: controller.liked.value == true ? Colors.red : Colors.grey,
                                                       ),
                                                     );
                                                   }),
@@ -468,20 +389,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       ),
                                       Text(
                                         '22 Likes',
-                                        style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
                                       ),
                                       Text(
                                         'Reply',
-                                        style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
@@ -489,16 +404,13 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                 Container(
                                   width: Get.width / 1.2,
                                   child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.only(
-                                            left: 5.sp, top: 10.sp),
+                                        padding: EdgeInsets.only(left: 5.sp, top: 10.sp),
                                         child: CircleAvatar(
                                           radius: 20.sp,
-                                          backgroundImage: AssetImage(
-                                              'assets/images/12.png'),
+                                          backgroundImage: AssetImage('assets/images/12.png'),
                                         ),
                                       ),
                                       Padding(
@@ -506,35 +418,26 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                         child: Row(
                                           children: [
                                             Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 3.5.w),
+                                                  padding: EdgeInsets.only(left: 3.5.w),
                                                   child: RichText(
                                                     textAlign: TextAlign.center,
                                                     text: TextSpan(
                                                       text: 'Asad . ',
                                                       style: TextStyle(
                                                         fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        fontFamily: 'DMSansR',
-                                                        color:
-                                                            Color(0xff000000),
+                                                        fontWeight: FontWeight.w700,
+                                                        color: Color(0xff000000),
                                                       ),
                                                       children: [
                                                         TextSpan(
                                                           text: ' 5h ago',
                                                           style: TextStyle(
                                                             fontSize: 13,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            fontFamily:
-                                                                'DMSans-Bold',
-                                                            color: Color(
-                                                                0xff97A1B4),
+                                                            fontWeight: FontWeight.w500,
+                                                            color: Color(0xff97A1B4),
                                                           ),
                                                         )
                                                       ],
@@ -542,20 +445,16 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                   ),
                                                 ),
                                                 Container(
-                                                  padding: EdgeInsets.only(
-                                                      left: 10.sp,
-                                                      right: 10.sp),
+                                                  padding: EdgeInsets.only(left: 10.sp, right: 10.sp),
                                                   width: 50.w,
                                                   child: Text(
                                                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo.',
                                                     style: TextStyle(
-                                                        fontSize: 9.sp,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: Colors.black,
-                                                        fontFamily: 'DMSansR'),
-                                                    textAlign:
-                                                        TextAlign.justify,
+                                                      fontSize: 9.sp,
+                                                      fontWeight: FontWeight.w400,
+                                                      color: Colors.black,
+                                                    ),
+                                                    textAlign: TextAlign.justify,
                                                   ),
                                                 ),
                                               ],
@@ -570,29 +469,16 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                   height: 1.5.h,
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(
-                                                      right: 10.sp),
+                                                  padding: EdgeInsets.only(right: 10.sp),
                                                   child: Obx(() {
                                                     return IconButton(
                                                       onPressed: () {
-                                                        controller.liked.value =
-                                                            !controller
-                                                                .liked.value;
+                                                        controller.liked.value = !controller.liked.value;
                                                         controller.update();
                                                       },
                                                       icon: Icon(
-                                                        controller.liked
-                                                                    .value ==
-                                                                true
-                                                            ? Icons
-                                                                .favorite_outlined
-                                                            : Icons
-                                                                .favorite_outline,
-                                                        color: controller.liked
-                                                                    .value ==
-                                                                true
-                                                            ? Colors.red
-                                                            : Colors.grey,
+                                                        controller.liked.value == true ? Icons.favorite_outlined : Icons.favorite_outline,
+                                                        color: controller.liked.value == true ? Colors.red : Colors.grey,
                                                       ),
                                                     );
                                                   }),
@@ -614,20 +500,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       ),
                                       Text(
                                         '22 Likes',
-                                        style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
                                       ),
                                       Text(
                                         'Reply',
-                                        style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.w700,
-                                            color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
@@ -649,15 +529,13 @@ class _CommentsScreenState extends State<CommentsScreen> {
                       horizontal: 10,
                     ),
                     margin: EdgeInsets.only(bottom: 5.sp),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Color(0xffE2E4EB)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: Color(0xffE2E4EB)),
                     child: TextFormField(
-                      controller:
-                          TextEditingController(text: 'Comment as  Ronaldo'),
+
                       style: TextStyle(fontSize: 16, color: Color(0xff9C9EB9)),
                       onChanged: (value) {},
                       decoration: InputDecoration(
+
                         // prefixIconConstraints: BoxConstraints(
                         //   maxWidth: 150,
                         //   minWidth: 50
@@ -672,6 +550,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                           ),
                           iconSize: 20.sp,
                         ),
+
                         suffixIcon: Container(
                           padding: EdgeInsets.only(right: 5.sp),
                           width: 50.sp,
@@ -679,17 +558,13 @@ class _CommentsScreenState extends State<CommentsScreen> {
                               alignment: Alignment.centerRight,
                               child: Text(
                                 'Post',
-                                style: TextStyle(
-                                    color: Color(0xff2A70C8),
-                                    fontSize: 11.sp,
-                                    fontWeight: FontWeight.w700),
+                                style: TextStyle(color: Color(0xff2A70C8), fontSize: 11.sp, fontWeight: FontWeight.w700),
                               )),
                         ),
                         contentPadding: EdgeInsets.only(
                           top: 13.0,
                         ),
-                        hintText: '',
-
+                        hintText: 'Comment as Ronaldo',
                         hintStyle: TextStyle(
                           color: Color(0xff79869F),
                         ),
@@ -716,5 +591,4 @@ class _CommentsScreenState extends State<CommentsScreen> {
       ),
     );
   }
-
 }

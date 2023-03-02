@@ -27,7 +27,7 @@ class NewPasswordScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: 19.sp,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR',
+                  
                   color: Colors.black),
             ),
           ),
@@ -61,7 +61,7 @@ class NewPasswordScreen extends StatelessWidget {
                       child: Text(
                         'New Password',
                         style: TextStyle(
-                            fontFamily: 'DMSansR',
+                            
                             color: Color(0xff79869F),
                             fontSize: 12,
                             fontWeight: FontWeight.w500),
@@ -100,7 +100,7 @@ class NewPasswordScreen extends StatelessWidget {
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff000000),
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
@@ -119,7 +119,7 @@ class NewPasswordScreen extends StatelessWidget {
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
-                            //       fontFamily: 'DMSansR',
+                            //       
                             //       color: Color(0xff000000),
                             //       fontSize: 20.sp,
                             //       fontWeight: FontWeight.w400),
@@ -163,7 +163,7 @@ class NewPasswordScreen extends StatelessWidget {
                       child: Text(
                         'New Password',
                         style: TextStyle(
-                            fontFamily: 'DMSansR',
+                            
                             color: Color(0xff79869F),
                             fontSize: 12,
                             fontWeight: FontWeight.w500),
@@ -202,7 +202,7 @@ class NewPasswordScreen extends StatelessWidget {
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff000000),
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
@@ -221,7 +221,7 @@ class NewPasswordScreen extends StatelessWidget {
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
-                            //       fontFamily: 'DMSansR',
+                            //       
                             //       color: Color(0xff000000),
                             //       fontSize: 20.sp,
                             //       fontWeight: FontWeight.w400),
@@ -253,7 +253,7 @@ class NewPasswordScreen extends StatelessWidget {
               textStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR'),
+                  ),
               onPressed: () {
                 Get.to(ScreenLogin());
               },

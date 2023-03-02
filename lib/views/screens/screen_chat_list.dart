@@ -34,7 +34,7 @@ class ChatListScreen extends StatelessWidget {
                 hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    fontFamily: 'DMSansR',
+                    
                     color: Color(0xff79869F)),
               ),
               SizedBox(height: 10.sp,),
@@ -45,7 +45,7 @@ class ChatListScreen extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                     color: Color(0xff000000),
-                    fontFamily: 'DMSansR'),
+                    ),
               ),
               SizedBox(height: 10.sp,),
               Expanded(
@@ -66,7 +66,7 @@ class ChatListScreen extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       subtitle: Text(
                         'Hi, Asad how are you',
@@ -74,7 +74,7 @@ class ChatListScreen extends StatelessWidget {
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff79869F),
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       trailing: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -85,7 +85,7 @@ class ChatListScreen extends StatelessWidget {
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           color: Color(0xff79869F),
-                          fontFamily: 'DMSansR'),),
+                          ),),
                           Badge(
                             badgeContent: Text('1',style: TextStyle(color: Colors.white),),
                             badgeStyle: BadgeStyle(badgeColor: Colors.blue),

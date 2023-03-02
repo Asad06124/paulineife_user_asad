@@ -55,7 +55,7 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
               style: TextStyle(
                   fontSize: 21.sp,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR',
+                  
                   color: Colors.black),
             ),
           ),
@@ -98,7 +98,7 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                       color: Colors.black,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      fontFamily: 'DMSansR',
+                      
                     ),
                   ),
                 ),
@@ -112,7 +112,7 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: Color(0xff79869F),
-                  fontFamily: 'DMSansR'),
+                  ),
             ),
             Align(
               alignment: Alignment.center,
@@ -137,7 +137,7 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                       color: Colors.black,
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      fontFamily: 'DMSansR',
+                      
                     ),
                   ),
                 ),
@@ -154,7 +154,7 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                   style: TextStyle(
                       fontSize: 11.sp,
                       fontWeight: FontWeight.w400,
-                      fontFamily: 'DMSansR',
+                      
                       color: Color(0xff000000)),
                   children: [
                     TextSpan(text: '  '),
@@ -164,7 +164,7 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                         style: TextStyle(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w600,
-                            fontFamily: 'DMSansR',
+                            
                             color: Color(0xff2A70C8)))
                   ]),
             ),

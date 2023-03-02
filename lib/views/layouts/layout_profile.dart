@@ -32,7 +32,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
             style: TextStyle(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w500,
-                fontFamily: 'DMSansR',
+                
                 color: Colors.black),
           ),
           centerTitle: true,
@@ -69,7 +69,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w700,
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff000000),
                                 ),
                                 children: [
@@ -78,7 +78,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                     style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      fontFamily: 'DMSans-Bold',
+                                      
                                       color: Color(0xff2A70C8),
                                     ),
                                   )
@@ -108,7 +108,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'DMSansR',
+                        
                         color: Color(0xff000000),
                       ),
                       children: [
@@ -117,7 +117,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w700,
-                            fontFamily: 'DMSans-Bold',
+                            
                             color: Color(0xff2A70C8),
                           ),
                         )
@@ -141,7 +141,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              fontFamily: 'DMSans-Bold',
+                              
                               color: Color(0xff000000),
                             ),
                             children: [
@@ -150,7 +150,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff79869F),
                                 ),
                               )
@@ -168,7 +168,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            fontFamily: 'DMSansR-Bold',
+                            
                             color: Color(0xff000000),
                           ),
                           children: [
@@ -177,7 +177,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                fontFamily: 'DMSansR',
+                                
                                 color: Color(0xff79869F),
                               ),
                             )
@@ -196,7 +196,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                     textStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      fontFamily: 'DMSansR',
+                      
                       color: Colors.black,
                     ),
                     elevation: 0,
@@ -286,6 +286,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 color: Colors.white,
                                 size: 15.sp,
                               ),
+                              SizedBox(width: 3.sp,),
                               Text(
                                 '20.5K',
                                 style: TextStyle(

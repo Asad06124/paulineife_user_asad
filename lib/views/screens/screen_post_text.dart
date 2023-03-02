@@ -51,7 +51,7 @@ class PostTextScreen extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          fontFamily: 'DMSansR',
+                          
                           color: Colors.black),
                     ),
                     Spacer(),
@@ -89,7 +89,7 @@ class PostTextScreen extends StatelessWidget {
                   hintStyle: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
-                    fontFamily: 'DMSansR',
+                    
                     color: Colors.white,
                   ),
                 ),
@@ -172,7 +172,7 @@ class PostTextScreen extends StatelessWidget {
                               fontSize: 22,
                               color: Colors.black,
                               fontWeight: FontWeight.w700,
-                              fontFamily: 'DMSansR'),
+                              ),
                         ),
                       ),
                       Padding(
@@ -183,7 +183,7 @@ class PostTextScreen extends StatelessWidget {
                               fontSize: 16,
                               color: Colors.black,
                               fontWeight: FontWeight.w400,
-                              fontFamily: 'DMSansR'),
+                              ),
                         ),
                       ),
                       SizedBox(
@@ -208,7 +208,7 @@ class PostTextScreen extends StatelessWidget {
                             color: Color(
                               0xff000000,
                             ),
-                            fontFamily: 'DMSansR',
+                            
                           ),
                         ),
                       ),
@@ -229,7 +229,7 @@ class PostTextScreen extends StatelessWidget {
                             color: Color(
                               0xff000000,
                             ),
-                            fontFamily: 'DMSansR',
+                            
                           ),
                         ),
                       ),

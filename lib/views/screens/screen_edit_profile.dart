@@ -27,7 +27,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
           elevation: 0,
           title: Text(
             'Edit Profile',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,color: Colors.black,fontFamily: 'DMSansR'),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,color: Colors.black,),
           ),
           centerTitle: true,
         ),
@@ -61,7 +61,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               textStyle: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                fontFamily: 'DMSansR',
+                                
                                 color: Colors.white,
                               ),
                               elevation: 0,
@@ -82,7 +82,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               textStyle: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                fontFamily: 'DMSansR',
+                                
                                 color: Colors.white,
                               ),
                               elevation: 0,

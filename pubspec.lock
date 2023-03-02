@@ -18,7 +18,7 @@ packages:
     source: hosted
     version: "1.0.1"
   animated_text_kit:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: animated_text_kit
       sha256: "37392a5376c9a1a503b02463c38bc0342ef814ddbb8f9977bc90f2a84b22fa92"
@@ -257,14 +257,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.33"
-  dart_pubspec_licenses:
-    dependency: transitive
-    description:
-      name: dart_pubspec_licenses
-      sha256: "38680e2d2fc41df3a0d435d0955b91acc382aeefcb89ef4738f8167c8288a29d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.2"
   dbus:
     dependency: transitive
     description:
@@ -289,14 +281,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.1"
-  fetch_all_videos:
-    dependency: "direct main"
-    description:
-      name: fetch_all_videos
-      sha256: "77e742e67d1ba58496ee2aa5b390dd1123f92fdeaeeeea5301596b6d4e2812aa"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.5"
   ffi:
     dependency: transitive
     description:
@@ -306,7 +290,7 @@ packages:
     source: hosted
     version: "2.0.1"
   ffmpeg_kit_flutter:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: ffmpeg_kit_flutter
       sha256: f631fbf54e8a62ac36d79475280d7a0b042139ffa6662c88cb6896c71f3f0cfa
@@ -486,14 +470,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.18"
-  flutter_oss_licenses:
-    dependency: transitive
-    description:
-      name: flutter_oss_licenses
-      sha256: eb15e1146b101dca063a177f6d339dfb85b639a9e2d2b71c18188d5fb2144869
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.1"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -632,14 +608,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.5"
-  json_annotation:
-    dependency: transitive
-    description:
-      name: json_annotation
-      sha256: c33da08e136c3df0190bd5bbe51ae1df4a7d96e7954d1d7249fea2968a72d317
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.8.0"
   matcher:
     dependency: transitive
     description:
@@ -713,7 +681,7 @@ packages:
     source: hosted
     version: "1.0.1"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       sha256: "04890b994ee89bfa80bf3080bfec40d5a92c5c7a785ebb02c13084a099d2b6f9"
@@ -769,21 +737,21 @@ packages:
     source: hosted
     version: "1.11.1"
   permission_handler:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: permission_handler
-      sha256: "5749ebeb7ec0c3865ea17e3eb337174b87747be816dab582c551e1aff6f6bbf3"
+      sha256: "33c6a1253d1f95fd06fa74b65b7ba907ae9811f9d5c1d3150e51417d04b8d6a8"
       url: "https://pub.dev"
     source: hosted
-    version: "9.2.0"
+    version: "10.2.0"
   permission_handler_android:
     dependency: transitive
     description:
       name: permission_handler_android
-      sha256: a512e0fa8abcb0659d938ec2df93a70eb1df1fdea5fdc6d79a866bfd858a28fc
+      sha256: "8028362b40c4a45298f1cbfccd227c8dd6caf0e27088a69f2ba2ab15464159e2"
       url: "https://pub.dev"
     source: hosted
-    version: "9.0.2+1"
+    version: "10.2.0"
   permission_handler_apple:
     dependency: transitive
     description:
@@ -865,7 +833,7 @@ packages:
     source: hosted
     version: "4.2.4"
   provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: provider
       sha256: cdbe7530b12ecd9eb455bdaa2fcb8d4dad22e80b8afb4798b41479d5ce26847f
@@ -873,7 +841,7 @@ packages:
     source: hosted
     version: "6.0.5"
   record:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: record
       sha256: f5dfa28ba57a74dd37588bb51e3f8bb2f12d17cbc40aa6a89ccfb89049700214
@@ -933,14 +901,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
-  social_media_recorder:
-    dependency: "direct main"
-    description:
-      name: social_media_recorder
-      sha256: c16581d708ae0a60ae56467dccd45cd2be09a12a210e2971677767a549b33ab4
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.84"
   source_span:
     dependency: transitive
     description:
@@ -973,14 +933,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
-  status_view:
-    dependency: "direct main"
-    description:
-      name: status_view
-      sha256: aff3397295cf23d51c2206e56da320e8095ea0340f31ea2395c8807186dac1ba
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   story_view:
     dependency: "direct main"
     description:
@@ -1126,7 +1078,7 @@ packages:
     source: hosted
     version: "3.0.3"
   uuid:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: uuid
       sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
@@ -1182,21 +1134,13 @@ packages:
     source: hosted
     version: "2.0.13"
   video_thumbnail:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: video_thumbnail
       sha256: "3455c189d3f0bb4e3fc2236475aa84fe598b9b2d0e08f43b9761f5bc44210016"
       url: "https://pub.dev"
     source: hosted
     version: "0.5.3"
-  video_trimmer:
-    dependency: "direct main"
-    description:
-      name: video_trimmer
-      sha256: b22375a16bab67a9c2f8f1336a35a32cfdb570c552c33d2d92fe0b9f7cc99661
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.0"
   widget_event:
     dependency: transitive
     description:
@@ -1238,5 +1182,5 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.18.2 <3.0.0"
+  dart: ">=2.18.0 <3.0.0"
   flutter: ">=3.7.0"

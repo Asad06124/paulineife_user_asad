@@ -93,7 +93,7 @@ class _ForgetPasswordEmailScreenState extends State<ForgetPasswordEmailScreen> {
                   textStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    fontFamily: 'DMSansR',
+                    
                     color: Colors.white,
                   ),
                   elevation: 0,
@@ -109,7 +109,7 @@ class _ForgetPasswordEmailScreenState extends State<ForgetPasswordEmailScreen> {
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    fontFamily: 'DMSansR',
+                    
                     color: Colors.black),
               ),
               // Directionality(
@@ -130,7 +130,7 @@ class _ForgetPasswordEmailScreenState extends State<ForgetPasswordEmailScreen> {
                   AndroidSmsAutofillMethod.smsUserConsentApi,
                   listenForMultipleSmsOnAndroid: true,
                   length: 6,
-                  preFilledWidget: Text('2',style: TextStyle(color: Colors.black,fontFamily: 'DMSansR'),),
+                  preFilledWidget: Text('2',style: TextStyle(color: Colors.black,),),
                   // validator: (value) {
                   //   return value == '222222' ? null : 'Pin is incorrect';
                   // },
@@ -163,7 +163,7 @@ class _ForgetPasswordEmailScreenState extends State<ForgetPasswordEmailScreen> {
                   textStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    fontFamily: 'DMSansR',
+                    
                     color: Colors.white,
                   ),
                   elevation: 0,

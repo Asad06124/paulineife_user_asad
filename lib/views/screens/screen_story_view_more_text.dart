@@ -34,7 +34,7 @@ class StoryTextViewScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w700,
-                    fontFamily: 'DMSansR',
+                    
                     color: Colors.black),
               ),
               trailing: Icon(
@@ -53,7 +53,7 @@ class StoryTextViewScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 11.sp,
                       fontWeight: FontWeight.w400,
-                      fontFamily: 'DMSansR',
+                      
                       color: Colors.black),
                 ),
               ),

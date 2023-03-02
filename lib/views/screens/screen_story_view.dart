@@ -180,7 +180,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
               style: TextStyle(
                   fontSize: 11.sp,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR',
+                  
                   color: Colors.black),
             ),
             trailing: Icon(
@@ -251,7 +251,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      fontFamily: 'DMSansR',
+                      
                       color: Colors.white),
                 ),
                 subtitle: RichText(
@@ -260,7 +260,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                       style: TextStyle(
                           fontSize: 10.sp,
                           fontWeight: FontWeight.w500,
-                          fontFamily: 'DMSansR',
+                          
                           color: Colors.white),
                       children: [
                         TextSpan(
@@ -268,7 +268,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                           style: TextStyle(
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w500,
-                              fontFamily: 'DMSansR',
+                              
                               color: Colors.white),
                         ),
                       ]),
@@ -321,7 +321,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   color: Color(0xffFF0000),
-                                  fontFamily: 'DMSansR'),
+                                  ),
                             ),
                           ),
                           PopupMenuItem(
@@ -334,7 +334,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   color: Color(0xff000000),
-                                  fontFamily: 'DMSansR'),
+                                  ),
                             ),
                           ),
                           PopupMenuItem(
@@ -349,7 +349,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   color: Color(0xff000000),
-                                  fontFamily: 'DMSansR'),
+                                  ),
                             ),
                           ),
                           PopupMenuItem(
@@ -359,7 +359,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                   color: Color(0xff000000),
-                                  fontFamily: 'DMSansR'),
+                                  ),
                             ),
                           ),
                         ],
@@ -386,7 +386,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              fontFamily: 'DMSansR',
+                              
                               color: Colors.white),
                         ),
                       ],
@@ -403,7 +403,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            fontFamily: 'DMSansR',
+                            
                             color: Colors.white),
                       ),
                     ],
@@ -426,7 +426,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                           style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
-                              fontFamily: 'DMSansR',
+                              
                               color: Colors.white),
                         ),
                       ],
@@ -451,7 +451,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
               style: TextStyle(
                   fontSize: 11.sp,
                   fontWeight: FontWeight.w400,
-                  fontFamily: 'DMSansR',
+                  
                   color: Colors.black),
               children: [
                 TextSpan(
@@ -459,7 +459,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   style: TextStyle(
                       fontSize: 15.sp,
                       fontWeight: FontWeight.w500,
-                      fontFamily: 'DMSansR',
+                      
                       color: Color(0xff2A70C8)),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {

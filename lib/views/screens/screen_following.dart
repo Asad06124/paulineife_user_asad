@@ -23,7 +23,7 @@ class FollowingScreen extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Colors.black,
-                fontFamily: 'DMSansR'),
+                ),
           ),
           centerTitle: true,
         ),
@@ -50,7 +50,7 @@ class FollowingScreen extends StatelessWidget {
                   hintStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      fontFamily: 'DMSansR',
+                      
                       color: Color(0xff79869F)),
                 ),
               ),
@@ -79,7 +79,7 @@ class FollowingScreen extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       subtitle: Text(
                         '@asad',
@@ -87,7 +87,7 @@ class FollowingScreen extends StatelessWidget {
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             color: Color(0xff2A70C8),
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       trailing: ElevatedButton(
                           child: Text(
@@ -95,7 +95,7 @@ class FollowingScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 11.sp,
                               fontWeight: FontWeight.w400,
-                              fontFamily: 'DMSansR',
+                              
                               color: Colors.black,
                             ),
                           ),

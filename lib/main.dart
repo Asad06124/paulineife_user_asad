@@ -213,6 +213,7 @@ class _MyAppState extends State<MyApp> {
           routingCallback: (route){
             print(route?.current);
           },
+          
           theme: ThemeData(
             fontFamily: 'DMSan',
             primarySwatch: appPrimaryColor,

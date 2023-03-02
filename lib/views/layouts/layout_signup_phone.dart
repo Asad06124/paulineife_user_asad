@@ -78,7 +78,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                                   style: TextStyle(
                                       fontSize: 15.sp,
                                       fontWeight: FontWeight.w500,
-                                      fontFamily: 'DMSansR',
+                                      
                                       color: Color(0xff79869F)),
                                 ),
                                 Icon(
@@ -95,7 +95,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                               style: TextStyle(
                                   fontSize: 16.sp,
                                   fontWeight: FontWeight.w400,
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Colors.black),
                             ),
                           ],
@@ -155,7 +155,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                           textStyle: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            fontFamily: 'DMSansR',
+                            
                             color: Colors.white,
                           ),
                           elevation: 0,
@@ -195,7 +195,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    fontFamily: 'DMSansR',
+                    
                     color: Colors.black),
               ),
               // Directionality(
@@ -216,7 +216,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                   AndroidSmsAutofillMethod.smsUserConsentApi,
                   listenForMultipleSmsOnAndroid: true,
                   length: 6,
-                  preFilledWidget: Text('2',style: TextStyle(color: Colors.black,fontFamily: 'DMSansR'),),
+                  preFilledWidget: Text('2',style: TextStyle(color: Colors.black,),),
                   // validator: (value) {
                   //   return value == '222222' ? null : 'Pin is incorrect';
                   // },
@@ -249,7 +249,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                   textStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    fontFamily: 'DMSansR',
+                    
                     color: Colors.white,
                   ),
                   elevation: 0,

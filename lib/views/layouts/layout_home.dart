@@ -38,7 +38,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff2A70C8),
-                  fontFamily: 'Ubuntu-Light'),
+                  fontFamily: 'ubuntu'),
             ),
           ),
           actions: [
@@ -107,7 +107,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                       color: Color(
                                                         0xff000000,
                                                       ),
-                                                      fontFamily: 'DMSansR',
+                                                      
                                                     ),
                                                   ),
                                                 ),
@@ -137,7 +137,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                       color: Color(
                                                         0xff000000,
                                                       ),
-                                                      fontFamily: 'DMSansR',
+                                                      
                                                     ),
                                                   ),
                                                 ),
@@ -210,7 +210,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w700,
-                              fontFamily: 'DMSansR',
+                              
                               color: Colors.white,
                             ),
                           ),
@@ -219,7 +219,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
-                              fontFamily: 'DMSansR',
+                              
                               color: Colors.white,
                             ),
                           ),

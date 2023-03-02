@@ -21,7 +21,7 @@ class TermsConditionsScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: 21.sp,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR',
+                  
                   color: Colors.black),
             ),
           ),
@@ -39,7 +39,7 @@ class TermsConditionsScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
-                    fontFamily: 'DMSansR',
+                    
                     color: Colors.black),
                 textAlign: TextAlign.justify,
               ),
@@ -56,7 +56,7 @@ class TermsConditionsScreen extends StatelessWidget {
               textStyle: TextStyle(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR'),
+                  ),
               onPressed: () {
                 Get.to(HomeScreen());
               },

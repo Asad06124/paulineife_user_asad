@@ -51,7 +51,7 @@ class SettingScreen extends StatelessWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: Colors.black,
-                      fontFamily: 'DMSansR'),
+                      ),
                 ),
                 trailing: Icon(Icons.arrow_forward_ios_rounded,color: Color(0xff97A1B4),),
               ),

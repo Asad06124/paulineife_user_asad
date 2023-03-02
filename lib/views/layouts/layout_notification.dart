@@ -14,10 +14,10 @@ class NotificationLayouts extends StatelessWidget {
           title: Text(
             'Notifications',
             style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: Color(0xff000000),
-                fontFamily: 'DMSansR'),
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: Color(0xff000000),
+            ),
           ),
           centerTitle: true,
           automaticallyImplyLeading: true,
@@ -39,10 +39,10 @@ class NotificationLayouts extends StatelessWidget {
                   'Today',
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff000000),
-                      fontFamily: 'DMSansR'),
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff000000),
+                  ),
                 ),
               ),
               Expanded(
@@ -51,49 +51,50 @@ class NotificationLayouts extends StatelessWidget {
                   itemCount: 2,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                      leading: CircleAvatar(
-                        radius: 25.sp,
-                        backgroundImage: AssetImage('assets/images/12.png'),
-                      ),
-                      title: RichText(
-                        text: TextSpan(
-                          text: 'Asad',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xff000000),
-                              fontFamily: 'DMSansR'),
-                          children: [
-                            TextSpan(
-                            text: ' commented on your ',
-                            style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xff000000),
-                                fontFamily: 'DMSansR'),
-                          ),
-                            TextSpan(
-                            text: ' post.' ,
-                            style: TextStyle(
+                        contentPadding: EdgeInsets.symmetric(horizontal: 0),
+                        leading: CircleAvatar(
+                          radius: 25.sp,
+                          backgroundImage: AssetImage('assets/images/12.png'),
+                        ),
+                        title: RichText(
+                          text: TextSpan(
+                              text: 'Asad',
+                              style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700,
                                 color: Color(0xff000000),
-                                fontFamily: 'DMSansR'),
-                          ),
-                          ]
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: ' commented on your ',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: ' post.',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
+                              ]),
                         ),
-                      ),
-                      subtitle: Text(
-                        '45 minutes ago',
-                        style: TextStyle(
+                        subtitle: Text(
+                          '45 minutes ago',
+                          style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff79869F),
-                            fontFamily: 'DMSansR'),
-                      ),
-                      trailing: Icon(Icons.more_vert,color: Color(0xff97A1B4),)
-                    );
+                          ),
+                        ),
+                        trailing: Icon(
+                          Icons.more_vert,
+                          color: Color(0xff97A1B4),
+                        ));
                   },
                 ),
               )

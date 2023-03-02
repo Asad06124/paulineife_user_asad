@@ -82,7 +82,6 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.w700,
-                          fontFamily: 'DMSans-Bold',
                           color:  Color(0xff000000),
                         ),
                       ),
@@ -91,7 +90,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16.0,
-                          fontFamily: 'DMSansR',
+                          
                           fontWeight: FontWeight.w500,
                           color: index % 2 == 0 ? kblack : kblack,
                         ),
@@ -138,7 +137,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
+                GestureDetector(
                   onTap: () async {
                     // print(index);
                     if (currentIndex == screens.length - 1) {

@@ -34,7 +34,7 @@ class SearchLayout extends StatelessWidget {
                 hintStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    fontFamily: 'DMSansR',
+                    
                     color: Color(0xff79869F)),
               ),
               SizedBox(height: 10.sp,),
@@ -45,7 +45,7 @@ class SearchLayout extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                     color: Color(0xff000000),
-                    fontFamily: 'DMSansR'),
+                    ),
               ),
               Expanded(
                 flex: 2,
@@ -66,7 +66,7 @@ class SearchLayout extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       subtitle: Text(
                         'Flutter Developer',
@@ -74,7 +74,7 @@ class SearchLayout extends StatelessWidget {
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff79869F),
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       trailing: SvgPicture.asset('assets/images/Vector.svg'),
                     );
@@ -88,7 +88,7 @@ class SearchLayout extends StatelessWidget {
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
                     color: Color(0xff000000),
-                    fontFamily: 'DMSansR'),
+                    ),
               ),
               Expanded(
                 flex: 1,
@@ -108,7 +108,7 @@ class SearchLayout extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: Color(0xff000000),
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       subtitle: Text(
                         'Flutter Developer',
@@ -116,7 +116,7 @@ class SearchLayout extends StatelessWidget {
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                             color: Color(0xff79869F),
-                            fontFamily: 'DMSansR'),
+                            ),
                       ),
                       trailing: SvgPicture.asset('assets/images/Vector.svg'),
                     );

@@ -5,9 +5,10 @@ import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
-import 'package:video_trimmer/video_trimmer.dart';
 import '../../controller/registration_controller.dart';
-
+import '../../helpers/video_trimmer/trim_editor.dart';
+import '../../helpers/video_trimmer/trimmer.dart';
+import '../../helpers/video_trimmer/video_viewer.dart';
 
 class PostVideoScreen extends StatefulWidget {
   PostVideoScreen({
@@ -75,19 +76,14 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
             actions: [
               CustomButton1(
                 text: 'Post',
-                textStyle: TextStyle(
-                    fontSize: 12.sp,
-                    fontWeight: FontWeight.w400,
-                    fontFamily: 'DMSansR',
-                    color: Colors.white),
+                textStyle: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: Colors.white),
                 onPressed: () {
                   Get.to(HomeScreen());
                 },
                 color: Color(0xff2A70C8),
                 height: 35.sp,
                 width: 60.sp,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
               ),
             ],
             toolbarHeight: 65.sp,
@@ -113,15 +109,10 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                       Text(
                         'Allow Comments',
                         textAlign: TextAlign.left,
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'DMSansR',
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
                       ),
                       Spacer(),
-                      StatefulBuilder(
-                          builder: (BuildContext context, StateSetter setState) {
+                      StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
                         return Switch(
                             activeColor: Color(0xff3AA0FF),
                             activeTrackColor: Color(0xffD5EBFF),
@@ -135,40 +126,39 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                     ],
                   ),
                 ),
-                Stack(
-                  children: [Container(
+                Stack(children: [
+                  Container(
                     height: 50.h,
                     width: Get.width,
                     child: VideoViewer(trimmer: _trimmer),
                   ),
-                    Positioned(
-                      top: 0,
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      child: TextButton(
-                        child: _isPlaying
-                            ? const Icon(
-                          Icons.pause,
-                          size: 80.0,
-                          color: Colors.white,
-                        )
-                            : const Icon(
-                          Icons.play_arrow,
-                          size: 80.0,
-                          color: Colors.white,
-                        ),
-                        onPressed: () async {
-                          bool playbackState = await _trimmer
-                              .videPlaybackControl(
-                              startValue: _startValue,
-                              endValue: _endValue,);
-                          setState(() => _isPlaying = playbackState);
-                        },
-                      ),
+                  Positioned(
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: TextButton(
+                      child: _isPlaying
+                          ? const Icon(
+                              Icons.pause,
+                              size: 80.0,
+                              color: Colors.white,
+                            )
+                          : const Icon(
+                              Icons.play_arrow,
+                              size: 80.0,
+                              color: Colors.white,
+                            ),
+                      onPressed: () async {
+                        bool playbackState = await _trimmer.videPlaybackControl(
+                          startValue: _startValue,
+                          endValue: _endValue,
+                        );
+                        setState(() => _isPlaying = playbackState);
+                      },
                     ),
-                  ]
-                ),
+                  ),
+                ]),
                 Container(
                   padding: EdgeInsets.all(10.sp),
                   child: CustomInputField1(
@@ -180,22 +170,19 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                   ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.only(left: 8.0,right: 8,bottom: 8),
+                  padding: EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
                   child: Container(
                     color: Colors.black,
                     width: Get.width,
-                    child:TrimEditor(
+                    child: TrimEditor(
                       trimmer: _trimmer,
                       viewerHeight: 50,
                       viewerWidth: Get.width,
                       showDuration: false,
-                      maxVideoLength: Duration(
-                          seconds: _trimmer.videoPlayerController!.value
-                              .duration.inSeconds-10),
+                      maxVideoLength: Duration(seconds: _trimmer.videoPlayerController!.value.duration.inSeconds - 10),
                       onChangeStart: (value) => _startValue = value,
                       onChangeEnd: (value) => _endValue = value,
-                      onChangePlaybackState: (value) =>
-                          setState(() => _isPlaying = value),
+                      onChangePlaybackState: (value) => setState(() => _isPlaying = value),
                     ),
                   ),
                 ),

@@ -23,7 +23,7 @@ class SignUpGoogleScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: 21.sp,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR',
+                  
                   color: Colors.black),
             ),
           ),
@@ -52,7 +52,7 @@ class SignUpGoogleScreen extends StatelessWidget {
                   controller: TextEditingController(text: 'Example_123'),
                   decoration: InputDecoration(
                     label: Text('Username',style: TextStyle(
-                        fontFamily: 'DMSansR',
+                        
                         color: Color(0xff79869F),
                         fontSize: 12,
                         fontWeight: FontWeight.w500),),
@@ -86,7 +86,7 @@ class SignUpGoogleScreen extends StatelessWidget {
                     controller: TextEditingController(text: 'Example'),
                     decoration: InputDecoration(
                       label: Text('First Name',style: TextStyle(
-                          fontFamily: 'DMSansR',
+                          
                           color: Color(0xff79869F),
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500),),
@@ -115,7 +115,7 @@ class SignUpGoogleScreen extends StatelessWidget {
                     controller: TextEditingController(text: 'Example'),
                     decoration: InputDecoration(
                       label: Text('Last Name',style: TextStyle(
-                          fontFamily: 'DMSansR',
+                          
                           color: Color(0xff79869F),
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500),),
@@ -146,7 +146,7 @@ class SignUpGoogleScreen extends StatelessWidget {
               textStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR'),
+                  ),
               onPressed: () {
                 Get.to(TermsConditionsScreen());
               },
@@ -160,7 +160,7 @@ class SignUpGoogleScreen extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 11.sp,
                           fontWeight: FontWeight.w400,
-                          fontFamily: 'DMSansR',
+                          
                           color: Color(0xff000000)),
                       children: [
                         TextSpan(
@@ -168,7 +168,7 @@ class SignUpGoogleScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 11.sp,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: 'DMSansR',
+                                
                                 color: Color(0xff2A70C8)))
                       ]),
                 ))

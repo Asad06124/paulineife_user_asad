@@ -35,7 +35,7 @@ class ReportScreen extends StatelessWidget {
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
                 color: Color(0xff000000),
-                fontFamily: 'DMSansR'),
+                ),
           ),
           centerTitle: true,
         ),
@@ -52,7 +52,7 @@ class ReportScreen extends StatelessWidget {
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Color(0xff000000),
-                      fontFamily: 'DMSansR'),
+                      ),
                 ),
               ),
               Padding(

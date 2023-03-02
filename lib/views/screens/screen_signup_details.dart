@@ -25,7 +25,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: 21.sp,
                   fontWeight: FontWeight.w700,
-                  fontFamily: 'DMSansR',
+                  
                   color: Colors.black),
             ),
           ),
@@ -54,7 +54,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                   controller: TextEditingController(text: 'Example_123'),
                   decoration: InputDecoration(
                     label: Text('Username',style: TextStyle(
-                        fontFamily: 'DMSansR',
+                        
                         color: Color(0xff79869F),
                         fontSize: 12,
                         fontWeight: FontWeight.w500),),
@@ -87,7 +87,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                       controller: TextEditingController(text: 'Example'),
                       decoration: InputDecoration(
                         label: Text('First Name',style: TextStyle(
-                            fontFamily: 'DMSansR',
+                            
                             color: Color(0xff79869F),
                             fontSize: 12,
                             fontWeight: FontWeight.w500),),
@@ -116,7 +116,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                       controller: TextEditingController(text: 'Example'),
                       decoration: InputDecoration(
                         label: Text('Last Name',style: TextStyle(
-                            fontFamily: 'DMSansR',
+                            
                             color: Color(0xff79869F),
                             fontSize: 12,
                             fontWeight: FontWeight.w500),),
@@ -147,7 +147,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                   controller: TextEditingController(text: '15/06/2000'),
                   decoration: InputDecoration(
                     label: Text('Date of Birth',style: TextStyle(
-                        fontFamily: 'DMSansR',
+                        
                         color: Color(0xff79869F),
                         fontSize: 12,
                         fontWeight: FontWeight.w500),),
@@ -183,7 +183,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left: 5.0, top: 2),
                       child: Text(
                         'New Password',style: TextStyle(
-                          fontFamily: 'DMSansR',
+                          
                           color: Color(0xff79869F),
                           fontSize: 10,
                           fontWeight: FontWeight.w500),
@@ -222,7 +222,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff000000),
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
@@ -241,7 +241,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
-                            //       fontFamily: 'DMSansR',
+                            //       
                             //       color: Color(0xff000000),
                             //       fontSize: 20.sp,
                             //       fontWeight: FontWeight.w400),
@@ -281,7 +281,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left: 5.0, top: 2),
                       child: Text(
                         'Retype Password',style: TextStyle(
-                          fontFamily: 'DMSansR',
+                          
                           color: Color(0xff79869F),
                           fontSize: 10,
                           fontWeight: FontWeight.w500),
@@ -320,7 +320,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff000000),
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
@@ -339,7 +339,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
-                            //       fontFamily: 'DMSansR',
+                            //       
                             //       color: Color(0xff000000),
                             //       fontSize: 20.sp,
                             //       fontWeight: FontWeight.w400),
@@ -372,7 +372,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                 textStyle: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
-                    fontFamily: 'DMSansR'),
+                    ),
                 onPressed: () {
                   Get.to(TermsConditionsScreen());
                 },
@@ -385,7 +385,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w700,
-                            fontFamily: 'DMSansR',
+                            
                             color: Color(0xff000000)),
                         children: [
                           TextSpan(
@@ -393,7 +393,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w700,
-                                  fontFamily: 'DMSansR',
+                                  
                                   color: Color(0xff2A70C8)))
                         ]),
                   ))
