@@ -1,16 +1,13 @@
-import 'dart:io';
-import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/views/layouts/layout_home.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 import 'package:video_trimmer/video_trimmer.dart';
 import '../../controller/registration_controller.dart';
-import 'package:appinio_video_player/appinio_video_player.dart' as appinio;
+
 
 class PostVideoScreen extends StatefulWidget {
   PostVideoScreen({

@@ -5,6 +5,7 @@ import 'package:chat_bubbles/chat_bubbles.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat_list.dart';
+import 'package:paulineife_user/views/screens/screen_report.dart';
 
 import '../../../widgets/custom_input_field1.dart';
 
@@ -127,12 +128,44 @@ class ChatScreen extends StatelessWidget {
           ),
           foregroundColor: Colors.black,
           actions: [
-            IconButton(
-              onPressed: () {},
+            PopupMenuButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.sp),
+              ),
               icon: Icon(
-                Icons.more_vert_outlined,
+                Icons.more_vert,
                 color: Color(0xff97A1B4),
               ),
+              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                PopupMenuItem(
+                  onTap: () {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      Get.to(ReportScreen());
+                    });
+                  },
+                  child: Text(
+                    'Report',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xffFF0000),
+                        fontFamily: 'DMSansR'),
+                  ),
+                ),
+                PopupMenuItem(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Text(
+                    'Block',
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff000000),
+                        fontFamily: 'DMSansR'),
+                  ),
+                ),
+              ],
             ),
           ],
           elevation: 4,

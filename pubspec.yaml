@@ -58,9 +58,9 @@ dependencies:
   flutter_local_notifications: ^13.0.0
   cached_network_image: ^3.2.3
 #  extended_image: ^7.0.2
-  flutter_onboard: ^2.0.0
-  flutter_native_splash: ^2.2.17
-  flutter_svg: ^2.0.1
+#  flutter_onboard: ^2.0.0
+  flutter_native_splash: ^2.2.18
+  flutter_svg: any
   sizer: ^2.0.15
 #  email_validator: ^2.1.17
 #  shared_preferences: ^2.0.17
@@ -72,18 +72,21 @@ dependencies:
 #  chatview: ^1.2.0+1
   chat_bubbles: any
   sliding_top_panel: ^0.0.7
-  favorite_button: ^0.0.4
+#  favorite_button: ^0.0.4
 #  intl_phone_number_input: ^0.7.2
   ola_like_country_picker: ^0.1.2
   pinput: any
   video_trimmer: ^1.1.3
   fetch_all_videos: any
-  appinio_video_player: ^1.2.0
-  vibration: ^1.7.6
+#  appinio_video_player: ^1.2.0
+#  vibration: ^1.7.6
   social_media_recorder: any
-  just_audio: ^0.9.31
-  audio_video_progress_bar: ^1.0.0
-  audio_session: ^0.1.13
+#  just_audio: ^0.9.31
+#  audio_video_progress_bar: ^1.0.0
+#  audio_session: ^0.1.13
+  badges: ^3.0.2
+#  flutter_svg_provider: any
+  audioplayers: ^3.0.1
 
 
 

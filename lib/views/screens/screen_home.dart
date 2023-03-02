@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:fetch_all_videos/fetch_all_videos.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Badge;
+import 'package:badges/badges.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -45,23 +46,36 @@ class _HomeScreenState extends State<HomeScreen> {
       ],
       items: [
         PersistentBottomNavBarItem(
-          onPressed: (val){
+          onPressed: (val) {
             setState(() {
               _controller.index = 0;
             });
           },
-          icon:_controller.index == 0? SvgPicture.asset("assets/svgs/Home_opened.svg"):SvgPicture.asset("assets/svgs/Home_closed.svg"),
+          icon: _controller.index == 0
+              ? Padding(
+            padding: EdgeInsets.only(bottom: 5.0),
+                child: SvgPicture.asset("assets/svgs/Home_opened.svg"),
+              )
+              : SvgPicture.asset("assets/svgs/Home_closed.svg"),
           activeColorPrimary: CupertinoColors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
-          onPressed: (val){
+          onPressed: (val) {
             setState(() {
               _controller.index = 1;
             });
           },
-          icon:_controller.index == 1? SvgPicture.asset("assets/svgs/search_opened.svg"):SvgPicture.asset("assets/svgs/search_closed.svg"),
+          icon: _controller.index == 1
+              ? Padding(
+            padding: EdgeInsets.only(bottom: 6.0),
+                child: SvgPicture.asset("assets/svgs/search_opened.svg"),
+              )
+              : Padding(
+                padding: EdgeInsets.only(bottom: 6.0),
+                child: SvgPicture.asset("assets/svgs/search_closed.svg"),
+              ),
           activeColorPrimary: CupertinoColors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -219,11 +233,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ListTile(
                       onTap: () {
                         setState(() async {
-
-                          FetchAllVideos ob =  FetchAllVideos();
-                          controller.videos =  await ob.getAllVideos();
-                          if (controller.videos.length>=1) {
-                            Get.to(VideoGalleryScreen(videosList: controller.videos,));
+                          FetchAllVideos ob = FetchAllVideos();
+                          controller.videos = await ob.getAllVideos();
+                          if (controller.videos.length >= 1) {
+                            Get.to(VideoGalleryScreen(
+                              videosList: controller.videos,
+                            ));
                           }
                         });
                       },
@@ -253,36 +268,50 @@ class _HomeScreenState extends State<HomeScreen> {
               elevation: 0,
             );
           },
-          icon: SvgPicture.asset("assets/svgs/add.svg"),
+          icon: Padding(
+            padding: EdgeInsets.only(bottom: 6.0),
+            child: SvgPicture.asset("assets/svgs/add.svg"),
+          ),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
-          onPressed: (val){
+          onPressed: (val) {
             setState(() {
               _controller.index = 3;
             });
           },
           icon: Badge(
-              label: Text('1'),
-              smallSize: 5.sp,
-              child: _controller.index == 3? SvgPicture.asset("assets/svgs/Notification_opened.svg"):SvgPicture.asset("assets/svgs/Notification_closed.svg"),),
+            badgeContent: Text(
+              '1',
+              style: TextStyle(color: Colors.white),
+
+            ),
+            position: BadgePosition.topEnd(end: -7,top: -13),
+            child: _controller.index == 3
+                ? SvgPicture.asset("assets/svgs/Notification_opened.svg")
+                : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
+          ),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
-          onPressed: (val){
+          onPressed: (val) {
             setState(() {
               _controller.index = 4;
             });
           },
-          icon: Container(
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                      color: Color(0xff3AA0FF), width: 3.sp)),
-              child: CircleAvatar(backgroundImage: AssetImage('assets/images/12.png'),)),
+          icon: Padding(
+            padding: EdgeInsets.only(bottom: 3.0),
+            child: Container(
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Color(0xff3AA0FF), width: 2.sp)),
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/12.png'),
+                )),
+          ),
           title: ("Settings"),
           activeColorPrimary: CupertinoColors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,

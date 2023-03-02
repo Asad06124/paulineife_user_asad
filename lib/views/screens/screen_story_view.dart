@@ -77,11 +77,39 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
       ));
     }
   }
+  void initi(){
+    _controller.addListener(listenerController);
+    initStoryPageItems();
+    _generateRandomNumber();
+    StryCount = randomNumber;
+  }
 
   bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
+    void _generateRandomNumber() {
+      // Generate a random index using the Random class
+      int randomIndex = Random().nextInt(numbers.length);
+
+      // Access the element at the random index
+      setState(() {
+        randomNumber = numbers[randomIndex];
+      });
+    }
+    void listenerController() {
+      _isPanelVisible.value = _controller.isPanelOpen;
+    }
+    void initStoryPageItems() {
+      for (int i = 0; i < StryCount; i++) {
+        storyItems.add(StoryItem.pageImage(
+          url:
+          'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          controller: controller,
+        ));
+      }
+    }
+
     return SafeArea(
       child: Scaffold(
         body:SlidingTopPanel(
@@ -187,6 +215,11 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   if (direction == Direction.down) {
                     Navigator.pop(context);
                   }
+                  if (direction == Direction.up) {
+                    storyItems.clear();
+                    initi();
+
+                  }
                 },
                 onComplete: () {
                   Navigator.pop(context);
@@ -257,7 +290,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                             ),
                             color: Color(0x5effffff)),
                         child: Text(
-                          '2/5',
+                          '2/${storyItems.length}',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

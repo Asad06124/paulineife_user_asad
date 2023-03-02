@@ -1,11 +1,10 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:sizer/sizer.dart';
 import 'package:video_trimmer/video_trimmer.dart';
-
 import '../../controller/registration_controller.dart';
 import '../../widgets/custom_buttom.dart';
 
@@ -13,6 +12,7 @@ class VideoGalleryScreen extends StatelessWidget {
   VideoGalleryScreen({Key? key, required this.videosList}) : super(key: key);
   List videosList;
   var controller = Get.put(RegistrationController());
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -65,14 +65,22 @@ class VideoGalleryScreen extends StatelessWidget {
                   mainAxisSpacing: 1.sp),
               itemBuilder: (BuildContext context, int index) {
                 return index == 0
-                    ? Container()
+                    ? GestureDetector(
+                  onTap: (){ controller.getFromCameravid();},
+                      child: Container(
+                  color: Color(0xffE2E4EB),
+                  padding: EdgeInsets.all(30.sp),
+                          child: SvgPicture.asset('assets/svgs/camera3.svg'),
+                        ),
+                    )
                     : Stack(children: [
                         Container(
                           height: Get.height,
                           width: Get.width,
                           color: Colors.black,
                           child: VideoViewer(
-                            trimmer: Trimmer()..loadVideo(videoFile:File(videosList[index]) ),
+                            trimmer: Trimmer()
+                              ..loadVideo(videoFile: File(videosList[index])),
                           ),
                         ),
                         Positioned(
@@ -90,7 +98,6 @@ class VideoGalleryScreen extends StatelessWidget {
                               controller.vid = File(videosList[index]);
                               controller.update();
                               Get.to(PostVideoScreen());
-
                             },
                           ),
                         ),

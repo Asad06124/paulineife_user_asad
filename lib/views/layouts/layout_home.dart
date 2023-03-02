@@ -1,6 +1,6 @@
 import 'dart:io';
-
-import 'package:flutter/material.dart';
+import 'package:badges/badges.dart';
+import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -8,7 +8,6 @@ import 'package:paulineife_user/views/screens/screen_chat_list.dart';
 import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
-
 import '../../constant/constant.dart';
 import '../../controller/registration_controller.dart';
 import '../../widgets/status_view_custom.dart';
@@ -50,7 +49,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                   Get.to(ChatListScreen());
                 },
                 icon: Badge(
-                  label: Text('1'),
+                  badgeContent: Text('1',style: TextStyle(color: Colors.white),),
+                  position: BadgePosition.topEnd(end: -7,top: -13),
                   child: SvgPicture.asset("assets/svgs/email.svg"),
                 ),
               ),

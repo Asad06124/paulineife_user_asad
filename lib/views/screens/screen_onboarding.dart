@@ -1,13 +1,7 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:get/get.dart';
-import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/views/screens/screen_login.dart';
-import 'package:vibration/vibration.dart';
 
 class ScreenOnboarding extends StatefulWidget {
   @override
@@ -72,7 +66,6 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                 // physics: NeverScrollableScrollPhysics(),
                 onPageChanged: (int index) {
                   setState(() {
-                    Vibration.vibrate(duration: 250);
                     currentIndex = index;
                   });
                 },

@@ -40,7 +40,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           centerTitle: true,
           leading: Icon(Icons.arrow_back_rounded),
-          actions: [Icon(Icons.more_vert,color: Color(0xff97A1B4),)],
+          actions: [ PopupMenuButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.sp),
+            ),
+            icon: Icon(
+              Icons.more_vert,
+              color: Color(0xff97A1B4),
+            ),
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+              PopupMenuItem(
+                onTap: () {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    Get.to(ReportScreen());
+                  });
+                },
+                child: Text(
+                  'Report',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xffFF0000),
+                      fontFamily: 'DMSansR'),
+                ),
+              ),
+              PopupMenuItem(
+                onTap: () {
+                  Get.back();
+                },
+                child: Text(
+                  'Block',
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff000000),
+                      fontFamily: 'DMSansR'),
+                ),
+              ),
+            ],
+          ),],
         ),
         body: Padding(
           padding: EdgeInsets.all(8.sp),

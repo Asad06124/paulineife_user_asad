@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:badges/badges.dart';
+import 'package:flutter/material.dart' hide Badge;
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:sizer/sizer.dart';
@@ -86,8 +87,9 @@ class ChatListScreen extends StatelessWidget {
                           color: Color(0xff79869F),
                           fontFamily: 'DMSansR'),),
                           Badge(
-                            label: Text('1'),
-                            backgroundColor: Colors.blue,
+                            badgeContent: Text('1',style: TextStyle(color: Colors.white),),
+                            badgeStyle: BadgeStyle(badgeColor: Colors.blue),
+                            // backgroundColor: Colors.blue,
                           ),
                         ],
                       ),

@@ -1,17 +1,13 @@
-import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:social_media_recorder/audio_encoder_type.dart';
 import 'package:social_media_recorder/screen/social_media_recorder.dart';
+import '../../test_audio.dart';
 
-import '../../helpers/audio manager.dart';
-import '../../helpers/audio_widget.dart';
-
-const url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3';
+const url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3';
 
 class CommentsScreen extends StatefulWidget {
   CommentsScreen({Key? key, required this.COntroller}) : super(key: key);
@@ -20,37 +16,8 @@ class CommentsScreen extends StatefulWidget {
   @override
   State<CommentsScreen> createState() => _CommentsScreenState();
 }
-
 class _CommentsScreenState extends State<CommentsScreen> {
   var controller = Get.put(RegistrationController());
-  late AudioPlayerManager manager;
-  var _isShowingWidgetOutline = false;
-  var _labelLocation = TimeLabelLocation.below;
-  var _labelType = TimeLabelType.totalTime;
-  TextStyle? _labelStyle;
-  var _thumbRadius = 10.0;
-  var _labelPadding = 0.0;
-  var _barHeight = 5.0;
-  var _barCapShape = BarCapShape.round;
-  Color? _baseBarColor;
-  Color? _progressBarColor;
-  Color? _bufferedBarColor;
-  Color? _thumbColor;
-  Color? _thumbGlowColor;
-  var _thumbCanPaintOutsideBar = true;
-
-  @override
-  void initState() {
-    super.initState();
-    manager = AudioPlayerManager();
-    manager.init();
-  }
-
-  @override
-  void dispose() {
-    manager.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +97,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       child: index == 2
                                           ? Container(
                                         width: 20.w,
-                                              child:FullExample(audioPlayerManager: manager),)
+                                             child: ItemAudioPlay(url: url,),)
                                           : Text(
                                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo.',
                                               style: TextStyle(
