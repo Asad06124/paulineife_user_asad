@@ -1,8 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:custom_utils/custom_utils.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import 'helpers/theme_service.dart';
@@ -69,13 +67,8 @@ class _ItemAudioPlayState extends State<ItemAudioPlay> {
         IconButton(
           onPressed: () async {
             if (widget.disabled != null && widget.disabled == true && !isPlaying) {
-              Get.snackbar(
-                  "Alert",
-                  "Please pause another playing audio first",
-                  backgroundColor: Colors.black,
-                  colorText: Colors.black,
-                  snackPosition: SnackPosition.BOTTOM
-              );
+              Get.snackbar("Alert", "Please pause another playing audio first",
+                  backgroundColor: Colors.black, colorText: Colors.black, snackPosition: SnackPosition.BOTTOM);
               return;
             }
 
@@ -90,11 +83,13 @@ class _ItemAudioPlayState extends State<ItemAudioPlay> {
           },
           icon: (isPlaying)
               ? Icon(
-            Icons.pause,
-            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,          )
+                  Icons.pause,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                )
               : Icon(
-            Icons.play_arrow,
-            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,          ),
+                  Icons.play_arrow,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                ),
         ),
         Expanded(
           child: Column(
@@ -117,5 +112,5 @@ class _ItemAudioPlayState extends State<ItemAudioPlay> {
         Text("${timeStampToDateTime(position.inMilliseconds, "mm:ss")}"),
       ],
     );
-    }
+  }
 }

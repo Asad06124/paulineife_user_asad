@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ola_like_country_picker/ola_like_country_picker.dart';
-import 'package:paulineife_user/views/screens/screen_signup_details.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../helpers/theme.dart';
-import '../../helpers/theme_service.dart';
 import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
 import '../screens/screen_new_password.dart';
@@ -202,7 +199,8 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                ),
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                ),
               ),
               // Directionality(
               //   // Specify direction if desired

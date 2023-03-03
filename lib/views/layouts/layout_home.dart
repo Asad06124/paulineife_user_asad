@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,10 +9,9 @@ import 'package:paulineife_user/views/screens/screen_chat_list.dart';
 import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
+
 import '../../constant/constant.dart';
 import '../../controller/registration_controller.dart';
-
-import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 import '../../widgets/status_view_custom.dart';
 

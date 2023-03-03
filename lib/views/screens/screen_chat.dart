@@ -1,16 +1,13 @@
-import 'package:custom_utils/custom_utils.dart';
-
-import 'package:flutter/material.dart';
 import 'package:chat_bubbles/chat_bubbles.dart';
+import 'package:custom_utils/custom_utils.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/views/screens/screen_chat_list.dart';
 import 'package:paulineife_user/views/screens/screen_report.dart';
-
-import '../../../widgets/custom_input_field1.dart';
 
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
+
 class ChatScreen extends StatelessWidget {
   ChatScreen({Key? key}) : super(key: key);
 
@@ -110,9 +107,7 @@ class ChatScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Asad',
-                    style: getAppbarTextTheme().copyWith(
-                      fontSize: 14.sp
-                    ),
+                    style: getAppbarTextTheme().copyWith(fontSize: 14.sp),
                   ),
                   Text(
                     'Online',
@@ -146,10 +141,10 @@ class ChatScreen extends StatelessWidget {
                   child: Text(
                     'Report',
                     style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xffFF0000),
-                        ),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xffFF0000),
+                    ),
                   ),
                 ),
                 PopupMenuItem(
@@ -158,10 +153,7 @@ class ChatScreen extends StatelessWidget {
                   },
                   child: Text(
                     'Block',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                        ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                   ),
                 ),
               ],
@@ -210,7 +202,8 @@ class ChatScreen extends StatelessWidget {
                             tail: true,
                             textStyle: TextStyle(
                               fontSize: 12.sp,
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                            ),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 4.w),
@@ -254,8 +247,7 @@ class ChatScreen extends StatelessWidget {
                                   ),
                                 ),
                                 BubbleNormal(
-                                  text:
-                                      'Oh yes, please send your CV/Resume here',
+                                  text: 'Oh yes, please send your CV/Resume here',
                                   isSender: false,
                                   // seen: true,
                                   delivered: false,
@@ -357,7 +349,8 @@ class ChatScreen extends StatelessWidget {
                             tail: true,
                             textStyle: TextStyle(
                               fontSize: 12.sp,
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                            ),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 4.w),
@@ -521,9 +514,7 @@ class ChatScreen extends StatelessWidget {
                 decoration: BoxDecoration(color: Color(0xFFFAFBFF)),
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Color(0xffE2E4EB)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: Color(0xffE2E4EB)),
                   child: TextFormField(
                     style: TextStyle(fontSize: 16, color: Color(0xff9C9EB9)),
                     onChanged: (value) {},
@@ -546,7 +537,9 @@ class ChatScreen extends StatelessWidget {
                               color: Color(0xffBBBFD0),
                             ),
                             SvgPicture.asset('assets/svgs/imoj.svg'),
-                            SizedBox(width: 10.sp,),
+                            SizedBox(
+                              width: 10.sp,
+                            ),
                           ],
                         ),
                       ),
@@ -554,8 +547,7 @@ class ChatScreen extends StatelessWidget {
                         onPressed: () {},
                         icon: SvgPicture.asset('assets/svgs/send.svg'),
                       ),
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
+                      contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
                       hintText: 'Type Message...',
                       hintStyle: TextStyle(
                         color: Color(0xff8E8E93),

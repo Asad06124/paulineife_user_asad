@@ -4,9 +4,9 @@ import 'package:paulineife_user/views/screens/screen_login.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../controller/registration_controller.dart';
-
 import '../../helpers/theme.dart';
-import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
+import '../../helpers/theme_service.dart';
+import '../../widgets/custom_buttom.dart';
 
 class NewPasswordScreen extends StatelessWidget {
   NewPasswordScreen({Key? key}) : super(key: key);
@@ -58,17 +58,12 @@ class NewPasswordScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left: 5.0, top: 2),
                       child: Text(
                         'New Password',
-                        style: TextStyle(
-                            
-                            color: Color(0xff79869F),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
+                        style: TextStyle(color: Color(0xff79869F), fontSize: 12, fontWeight: FontWeight.w500),
                         textAlign: TextAlign.start,
                       ),
                     ),
                     StatefulBuilder(
-                      builder: (BuildContext context,
-                          void Function(void Function()) setState) {
+                      builder: (BuildContext context, void Function(void Function()) setState) {
                         return Container(
                           height: WHeight.height / 18,
                           child: TextFormField(
@@ -89,21 +84,15 @@ class NewPasswordScreen extends StatelessWidget {
                                     isPasswordField = !isPasswordField;
                                   });
                                 },
-                                icon: Icon(isPasswordField
-                                    ? Icons.visibility
-                                    : Icons.visibility_off_outlined),
+                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-
-                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                  fontSize: 30.sp,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                                  EdgeInsets.only(left: 5, bottom: 5),
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, fontSize: 30.sp, fontWeight: FontWeight.w400),
+                              contentPadding: EdgeInsets.only(left: 5, bottom: 5),
                             ),
 
                             // decoration: InputDecoration(
@@ -117,7 +106,7 @@ class NewPasswordScreen extends StatelessWidget {
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
-                            //       
+                            //
                             //       color: Color(0xff000000),
                             //       fontSize: 20.sp,
                             //       fontWeight: FontWeight.w400),
@@ -160,17 +149,12 @@ class NewPasswordScreen extends StatelessWidget {
                       padding: EdgeInsets.only(left: 5.0, top: 2),
                       child: Text(
                         'New Password',
-                        style: TextStyle(
-                            
-                            color: Color(0xff79869F),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
+                        style: TextStyle(color: Color(0xff79869F), fontSize: 12, fontWeight: FontWeight.w500),
                         textAlign: TextAlign.start,
                       ),
                     ),
                     StatefulBuilder(
-                      builder: (BuildContext context,
-                          void Function(void Function()) setState) {
+                      builder: (BuildContext context, void Function(void Function()) setState) {
                         return Container(
                           height: WHeight.height / 18,
                           child: TextFormField(
@@ -191,20 +175,15 @@ class NewPasswordScreen extends StatelessWidget {
                                     isPasswordField = !isPasswordField;
                                   });
                                 },
-                                icon: Icon(isPasswordField
-                                    ? Icons.visibility
-                                    : Icons.visibility_off_outlined),
+                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                  fontSize: 30.sp,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                                  EdgeInsets.only(left: 5, bottom: 5),
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, fontSize: 30.sp, fontWeight: FontWeight.w400),
+                              contentPadding: EdgeInsets.only(left: 5, bottom: 5),
                             ),
 
                             // decoration: InputDecoration(
@@ -218,7 +197,7 @@ class NewPasswordScreen extends StatelessWidget {
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
-                            //       
+                            //
                             //       color: Color(0xff000000),
                             //       fontSize: 20.sp,
                             //       fontWeight: FontWeight.w400),
@@ -248,10 +227,10 @@ class NewPasswordScreen extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(25.sp)),
               ),
               textStyle: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
                 color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-                  ),
+              ),
               onPressed: () {
                 Get.to(ScreenLogin());
               },

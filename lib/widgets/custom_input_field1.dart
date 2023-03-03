@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 class CustomInputField1 extends StatefulWidget {
   final String? hint;
@@ -43,9 +42,9 @@ class CustomInputField1 extends StatefulWidget {
 
   CustomInputField1(
       {this.hint,
-        this.scrollController,
+      this.scrollController,
       this.isPasswordField,
-        this.textAlign,
+      this.textAlign,
       this.onChange,
       this.keyboardType,
       this.prefix,
@@ -126,7 +125,7 @@ class _CustomInputField1State extends State<CustomInputField1> {
       margin: widget.margin ?? EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
         scrollController: widget.scrollController,
-        textAlign: widget.textAlign==null?TextAlign.start:widget.textAlign!,
+        textAlign: widget.textAlign == null ? TextAlign.start : widget.textAlign!,
         maxLength: widget.limit,
         key: widget.key,
         onChanged: widget.asyncValidator == null
@@ -158,8 +157,7 @@ class _CustomInputField1State extends State<CustomInputField1> {
         focusNode: widget.focusNode,
         enabled: widget.keyboardType != TextInputType.none,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        buildCounter: (_,
-            {required currentLength, maxLength, required isFocused}) {
+        buildCounter: (_, {required currentLength, maxLength, required isFocused}) {
           return Visibility(
             visible: widget.showCounter ?? false,
             child: Padding(
@@ -167,8 +165,7 @@ class _CustomInputField1State extends State<CustomInputField1> {
               child: Container(
                 alignment: Alignment.centerRight,
                 child: Text(
-                  currentLength.toString() +
-                      (widget.limit != null ? "/" + maxLength.toString() : ""),
+                  currentLength.toString() + (widget.limit != null ? "/" + maxLength.toString() : ""),
                   style: TextStyle(color: widget.counterColor),
                 ),
               ),
@@ -186,7 +183,7 @@ class _CustomInputField1State extends State<CustomInputField1> {
         //   ),
         //   hintText: '.......',
         //   hintStyle: TextStyle(
-        //       
+        //
         //       color: Color(0xff000000),
         //       fontSize: 20.sp,
         //       fontWeight: FontWeight.w400),
@@ -202,7 +199,6 @@ class _CustomInputField1State extends State<CustomInputField1> {
             // contentPadding: EdgeInsets.only(left: 10),
             prefixIcon: widget.prefix,
             hintText: widget.hint,
-
             labelText: widget.label,
             isDense: widget.isDense,
             fillColor: widget.fillColor ?? /*Color(0xFFECECEC)*/
@@ -224,20 +220,13 @@ class _CustomInputField1State extends State<CustomInputField1> {
                         icon: Visibility(
                           visible: isPasswordField,
                           child: Icon(
-                            isPasswordField
-                                ? (_isHidden
-                                    ? Icons.visibility
-                                    : Icons.visibility_off_outlined)
-                                : null,
+                            isPasswordField ? (_isHidden ? Icons.visibility : Icons.visibility_off_outlined) : null,
                           ),
                         ),
                       )
-                    : (widget.asyncValidator != null
-                        ? _getSuffixIcon()
-                        : null)),
+                    : (widget.asyncValidator != null ? _getSuffixIcon() : null)),
             // hintStyle: TextStyle(color: hintColor),
-            contentPadding:widget.contentPadding?? EdgeInsets.zero,
-
+            contentPadding: widget.contentPadding ?? EdgeInsets.zero,
             errorBorder: InputBorder.none,
             disabledBorder: InputBorder.none,
             border: widget.border ??
@@ -246,14 +235,10 @@ class _CustomInputField1State extends State<CustomInputField1> {
                     : widget.borderType != null
                         ? (widget.borderType == InputBorderType1.outline
                             ? OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                borderSide:
-                                    BorderSide(width: 1, color: hintColor),
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(width: 1, color: hintColor),
                               )
-                            : UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: hintColor, width: 1)))
+                            : UnderlineInputBorder(borderSide: BorderSide(color: hintColor, width: 1)))
                         : null),
             enabledBorder: widget.enabledBorder ??
                 ((widget.showBorder != null && widget.showBorder == false)
@@ -261,14 +246,11 @@ class _CustomInputField1State extends State<CustomInputField1> {
                     : widget.borderType != null
                         ? (widget.borderType == InputBorderType1.outline
                             ? OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                borderSide:
-                                    BorderSide(width: 1, color: hintColor),
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(width: 1, color: hintColor),
                               )
                             : UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 1, color: hintColor),
+                                borderSide: BorderSide(width: 1, color: hintColor),
                               ))
                         : null),
             focusedBorder: widget.enabledBorder ??
@@ -277,14 +259,11 @@ class _CustomInputField1State extends State<CustomInputField1> {
                     : widget.borderType != null
                         ? (widget.borderType == InputBorderType1.outline
                             ? OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                borderSide:
-                                    BorderSide(width: 1, color: hintColor),
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderSide: BorderSide(width: 1, color: hintColor),
                               )
                             : UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 1, color: hintColor),
+                                borderSide: BorderSide(width: 1, color: hintColor),
                               ))
                         : null)
             // filled: true,

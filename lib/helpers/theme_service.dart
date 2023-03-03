@@ -3,13 +3,12 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:paulineife_user/helpers/theme.dart';
 
-
 class ThemeService {
   static final _getStorage = GetStorage();
   static final storageKey = 'isDarkMode';
 
   static ThemeMode getThemeMode() {
-    return  ThemeMode.system;
+    return ThemeMode.system;
   }
 
   static bool isSavedDarkMode() {
@@ -24,6 +23,7 @@ class ThemeService {
     Get.changeThemeMode(isSavedDarkMode() ? ThemeMode.light : ThemeMode.dark);
     saveThemeMode(!isSavedDarkMode());
   }
+
   void setDarkThemeMode(bool dark) {
     Get.changeTheme(dark ? Themes().darkTheme : Themes().lightTheme);
     saveThemeMode(dark);

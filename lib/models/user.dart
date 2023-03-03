@@ -1,16 +1,5 @@
 class Users {
-  String id,
-      name,
-      email,
-      password,
-      confirmPassword,
-      gender,
-      notification,
-      profileImageURL,
-      address,
-      fiverID,
-      upworkID,
-      freelanceID;
+  String id, name, email, password, confirmPassword, gender, notification, profileImageURL, address, fiverID, upworkID, freelanceID;
   int timeStamp;
   bool approved = false;
   bool declined = false;

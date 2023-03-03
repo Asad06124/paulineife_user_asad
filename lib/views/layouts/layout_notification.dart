@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
-
 
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
+
 class NotificationLayouts extends StatelessWidget {
   const NotificationLayouts({Key? key}) : super(key: key);
 
@@ -16,9 +15,7 @@ class NotificationLayouts extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             'Notifications',
-            style: getAppbarTextTheme().copyWith(
-              fontSize: 18
-            ),
+            style: getAppbarTextTheme().copyWith(fontSize: 18),
           ),
           centerTitle: true,
           automaticallyImplyLeading: true,
@@ -26,7 +23,8 @@ class NotificationLayouts extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Icons.arrow_back,
-              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,            ),
+              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+            ),
           ),
         ),
         body: Padding(
@@ -38,10 +36,7 @@ class NotificationLayouts extends StatelessWidget {
                 child: Text(
                   'Today',
                   textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                  ),
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                 ),
               ),
               Expanded(
@@ -62,22 +57,17 @@ class NotificationLayouts extends StatelessWidget {
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700,
                                 color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-
                               ),
                               children: [
                                 TextSpan(
                                   text: ' commented on your ',
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w400,
-                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                                  ),
+                                      fontSize: 14, fontWeight: FontWeight.w400, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                                 ),
                                 TextSpan(
                                   text: ' post.',
                                   style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                                  ),
+                                      fontSize: 14, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                                 ),
                               ]),
                         ),

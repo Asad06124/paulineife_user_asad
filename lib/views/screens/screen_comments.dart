@@ -4,11 +4,10 @@ import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:social_media_recorder/audio_encoder_type.dart';
-import '../../helpers/social_media_recorder/audio_encoder_type.dart';
-import '../../helpers/social_media_recorder/screen/social_media_recorder.dart';
 
-import '../../helpers/theme.dart';
-import '../../helpers/theme_service.dart';import '../../test_audio.dart';
+import '../../helpers/social_media_recorder/screen/social_media_recorder.dart';
+import '../../helpers/theme_service.dart';
+import '../../test_audio.dart';
 
 const url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3';
 
@@ -74,9 +73,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                         text: TextSpan(
                                           text: 'Asad . ',
                                           style: TextStyle(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w700,
-                                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                                          ),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w700,
+                                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                                           children: [
                                             TextSpan(
                                               text: ' 5h ago',
@@ -105,7 +104,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                               style: TextStyle(
                                                 fontSize: 9.sp,
                                                 fontWeight: FontWeight.w400,
-                                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                                              ),
+                                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                              ),
                                               textAlign: TextAlign.justify,
                                             ),
                                     ),
@@ -206,9 +206,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     text: TextSpan(
                                                       text: 'Asad . ',
                                                       style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight: FontWeight.w700,
-                                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                                                      ),
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w700,
+                                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                                                       children: [
                                                         TextSpan(
                                                           text: ' 5h ago',
@@ -230,7 +230,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     style: TextStyle(
                                                       fontSize: 9.sp,
                                                       fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                                                    ),
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                                    ),
                                                     textAlign: TextAlign.justify,
                                                   ),
                                                 ),
@@ -315,9 +316,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     text: TextSpan(
                                                       text: 'Asad . ',
                                                       style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight: FontWeight.w700,
-                                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                                                      ),
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w700,
+                                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                                                       children: [
                                                         TextSpan(
                                                           text: ' 5h ago',
@@ -339,7 +340,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     style: TextStyle(
                                                       fontSize: 9.sp,
                                                       fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                                                    ),
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                                    ),
                                                     textAlign: TextAlign.justify,
                                                   ),
                                                 ),
@@ -424,9 +426,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     text: TextSpan(
                                                       text: 'Asad . ',
                                                       style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontWeight: FontWeight.w700,
-                                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                                                      ),
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w700,
+                                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                                                       children: [
                                                         TextSpan(
                                                           text: ' 5h ago',
@@ -448,7 +450,8 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     style: TextStyle(
                                                       fontSize: 9.sp,
                                                       fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                                                    ),
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                                    ),
                                                     textAlign: TextAlign.justify,
                                                   ),
                                                 ),
@@ -526,11 +529,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                     margin: EdgeInsets.only(bottom: 5.sp),
                     decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: Color(0xffE2E4EB)),
                     child: TextFormField(
-
                       style: TextStyle(fontSize: 16, color: Color(0xff9C9EB9)),
                       onChanged: (value) {},
                       decoration: InputDecoration(
-
                         // prefixIconConstraints: BoxConstraints(
                         //   maxWidth: 150,
                         //   minWidth: 50

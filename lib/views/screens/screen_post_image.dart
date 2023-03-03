@@ -1,15 +1,13 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/views/layouts/layout_home.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
-import '../../controller/registration_controller.dart';
 
+import '../../controller/registration_controller.dart';
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
@@ -67,7 +65,8 @@ class PostImageScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                        ),
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        ),
                       ),
                       Spacer(),
                       StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
@@ -147,7 +146,8 @@ class PostImageScreen extends StatelessWidget {
                               width: 50.sp,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5.sp),
-                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black      ,                          image: DecorationImage(
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                image: DecorationImage(
                                     image: FileImage(
                                       controller.images[index],
                                     ),

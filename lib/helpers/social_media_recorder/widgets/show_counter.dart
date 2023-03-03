@@ -49,7 +49,8 @@ class ShowCounter extends StatelessWidget {
                     soundRecorderState.minute.toString().padLeft(2, '0'),
                     style: counterTextStyle ??
                         TextStyle(
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                        ),
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        ),
                   ),
                 ],
               ),

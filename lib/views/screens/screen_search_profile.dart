@@ -1,19 +1,14 @@
-import 'dart:math';
-
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:paulineife_user/views/screens/screen_follower.dart';
 import 'package:paulineife_user/views/screens/screen_following.dart';
 import 'package:paulineife_user/views/screens/screen_report.dart';
-import 'package:paulineife_user/views/screens/screen_setting.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../constant/constant.dart';
-
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
@@ -174,9 +169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         text: TextSpan(
                           text: '1.1k\n',
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                          ),
+                              fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                           children: [
                             TextSpan(
                               text: 'Following',
@@ -213,8 +206,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     CustomButton1(
                         text: 'Message',
                         decuration: BoxDecoration(
-                            border: Border.all(
-                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                            ),
+                            border: Border.all(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                             borderRadius: BorderRadius.circular(10.sp)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.sp),

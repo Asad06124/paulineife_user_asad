@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_login.dart';
@@ -13,7 +10,6 @@ import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
-import '../../widgets/custom_buttom.dart';
 
 class SignUpMenuScreen extends StatefulWidget {
   SignUpMenuScreen({Key? key}) : super(key: key);

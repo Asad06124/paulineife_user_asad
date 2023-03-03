@@ -4,15 +4,14 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_onboarding.dart';
 import 'package:paulineife_user/widgets/custom_error.dart';
+
 import 'helpers/theme.dart';
-import 'helpers/theme_service.dart';
 /*Created Project "paulineife_user" by MicroProgramers - https://microprogramers.org*/
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 
@@ -192,14 +191,13 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Sizer(
-      builder: (BuildContext context, Orientation orientation,
-          DeviceType deviceType) {
+      builder: (BuildContext context, Orientation orientation, DeviceType deviceType) {
         return GetMaterialApp(
           home: ScreenOnboarding(),
           locale: Locale('en', 'US'),
           debugShowCheckedModeBanner: false,
           title: "Paulineife",
-          routingCallback: (route){
+          routingCallback: (route) {
             print(route?.current);
           },
           themeMode: ThemeMode.light,
@@ -209,8 +207,7 @@ class _MyAppState extends State<MyApp> {
             ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
               return CustomError(errorDetails: errorDetails);
             };
-            return ScrollConfiguration(
-                behavior: NoColorScrollBehavior(), child: widget!);
+            return ScrollConfiguration(behavior: NoColorScrollBehavior(), child: widget!);
             // return widget!;
             // return ScrollConfiguration(behavior: ScrollBehaviorModified(), child: widget!);
           },
@@ -247,8 +244,7 @@ class ScrollBehaviorModified extends ScrollBehavior {
 
 class NoColorScrollBehavior extends ScrollBehavior {
   @override
-  Widget buildOverscrollIndicator(
-      BuildContext context, Widget child, ScrollableDetails details) {
+  Widget buildOverscrollIndicator(BuildContext context, Widget child, ScrollableDetails details) {
     return child;
   }
 }

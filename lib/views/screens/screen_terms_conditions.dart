@@ -4,9 +4,8 @@ import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:sizer/sizer.dart';
 
-
 import '../../helpers/theme.dart';
-import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
+import '../../widgets/custom_buttom.dart';
 
 class TermsConditionsScreen extends StatelessWidget {
   const TermsConditionsScreen({Key? key}) : super(key: key);
@@ -22,9 +21,9 @@ class TermsConditionsScreen extends StatelessWidget {
             child: Text(
               'Terms & Conditions',
               style: getAppbarTextTheme().copyWith(
-                  fontSize: 21.sp,
-                  fontWeight: FontWeight.w700,
-                  ),
+                fontSize: 21.sp,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
           automaticallyImplyLeading: false,
@@ -39,10 +38,10 @@ class TermsConditionsScreen extends StatelessWidget {
               child: Text(
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo, vel volutpat lectus\n\n.Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris.\n\nCras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. ',
                 style: TextStyle(
-                    fontSize: 11.sp,
-                    fontWeight: FontWeight.w400,
-
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,),
+                  fontSize: 11.sp,
+                  fontWeight: FontWeight.w400,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                ),
                 textAlign: TextAlign.justify,
               ),
             ),
@@ -56,10 +55,10 @@ class TermsConditionsScreen extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(25.sp)),
               ),
               textStyle: TextStyle(
-                  fontSize: 13.sp,
-                  fontWeight: FontWeight.w700,
+                fontSize: 13.sp,
+                fontWeight: FontWeight.w700,
                 color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-                  ),
+              ),
               onPressed: () {
                 Get.to(HomeScreen());
               },

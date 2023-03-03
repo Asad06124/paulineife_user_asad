@@ -1,6 +1,5 @@
 import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
 Color listFillColor = Color(0xF0F6F6F6);
 Color opacityGrey = Color(0xC1707070);

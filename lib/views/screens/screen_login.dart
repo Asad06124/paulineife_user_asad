@@ -2,21 +2,16 @@ import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
-import 'package:paulineife_user/helpers/theme.dart';
 import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_forget_password_with_layouts.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
-import 'package:paulineife_user/views/screens/screen_signup_google.dart';
 import 'package:paulineife_user/views/screens/screen_signup_menu.dart';
-import 'package:paulineife_user/views/screens/screen_signup_with_layouts.dart';
 import 'package:sizer/sizer.dart';
+
 import '../../widgets/custom_buttom.dart';
-import '../../widgets/custom_input_field1.dart';
 
 class ScreenLogin extends StatefulWidget {
   ScreenLogin({Key? key}) : super(key: key);
@@ -57,13 +52,12 @@ class _ScreenLoginState extends State<ScreenLogin> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
             child: Center(
               child: Padding(
-                padding:  EdgeInsets.symmetric(horizontal: 22.sp),
+                padding: EdgeInsets.symmetric(horizontal: 22.sp),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -92,11 +86,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             padding: EdgeInsets.only(left: 5.0, top: 2),
                             child: Text(
                               'Phone / Username / Email',
-                              style: TextStyle(
-                                  
-                                  color: Color(0xff79869F),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500),
+                              style: TextStyle(color: Color(0xff79869F), fontSize: 12, fontWeight: FontWeight.w500),
                               textAlign: TextAlign.start,
                             ),
                           ),
@@ -116,8 +106,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                 decoration: InputDecoration(
                                   hintText: 'example@gmail.com',
                                   hintStyle: TextStyle(
-                                      
-                                      color: ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xff000000),
+                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff000000),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400),
                                   contentPadding: EdgeInsets.only(left: 5),
@@ -155,11 +144,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             padding: EdgeInsets.only(left: 5.0, top: 2),
                             child: Text(
                               'Password',
-                              style: TextStyle(
-                                  
-                                  color: Color(0xff79869F),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500),
+                              style: TextStyle(color: Color(0xff79869F), fontSize: 12, fontWeight: FontWeight.w500),
                               textAlign: TextAlign.start,
                             ),
                           ),
@@ -183,21 +168,20 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                       isPasswordField = !isPasswordField;
                                     });
                                   },
-                                  icon: Icon(isPasswordField
-                                      ? Icons.visibility_outlined
-                                      : Icons.visibility_off_outlined,color:Color(0xff79869F) ,),
+                                  icon: Icon(
+                                    isPasswordField ? Icons.visibility_outlined : Icons.visibility_off_outlined,
+                                    color: Color(0xff79869F),
+                                  ),
                                 ),
                                 enabledBorder: InputBorder.none,
                                 focusedBorder: InputBorder.none,
                                 border: InputBorder.none,
                                 hintText: '........',
                                 hintStyle: TextStyle(
-                                    
-                                    color:ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xff000000),
+                                    color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff000000),
                                     fontSize: 30.sp,
                                     fontWeight: FontWeight.w400),
-                                contentPadding:
-                                    EdgeInsets.only(left: 5, bottom: 5),
+                                contentPadding: EdgeInsets.only(left: 5, bottom: 5),
                               ),
 
                               // decoration: InputDecoration(
@@ -211,7 +195,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               //   ),
                               //   hintText: '.......',
                               //   hintStyle: TextStyle(
-                              //       
+                              //
                               //       color: Color(0xff000000),
                               //       fontSize: 20.sp,
                               //       fontWeight: FontWeight.w400),
@@ -237,15 +221,18 @@ class _ScreenLoginState extends State<ScreenLogin> {
                         child: Text(
                           'Forgot password?',
                           style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              color: Color(0xff79869F),
-                              ),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff79869F),
+                          ),
                         ),
                       ),
                     ),
                     CustomButton1(
-                      margin: EdgeInsets.symmetric(horizontal: 0,vertical: 20,),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: 0,
+                        vertical: 20,
+                      ),
                       text: 'Sign in',
                       color: Color(0xff2A70C8),
                       width: Get.width,
@@ -254,10 +241,10 @@ class _ScreenLoginState extends State<ScreenLogin> {
                         borderRadius: BorderRadius.all(Radius.circular(25.sp)),
                       ),
                       textStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
                         color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-                          ),
+                      ),
                       onPressed: () {
                         Get.to(HomeScreen());
                       },
@@ -265,10 +252,10 @@ class _ScreenLoginState extends State<ScreenLogin> {
                     Text(
                       'Or Sign in with',
                       style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F) ,
-                          ),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
+                      ),
                     ),
                     SizedBox(
                       height: 15.sp,
@@ -276,32 +263,32 @@ class _ScreenLoginState extends State<ScreenLogin> {
                     Align(
                       alignment: Alignment.center,
                       child: GestureDetector(
-                        onTap: (){Get.to(HomeScreen());},
+                        onTap: () {
+                          Get.to(HomeScreen());
+                        },
                         child: Container(
                           alignment: Alignment.center,
                           margin: EdgeInsets.only(top: 20.sp),
                           decoration: BoxDecoration(
                             border: Border.all(color: Color(0xff97A1B4)),
                             borderRadius: BorderRadius.circular(25.sp),
-                            color:ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-
-
                               SvgPicture.asset('assets/svgs/google.svg'),
-                                SizedBox(width: 10.sp,),
-                                Text(
-                                  'Continue with Google ',
-                                  style: TextStyle(
-                                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-
-                                  ),
+                              SizedBox(
+                                width: 10.sp,
+                              ),
+                              Text(
+                                'Continue with Google ',
+                                style: TextStyle(
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
                                 ),
-
+                              ),
                             ],
                           ),
                           width: WHeight.width / 1.2,
@@ -316,23 +303,18 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       text: TextSpan(
                           text: 'Don’t have an account?',
                           style: TextStyle(
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w500,
-
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff000000)),
+                              fontSize: 10.sp, fontWeight: FontWeight.w500, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff000000)),
                           children: [
                             TextSpan(text: ' '),
                             TextSpan(
                                 text: 'Sign up',
                                 recognizer: _longPressRecognizer,
-                                style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.w500,
-
-                                    color: Color(0xff2A70C8)))
+                                style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w500, color: Color(0xff2A70C8)))
                           ]),
                     ),
-                    SizedBox(height: 10.sp,),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
                   ],
                 ),
               ),

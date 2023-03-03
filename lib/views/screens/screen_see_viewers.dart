@@ -60,7 +60,8 @@ class SeeViewersScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 9.sp,
                           fontWeight: FontWeight.w500,
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                        ),
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        ),
                       ),
                     ],
                   ),
@@ -100,9 +101,7 @@ class SeeViewersScreen extends StatelessWidget {
                       title: Text(
                         'Asad',
                         style: TextStyle(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w700,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                        ),
+                            fontSize: 13.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                       ),
                       subtitle: Text(
                         '@asad',

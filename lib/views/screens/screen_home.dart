@@ -1,7 +1,8 @@
 import 'dart:io';
+
+import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Badge;
-import 'package:badges/badges.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,11 +15,11 @@ import 'package:paulineife_user/views/screens/screen_post_image.dart';
 import 'package:paulineife_user/views/screens/screen_post_text.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:paulineife_user/views/screens/screen_video_gallery.dart';
-import 'package:sizer/sizer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:sizer/sizer.dart';
+
 import '../../controller/registration_controller.dart';
 import '../../helpers/fetch_all_videos.dart';
-import '../../helpers/theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

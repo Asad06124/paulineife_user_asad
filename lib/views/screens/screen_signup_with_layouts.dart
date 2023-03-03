@@ -3,9 +3,9 @@ import 'package:paulineife_user/views/layouts/layout_signup_email.dart';
 import 'package:paulineife_user/views/layouts/layout_signup_phone.dart';
 import 'package:sizer/sizer.dart';
 
-
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
+
 class ScreeSignUpWithLayouts extends StatefulWidget {
   const ScreeSignUpWithLayouts({Key? key}) : super(key: key);
 
@@ -20,7 +20,7 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
       child: DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9) ,
+            backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9),
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               title: Padding(
@@ -28,15 +28,15 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
                 child: Text(
                   'Sign Up',
                   style: getAppbarTextTheme().copyWith(
-                      fontSize: 21.sp,
-                      fontWeight: FontWeight.w700,
+                    fontSize: 21.sp,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
               automaticallyImplyLeading: false,
               centerTitle: true,
               elevation: 0,
-              backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9) ,
+              backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9),
             ),
             body: Center(
               child: Column(
@@ -49,16 +49,16 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
                       Text(
                         "Phone",
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            ),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       Text(
                         "Email",
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            ),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ],
                     splashFactory: InkSplash.splashFactory,
@@ -67,14 +67,10 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
                     unselectedLabelColor: Color(0xffBBBFD0),
                     indicatorWeight: 2,
                     indicatorColor: Color(0xff2A70C8),
-                    padding:
-                        EdgeInsets.only(top: 25, left: 40, right: 40, bottom: 45),
+                    padding: EdgeInsets.only(top: 25, left: 40, right: 40, bottom: 45),
                   ),
                   Expanded(
-                    child: TabBarView(children: [
-                      SignUpPhoneScreen(),
-                      SignUpEmailScreen()
-                    ]),
+                    child: TabBarView(children: [SignUpPhoneScreen(), SignUpEmailScreen()]),
                   ),
                 ],
               ),

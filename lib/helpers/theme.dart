@@ -65,10 +65,10 @@ class Themes {
     ),
   );
 
-  // static bool setColor(BuildContext context) {
-  //   Color? color = Theme.of(context).textTheme.bodyLarge?.color;
-  //   return (color == Colors.white) ? true : false;
-  // }
+// static bool setColor(BuildContext context) {
+//   Color? color = Theme.of(context).textTheme.bodyLarge?.color;
+//   return (color == Colors.white) ? true : false;
+// }
 }
 
 TextStyle getAppbarTextTheme() {

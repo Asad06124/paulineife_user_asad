@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
-import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
+import '../../helpers/theme_service.dart';
 import '../../widgets/custom_input_field1.dart';
 
 class FollowingScreen extends StatelessWidget {
@@ -26,7 +24,7 @@ class FollowingScreen extends StatelessWidget {
           centerTitle: true,
         ),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 14.sp,vertical: 10.sp),
+          padding: EdgeInsets.symmetric(horizontal: 14.sp, vertical: 10.sp),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -42,14 +40,9 @@ class FollowingScreen extends StatelessWidget {
                   ),
                   fillColor: Color(0xffE2E4EB),
                   prefix: Icon(Icons.search),
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                   hint: 'Search',
-                  hintStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      
-                      color: Color(0xff79869F)),
+                  hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xff79869F)),
                 ),
               ),
               Expanded(
@@ -73,18 +66,16 @@ class FollowingScreen extends StatelessWidget {
                       ),
                       title: Text(
                         'Asad',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                            ),
+                        style:
+                            TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                       ),
                       subtitle: Text(
                         '@asad',
                         style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff2A70C8),
-                            ),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff2A70C8),
+                        ),
                       ),
                       trailing: ElevatedButton(
                           child: Text(
@@ -92,13 +83,12 @@ class FollowingScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 11.sp,
                               fontWeight: FontWeight.w400,
-
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                            ),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            ),
                           ),
                           style: ButtonStyle(
                             elevation: MaterialStateProperty.all(0),
-                            backgroundColor:
-                                MaterialStateProperty.all(Color(0xdfffffff)),
+                            backgroundColor: MaterialStateProperty.all(Color(0xdfffffff)),
                           ),
                           onPressed: () {}),
                     );

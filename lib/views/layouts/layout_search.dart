@@ -5,7 +5,6 @@ import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
 class SearchLayout extends StatelessWidget {
@@ -63,10 +62,8 @@ class SearchLayout extends StatelessWidget {
                       ),
                       title: Text(
                         'Asad',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                        ),
+                        style:
+                            TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                       ),
                       subtitle: Text(
                         'Flutter Developer',
@@ -84,10 +81,7 @@ class SearchLayout extends StatelessWidget {
               Text(
                 'Recent Searches',
                 textAlign: TextAlign.left,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                ),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
               ),
               Expanded(
                 flex: 1,
@@ -102,10 +96,8 @@ class SearchLayout extends StatelessWidget {
                       ),
                       title: Text(
                         'Asad',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                         ),
+                        style:
+                            TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                       ),
                       subtitle: Text(
                         'Flutter Developer',

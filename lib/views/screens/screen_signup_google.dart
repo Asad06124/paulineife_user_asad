@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/views/screens/screen_terms_conditions.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
 

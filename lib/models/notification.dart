@@ -27,19 +27,19 @@ class Notification {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          (other is Notification &&
-              runtimeType == other.runtimeType &&
-              id == other.id &&
-              title == other.title &&
-              subtitle == other.subtitle &&
-              url == other.url &&
-              type == other.type &&
-              refId == other.refId &&
-              read == other.read &&
-              timestamp == other.timestamp &&
-              trailing_image_url == other.trailing_image_url &&
-              leading_image_url == other.leading_image_url &&
-              data == other.data);
+      (other is Notification &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          title == other.title &&
+          subtitle == other.subtitle &&
+          url == other.url &&
+          type == other.type &&
+          refId == other.refId &&
+          read == other.read &&
+          timestamp == other.timestamp &&
+          trailing_image_url == other.trailing_image_url &&
+          leading_image_url == other.leading_image_url &&
+          data == other.data);
 
   @override
   int get hashCode =>

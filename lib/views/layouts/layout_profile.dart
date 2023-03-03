@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_edit_profile.dart';
@@ -7,15 +5,14 @@ import 'package:paulineife_user/views/screens/screen_following.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:sizer/sizer.dart';
-import '../../constant/constant.dart';
 
+import '../../constant/constant.dart';
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 import '../screens/screen_follower.dart';
 import '../screens/screen_setting.dart';
 
 class ProfileLayout extends StatefulWidget {
-
   VoidCallback onThemeUpdate;
 
   @override
@@ -63,9 +60,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                         text: TextSpan(
                             text: 'Asad\n',
                             style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                            ),
+                                fontSize: 20, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                             children: [
                               TextSpan(
                                 text: '@asad',
@@ -99,10 +94,8 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                   textAlign: TextAlign.justify,
                   text: TextSpan(
                       text: 'Lorem ipsum dolor sit amet, consectetur eliteita adipiscing elit. Morbi at malesuada mi.',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                      ),
+                      style:
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                       children: [
                         TextSpan(
                           text: '\nwww.google.com',
@@ -130,9 +123,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                         text: TextSpan(
                             text: '10k\n',
                             style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                            ),
+                                fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                             children: [
                               TextSpan(
                                 text: 'Followers',
@@ -154,9 +145,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                         text: TextSpan(
                           text: '1.1k\n',
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                          ),
+                              fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                           children: [
                             TextSpan(
                               text: 'Following',

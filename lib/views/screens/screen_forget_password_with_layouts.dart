@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
-import '../../helpers/theme_service.dart';import '../layouts/layout_forget_password_email.dart';
+import '../../helpers/theme_service.dart';
+import '../layouts/layout_forget_password_email.dart';
 import '../layouts/layout_forget_password_phone.dart';
 
 class ScreeForgetPasswordWithLayouts extends StatefulWidget {
@@ -32,7 +33,7 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
               automaticallyImplyLeading: false,
               centerTitle: true,
               elevation: 0,
-              backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black :Color(0xfff9f9f9),
+              backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9),
             ),
             body: Center(
               child: Column(
@@ -45,16 +46,16 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
                       Text(
                         "Phone",
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            ),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       Text(
                         "Email",
                         style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            ),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                     ],
                     splashFactory: InkSplash.splashFactory,
@@ -63,14 +64,10 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
                     unselectedLabelColor: Color(0xffBBBFD0),
                     indicatorWeight: 2,
                     indicatorColor: Color(0xff2A70C8),
-                    padding:
-                    EdgeInsets.only(top: 25, left: 40, right: 40, bottom: 45),
+                    padding: EdgeInsets.only(top: 25, left: 40, right: 40, bottom: 45),
                   ),
                   Expanded(
-                    child: TabBarView(children: [
-                      ForgetPasswordPhoneScreen(),
-                      ForgetPasswordEmailScreen()
-                    ]),
+                    child: TabBarView(children: [ForgetPasswordPhoneScreen(), ForgetPasswordEmailScreen()]),
                   ),
                 ],
               ),

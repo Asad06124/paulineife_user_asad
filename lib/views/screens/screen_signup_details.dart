@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-import '../../controller/registration_controller.dart';
 
+import '../../controller/registration_controller.dart';
 import '../../helpers/theme.dart';
-import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
+import '../../helpers/theme_service.dart';
+import '../../widgets/custom_buttom.dart';
 import 'screen_terms_conditions.dart';
 
 class SignUpPhoneDetailsScreen extends StatelessWidget {
-   SignUpPhoneDetailsScreen({Key? key}) : super(key: key);
-   bool isPasswordField = false;
-   final _formKey = GlobalKey<FormState>();
+  SignUpPhoneDetailsScreen({Key? key}) : super(key: key);
+  bool isPasswordField = false;
+  final _formKey = GlobalKey<FormState>();
 
-   var controller = Get.put(RegistrationController());
+  var controller = Get.put(RegistrationController());
+
   @override
   Widget build(BuildContext context) {
     var WHeight = MediaQuery.of(context).size;
@@ -25,8 +27,9 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
             child: Text(
               'Sign Up',
               style: getAppbarTextTheme().copyWith(
-                  fontSize: 21.sp,
-                  fontWeight: FontWeight.w700,),
+                fontSize: 21.sp,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
           automaticallyImplyLeading: false,
@@ -53,11 +56,10 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                 child: TextFormField(
                   controller: TextEditingController(text: 'Example_123'),
                   decoration: InputDecoration(
-                    label: Text('Username',style: TextStyle(
-                        
-                        color: Color(0xff79869F),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500),),
+                    label: Text(
+                      'Username',
+                      style: TextStyle(color: Color(0xff79869F), fontSize: 12, fontWeight: FontWeight.w500),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       borderSide: BorderSide.none,
@@ -86,11 +88,10 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                     child: TextFormField(
                       controller: TextEditingController(text: 'Example'),
                       decoration: InputDecoration(
-                        label: Text('First Name',style: TextStyle(
-                            
-                            color: Color(0xff79869F),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),),
+                        label: Text(
+                          'First Name',
+                          style: TextStyle(color: Color(0xff79869F), fontSize: 12, fontWeight: FontWeight.w500),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           borderSide: BorderSide.none,
@@ -115,11 +116,10 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                     child: TextFormField(
                       controller: TextEditingController(text: 'Example'),
                       decoration: InputDecoration(
-                        label: Text('Last Name',style: TextStyle(
-                            
-                            color: Color(0xff79869F),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),),
+                        label: Text(
+                          'Last Name',
+                          style: TextStyle(color: Color(0xff79869F), fontSize: 12, fontWeight: FontWeight.w500),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           borderSide: BorderSide.none,
@@ -146,11 +146,10 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                 child: TextFormField(
                   controller: TextEditingController(text: '15/06/2000'),
                   decoration: InputDecoration(
-                    label: Text('Date of Birth',style: TextStyle(
-                        
-                        color: Color(0xff79869F),
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500),),
+                    label: Text(
+                      'Date of Birth',
+                      style: TextStyle(color: Color(0xff79869F), fontSize: 12, fontWeight: FontWeight.w500),
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(15)),
                       borderSide: BorderSide.none,
@@ -182,17 +181,13 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 5.0, top: 2),
                       child: Text(
-                        'New Password',style: TextStyle(
-                          
-                          color: Color(0xff79869F),
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500),
+                        'New Password',
+                        style: TextStyle(color: Color(0xff79869F), fontSize: 10, fontWeight: FontWeight.w500),
                         textAlign: TextAlign.start,
                       ),
                     ),
                     StatefulBuilder(
-                      builder: (BuildContext context,
-                          void Function(void Function()) setState) {
+                      builder: (BuildContext context, void Function(void Function()) setState) {
                         return Container(
                           height: WHeight.height / 18,
                           child: TextFormField(
@@ -213,21 +208,15 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                                     isPasswordField = !isPasswordField;
                                   });
                                 },
-                                icon: Icon(isPasswordField
-                                    ? Icons.visibility
-                                    : Icons.visibility_off_outlined),
+                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-
-                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                  fontSize: 30.sp,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                              EdgeInsets.only(left: 5, bottom: 5),
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, fontSize: 30.sp, fontWeight: FontWeight.w400),
+                              contentPadding: EdgeInsets.only(left: 5, bottom: 5),
                             ),
 
                             // decoration: InputDecoration(
@@ -241,7 +230,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
-                            //       
+                            //
                             //       color: Color(0xff000000),
                             //       fontSize: 20.sp,
                             //       fontWeight: FontWeight.w400),
@@ -280,17 +269,13 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 5.0, top: 2),
                       child: Text(
-                        'Retype Password',style: TextStyle(
-                          
-                          color: Color(0xff79869F),
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500),
+                        'Retype Password',
+                        style: TextStyle(color: Color(0xff79869F), fontSize: 10, fontWeight: FontWeight.w500),
                         textAlign: TextAlign.start,
                       ),
                     ),
                     StatefulBuilder(
-                      builder: (BuildContext context,
-                          void Function(void Function()) setState) {
+                      builder: (BuildContext context, void Function(void Function()) setState) {
                         return Container(
                           height: WHeight.height / 18,
                           child: TextFormField(
@@ -311,21 +296,15 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                                     isPasswordField = !isPasswordField;
                                   });
                                 },
-                                icon: Icon(isPasswordField
-                                    ? Icons.visibility_outlined
-                                    : Icons.visibility_off_outlined),
+                                icon: Icon(isPasswordField ? Icons.visibility_outlined : Icons.visibility_off_outlined),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-
-                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                  fontSize: 30.sp,
-                                  fontWeight: FontWeight.w400),
-                              contentPadding:
-                              EdgeInsets.only(left: 5, bottom: 5),
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, fontSize: 30.sp, fontWeight: FontWeight.w400),
+                              contentPadding: EdgeInsets.only(left: 5, bottom: 5),
                             ),
 
                             // decoration: InputDecoration(
@@ -339,7 +318,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                             //   ),
                             //   hintText: '.......',
                             //   hintStyle: TextStyle(
-                            //       
+                            //
                             //       color: Color(0xff000000),
                             //       fontSize: 20.sp,
                             //       fontWeight: FontWeight.w400),
@@ -370,10 +349,10 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(25.sp)),
                 ),
                 textStyle: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
                   color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-                    ),
+                ),
                 onPressed: () {
                   Get.to(TermsConditionsScreen());
                 },
@@ -384,17 +363,11 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                     text: TextSpan(
                         text: 'Already Have an Account? ',
                         style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w700,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
                         ),
                         children: [
-                          TextSpan(
-                              text: ' Sign up',
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  
-                                  color: Color(0xff2A70C8)))
+                          TextSpan(text: ' Sign up', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Color(0xff2A70C8)))
                         ]),
                   ))
             ],

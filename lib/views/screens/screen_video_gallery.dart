@@ -1,10 +1,12 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:sizer/sizer.dart';
 import 'package:video_trimmer/video_trimmer.dart';
+
 import '../../controller/registration_controller.dart';
 import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
@@ -29,7 +31,8 @@ class VideoGalleryScreen extends StatelessWidget {
                 Text(
                   'Gallery',
                   style: TextStyle(
-                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                    fontSize: 17.sp,
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    fontSize: 17.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -42,7 +45,8 @@ class VideoGalleryScreen extends StatelessWidget {
                   textStyle: TextStyle(
                     fontSize: 13.sp,
                     fontWeight: FontWeight.w400,
-                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                  ),
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                  ),
                   onPressed: () {},
                   color: Color(0xffE2E4EB),
                   height: 35.sp,

@@ -64,17 +64,17 @@ class _SettingScreenState extends State<SettingScreen> {
                   Icons.privacy_tip,
                   color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 )),
-            getSettingsTile(
-                leading: Icon(
-                  Icons.mode_night,
-                ),
-                title: "Dark Mode",
-                trailing: CupertinoSwitch(
-                    value: ThemeService.isSavedDarkMode(),
-                    onChanged: (value) {
-                      ThemeService().setDarkThemeMode(value);
-                      setState(() {});
-                    })),
+            // getSettingsTile(
+            //     leading: Icon(
+            //       Icons.mode_night,
+            //     ),
+            //     title: "Dark Mode",
+            //     trailing: CupertinoSwitch(
+            //         value: ThemeService.isSavedDarkMode(),
+            //         onChanged: (value) {
+            //           ThemeService().setDarkThemeMode(value);
+            //           setState(() {});
+            //         })),
             getSettingsTile(
                 leading: Icon(
                   Icons.logout,

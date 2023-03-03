@@ -11,7 +11,6 @@ class CustomError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     print(errorDetails);
 
     return Card(

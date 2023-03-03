@@ -1,12 +1,10 @@
+import 'dart:async';
 import 'dart:io';
-import 'package:flutter/material.dart';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'dart:async';
-
 
 class FetchAllVideos {
-
   List videosDirectories = [];
   List allDirectories = [];
   List myDirectories = [];
@@ -28,7 +26,7 @@ class FetchAllVideos {
         String actualPath = path.substring(13, path.length - 1);
         int found = 0;
         int startIndex = 0;
-        for(int pathIndex = actualPath.length-1; pathIndex>=0; pathIndex--){
+        for (int pathIndex = actualPath.length - 1; pathIndex >= 0; pathIndex--) {
           if (actualPath[pathIndex] == "/") {
             found++;
             if (found == 4) {
@@ -37,7 +35,7 @@ class FetchAllVideos {
             }
           }
         }
-        var splitPath = actualPath.substring(0,startIndex+1);
+        var splitPath = actualPath.substring(0, startIndex + 1);
         pathForCheck.add(splitPath);
       }
       for (var pForCheck in pathForCheck) {
@@ -59,7 +57,6 @@ class FetchAllVideos {
           }
         }
       }
-
     }
     for (; myIndex < myDirectories.length; myIndex++) {
       var myDirs = Directory(myDirectories[myIndex]);
@@ -75,14 +72,10 @@ class FetchAllVideos {
             }
           }
           for (var directories in initialDirectories) {
-            if (!directories.toString().contains('.') &&
-                !directories.toString().contains('android') &&
-                !directories.toString().contains('Android')) {
+            if (!directories.toString().contains('.') && !directories.toString().contains('android') && !directories.toString().contains('Android')) {
               String dirs = "$directories/";
               var tempDir = Directory(dirs);
-              if (!tempDir.toString().contains('.') &&
-                  !tempDir.toString().contains('android') &&
-                  !tempDir.toString().contains('Android')) {
+              if (!tempDir.toString().contains('.') && !tempDir.toString().contains('android') && !tempDir.toString().contains('Android')) {
                 myDirectories.add(directories);
               }
 
@@ -107,7 +100,4 @@ class FetchAllVideos {
     }
     return videosDirectories;
   }
-
-
 }
-

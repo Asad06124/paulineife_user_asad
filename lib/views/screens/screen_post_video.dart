@@ -6,9 +6,8 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 import 'package:video_trimmer/video_trimmer.dart';
-import '../../controller/registration_controller.dart';
 
-import '../../helpers/theme.dart';
+import '../../controller/registration_controller.dart';
 import '../../helpers/theme_service.dart';
 
 class PostVideoScreen extends StatefulWidget {
@@ -151,12 +150,12 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                           ? Icon(
                               Icons.pause,
                               size: 80.0,
-                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                             )
                           : Icon(
                               Icons.play_arrow,
                               size: 80.0,
-                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                             ),
                       onPressed: () async {
                         bool playbackState = await _trimmer.videPlaybackControl(

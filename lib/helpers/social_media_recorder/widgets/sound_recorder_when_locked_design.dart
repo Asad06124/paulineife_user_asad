@@ -1,6 +1,5 @@
-
-
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:paulineife_user/helpers/social_media_recorder/widgets/show_counter.dart';
 
@@ -19,6 +18,7 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
   final Color? counterBackGroundColor;
   final Color? cancelTextBackGroundColor;
   final Widget? sendButtonIcon;
+
   // ignore: sort_constructors_first
   const SoundRecorderWhenLockedDesign({
     Key? key,
@@ -55,8 +55,7 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
             InkWell(
               onTap: () async {
                 soundRecordNotifier.isShow = false;
-                if (soundRecordNotifier.second > 1 ||
-                    soundRecordNotifier.minute > 0) {
+                if (soundRecordNotifier.second > 1 || soundRecordNotifier.minute > 0) {
                   String path = soundRecordNotifier.mPath;
                   await Future.delayed(const Duration(milliseconds: 500));
                   sendRequestFunction(File.fromUri(Uri(path: path)));
@@ -82,9 +81,7 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
                               Icons.send,
                               textDirection: TextDirection.ltr,
                               size: 28,
-                              color: (soundRecordNotifier.buttonPressed)
-                                  ? Colors.grey.shade200
-                                  : Colors.black,
+                              color: (soundRecordNotifier.buttonPressed) ? Colors.grey.shade200 : Colors.black,
                             ),
                       ),
                     ),
@@ -106,8 +103,9 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.clip,
                       style: cancelTextStyle ??
-                           TextStyle(
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                          ),
+                          TextStyle(
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                          ),
                     ),
                   )),
             ),

@@ -1,16 +1,12 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/views/layouts/layout_home.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
-import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
-import '../../controller/registration_controller.dart';
 
-import '../../helpers/theme.dart';
+import '../../controller/registration_controller.dart';
 import '../../helpers/theme_service.dart';
 
 class PostTextScreen extends StatelessWidget {
@@ -52,7 +48,8 @@ class PostTextScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                      ),
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                      ),
                     ),
                     Spacer(),
                     StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
@@ -106,12 +103,11 @@ class PostTextScreen extends StatelessWidget {
                       height: 70.sp,
                       width: 50.sp,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(5.sp),
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                      ),
+                          borderRadius: BorderRadius.circular(5.sp), color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                       child: index == 0
                           ? Icon(
                               Icons.add_circle_outline_outlined,
-                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                             )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -154,10 +150,10 @@ class PostTextScreen extends StatelessWidget {
                 Container(
                   height: 34.h + 5,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20.sp),
-                        topRight: Radius.circular(20.sp),
-                      ),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.sp),
+                      topRight: Radius.circular(20.sp),
+                    ),
                     color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                   ),
                   child: Column(

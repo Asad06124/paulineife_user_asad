@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 import '../provider/sound_record_notifier.dart';
@@ -8,14 +6,17 @@ import '../provider/sound_record_notifier.dart';
 class LockRecord extends StatefulWidget {
   /// Object From Provider Notifier
   final SoundRecordNotifier soundRecorderState;
+
   // ignore: sort_constructors_first
 
   final Widget? lockIcon;
+
   const LockRecord({
     this.lockIcon,
     required this.soundRecorderState,
     Key? key,
   }) : super(key: key);
+
   @override
   _LockRecordState createState() => _LockRecordState();
 }
@@ -27,8 +28,7 @@ class _LockRecordState extends State<LockRecord> with TickerProviderStateMixin {
     if (!widget.soundRecorderState.buttonPressed) return Container();
     return AnimatedPadding(
       duration: const Duration(seconds: 1),
-      padding:
-          EdgeInsets.all(widget.soundRecorderState.second % 2 == 0 ? 0 : 8),
+      padding: EdgeInsets.all(widget.soundRecorderState.second % 2 == 0 ? 0 : 8),
       child: Transform.translate(
         offset: const Offset(0, -70),
         child: ClipRRect(
@@ -38,9 +38,7 @@ class _LockRecordState extends State<LockRecord> with TickerProviderStateMixin {
             curve: Curves.easeIn,
             opacity: widget.soundRecorderState.edge >= 50 ? 0 : 1,
             child: Container(
-              height: 50 - widget.soundRecorderState.heightPosition < 0
-                  ? 0
-                  : 50 - widget.soundRecorderState.heightPosition,
+              height: 50 - widget.soundRecorderState.heightPosition < 0 ? 0 : 50 - widget.soundRecorderState.heightPosition,
               color: Colors.grey.shade100,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -52,9 +50,7 @@ class _LockRecordState extends State<LockRecord> with TickerProviderStateMixin {
                           child: AnimatedOpacity(
                               duration: const Duration(milliseconds: 500),
                               curve: Curves.easeIn,
-                              opacity: widget.soundRecorderState.second % 2 != 0
-                                  ? 0
-                                  : 1,
+                              opacity: widget.soundRecorderState.second % 2 != 0 ? 0 : 1,
                               child: const Icon(Icons.lock_outline_rounded)),
                         ),
                         Align(
@@ -62,9 +58,7 @@ class _LockRecordState extends State<LockRecord> with TickerProviderStateMixin {
                           child: AnimatedOpacity(
                               duration: const Duration(milliseconds: 500),
                               curve: Curves.easeIn,
-                              opacity: widget.soundRecorderState.second % 2 == 0
-                                  ? 0
-                                  : 1,
+                              opacity: widget.soundRecorderState.second % 2 == 0 ? 0 : 1,
                               child: const Icon(Icons.lock_open_rounded)),
                         ),
                       ],

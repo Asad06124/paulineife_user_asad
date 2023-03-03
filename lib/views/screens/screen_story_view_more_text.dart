@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_top_panel/sliding_top_panel.dart';
 
-import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
 class StoryTextViewScreen extends StatelessWidget {
@@ -58,7 +57,8 @@ class StoryTextViewScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
-                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                  ),
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                  ),
                 ),
               ),
             ),

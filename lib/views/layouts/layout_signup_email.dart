@@ -5,7 +5,6 @@ import 'package:paulineife_user/views/screens/screen_signup_details.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
 
@@ -117,7 +116,8 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                ),
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                ),
               ),
               // Directionality(
               //   // Specify direction if desired

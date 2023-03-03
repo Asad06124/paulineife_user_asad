@@ -83,7 +83,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.w700,
-                          color:  Color(0xff000000),
+                          color: Color(0xff000000),
                         ),
                       ),
                       Text(
@@ -91,7 +91,6 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16.0,
-                          
                           fontWeight: FontWeight.w500,
                           color: index % 2 == 0 ? kblack : kblack,
                         ),
@@ -106,9 +105,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
           Positioned(
             left: 0,
             right: 0,
-            top: currentIndex != screens.length - 1
-                ? MediaQuery.of(context).size.height * 0.68
-                : MediaQuery.of(context).size.height * 0.72,
+            top: currentIndex != screens.length - 1 ? MediaQuery.of(context).size.height * 0.68 : MediaQuery.of(context).size.height * 0.72,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -120,9 +117,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                   width: currentIndex == index ? 25 : 8,
                   height: 8,
                   decoration: BoxDecoration(
-                    color: currentIndex == index || currentIndex > index
-                        ? Color(0xff2A70C8)
-                        : Color(0xffD9D9D9),
+                    color: currentIndex == index || currentIndex > index ? Color(0xff2A70C8) : Color(0xffD9D9D9),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 ),
@@ -132,9 +127,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
           Positioned(
             left: 0,
             right: 0,
-            top: currentIndex != screens.length - 1
-                ? MediaQuery.of(context).size.height * 0.72
-                : MediaQuery.of(context).size.height * 0.80,
+            top: currentIndex != screens.length - 1 ? MediaQuery.of(context).size.height * 0.72 : MediaQuery.of(context).size.height * 0.80,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -154,20 +147,15 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                     alignment: Alignment.center,
                     height: currentIndex == 2 ? Get.height / 15 : 60,
                     width: currentIndex == 2 ? Get.width / 1.3 : 60,
-                    decoration: BoxDecoration(
-                        color: Color(0xff2A70C8),
-                        borderRadius:
-                            BorderRadius.circular(currentIndex == 2 ? 10 : 50)),
+                    decoration: BoxDecoration(color: Color(0xff2A70C8), borderRadius: BorderRadius.circular(currentIndex == 2 ? 10 : 50)),
                     child: currentIndex != 2
                         ? Icon(
                             Icons.arrow_forward_ios,
-                      color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           )
                         : Text(
                             "Get Started",
-                            style: TextStyle(
-                                fontSize: 16.0,
-                                color: currentIndex % 2 == 0 ? kwhite : kblue),
+                            style: TextStyle(fontSize: 16.0, color: currentIndex % 2 == 0 ? kwhite : kblue),
                           ),
                   ),
                 ),
@@ -177,9 +165,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
           Positioned(
             left: 0,
             right: 0,
-            top: currentIndex != screens.length - 1
-                ? MediaQuery.of(context).size.height * 0.81
-                : MediaQuery.of(context).size.height * 0,
+            top: currentIndex != screens.length - 1 ? MediaQuery.of(context).size.height * 0.81 : MediaQuery.of(context).size.height * 0,
             child: currentIndex != 2
                 ? TextButton(
                     onPressed: () {

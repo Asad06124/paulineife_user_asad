@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
 import 'package:social_media_recorder/audio_encoder_type.dart';
 import 'package:uuid/uuid.dart';
-
-import '../audio_encoder_type.dart';
 
 class SoundRecordNotifier extends ChangeNotifier {
   GlobalKey key = GlobalKey();
@@ -65,6 +64,7 @@ class SoundRecordNotifier extends ChangeNotifier {
   late bool lockScreenRecord;
   late String mPath;
   late AudioEncoderType encode;
+
   // ignore: sort_constructors_first
   SoundRecordNotifier({
     this.edge = 0.0,
@@ -105,10 +105,7 @@ class SoundRecordNotifier extends ChangeNotifier {
   }
 
   String _getSoundExtention() {
-    if (encode == AudioEncoderType.AAC ||
-        encode == AudioEncoderType.AAC_LD ||
-        encode == AudioEncoderType.AAC_HE ||
-        encode == AudioEncoderType.OPUS) {
+    if (encode == AudioEncoderType.AAC || encode == AudioEncoderType.AAC_LD || encode == AudioEncoderType.AAC_HE || encode == AudioEncoderType.OPUS) {
       return ".m4a";
     } else {
       return ".3gp";
@@ -120,13 +117,9 @@ class SoundRecordNotifier extends ChangeNotifier {
     String _sdPath = "";
     if (Platform.isIOS) {
       Directory tempDir = await getTemporaryDirectory();
-      _sdPath = initialStorePathRecord.isEmpty
-          ? tempDir.path
-          : initialStorePathRecord;
+      _sdPath = initialStorePathRecord.isEmpty ? tempDir.path : initialStorePathRecord;
     } else {
-      _sdPath = initialStorePathRecord.isEmpty
-          ? "/storage/emulated/0/new_record_sound"
-          : initialStorePathRecord;
+      _sdPath = initialStorePathRecord.isEmpty ? "/storage/emulated/0/new_record_sound" : initialStorePathRecord;
     }
     var d = Directory(_sdPath);
     if (!d.existsSync()) {
