@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:sizer/sizer.dart';
+
 import '../../helpers/theme.dart';
-import '../../widgets/custom_buttom.dart';
+import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
 import '../../widgets/custom_input_field1.dart';
 
 class FollowerScreen extends StatelessWidget {
@@ -13,18 +14,16 @@ class FollowerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
-          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
-          foregroundColor: Colors.black,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          // foregroundColor: Colors.black,
           elevation: 0,
           title: Text(
             'Followers',
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: Colors.black,
-                ),
+            style: getAppbarTextTheme().copyWith(
+              fontSize: 18
+            ),
           ),
           centerTitle: true,
         ),
@@ -78,8 +77,7 @@ class FollowerScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xff000000),
-                            ),
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                            ),
                       ),
                       subtitle: Text(
                         '@asad',
@@ -95,8 +93,8 @@ class FollowerScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            
-                            color: Colors.white,
+
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           ),
                         ),
                         onPressed: () {},

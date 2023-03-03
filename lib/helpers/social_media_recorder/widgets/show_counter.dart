@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 
+import '../../theme_service.dart';
 import '../provider/sound_record_notifier.dart';
 
 /// Used this class to show counter and mic Icon
@@ -9,6 +8,7 @@ class ShowCounter extends StatelessWidget {
   final SoundRecordNotifier soundRecorderState;
   final TextStyle? counterTextStyle;
   final Color? counterBackGroundColor;
+
   // ignore: sort_constructors_first
   const ShowCounter({
     required this.soundRecorderState,
@@ -39,14 +39,17 @@ class ShowCounter extends StatelessWidget {
                   Text(
                     soundRecorderState.second.toString().padLeft(2, '0'),
                     style: counterTextStyle ??
-                        const TextStyle(color: Colors.black),
+                        TextStyle(
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        ),
                   ),
                   const SizedBox(width: 3),
                   const Text(" : "),
                   Text(
                     soundRecorderState.minute.toString().padLeft(2, '0'),
                     style: counterTextStyle ??
-                        const TextStyle(color: Colors.black),
+                        TextStyle(
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                        ),
                   ),
                 ],
               ),

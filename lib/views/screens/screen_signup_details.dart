@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import '../../controller/registration_controller.dart';
+
 import '../../helpers/theme.dart';
-import '../../widgets/custom_buttom.dart';
+import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
 import 'screen_terms_conditions.dart';
 
 class SignUpPhoneDetailsScreen extends StatelessWidget {
@@ -17,13 +18,13 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
     var WHeight = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
             child: Text(
               'Sign Up',
-              style: TextStyle(
+              style: getAppbarTextTheme().copyWith(
                   fontSize: 21.sp,
                   fontWeight: FontWeight.w700,),
             ),
@@ -222,7 +223,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                               hintText: '........',
                               hintStyle: TextStyle(
 
-                                  color: Themes.setColor(context) ? Colors.white : Colors.black,
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
@@ -320,7 +321,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                               hintText: '........',
                               hintStyle: TextStyle(
 
-                                  color: Themes.setColor(context) ? Colors.white : Colors.black,
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
@@ -371,7 +372,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                 textStyle: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
-                  color: Colors.white
+                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                     ),
                 onPressed: () {
                   Get.to(TermsConditionsScreen());

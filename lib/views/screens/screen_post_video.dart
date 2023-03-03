@@ -7,9 +7,9 @@ import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 import 'package:video_trimmer/video_trimmer.dart';
 import '../../controller/registration_controller.dart';
+
 import '../../helpers/theme.dart';
-
-
+import '../../helpers/theme_service.dart';
 
 class PostVideoScreen extends StatefulWidget {
   PostVideoScreen({
@@ -77,7 +77,11 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
             actions: [
               CustomButton1(
                 text: 'Post',
-                textStyle: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: Colors.white),
+                textStyle: TextStyle(
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w400,
+                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                ),
                 onPressed: () {
                   Get.to(HomeScreen());
                 },
@@ -89,7 +93,7 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
             ],
             toolbarHeight: 65.sp,
           ),
-          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -102,7 +106,7 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                     children: [
                       Icon(
                         CupertinoIcons.chat_bubble,
-                        color: Colors.black,
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                       ),
                       SizedBox(
                         width: 6.sp,
@@ -110,7 +114,11 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                       Text(
                         'Allow Comments',
                         textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        ),
                       ),
                       Spacer(),
                       StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
@@ -140,15 +148,15 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                     right: 0,
                     child: TextButton(
                       child: _isPlaying
-                          ? const Icon(
+                          ? Icon(
                               Icons.pause,
                               size: 80.0,
-                              color: Colors.white,
+                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                             )
-                          : const Icon(
+                          : Icon(
                               Icons.play_arrow,
                               size: 80.0,
-                              color: Colors.white,
+                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                             ),
                       onPressed: () async {
                         bool playbackState = await _trimmer.videPlaybackControl(
@@ -173,7 +181,7 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                 Padding(
                   padding: EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
                   child: Container(
-                    color: Colors.black,
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                     width: Get.width,
                     child: TrimEditor(
                       trimmer: _trimmer,

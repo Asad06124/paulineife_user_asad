@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
+import 'helpers/theme_service.dart';
+
 class ItemAudioPlay extends StatefulWidget {
   // List audiosList;
   String url;
@@ -89,12 +91,10 @@ class _ItemAudioPlayState extends State<ItemAudioPlay> {
           icon: (isPlaying)
               ? Icon(
             Icons.pause,
-            color: Colors.black,
-          )
+            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,          )
               : Icon(
             Icons.play_arrow,
-            color: Colors.black,
-          ),
+            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,          ),
         ),
         Expanded(
           child: Column(

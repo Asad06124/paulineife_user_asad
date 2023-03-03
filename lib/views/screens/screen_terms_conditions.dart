@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:sizer/sizer.dart';
 
+
 import '../../helpers/theme.dart';
-import '../../widgets/custom_buttom.dart';
+import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
 
 class TermsConditionsScreen extends StatelessWidget {
   const TermsConditionsScreen({Key? key}) : super(key: key);
@@ -19,7 +21,7 @@ class TermsConditionsScreen extends StatelessWidget {
             padding: EdgeInsets.only(top: 10.sp),
             child: Text(
               'Terms & Conditions',
-              style: TextStyle(
+              style: getAppbarTextTheme().copyWith(
                   fontSize: 21.sp,
                   fontWeight: FontWeight.w700,
                   ),
@@ -29,7 +31,7 @@ class TermsConditionsScreen extends StatelessWidget {
           centerTitle: true,
           elevation: 0,
         ),
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: Column(
           children: [
             Container(
@@ -40,7 +42,7 @@ class TermsConditionsScreen extends StatelessWidget {
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
 
-                  color: Themes.setColor(context) ? Colors.white : Colors.black,),
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,),
                 textAlign: TextAlign.justify,
               ),
             ),
@@ -56,7 +58,7 @@ class TermsConditionsScreen extends StatelessWidget {
               textStyle: TextStyle(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w700,
-                color: Colors.white
+                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                   ),
               onPressed: () {
                 Get.to(HomeScreen());

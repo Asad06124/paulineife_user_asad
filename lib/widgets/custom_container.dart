@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
+import '../helpers/theme_service.dart';
+
 class CustomContainer2 extends StatelessWidget {
   String image, text;
   final VoidCallback? onTap;
@@ -15,7 +17,7 @@ class CustomContainer2 extends StatelessWidget {
         height: 20.3.h,
         width: 45.w,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           boxShadow: appBoxShadow,
           borderRadius: BorderRadius.circular(12),
         ),

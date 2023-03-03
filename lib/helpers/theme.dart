@@ -6,7 +6,7 @@ class Themes {
   ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     iconTheme: IconThemeData(color: Colors.black),
-    fontFamily: "Nunito Sans",
+    fontFamily: "DMSan",
     appBarTheme: AppBarTheme(
       color: Colors.white,
       iconTheme: IconThemeData(color: Colors.black),
@@ -37,7 +37,7 @@ class Themes {
   ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     iconTheme: IconThemeData(color: Colors.white),
-    fontFamily: "Nunito Sans",
+    fontFamily: "DMSan",
     appBarTheme: AppBarTheme(
       color: Colors.black,
       toolbarTextStyle: TextStyle(color: Colors.white),
@@ -65,10 +65,10 @@ class Themes {
     ),
   );
 
-  static bool setColor(BuildContext context) {
-    Color? color = Theme.of(context).textTheme.bodyLarge?.color;
-    return (color == Colors.white) ? true : false;
-  }
+  // static bool setColor(BuildContext context) {
+  //   Color? color = Theme.of(context).textTheme.bodyLarge?.color;
+  //   return (color == Colors.white) ? true : false;
+  // }
 }
 
 TextStyle getAppbarTextTheme() {

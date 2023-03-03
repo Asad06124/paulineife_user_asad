@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../helpers/theme.dart';
 
+import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 class NotificationLayouts extends StatelessWidget {
   const NotificationLayouts({Key? key}) : super(key: key);
 
@@ -11,14 +12,12 @@ class NotificationLayouts extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             'Notifications',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: Color(0xff000000),
+            style: getAppbarTextTheme().copyWith(
+              fontSize: 18
             ),
           ),
           centerTitle: true,
@@ -27,8 +26,7 @@ class NotificationLayouts extends StatelessWidget {
             onPressed: () {},
             icon: Icon(
               Icons.arrow_back,
-              color: Colors.black,
-            ),
+              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,            ),
           ),
         ),
         body: Padding(
@@ -43,8 +41,7 @@ class NotificationLayouts extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: Color(0xff000000),
-                  ),
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                  ),
                 ),
               ),
               Expanded(
@@ -64,7 +61,8 @@ class NotificationLayouts extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w700,
-                                color: Color(0xff000000),
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+
                               ),
                               children: [
                                 TextSpan(
@@ -72,16 +70,14 @@ class NotificationLayouts extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xff000000),
-                                  ),
+                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                                  ),
                                 ),
                                 TextSpan(
                                   text: ' post.',
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w700,
-                                    color: Color(0xff000000),
-                                  ),
+                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                                  ),
                                 ),
                               ]),
                         ),

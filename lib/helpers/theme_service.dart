@@ -25,7 +25,7 @@ class ThemeService {
     saveThemeMode(!isSavedDarkMode());
   }
   void setDarkThemeMode(bool dark) {
-    Get.changeTheme(dark ? Themes().lightTheme : Themes().lightTheme);
-    // saveThemeMode(dark);
+    Get.changeTheme(dark ? Themes().darkTheme : Themes().lightTheme);
+    saveThemeMode(dark);
   }
 }

@@ -3,8 +3,9 @@ import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:sizer/sizer.dart';
 
+
 import '../../helpers/theme.dart';
-import '../../widgets/custom_buttom.dart';
+import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
 
 class ReportScreen extends StatelessWidget {
   ReportScreen({Key? key}) : super(key: key);
@@ -28,15 +29,11 @@ class ReportScreen extends StatelessWidget {
     ];
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             'Report',
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: Color(0xff000000),
-                ),
+            style: getAppbarTextTheme(),
           ),
           centerTitle: true,
         ),
@@ -52,8 +49,7 @@ class ReportScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xff000000),
-                      ),
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                      ),
                 ),
               ),
               Padding(
@@ -88,8 +84,7 @@ class ReportScreen extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 13.sp,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xff000000),
-                              ),
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                              ),
                             ),
                             value: controller.isChecked.value,
                             onChanged: (newValue) {
@@ -115,7 +110,7 @@ class ReportScreen extends StatelessWidget {
                 textStyle: TextStyle(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w500,
-                  color: Colors.white,
+                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                 ),
                 elevation: 0,
                 height: Get.height / 14,

@@ -9,16 +9,16 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 import '../../controller/registration_controller.dart';
+
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 
 class PostTextScreen extends StatelessWidget {
   PostTextScreen({
     Key? key,
   }) : super(key: key);
   var controller = Get.put(RegistrationController());
-  final scrollController = ScrollController(
-      initialScrollOffset:
-          9); // set the initial scroll offset to start at line 10
+  final scrollController = ScrollController(initialScrollOffset: 9); // set the initial scroll offset to start at line 10
   @override
   Widget build(BuildContext context) {
     bool swtch = true;
@@ -28,7 +28,7 @@ class PostTextScreen extends StatelessWidget {
           title: Text('Create Post'),
           centerTitle: true,
         ),
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -41,7 +41,7 @@ class PostTextScreen extends StatelessWidget {
                   children: [
                     Icon(
                       CupertinoIcons.chat_bubble,
-                      color: Colors.black,
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                     ),
                     SizedBox(
                       width: 6.sp,
@@ -50,14 +50,12 @@ class PostTextScreen extends StatelessWidget {
                       'Allow Comments',
                       textAlign: TextAlign.left,
                       style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          
-                          color: Colors.black),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                      ),
                     ),
                     Spacer(),
-                    StatefulBuilder(
-                        builder: (BuildContext context, StateSetter setState) {
+                    StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
                       return Switch(
                           activeColor: Color(0xff3AA0FF),
                           activeTrackColor: Color(0xffD5EBFF),
@@ -73,25 +71,22 @@ class PostTextScreen extends StatelessWidget {
               ),
               Container(
                 height: 53.5.h,
-                color: Colors.black,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 child: CustomInputField1(
                   scrollController: scrollController,
                   textAlign: TextAlign.center,
                   textStyle: TextStyle(
-                    color: Colors.white,
+                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                   ),
                   contentPadding: EdgeInsets.all(8),
-                  focusedBorder:
-                      OutlineInputBorder(borderSide: BorderSide.none),
-                  enabledBorder:
-                      OutlineInputBorder(borderSide: BorderSide.none),
+                  focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
+                  enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
                   maxLines: 15,
                   hint: 'Type Here',
                   hintStyle: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
-                    
-                    color: Colors.white,
+                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                   ),
                 ),
               ),
@@ -112,29 +107,30 @@ class PostTextScreen extends StatelessWidget {
                       width: 50.sp,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5.sp),
-                        color: Color(0xff000000),
-                      ),
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                      ),
                       child: index == 0
                           ? Icon(
                               Icons.add_circle_outline_outlined,
-                              color: Colors.white,
+                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                             )
                           : Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Icon(
                                   Icons.text_snippet_outlined,
-                                  color: Colors.white,
+                                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                                   size: 20.sp,
                                 ),
-                                SizedBox(height: 2.sp,),
+                                SizedBox(
+                                  height: 2.sp,
+                                ),
                                 Text(
                                   'Type Here',
                                   style: TextStyle(
                                     fontSize: 6.sp,
                                     fontWeight: FontWeight.w700,
-                                    color: Colors.white,
+                                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                                   ),
                                 )
                               ],
@@ -162,7 +158,8 @@ class PostTextScreen extends StatelessWidget {
                         topLeft: Radius.circular(20.sp),
                         topRight: Radius.circular(20.sp),
                       ),
-                      color: Colors.white),
+                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  ),
                   child: Column(
                     children: [
                       Padding(
@@ -170,10 +167,10 @@ class PostTextScreen extends StatelessWidget {
                         child: Text(
                           'Post',
                           style: TextStyle(
-                              fontSize: 22,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w700,
-                              ),
+                            fontSize: 22,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                       Padding(
@@ -181,10 +178,10 @@ class PostTextScreen extends StatelessWidget {
                         child: Text(
                           'Post text as',
                           style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400,
-                              ),
+                            fontSize: 16,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -209,7 +206,6 @@ class PostTextScreen extends StatelessWidget {
                             color: Color(
                               0xff000000,
                             ),
-                            
                           ),
                         ),
                       ),
@@ -230,7 +226,6 @@ class PostTextScreen extends StatelessWidget {
                             color: Color(
                               0xff000000,
                             ),
-                            
                           ),
                         ),
                       ),

@@ -2,18 +2,8 @@ import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
-// import 'package:firebase_core/firebase_core.dart';
-// import 'package:firebase_messaging/firebase_messaging.dart';
-// import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:paulineife_user/helpers/helpers.dart';
-import 'package:paulineife_user/views/screens/screen_login.dart';
 import 'package:paulineife_user/views/screens/screen_onboarding.dart';
 import 'package:paulineife_user/widgets/custom_error.dart';
-
-import 'package:paulineife_user/helpers/local_notifications_helper.dart';
-import 'helpers/fcm.dart';
-import 'helpers/helpers.dart';
 import 'helpers/theme.dart';
 import 'helpers/theme_service.dart';
 /*Created Project "paulineife_user" by MicroProgramers - https://microprogramers.org*/
@@ -23,9 +13,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  // await Future.delayed(Duration(seconds: 2));
-  // colorConfig();
-  // await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -215,7 +202,7 @@ class _MyAppState extends State<MyApp> {
           routingCallback: (route){
             print(route?.current);
           },
-          themeMode: ThemeService.getThemeMode(),
+          themeMode: ThemeMode.light,
           theme: Themes().lightTheme,
           darkTheme: Themes().darkTheme,
           builder: (context, widget) {

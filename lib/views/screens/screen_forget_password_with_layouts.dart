@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
 import '../../helpers/theme.dart';
-import '../layouts/layout_forget_password_email.dart';
+import '../../helpers/theme_service.dart';import '../layouts/layout_forget_password_email.dart';
 import '../layouts/layout_forget_password_phone.dart';
 
 class ScreeForgetPasswordWithLayouts extends StatefulWidget {
@@ -18,24 +19,20 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
       child: DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9),
+            backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9),
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               title: Padding(
                 padding: EdgeInsets.only(top: 10.sp),
                 child: Text(
                   'Forget Password',
-                  style: TextStyle(
-                      fontSize: 19.sp,
-                      fontWeight: FontWeight.w700,
-
-                    color: Themes.setColor(context) ? Colors.white : Colors.black,),
+                  style: getAppbarTextTheme(),
                 ),
               ),
               automaticallyImplyLeading: false,
               centerTitle: true,
               elevation: 0,
-              backgroundColor: Themes.setColor(context) ? Colors.black :Color(0xfff9f9f9),
+              backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black :Color(0xfff9f9f9),
             ),
             body: Center(
               child: Column(

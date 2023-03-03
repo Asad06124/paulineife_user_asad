@@ -6,6 +6,7 @@ import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
 
 class SignUpEmailScreen extends StatefulWidget {
@@ -40,14 +41,15 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
       });
     });
   }
-  List PinCodes = ['2','3','5','6','2','4'];
+
+  List PinCodes = ['2', '3', '5', '6', '2', '4'];
 
   @override
   Widget build(BuildContext context) {
     var WHeight = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9),
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9),
         body: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -63,16 +65,20 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                       border: Border.all(
                         color: Color(0xffD6D9E3),
                       ),
-                      color:Themes.setColor(context) ? Colors.black : Colors.white,
+                      color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                       borderRadius: BorderRadius.circular(10)),
                   child: TextFormField(
                     controller: TextEditingController(text: 'example@gmail.com'),
-                    style: TextStyle( color: Themes.setColor(context) ? Colors.white : Colors.black,),
+                    style: TextStyle(
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    ),
                     decoration: InputDecoration(
-
                       filled: true,
-                      fillColor: Themes.setColor(context) ? Colors.black : Colors.white,
-                      label: Text('Email',style: TextStyle( color:Themes.setColor(context) ?  Color(0xff79869F):Color(0xff79869F)  ,)),
+                      fillColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                      label: Text('Email',
+                          style: TextStyle(
+                            color: ThemeService.isSavedDarkMode() ? Color(0xff79869F) : Color(0xff79869F),
+                          )),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         borderSide: BorderSide.none,
@@ -96,8 +102,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                   textStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    
-                    color: Colors.white,
+                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                   ),
                   elevation: 0,
                   height: 45.sp,
@@ -110,10 +115,9 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
               Text(
                 'Verify Code',
                 style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    
-                    color: Colors.black),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                ),
               ),
               // Directionality(
               //   // Specify direction if desired
@@ -125,17 +129,21 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
               ),
               Container(
                 height: 40.sp,
-                width: Get.width*.8,
+                width: Get.width * .8,
                 // padding: EdgeInsets.symmetric(vertical: 10.sp,horizontal: 20.sp),
                 child: Pinput(
                   scrollPadding: EdgeInsets.all(10.sp),
                   controller: pinController,
                   focusNode: focusNode,
-                  androidSmsAutofillMethod:
-                  AndroidSmsAutofillMethod.smsUserConsentApi,
+                  androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
                   listenForMultipleSmsOnAndroid: true,
                   length: 6,
-                  preFilledWidget: Text('2',style: TextStyle(color: Colors.black,),),
+                  preFilledWidget: Text(
+                    '2',
+                    style: TextStyle(
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    ),
+                  ),
                   // validator: (value) {
                   //   return value == '222222' ? null : 'Pin is incorrect';
                   // },
@@ -168,8 +176,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                   textStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    
-                    color: Colors.white,
+                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                   ),
                   elevation: 0,
                   height: 45.sp,

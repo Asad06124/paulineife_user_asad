@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 import '../../widgets/custom_input_field1.dart';
 
 class SeeViewersScreen extends StatelessWidget {
@@ -10,22 +12,19 @@ class SeeViewersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
-          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
-
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          foregroundColor: Colors.black,
           elevation: 0,
           title: Text(
             'Views and likes',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-            ),
+            style: getAppbarTextTheme(),
           ),
           centerTitle: true,
         ),
         body: Padding(
-          padding:  EdgeInsets.all(8.sp),
+          padding: EdgeInsets.all(8.sp),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -40,28 +39,28 @@ class SeeViewersScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.remove_red_eye,
-
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         size: 30.sp,
                       ),
                       Text(
                         '10.9K',
                         style: TextStyle(
-                            fontSize: 9.sp,
-                            fontWeight: FontWeight.w500,
-                           ),
+                          fontSize: 9.sp,
+                          fontWeight: FontWeight.w500,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        ),
                       ),
                     ],
                   ),
                   Column(
                     children: [
-                      Icon(Icons.favorite_outlined,
-                        size: 30.sp),
+                      Icon(Icons.favorite_outlined, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, size: 30.sp),
                       Text(
                         '10.9K',
                         style: TextStyle(
-                            fontSize: 9.sp,
-                            fontWeight: FontWeight.w500,
-                       ),
+                          fontSize: 9.sp,
+                          fontWeight: FontWeight.w500,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                        ),
                       ),
                     ],
                   ),
@@ -73,20 +72,11 @@ class SeeViewersScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,
                 ),
-                fillColor: Themes.setColor(context)
-                    ? Color(0xff3D3D3D):Colors.white
-                ,
+                fillColor: Color(0xffE2E4EB),
                 prefix: Icon(Icons.search),
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
+                contentPadding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                 hint: 'Search',
-                hintStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    
-                    color:Themes.setColor(context)
-                        ? Colors.white
-                        :  Color(0xff79869F),),
+                hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xff79869F)),
               ),
               Expanded(
                 child: ListView.builder(
@@ -112,17 +102,14 @@ class SeeViewersScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 13.sp,
                           fontWeight: FontWeight.w700,
-
-                        ),
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                        ),
                       ),
                       subtitle: Text(
                         '@asad',
                         style: TextStyle(
                           fontSize: 11.sp,
                           fontWeight: FontWeight.w400,
-                          color: Themes.setColor(context)
-                              ? Colors.white
-                              : Color(0xff2A70C8),
+                          color: Color(0xff2A70C8),
                         ),
                       ),
                       trailing: ElevatedButton(
@@ -131,15 +118,13 @@ class SeeViewersScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            
-                            color: Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           ),
                         ),
                         onPressed: () {},
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all(0),
-                          backgroundColor:
-                              MaterialStateProperty.all(Color(0xdff2A70C8)),
+                          backgroundColor: MaterialStateProperty.all(Color(0xdff2A70C8)),
                         ),
                       ),
                     );

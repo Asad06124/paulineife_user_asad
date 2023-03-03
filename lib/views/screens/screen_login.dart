@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:paulineife_user/helpers/theme.dart';
+import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_forget_password_with_layouts.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/views/screens/screen_signup_google.dart';
@@ -55,7 +56,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
 
         body: Form(
           key: _formKey,
@@ -116,7 +117,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                   hintText: 'example@gmail.com',
                                   hintStyle: TextStyle(
                                       
-                                      color: Themes.setColor(context) ? Colors.white :  Color(0xff000000),
+                                      color: ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xff000000),
                                       fontSize: 16,
                                       fontWeight: FontWeight.w400),
                                   contentPadding: EdgeInsets.only(left: 5),
@@ -192,7 +193,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                 hintText: '........',
                                 hintStyle: TextStyle(
                                     
-                                    color:Themes.setColor(context) ? Colors.white :  Color(0xff000000),
+                                    color:ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xff000000),
                                     fontSize: 30.sp,
                                     fontWeight: FontWeight.w400),
                                 contentPadding:
@@ -255,7 +256,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       textStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                        color: Colors.white
+                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           ),
                       onPressed: () {
                         Get.to(HomeScreen());
@@ -266,7 +267,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color:Themes.setColor(context) ? Colors.white : Color(0xff79869F) ,
+                          color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F) ,
                           ),
                     ),
                     SizedBox(
@@ -282,7 +283,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                           decoration: BoxDecoration(
                             border: Border.all(color: Color(0xff97A1B4)),
                             borderRadius: BorderRadius.circular(25.sp),
-                            color:Themes.setColor(context) ? Colors.black : Colors.white,
+                            color:ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -294,7 +295,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                 Text(
                                   'Continue with Google ',
                                   style: TextStyle(
-                                    color: Themes.setColor(context) ? Colors.white : Colors.black,
+                                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w700,
 
@@ -318,7 +319,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               fontSize: 10.sp,
                               fontWeight: FontWeight.w500,
 
-                              color: Themes.setColor(context) ? Colors.white : Color(0xff000000)),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff000000)),
                           children: [
                             TextSpan(text: ' '),
                             TextSpan(

@@ -6,6 +6,8 @@ import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
+import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
 import '../screens/screen_new_password.dart';
 
@@ -47,7 +49,7 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
     var WHeight = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9) ,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -66,7 +68,7 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                           border: Border.all(
                             color: Color(0xffD6D9E3),
                           ),
-                            color:Themes.setColor(context) ? Colors.black :  Color(0xffFFFFFF),
+                          color: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xffFFFFFF),
                         ),
                         child: Column(
                           children: [
@@ -77,15 +79,11 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                                 Text(
                                   '${country.code} ',
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 15.sp,
-                                      fontWeight: FontWeight.w500,
-                                      
-                                      color: Color(0xff79869F)),
+                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Color(0xff79869F)),
                                 ),
                                 Icon(
                                   Icons.keyboard_arrow_down_outlined,
-                                  color:Themes.setColor(context) ?  Color(0xff79869F): Color(0xff79869F)  ,
+                                  color: ThemeService.isSavedDarkMode() ? Color(0xff79869F) : Color(0xff79869F),
                                 )
                               ],
                             ),
@@ -95,10 +93,10 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                             Text(
                               '${country.dialCode}',
                               style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w400,
-
-                                color: Themes.setColor(context) ? Colors.white : Colors.black,),
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                              ),
                             ),
                           ],
                         ),
@@ -116,16 +114,22 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                           border: Border.all(
                             color: Color(0xffD6D9E3),
                           ),
-                          color:Themes.setColor(context) ? Colors.black : Colors.white,
+                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           borderRadius: BorderRadius.circular(10)),
                       child: TextFormField(
                         controller: TextEditingController(text: '123456789'),
-                        style: TextStyle( color: Themes.setColor(context) ? Colors.white : Colors.black,),
+                        style: TextStyle(
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        ),
                         decoration: InputDecoration(
-
                           filled: true,
-                          fillColor:Themes.setColor(context) ? Colors.black : Colors.white,
-                          label: Text('Phone Number',style: TextStyle( color:Themes.setColor(context) ?  Color(0xff79869F):Color(0xff79869F)  ,),),
+                          fillColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          label: Text(
+                            'Phone Number',
+                            style: TextStyle(
+                              color: ThemeService.isSavedDarkMode() ? Color(0xff79869F) : Color(0xff79869F),
+                            ),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(15)),
                             borderSide: BorderSide.none,
@@ -159,8 +163,7 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                           textStyle: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            
-                            color: Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           ),
                           elevation: 0,
                           height: 45.sp,
@@ -171,15 +174,15 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                         width: 10.sp,
                       ),
                       Ink(
-                        decoration:  ShapeDecoration(
-                          color: Themes.setColor(context) ? Color(0xff3D3D3D) : Color(0xffE2E4EB),
+                        decoration: ShapeDecoration(
+                          color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Color(0xffE2E4EB),
                           shape: CircleBorder(),
                         ),
                         child: IconButton(
                           onPressed: () {},
                           icon: Icon(
                             Icons.refresh,
-                            color: Themes.setColor(context) ? Colors.white : Colors.black,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                           ),
                           color: Color(0xffE2E4EB),
                           style: ElevatedButton.styleFrom(
@@ -197,30 +200,35 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
               Text(
                 'Verify Code',
                 style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    
-                    color: Colors.black),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                ),
               ),
               // Directionality(
               //   // Specify direction if desired
               //   textDirection: TextDirection.ltr,
               //   child: ,
               // ),
-              SizedBox(height: 10.sp,),
+              SizedBox(
+                height: 10.sp,
+              ),
               Container(
                 height: 40.sp,
-                width: Get.width*.8,
+                width: Get.width * .8,
                 // padding: EdgeInsets.symmetric(vertical: 10.sp,horizontal: 20.sp),
                 child: Pinput(
                   scrollPadding: EdgeInsets.all(10.sp),
                   controller: pinController,
                   focusNode: focusNode,
-                  androidSmsAutofillMethod:
-                  AndroidSmsAutofillMethod.smsUserConsentApi,
+                  androidSmsAutofillMethod: AndroidSmsAutofillMethod.smsUserConsentApi,
                   listenForMultipleSmsOnAndroid: true,
                   length: 6,
-                  preFilledWidget: Text('2',style: TextStyle(color: Colors.black,),),
+                  preFilledWidget: Text(
+                    '2',
+                    style: TextStyle(
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    ),
+                  ),
                   // validator: (value) {
                   //   return value == '222222' ? null : 'Pin is incorrect';
                   // },
@@ -253,8 +261,7 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                   textStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    
-                    color: Colors.white,
+                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                   ),
                   elevation: 0,
                   height: 45.sp,

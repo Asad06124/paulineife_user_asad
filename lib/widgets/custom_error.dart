@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../helpers/theme_service.dart';
+
 class CustomError extends StatelessWidget {
   final FlutterErrorDetails errorDetails;
 
@@ -16,8 +18,8 @@ class CustomError extends StatelessWidget {
       child: Padding(
         child: Text(
           "Something is not right here...",
-          style: const TextStyle(
-            color: Colors.white,
+          style: TextStyle(
+            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),

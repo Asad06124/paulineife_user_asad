@@ -9,15 +9,15 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 import '../../controller/registration_controller.dart';
+
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 
 class PostImageScreen extends StatelessWidget {
-  PostImageScreen({
-    Key? key,
-    required this.isnormal
-  }) : super(key: key);
+  PostImageScreen({Key? key, required this.isnormal}) : super(key: key);
   var controller = Get.put(RegistrationController());
-var isnormal;
+  var isnormal;
+
   @override
   Widget build(BuildContext context) {
     int a = 0;
@@ -30,25 +30,19 @@ var isnormal;
           actions: [
             CustomButton1(
               text: 'Post',
-              textStyle: TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                  
-                  color: Colors.white),
+              textStyle: getAppbarTextTheme().copyWith(fontSize: 12.sp),
               onPressed: () {
                 Get.to(HomeScreen());
-
               },
               color: Color(0xff2A70C8),
               height: 35.sp,
               width: 60.sp,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             ),
           ],
           toolbarHeight: 65.sp,
         ),
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: GetBuilder<RegistrationController>(builder: (controller) {
           return SingleChildScrollView(
             child: Column(
@@ -62,7 +56,7 @@ var isnormal;
                     children: [
                       Icon(
                         CupertinoIcons.chat_bubble,
-                        color: Colors.black,
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                       ),
                       SizedBox(
                         width: 6.sp,
@@ -71,14 +65,12 @@ var isnormal;
                         'Allow Comments',
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            
-                            color: Colors.black),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                        ),
                       ),
                       Spacer(),
-                      StatefulBuilder(builder:
-                          (BuildContext context, StateSetter setState) {
+                      StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
                         return Switch(
                             activeColor: Color(0xff3AA0FF),
                             activeTrackColor: Color(0xffD5EBFF),
@@ -97,28 +89,26 @@ var isnormal;
                   height: 53.5.h,
                   width: Get.width,
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: FileImage(controller.images[a]),
-                        fit: BoxFit.cover),
+                    image: DecorationImage(image: FileImage(controller.images[a]), fit: BoxFit.cover),
                   ),
-                  child:Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      controller.images.length>2?
-                      GestureDetector(
-                        onTap: (){
-
-                          controller.images.removeAt(a);
-                          controller.update();
-
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: SvgPicture.asset('assets/svgs/delete.svg',
-                            ),
-                        ),
-                      ):SizedBox(),
+                      controller.images.length > 2
+                          ? GestureDetector(
+                              onTap: () {
+                                controller.images.removeAt(a);
+                                controller.update();
+                              },
+                              child: Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: SvgPicture.asset(
+                                  'assets/svgs/delete.svg',
+                                ),
+                              ),
+                            )
+                          : SizedBox(),
                     ],
                   ),
                 ),
@@ -135,8 +125,7 @@ var isnormal;
                   ),
                 ),
                 StatefulBuilder(
-                  builder: (BuildContext context,
-                      void Function(void Function()) setState) {
+                  builder: (BuildContext context, void Function(void Function()) setState) {
                     return Container(
                       height: 75.sp,
                       child: ListView.builder(
@@ -158,8 +147,7 @@ var isnormal;
                               width: 50.sp,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5.sp),
-                                color: Color(0xff000000),
-                                image: DecorationImage(
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black      ,                          image: DecorationImage(
                                     image: FileImage(
                                       controller.images[index],
                                     ),

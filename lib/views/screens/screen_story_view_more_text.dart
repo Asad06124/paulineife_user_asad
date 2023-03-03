@@ -5,15 +5,17 @@ import 'package:get/get.dart';
 import 'package:sliding_top_panel/sliding_top_panel.dart';
 
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 
 class StoryTextViewScreen extends StatelessWidget {
-   StoryTextViewScreen({Key? key,required this.strl}) : super(key: key);
-   SlidingPanelTopController strl;
+  StoryTextViewScreen({Key? key, required this.strl}) : super(key: key);
+  SlidingPanelTopController strl;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: Column(
           children: [
             ListTile(
@@ -34,8 +36,9 @@ class StoryTextViewScreen extends StatelessWidget {
               title: Text(
                 'Asad_Official',
                 style: TextStyle(
-                    fontSize: 11.sp,
-                    fontWeight: FontWeight.w700,
+                  fontSize: 11.sp,
+                  fontWeight: FontWeight.w700,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
               ),
               trailing: Icon(
@@ -45,16 +48,17 @@ class StoryTextViewScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.all(8.0),
-              child: Container(height:80.h,
+              child: Container(
+                height: 80.h,
                 child: AutoSizeText(
                   '''Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.''',
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.start,
                   maxLines: 40,
                   style: TextStyle(
-                      fontSize: 11.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    fontSize: 11.sp,
+                    fontWeight: FontWeight.w400,
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                  ),
                 ),
               ),
             ),
@@ -74,12 +78,10 @@ class StoryTextViewScreen extends StatelessWidget {
             },
             child: Icon(
               Icons.arrow_back_ios_rounded,
-              color: Colors.white,
+              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
               size: 30.sp,
             ),
-            backgroundColor: Themes.setColor(context)
-              ? Color(0xff3D3D3D)
-              :Color(0x66000000),
+            backgroundColor: Color(0x66000000),
           ),
         ),
       ),

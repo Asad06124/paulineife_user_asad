@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:paulineife_user/helpers/social_media_recorder/widgets/show_counter.dart';
 
+import '../../theme_service.dart';
 import '../provider/sound_record_notifier.dart';
 
 // ignore: must_be_immutable
@@ -98,16 +99,15 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
                     soundRecordNotifier.resetEdgePadding();
                   },
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       cancelText ?? "",
                       maxLines: 1,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.clip,
                       style: cancelTextStyle ??
-                          const TextStyle(
-                            color: Colors.black,
-                          ),
+                           TextStyle(
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                          ),
                     ),
                   )),
             ),

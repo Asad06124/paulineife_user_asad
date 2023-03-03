@@ -10,7 +10,9 @@ import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
 import '../../constant/constant.dart';
 import '../../controller/registration_controller.dart';
+
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 import '../../widgets/status_view_custom.dart';
 
 class HomeLayout extends StatefulWidget {
@@ -35,11 +37,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             padding: EdgeInsets.only(top: 2.sp),
             child: Text(
               'Roll Upp',
-              style: TextStyle(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff2A70C8),
-                  fontFamily: 'ubuntu'),
+              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700, color: Color(0xff2A70C8), fontFamily: 'ubuntu'),
             ),
           ),
           actions: [
@@ -50,17 +48,22 @@ class _HomeLayoutState extends State<HomeLayout> {
                   Get.to(ChatListScreen());
                 },
                 icon: Badge(
-                  badgeContent: Text('1',style: TextStyle(color: Colors.white),),
-                  position: BadgePosition.topEnd(end: -7,top: -13),
+                  badgeContent: Text(
+                    '1',
+                    style: TextStyle(
+                      color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                    ),
+                  ),
+                  position: BadgePosition.topEnd(end: -7, top: -13),
                   child: SvgPicture.asset("assets/svgs/email.svg"),
                 ),
               ),
             ),
           ],
           elevation: 0,
-          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         ),
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: Padding(
           padding: EdgeInsets.all(10.sp),
           child: Column(
@@ -75,8 +78,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                     return Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(
-                              top: 1.sp, bottom: 2.sp, left: 4.sp, right: 4.sp),
+                          padding: EdgeInsets.only(top: 1.sp, bottom: 2.sp, left: 4.sp, right: 4.sp),
                           child: StatusViewCustom(
                             onTap: () {
                               index != 0
@@ -103,12 +105,10 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                     'Camera',
                                                     style: TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                      fontWeight: FontWeight.w400,
                                                       color: Color(
                                                         0xff000000,
                                                       ),
-                                                      
                                                     ),
                                                   ),
                                                 ),
@@ -133,19 +133,17 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                     'Gallery',
                                                     style: TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                      fontWeight: FontWeight.w400,
                                                       color: Color(
                                                         0xff000000,
                                                       ),
-                                                      
                                                     ),
                                                   ),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                          backgroundColor: Color(0xffffffff),
+                                          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                                           elevation: 0,
                                         )
                                       : Get.to(StoryViewScreen());
@@ -157,9 +155,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                             indexOfSeenStatus: 1,
                             numberOfStatus: 1,
                             padding: 4,
-                            centerImageUrl: index != 0
-                                ? 'assets/images/12.png'
-                                : 'assets/images/camera.png',
+                            centerImageUrl: index != 0 ? 'assets/images/12.png' : 'assets/images/camera.png',
                             seenColor: Color(0xff3AA0FF),
                             unSeenColor: Colors.red,
                           ),
@@ -167,7 +163,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                         Text(
                           index == 0 ? 'Your Story' : 'Asad',
                           style: TextStyle(
-                              color: Colors.black,
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                               fontSize: font12,
                               fontWeight: FontWeight5,
                               fontFamily: fontFamilyD),
@@ -181,22 +177,21 @@ class _HomeLayoutState extends State<HomeLayout> {
                 child: Column(
                   children: [
                     GestureDetector(
-                      onTap:(){Get.to(StoryViewScreen());},
+                      onTap: () {
+                        Get.to(StoryViewScreen());
+                      },
                       child: Container(
                         height: size.height / 1.8 + 15,
                         alignment: Alignment.bottomLeft,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.sp),
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/post.png'),
-                              fit: BoxFit.cover),
+                          image: DecorationImage(image: AssetImage('assets/images/post.png'), fit: BoxFit.cover),
                         ),
                         child: GestureDetector(
                           onTap: () {
                             Get.to(ProfileScreen());
                           },
                           child: Container(
-
                             color: Colors.transparent,
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
@@ -205,49 +200,50 @@ class _HomeLayoutState extends State<HomeLayout> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-
                                   Container(
                                     height: 40.sp,
-                                      width: 40.sp,
-                                      padding: EdgeInsets.all(2.sp),
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: Colors.white,
-                                          )),
-                                      child: CircleAvatar(
-                                        backgroundImage:
-                                            AssetImage('assets/images/12.png'),
-                                      ),
+                                    width: 40.sp,
+                                    padding: EdgeInsets.all(2.sp),
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                        )),
+                                    child: CircleAvatar(
+                                      backgroundImage: AssetImage('assets/images/12.png'),
                                     ),
-                                  SizedBox(width: 10 .sp,),
+                                  ),
+                                  SizedBox(
+                                    width: 10.sp,
+                                  ),
                                   Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [Text(
-                                    'Asad Ullah',
-                                      textAlign:TextAlign.start,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                    SizedBox(height: 2.sp,),
-                                    Text(
-                                      '2 hours ago',
-                                      textAlign:TextAlign.start,
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500,
-
-                                        color: Colors.white,
+                                    children: [
+                                      Text(
+                                        'Asad Ullah',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
+                                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                        ),
                                       ),
-                                    ),],)
-
-
+                                      SizedBox(
+                                        height: 2.sp,
+                                      ),
+                                      Text(
+                                        '2 hours ago',
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
+                                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                        ),
+                                      ),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
@@ -266,8 +262,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                             onTap: () {
                               Get.to(StoryViewScreen());
                             },
-                            child:
-                                SvgPicture.asset('assets/images/repeat.svg')),
+                            child: SvgPicture.asset('assets/images/repeat.svg')),
                       ],
                     ),
                   ],

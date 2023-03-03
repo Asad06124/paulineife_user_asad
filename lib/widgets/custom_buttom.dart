@@ -2,6 +2,8 @@ import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../helpers/theme_service.dart';
+
 class CustomButton1 extends StatefulWidget {
   final Color? color;
   final String text;
@@ -27,7 +29,7 @@ class CustomButton1 extends StatefulWidget {
       required this.onPressed,
       this.width,
       this.margin,
-        this.decuration,
+      this.decuration,
       this.height,
       this.textStyle,
       this.shape,
@@ -51,17 +53,13 @@ class _CustomButton1State extends State<CustomButton1> {
       onTap: widget.onPressed,
       child: Container(
         // padding: EdgeInsets.symmetric(horizontal: 10.sp),
-        margin: widget.margin ??
-            const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+        margin: widget.margin ?? const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         height: widget.height,
         width: widget.width,
         decoration: widget.decuration,
         child: ElevatedButton(
           onLongPress: widget.onLongPressed,
-          onPressed: ((widget.enabled != null && !widget.enabled!) ||
-                  (widget.loading != null && widget.loading!))
-              ? null
-              : widget.onPressed,
+          onPressed: ((widget.enabled != null && !widget.enabled!) || (widget.loading != null && widget.loading!)) ? null : widget.onPressed,
           style: ElevatedButton.styleFrom(
             padding: widget.padding,
             elevation: widget.elevation,
@@ -79,7 +77,9 @@ class _CustomButton1State extends State<CustomButton1> {
                   widget.text,
                   textAlign: widget.textAlign ?? TextAlign.center,
                   style: widget.textStyle ??
-                      normal_h3Style.copyWith(color: Colors.white),
+                      normal_h3Style.copyWith(
+                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                      ),
                 ),
         ),
       ),

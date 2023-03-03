@@ -4,9 +4,10 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:sizer/sizer.dart';
-import '../../helpers/theme.dart';
-import '../../widgets/custom_buttom.dart';
 
+import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
+import '../../widgets/custom_buttom.dart';
 
 class ProfileEditScreen extends StatefulWidget {
   @override
@@ -20,15 +21,15 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           foregroundColor: Colors.black,
           elevation: 0,
           title: Text(
             'Edit Profile',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700,color: Colors.black,),
+            style: getAppbarTextTheme().copyWith(fontSize: 18, fontWeight: FontWeight.w700),
           ),
           centerTitle: true,
         ),
@@ -62,8 +63,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               textStyle: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                
-                                color: Colors.white,
+                                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                               ),
                               elevation: 0,
                               height: Get.height / 16,
@@ -83,8 +83,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               textStyle: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                
-                                color: Colors.white,
+                                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                               ),
                               elevation: 0,
                               height: Get.height / 16,
@@ -96,7 +95,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               }),
                         ],
                       ),
-                      backgroundColor: Color(0xffffffff),
+                      backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                       elevation: 0,
                     );
                   },
@@ -181,8 +180,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      controller:
-                          TextEditingController(text: 'www.microprogramer.org'),
+                      controller: TextEditingController(text: 'www.microprogramer.org'),
                       decoration: InputDecoration(
                         label: Text('Website'),
                         border: OutlineInputBorder(
@@ -212,8 +210,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      controller:
-                          TextEditingController(text: 'Flutter Developer'),
+                      controller: TextEditingController(text: 'Flutter Developer'),
                       decoration: InputDecoration(
                         label: Text('Bio'),
                         border: OutlineInputBorder(
@@ -246,17 +243,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                   ),
                 ),
                 CustomButton1(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                     height: Get.height / 16,
                     width: Get.width / 1.2,
                     color: Color(0xff2A70C8),
-                    textStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w800),
+                    textStyle:
+                        TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white, fontSize: 16.sp, fontWeight: FontWeight.w800),
                     text: 'Save',
-                    onPressed: () async {Get.back();}),
+                    onPressed: () async {
+                      Get.back();
+                    }),
               ],
             ),
           ),

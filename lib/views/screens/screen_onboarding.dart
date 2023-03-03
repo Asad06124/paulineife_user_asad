@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_login.dart';
 
 class ScreenOnboarding extends StatefulWidget {
@@ -53,7 +54,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
       child: Scaffold(
         backgroundColor: kwhite,
         appBar: AppBar(
-          backgroundColor: kwhite,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           elevation: 0.0,
         ),
         body: Stack(children: [
@@ -160,7 +161,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                     child: currentIndex != 2
                         ? Icon(
                             Icons.arrow_forward_ios,
-                            color: Colors.white,
+                      color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                           )
                         : Text(
                             "Get Started",

@@ -6,6 +6,7 @@ import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:sizer/sizer.dart';
 import 'package:video_trimmer/video_trimmer.dart';
 import '../../controller/registration_controller.dart';
+import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
 
 class VideoGalleryScreen extends StatelessWidget {
@@ -28,8 +29,7 @@ class VideoGalleryScreen extends StatelessWidget {
                 Text(
                   'Gallery',
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17.sp,
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                    fontSize: 17.sp,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -39,7 +39,10 @@ class VideoGalleryScreen extends StatelessWidget {
                 CustomButton1(
                   text: 'Select',
                   elevation: 0,
-                  textStyle: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w400, color: Colors.black),
+                  textStyle: TextStyle(
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w400,
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                  ),
                   onPressed: () {},
                   color: Color(0xffE2E4EB),
                   height: 35.sp,
@@ -71,7 +74,7 @@ class VideoGalleryScreen extends StatelessWidget {
                         Container(
                           height: Get.height,
                           width: Get.width,
-                          color: Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                           child: VideoViewer(
                             trimmer: Trimmer()..loadVideo(videoFile: File(videosList[index])),
                           ),
@@ -85,7 +88,7 @@ class VideoGalleryScreen extends StatelessWidget {
                             child: Icon(
                               Icons.play_arrow_outlined,
                               size: 35.sp,
-                              color: Colors.white,
+                              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                             ),
                             onPressed: () {
                               controller.vid = File(videosList[index]);

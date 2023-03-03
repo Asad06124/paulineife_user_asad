@@ -14,15 +14,11 @@ import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/utils.dart';
 import 'package:story_view/widgets/story_view.dart';
 
-
-
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 import 'screen_story_view_more_text.dart';
 
 class StoryViewScreen extends StatefulWidget {
-
-
-
   @override
   State<StoryViewScreen> createState() => _StoryViewScreenState();
 }
@@ -34,7 +30,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
   StoryController controller = StoryController();
   List<StoryItem> storyItems = [];
   int randomNumber = 1;
-  var StryCount ;
+  var StryCount;
 
   @override
   void initState() {
@@ -45,8 +41,8 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
     _controller.addListener(listenerController);
     initStoryPageItems();
   }
-  List<int> numbers = [10, 12, 15, 5, 8, 7, 9, 6];
 
+  List<int> numbers = [10, 12, 15, 5, 8, 7, 9, 6];
 
   void _generateRandomNumber() {
     // Generate a random index using the Random class
@@ -72,13 +68,13 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
   void initStoryPageItems() {
     for (int i = 0; i < StryCount; i++) {
       storyItems.add(StoryItem.pageImage(
-        url:
-            'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+        url: 'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
         controller: controller,
       ));
     }
   }
-  void initi(){
+
+  void initi() {
     _controller.addListener(listenerController);
     initStoryPageItems();
     _generateRandomNumber();
@@ -98,14 +94,15 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
         randomNumber = numbers[randomIndex];
       });
     }
+
     void listenerController() {
       _isPanelVisible.value = _controller.isPanelOpen;
     }
+
     void initStoryPageItems() {
       for (int i = 0; i < StryCount; i++) {
         storyItems.add(StoryItem.pageImage(
-          url:
-          'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+          url: 'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
           controller: controller,
         ));
       }
@@ -113,10 +110,10 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
 
     return SafeArea(
       child: Scaffold(
-        body:SlidingTopPanel(
-          maxHeight: 27.h ,
-          decorationPanel:  BoxDecoration(
-            color: Themes.setColor(context) ? Colors.black : Colors.white,
+        body: SlidingTopPanel(
+          maxHeight: 27.h,
+          decorationPanel: BoxDecoration(
+            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),
@@ -147,7 +144,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
               },
               child: Icon(
                 Icons.keyboard_arrow_down,
-                color: Colors.white,
+                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                 size: 30.sp,
               ),
               backgroundColor: Color(0x5effffff),
@@ -158,8 +155,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
     );
   }
 
-  Widget _buildListPanel() =>
-      Column(
+  Widget _buildListPanel() => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
@@ -180,9 +176,9 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
             title: Text(
               'Asad_Official',
               style: TextStyle(
-                  fontSize: 11.sp,
-                  fontWeight: FontWeight.w700,
-                  
+                fontSize: 11.sp,
+                fontWeight: FontWeight.w700,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
               ),
             ),
             trailing: Icon(
@@ -193,7 +189,6 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
           Padding(
             padding: EdgeInsets.all(8.0),
             child: Container(
-
               child: ReadMoreText(
                 text:
                     '''Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.''',
@@ -220,7 +215,6 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   if (direction == Direction.up) {
                     storyItems.clear();
                     initi();
-
                   }
                 },
                 onComplete: () {
@@ -241,7 +235,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                       shape: BoxShape.circle,
                       border: Border.all(
                         width: 1.sp,
-                        color: Color(0xffffffff),
+                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                       )),
                   child: CircleAvatar(
                     radius: 20.sp,
@@ -251,27 +245,27 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                 title: Text(
                   'Asad',
                   style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      
-                      color: Colors.white),
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  ),
                 ),
                 subtitle: RichText(
                   text: TextSpan(
                       text: 'Good Football   ',
                       style: TextStyle(
-                          fontSize: 10.sp,
-                          fontWeight: FontWeight.w500,
-                          
-                          color: Colors.white),
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w500,
+                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                      ),
                       children: [
                         TextSpan(
                           text: '5h',
                           style: TextStyle(
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w500,
-                              
-                              color: Colors.white),
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w500,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          ),
                         ),
                       ]),
                 ),
@@ -293,7 +287,9 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                             color: Color(0x5effffff)),
                         child: Text(
                           '2/${storyItems.length}',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          ),
                         ),
                       ),
                       PopupMenuButton(
@@ -308,7 +304,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         ),
                         icon: Icon(
                           Icons.more_vert,
-                          color: Colors.white,
+                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                         ),
                         itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                           PopupMenuItem(
@@ -320,10 +316,10 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                             child: Text(
                               'Report',
                               style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color(0xffFF0000),
-                                  ),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xffFF0000),
+                              ),
                             ),
                           ),
                           PopupMenuItem(
@@ -333,10 +329,10 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                             child: Text(
                               'Block',
                               style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-
-                                  ),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                              ),
                             ),
                           ),
                           PopupMenuItem(
@@ -348,19 +344,20 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                             child: Text(
                               'Message',
                               style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-
-                                  ),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                              ),
                             ),
                           ),
                           PopupMenuItem(
                             child: Text(
                               'Share',
                               style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                  ),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                              ),
                             ),
                           ),
                         ],
@@ -385,10 +382,10 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         Text(
                           '10.9k',
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              
-                              color: Colors.white),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          ),
                         ),
                       ],
                     ),
@@ -402,10 +399,10 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                       Text(
                         '10.9k',
                         style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            
-                            color: Colors.white),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                        ),
                       ),
                     ],
                   ),
@@ -425,10 +422,10 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         Text(
                           '1.5k',
                           style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              
-                              color: Colors.white),
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          ),
                         ),
                       ],
                     ),
@@ -450,35 +447,36 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
             text: TextSpan(
               text: isExpanded ? text : text.substring(0, maxLength) + '...',
               style: TextStyle(
-                  fontSize: 11.sp,
-                  fontWeight: FontWeight.w400,
-                  
+                fontSize: 11.sp,
+                fontWeight: FontWeight.w400,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
               ),
               children: [
                 TextSpan(
                   text: isExpanded ? '' : 'more',
-                  style: TextStyle(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w500,
-                      
-                      color: Color(0xff2A70C8)),
+                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Color(0xff2A70C8)),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      Get.to(StoryTextViewScreen(strl: _controller,));
+                      Get.to(StoryTextViewScreen(
+                        strl: _controller,
+                      ));
                     },
                 ),
               ],
             ),
           ),
           Visibility(
-            visible: isExpanded==false?true:false,
+            visible: isExpanded == false ? true : false,
             child: GestureDetector(
               onTap: () {
-                Get.to(StoryTextViewScreen(strl: _controller,));
+                Get.to(StoryTextViewScreen(
+                  strl: _controller,
+                ));
               },
-              child: Icon(Icons.keyboard_arrow_down_sharp,color: Themes.setColor(context)
-                  ? Colors.white
-                  : Color(0xff79869F),),
+              child: Icon(
+                Icons.keyboard_arrow_down_sharp,
+                color: Color(0xff79869F),
+              ),
             ),
           ),
         ],

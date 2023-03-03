@@ -8,8 +8,9 @@ import 'package:paulineife_user/views/screens/screen_chat_list.dart';
 import 'package:paulineife_user/views/screens/screen_report.dart';
 
 import '../../../widgets/custom_input_field1.dart';
-import '../../helpers/theme.dart';
 
+import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 class ChatScreen extends StatelessWidget {
   ChatScreen({Key? key}) : super(key: key);
 
@@ -18,7 +19,7 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
           leadingWidth: 20.sp,
@@ -109,10 +110,8 @@ class ChatScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Asad',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14.sp,
+                    style: getAppbarTextTheme().copyWith(
+                      fontSize: 14.sp
                     ),
                   ),
                   Text(
@@ -162,8 +161,7 @@ class ChatScreen extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff000000),
-                        ),
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                        ),
                   ),
                 ),
               ],
@@ -212,8 +210,7 @@ class ChatScreen extends StatelessWidget {
                             tail: true,
                             textStyle: TextStyle(
                               fontSize: 12.sp,
-                              color: Colors.black,
-                            ),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 4.w),
@@ -268,7 +265,7 @@ class ChatScreen extends StatelessWidget {
                                   tail: true,
                                   textStyle: TextStyle(
                                     fontSize: 12.sp,
-                                    color: Colors.white,
+                                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                                   ),
                                 ),
                               ],
@@ -360,8 +357,7 @@ class ChatScreen extends StatelessWidget {
                             tail: true,
                             textStyle: TextStyle(
                               fontSize: 12.sp,
-                              color: Colors.black,
-                            ),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                            ),
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 4.w),
@@ -416,7 +412,7 @@ class ChatScreen extends StatelessWidget {
                                   tail: true,
                                   textStyle: TextStyle(
                                     fontSize: 12.sp,
-                                    color: Colors.white,
+                                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                                   ),
                                 ),
                               ],

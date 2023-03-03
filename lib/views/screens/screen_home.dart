@@ -5,6 +5,7 @@ import 'package:badges/badges.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/layouts/layout_home.dart';
 import 'package:paulineife_user/views/layouts/layout_notification.dart';
 import 'package:paulineife_user/views/layouts/layout_profile.dart';
@@ -29,8 +30,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var controller = Get.put(RegistrationController());
 
-  PersistentTabController _controller =
-      PersistentTabController(initialIndex: 0);
+  PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,11 @@ class _HomeScreenState extends State<HomeScreen> {
         SearchLayout(),
         HomeLayout(),
         NotificationLayouts(),
-        ProfileLayout(),
+        ProfileLayout(
+          onThemeUpdate: () {
+            setState(() {});
+          },
+        ),
       ],
       items: [
         PersistentBottomNavBarItem(
@@ -55,15 +59,14 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: _controller.index == 0
               ? Padding(
                   padding: EdgeInsets.only(bottom: 5.0),
-                  child: Themes.setColor(context)
+                  child: ThemeService.isSavedDarkMode()
                       ? SvgPicture.asset("assets/svgs/Home_opened_black.svg")
                       : SvgPicture.asset("assets/svgs/Home_opened.svg"),
                 )
-              : Themes.setColor(context)
+              : ThemeService.isSavedDarkMode()
                   ? SvgPicture.asset("assets/svgs/Home_closed_black.svg")
                   : SvgPicture.asset("assets/svgs/Home_closed.svg"),
-          activeColorPrimary:
-              Themes.setColor(context) ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -76,18 +79,17 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: _controller.index == 1
               ? Padding(
                   padding: EdgeInsets.only(bottom: 6.0),
-                  child: Themes.setColor(context)
+                  child: ThemeService.isSavedDarkMode()
                       ? SvgPicture.asset("assets/svgs/Search_opened_black.svg")
                       : SvgPicture.asset("assets/svgs/search_opened.svg"),
                 )
               : Padding(
                   padding: EdgeInsets.only(bottom: 6.0),
-                  child: Themes.setColor(context)
+                  child: ThemeService.isSavedDarkMode()
                       ? SvgPicture.asset("assets/svgs/Search_closed_black.svg")
                       : SvgPicture.asset("assets/svgs/search_closed.svg"),
                 ),
-          activeColorPrimary:
-              Themes.setColor(context) ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -105,9 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     topLeft: Radius.circular(20.sp),
                     topRight: Radius.circular(20.sp),
                   ),
-                  color: Themes.setColor(context)
-                      ? Color(0xff3D3D3D)
-                      : Colors.white,
+                  color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                 ),
                 child: Column(
                   children: [
@@ -134,9 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   topLeft: Radius.circular(20.sp),
                                   topRight: Radius.circular(20.sp),
                                 ),
-                                color: Themes.setColor(context)
-                                    ? Color(0xff3D3D3D)
-                                    : Colors.white,
+                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                               ),
                               height: 18.h,
                               child: Column(
@@ -146,19 +144,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Get.back();
                                       Get.bottomSheet(
                                         Container(
-
                                           height: 34.h + 5,
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(20.sp),
                                               topRight: Radius.circular(20.sp),
                                             ),
-                                            color: Themes.setColor(context) ?Color(0xff3D3D3D):Colors.white,),
+                                            color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
+                                          ),
                                           child: Column(
                                             children: [
                                               Padding(
-                                                padding:
-                                                    EdgeInsets.only(top: 35.sp),
+                                                padding: EdgeInsets.only(top: 35.sp),
                                                 child: Text(
                                                   'Post',
                                                   style: TextStyle(
@@ -168,8 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding:
-                                                    EdgeInsets.only(top: 15.sp),
+                                                padding: EdgeInsets.only(top: 15.sp),
                                                 child: Text(
                                                   'Post image as',
                                                   style: TextStyle(
@@ -186,11 +182,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   getFromCameraimg(true);
                                                 },
                                                 leading: SvgPicture.asset(
-                                                    'assets/svgs/gallery.svg',color: Themes.setColor(context)
-                                                    ? Colors.white
-                                                    : Color(
-                                                  0xff97A1B4,
-                                                ),),
+                                                  'assets/svgs/gallery.svg',
+                                                  color: ThemeService.isSavedDarkMode()
+                                                      ? Colors.white
+                                                      : Color(
+                                                          0xff97A1B4,
+                                                        ),
+                                                ),
                                                 title: Text(
                                                   'Normal images',
                                                   style: TextStyle(
@@ -208,11 +206,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   getFromCameraimg(false);
                                                 },
                                                 leading: SvgPicture.asset(
-                                                    'assets/svgs/thread.svg',color: Themes.setColor(context)
-                                                    ? Colors.white
-                                                    : Color(
-                                                  0xff97A1B4,
-                                                ),),
+                                                  'assets/svgs/thread.svg',
+                                                  color: ThemeService.isSavedDarkMode()
+                                                      ? Colors.white
+                                                      : Color(
+                                                          0xff97A1B4,
+                                                        ),
+                                                ),
                                                 title: Text(
                                                   'Thread',
                                                   style: TextStyle(
@@ -230,11 +230,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                     leading: Icon(
                                       Icons.camera_alt_outlined,
-                                      color: Themes.setColor(context)
+                                      color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                        0xff97A1B4,
-                                      ),
+                                              0xff97A1B4,
+                                            ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -260,36 +260,29 @@ class _HomeScreenState extends State<HomeScreen> {
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.only(
                                                 topLeft: Radius.circular(20.sp),
-                                                topRight:
-                                                    Radius.circular(20.sp),
+                                                topRight: Radius.circular(20.sp),
                                               ),
-                                              color: Themes.setColor(context)
-                                                  ? Color(0xff3D3D3D)
-                                                  : Colors.white,
+                                              color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                                             ),
                                             child: Column(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 35.sp),
+                                                  padding: EdgeInsets.only(top: 35.sp),
                                                   child: Text(
                                                     'Post',
                                                     style: TextStyle(
                                                       fontSize: 22,
-                                                      fontWeight:
-                                                          FontWeight.w700,
+                                                      fontWeight: FontWeight.w700,
                                                     ),
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsets.only(
-                                                      top: 15.sp),
+                                                  padding: EdgeInsets.only(top: 15.sp),
                                                   child: Text(
                                                     'Post image as',
                                                     style: TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                      fontWeight: FontWeight.w400,
                                                     ),
                                                   ),
                                                 ),
@@ -301,17 +294,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     getFromGalleryimg(true);
                                                   },
                                                   leading: SvgPicture.asset(
-                                                      'assets/svgs/gallery.svg',color: Themes.setColor(context)
-                                                      ? Colors.white
-                                                      : Color(
-                                                    0xff97A1B4,
-                                                  ),),
+                                                    'assets/svgs/gallery.svg',
+                                                    color: ThemeService.isSavedDarkMode()
+                                                        ? Colors.white
+                                                        : Color(
+                                                            0xff97A1B4,
+                                                          ),
+                                                  ),
                                                   title: Text(
                                                     'Normal images',
                                                     style: TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                      fontWeight: FontWeight.w400,
                                                     ),
                                                   ),
                                                 ),
@@ -323,14 +317,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   onTap: () {
                                                     getFromGalleryimg(false);
                                                   },
-                                                  leading: SvgPicture.asset(
-                                                      'assets/svgs/thread.svg'),
+                                                  leading: SvgPicture.asset('assets/svgs/thread.svg'),
                                                   title: Text(
                                                     'Thread',
                                                     style: TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                      fontWeight: FontWeight.w400,
                                                     ),
                                                   ),
                                                 ),
@@ -344,11 +336,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                     leading: Icon(
                                       Icons.photo,
-                                      color: Themes.setColor(context)
+                                      color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                        0xff97A1B4,
-                                      ),
+                                              0xff97A1B4,
+                                            ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -369,7 +361,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       leading: Icon(
                         Icons.camera_alt_outlined,
-                        color: Themes.setColor(context)
+                        color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
                                 0xff97A1B4,
@@ -394,11 +386,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       leading: Icon(
                         Icons.text_snippet_outlined,
-                        color: Themes.setColor(context)
+                        color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
-                          0xff97A1B4,
-                        ),
+                                0xff97A1B4,
+                              ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -427,11 +419,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       leading: Icon(
                         Icons.videocam_outlined,
-                        color: Themes.setColor(context)
+                        color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
-                          0xff97A1B4,
-                        ),
+                                0xff97A1B4,
+                              ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -451,12 +443,9 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: Padding(
             padding: EdgeInsets.only(bottom: 6.0),
-            child: Themes.setColor(context)
-                ? SvgPicture.asset("assets/svgs/Add_black.svg")
-                : SvgPicture.asset("assets/svgs/add.svg"),
+            child: ThemeService.isSavedDarkMode() ? SvgPicture.asset("assets/svgs/Add_black.svg") : SvgPicture.asset("assets/svgs/add.svg"),
           ),
-          activeColorPrimary:
-              Themes.setColor(context) ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
@@ -472,18 +461,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             position: BadgePosition.topEnd(end: -7, top: -13),
             child: _controller.index == 3
-                ? Themes.setColor(context)
-                    ? SvgPicture.asset(
-                        "assets/svgs/Notification_opened_black.svg")
+                ? ThemeService.isSavedDarkMode()
+                    ? SvgPicture.asset("assets/svgs/Notification_opened_black.svg")
                     : SvgPicture.asset("assets/svgs/Notification_opened.svg")
-                : Themes.setColor(context)
-                    ? SvgPicture.asset(
-                        "assets/svgs/Notification_closed_black.svg")
+                : ThemeService.isSavedDarkMode()
+                    ? SvgPicture.asset("assets/svgs/Notification_closed_black.svg")
                     : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
           ),
           title: ("Settings"),
-          activeColorPrimary:
-              Themes.setColor(context) ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
@@ -495,21 +481,18 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: Padding(
             padding: EdgeInsets.only(bottom: 3.0),
             child: Container(
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Color(0xff3AA0FF), width: 2.sp)),
+                decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Color(0xff3AA0FF), width: 2.sp)),
                 child: CircleAvatar(
                   backgroundImage: AssetImage('assets/images/12.png'),
                 )),
           ),
           title: ("Settings"),
-          activeColorPrimary:
-              Themes.setColor(context) ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
       ],
       confineInSafeArea: true,
-      backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+      backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       // Default is Colors.white.
       handleAndroidBackButtonPress: true,
       // Default is true.
@@ -521,8 +504,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar:
-            Themes.setColor(context) ? Colors.black : Colors.white,
+        colorBehindNavBar: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -537,8 +519,7 @@ class _HomeScreenState extends State<HomeScreen> {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle:
-          NavBarStyle.style13, // Choose the nav bar style with this property.
+      navBarStyle: NavBarStyle.style13, // Choose the nav bar style with this property.
     );
   }
 

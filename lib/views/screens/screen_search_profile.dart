@@ -13,145 +13,124 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../constant/constant.dart';
+
 import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 
 class ProfileScreen extends StatefulWidget {
-   ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key}) : super(key: key);
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             'Asad',
-            style: TextStyle(
-                fontSize: 12.sp,
-                fontWeight: FontWeight.w500,
-                
-                color: Colors.black),
+            style: getAppbarTextTheme().copyWith(fontSize: 12.sp),
           ),
           centerTitle: true,
           leading: Icon(Icons.arrow_back_rounded),
-          actions: [ PopupMenuButton(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.sp),
-            ),
-            icon: Icon(
-              Icons.more_vert,
-              color: Color(0xff97A1B4),
-            ),
-            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-              PopupMenuItem(
-                onTap: () {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    Get.to(ReportScreen());
-                  });
-                },
-                child: Text(
-                  'Report',
-                  style: TextStyle(
+          actions: [
+            PopupMenuButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.sp),
+              ),
+              icon: Icon(
+                Icons.more_vert,
+                color: Color(0xff97A1B4),
+              ),
+              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                PopupMenuItem(
+                  onTap: () {
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      Get.to(ReportScreen());
+                    });
+                  },
+                  child: Text(
+                    'Report',
+                    style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                       color: Color(0xffFF0000),
-                      ),
+                    ),
+                  ),
                 ),
-              ),
-              PopupMenuItem(
-                onTap: () {
-                  Get.back();
-                },
-                child: Text(
-                  'Block',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff000000),
-                      ),
+                PopupMenuItem(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Text(
+                    'Block',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                  ),
                 ),
-              ),
-            ],
-          ),],
+              ],
+            ),
+          ],
         ),
         body: Padding(
           padding: EdgeInsets.all(8.sp),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    color: Color(0xff3AA0FF), width: 3.sp)),
-                            child: CircleAvatar(
-                              radius: 30.sp,
-                              backgroundImage: AssetImage('assets/images/12.png'),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                                text: 'Asad\n',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  
-                                  color: Color(0xff000000),
-                                ),
-                                children: [
-                                  TextSpan(
-                                    text: '@asad',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
-                                      
-                                      color: Color(0xff2A70C8),
-                                    ),
-                                  )
-                                ]),
-                          ),
-                        ],
+                      Container(
+                        decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Color(0xff3AA0FF), width: 3.sp)),
+                        child: CircleAvatar(
+                          radius: 30.sp,
+                          backgroundImage: AssetImage('assets/images/12.png'),
+                        ),
                       ),
-                    ]),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                            text: 'Asad\n',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                            children: [
+                              TextSpan(
+                                text: '@asad',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w500,
+                                  color: Color(0xff2A70C8),
+                                ),
+                              )
+                            ]),
+                      ),
+                    ],
+                  ),
+                ]),
                 SizedBox(
                   height: 10.sp,
                 ),
                 RichText(
                   textAlign: TextAlign.justify,
                   text: TextSpan(
-                      text:
-                      'Lorem ipsum dolor sit amet, consectetur eliteita adipiscing elit. Morbi at malesuada mi.',
+                      text: 'Lorem ipsum dolor sit amet, consectetur eliteita adipiscing elit. Morbi at malesuada mi.',
                       style: TextStyle(
-                        height: 1.sp,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        
-                        color: Color(0xff000000),
-                      ),
+                          height: 1.sp,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                       children: [
                         TextSpan(
                           text: '\nwww.google.com',
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w700,
-                            
                             color: Color(0xff2A70C8),
                           ),
                         )
@@ -165,24 +144,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     SizedBox(),
                     GestureDetector(
-                      onTap: (){Get.to(FollowerScreen());},
+                      onTap: () {
+                        Get.to(FollowerScreen());
+                      },
                       child: RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
                             text: '10k\n',
                             style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w700,
-                              
-                              color: Color(0xff000000),
-                            ),
+                                fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                             children: [
                               TextSpan(
                                 text: 'Followers',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  
                                   color: Color(0xff79869F),
                                 ),
                               )
@@ -190,7 +166,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){Get.to(FollowingScreen());},
+                      onTap: () {
+                        Get.to(FollowingScreen());
+                      },
                       child: RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
@@ -198,16 +176,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            
-                            color: Color(0xff000000),
-                          ),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                          ),
                           children: [
                             TextSpan(
                               text: 'Following',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                
                                 color: Color(0xff79869F),
                               ),
                             )
@@ -219,7 +194,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ],
                 ),
                 Row(
-                  children:[
+                  children: [
                     CustomButton1(
                         text: '+ Follow',
                         shape: RoundedRectangleBorder(
@@ -228,8 +203,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         textStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          
-                          color: Colors.white,
+                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                         ),
                         elevation: 0,
                         height: Get.height / 16,
@@ -238,22 +212,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         onPressed: () {}),
                     CustomButton1(
                         text: 'Message',
-                        decuration: BoxDecoration(border: Border.all(color: Color(0xff000000),),borderRadius: BorderRadius.circular(10.sp)),
+                        decuration: BoxDecoration(
+                            border: Border.all(
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                            ),
+                            borderRadius: BorderRadius.circular(10.sp)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.sp),
-
                         ),
                         textStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          
-                          color: Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                         elevation: 0,
                         height: Get.height / 16,
                         width: Get.width / 2.5,
-                        color: Color(0xffffffff),
-                        onPressed: () {Get.to(ChatScreen());}),
+                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                        onPressed: () {
+                          Get.to(ChatScreen());
+                        }),
                   ],
                 ),
                 Divider(
@@ -266,10 +243,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: 16,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 2.sp,
-                      mainAxisSpacing: 2.sp),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 2.sp, mainAxisSpacing: 2.sp),
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
@@ -280,9 +254,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         alignment: Alignment.bottomRight,
                         // padding: EdgeInsets.only(bottom: 5),
                         decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/12.png'),
-                              fit: BoxFit.cover),
+                          image: DecorationImage(image: AssetImage('assets/images/12.png'), fit: BoxFit.cover),
                         ),
                         child: Stack(
                           children: [
@@ -300,7 +272,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         Color(0x0),
                                         Color(0xeb000000),
                                       ],
-                                      stops: [0.6, 10.0,],
+                                      stops: [
+                                        0.6,
+                                        10.0,
+                                      ],
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                     ),
@@ -321,7 +296,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     color: Color(0x5effffff)),
                                 child: Text(
                                   '5',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
@@ -333,14 +310,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 children: [
                                   Icon(
                                     Icons.remove_red_eye_outlined,
-                                    color: Colors.white,
+                                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                                     size: 15.sp,
                                   ),
-                                  SizedBox(width: 3.sp,),
+                                  SizedBox(
+                                    width: 3.sp,
+                                  ),
                                   Text(
                                     '20.5K',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
                                       fontSize: 6.sp,
                                       fontWeight: FontWeight.w500,
                                       fontFamily: fontFamilyD,

@@ -3,8 +3,9 @@ import 'package:paulineife_user/views/layouts/layout_signup_email.dart';
 import 'package:paulineife_user/views/layouts/layout_signup_phone.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../helpers/theme.dart';
 
+import '../../helpers/theme.dart';
+import '../../helpers/theme_service.dart';
 class ScreeSignUpWithLayouts extends StatefulWidget {
   const ScreeSignUpWithLayouts({Key? key}) : super(key: key);
 
@@ -19,14 +20,14 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
       child: DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9) ,
+            backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9) ,
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               title: Padding(
                 padding: EdgeInsets.only(top: 10.sp),
                 child: Text(
                   'Sign Up',
-                  style: TextStyle(
+                  style: getAppbarTextTheme().copyWith(
                       fontSize: 21.sp,
                       fontWeight: FontWeight.w700,
                   ),
@@ -35,7 +36,7 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
               automaticallyImplyLeading: false,
               centerTitle: true,
               elevation: 0,
-              backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9) ,
+              backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9) ,
             ),
             body: Center(
               child: Column(

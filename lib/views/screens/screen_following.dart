@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:sizer/sizer.dart';
+
 import '../../helpers/theme.dart';
-import '../../widgets/custom_buttom.dart';
+import '../../helpers/theme_service.dart';import '../../widgets/custom_buttom.dart';
 import '../../widgets/custom_input_field1.dart';
 
 class FollowingScreen extends StatelessWidget {
@@ -13,18 +14,14 @@ class FollowingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
-          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           foregroundColor: Colors.black,
           elevation: 0,
           title: Text(
             'Following',
-            style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: Colors.black,
-                ),
+            style: getAppbarTextTheme(),
           ),
           centerTitle: true,
         ),
@@ -79,8 +76,7 @@ class FollowingScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: Color(0xff000000),
-                            ),
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black                            ),
                       ),
                       subtitle: Text(
                         '@asad',
@@ -96,9 +92,8 @@ class FollowingScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 11.sp,
                               fontWeight: FontWeight.w400,
-                              
-                              color: Colors.black,
-                            ),
+
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,                            ),
                           ),
                           style: ButtonStyle(
                             elevation: MaterialStateProperty.all(0),
