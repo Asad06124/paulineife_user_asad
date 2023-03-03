@@ -22,6 +22,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
             child: Text(
@@ -54,6 +55,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  style: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,),
                   controller: TextEditingController(text: 'Example_123'),
                   decoration: InputDecoration(
                     label: Text(
@@ -86,6 +88,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
+                      style: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,),
                       controller: TextEditingController(text: 'Example'),
                       decoration: InputDecoration(
                         label: Text(
@@ -114,6 +117,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
+                      style: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,),
                       controller: TextEditingController(text: 'Example'),
                       decoration: InputDecoration(
                         label: Text(
@@ -144,6 +148,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  style: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,),
                   controller: TextEditingController(text: '15/06/2000'),
                   decoration: InputDecoration(
                     label: Text(
@@ -208,7 +213,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                                     isPasswordField = !isPasswordField;
                                   });
                                 },
-                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined),
+                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined,color: ThemeService.isSavedDarkMode() ? Color(0xff666666) : Color(0xff666666),),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -296,7 +301,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                                     isPasswordField = !isPasswordField;
                                   });
                                 },
-                                icon: Icon(isPasswordField ? Icons.visibility_outlined : Icons.visibility_off_outlined),
+                                icon: Icon(isPasswordField ? Icons.visibility_outlined : Icons.visibility_off_outlined,color: ThemeService.isSavedDarkMode() ? Color(0xff666666) : Color(0xff666666),),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -351,7 +356,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                 textStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
-                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                 ),
                 onPressed: () {
                   Get.to(TermsConditionsScreen());

@@ -51,7 +51,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                   badgeContent: Text(
                     '1',
                     style: TextStyle(
-                      color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                     ),
                   ),
                   position: BadgePosition.topEnd(end: -7, top: -13),
@@ -207,7 +207,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                                         )),
                                     child: CircleAvatar(
                                       backgroundImage: AssetImage('assets/images/12.png'),
@@ -227,7 +227,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w700,
-                                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                                         ),
                                       ),
                                       SizedBox(
@@ -239,7 +239,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500,
-                                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                                         ),
                                       ),
                                     ],

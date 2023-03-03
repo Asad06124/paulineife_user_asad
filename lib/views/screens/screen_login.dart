@@ -243,7 +243,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       textStyle: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
-                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                       ),
                       onPressed: () {
                         Get.to(HomeScreen());

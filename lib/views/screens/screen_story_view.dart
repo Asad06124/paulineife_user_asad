@@ -143,7 +143,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
               },
               child: Icon(
                 Icons.keyboard_arrow_down,
-                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                 size: 30.sp,
               ),
               backgroundColor: Color(0x5effffff),
@@ -246,7 +246,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                   ),
                 ),
                 subtitle: RichText(
@@ -255,7 +255,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                       style: TextStyle(
                         fontSize: 10.sp,
                         fontWeight: FontWeight.w500,
-                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                       ),
                       children: [
                         TextSpan(
@@ -263,7 +263,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                           style: TextStyle(
                             fontSize: 10.sp,
                             fontWeight: FontWeight.w500,
-                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                           ),
                         ),
                       ]),
@@ -287,11 +287,12 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         child: Text(
                           '2/${storyItems.length}',
                           style: TextStyle(
-                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                           ),
                         ),
                       ),
                       PopupMenuButton(
+                        color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                         onOpened: () {
                           controller.pause();
                         },
@@ -303,7 +304,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         ),
                         icon: Icon(
                           Icons.more_vert,
-                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                         ),
                         itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                           PopupMenuItem(
@@ -383,7 +384,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                           ),
                         ),
                       ],
@@ -400,7 +401,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                         ),
                       ),
                     ],
@@ -423,7 +424,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                           ),
                         ),
                       ],

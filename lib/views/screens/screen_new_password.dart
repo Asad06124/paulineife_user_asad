@@ -22,6 +22,7 @@ class NewPasswordScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
             child: Text(
@@ -84,7 +85,7 @@ class NewPasswordScreen extends StatelessWidget {
                                     isPasswordField = !isPasswordField;
                                   });
                                 },
-                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined),
+                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined,color: ThemeService.isSavedDarkMode() ? Color(0xff666666) : Color(0xff666666),),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -175,7 +176,7 @@ class NewPasswordScreen extends StatelessWidget {
                                     isPasswordField = !isPasswordField;
                                   });
                                 },
-                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined),
+                                icon: Icon(isPasswordField ? Icons.visibility : Icons.visibility_off_outlined,color: ThemeService.isSavedDarkMode() ? Color(0xff666666) : Color(0xff666666),),
                               ),
                               enabledBorder: InputBorder.none,
                               focusedBorder: InputBorder.none,
@@ -229,7 +230,7 @@ class NewPasswordScreen extends StatelessWidget {
               textStyle: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
               ),
               onPressed: () {
                 Get.to(ScreenLogin());

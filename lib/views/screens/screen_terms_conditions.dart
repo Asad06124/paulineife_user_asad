@@ -16,6 +16,7 @@ class TermsConditionsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
             child: Text(
@@ -57,7 +58,7 @@ class TermsConditionsScreen extends StatelessWidget {
               textStyle: TextStyle(
                 fontSize: 13.sp,
                 fontWeight: FontWeight.w700,
-                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
               ),
               onPressed: () {
                 Get.to(HomeScreen());

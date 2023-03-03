@@ -16,6 +16,7 @@ class SignUpGoogleScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
             child: Text(
@@ -48,6 +49,9 @@ class SignUpGoogleScreen extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(10)),
                 child: TextFormField(
+                  style: TextStyle(
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                  ),
                   controller: TextEditingController(text: 'Example_123'),
                   decoration: InputDecoration(
                     label: Text(
@@ -81,6 +85,9 @@ class SignUpGoogleScreen extends StatelessWidget {
                       ),
                       borderRadius: BorderRadius.circular(10)),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    ),
                     controller: TextEditingController(text: 'Example'),
                     decoration: InputDecoration(
                       label: Text(
@@ -109,6 +116,9 @@ class SignUpGoogleScreen extends StatelessWidget {
                       ),
                       borderRadius: BorderRadius.circular(10)),
                   child: TextFormField(
+                    style: TextStyle(
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    ),
                     controller: TextEditingController(text: 'Example'),
                     decoration: InputDecoration(
                       label: Text(
@@ -142,7 +152,7 @@ class SignUpGoogleScreen extends StatelessWidget {
               textStyle: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
               ),
               onPressed: () {
                 Get.to(TermsConditionsScreen());

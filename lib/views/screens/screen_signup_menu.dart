@@ -7,7 +7,6 @@ import 'package:paulineife_user/views/screens/screen_login.dart';
 import 'package:paulineife_user/views/screens/screen_signup_google.dart';
 import 'package:paulineife_user/views/screens/screen_signup_with_layouts.dart';
 import 'package:sizer/sizer.dart';
-
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
@@ -57,6 +56,7 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           elevation: 0,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         ),
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: Column(

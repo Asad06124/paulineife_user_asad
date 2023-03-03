@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
@@ -15,13 +16,18 @@ class SeeViewersScreen extends StatelessWidget {
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-          foregroundColor: Colors.black,
+
           elevation: 0,
           title: Text(
             'Views and likes',
             style: getAppbarTextTheme(),
           ),
           centerTitle: true,
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
         ),
         body: Padding(
           padding: EdgeInsets.all(8.sp),
@@ -73,11 +79,11 @@ class SeeViewersScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,
                 ),
-                fillColor: Color(0xffE2E4EB),
-                prefix: Icon(Icons.search),
+                fillColor: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
+                prefix: Icon(Icons.search, color:  ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                 contentPadding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                 hint: 'Search',
-                hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xff79869F)),
+                hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color:  ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
               ),
               Expanded(
                 child: ListView.builder(
@@ -108,7 +114,7 @@ class SeeViewersScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 11.sp,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff2A70C8),
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
                         ),
                       ),
                       trailing: ElevatedButton(
@@ -117,7 +123,7 @@ class SeeViewersScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                           ),
                         ),
                         onPressed: () {},

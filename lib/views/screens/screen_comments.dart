@@ -28,6 +28,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text('Comments'),
           centerTitle: true,
           leading: IconButton(
@@ -35,7 +36,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                 Get.back();
                 widget.COntroller.play();
               },
-              icon: Icon(Icons.arrow_back)),
+              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
         ),
         body: Column(
           children: [
@@ -82,7 +83,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                               style: TextStyle(
                                                 fontSize: 13,
                                                 fontWeight: FontWeight.w500,
-                                                color: Color(0xff97A1B4),
+                                                color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff97A1B4),
                                               ),
                                             )
                                           ],
@@ -149,14 +150,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                           ),
                           Text(
                             '22 Likes',
-                            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
+                            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                           ),
                           SizedBox(
                             width: 8.sp,
                           ),
                           Text(
                             'Reply',
-                            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
+                            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700,  color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                           ),
                         ],
                       ),
@@ -215,7 +216,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                           style: TextStyle(
                                                             fontSize: 13,
                                                             fontWeight: FontWeight.w500,
-                                                            color: Color(0xff97A1B4),
+                                                            color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff97A1B4),
                                                           ),
                                                         )
                                                       ],
@@ -278,14 +279,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       ),
                                       Text(
                                         '22 Likes',
-                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700,  color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
                                       ),
                                       Text(
                                         'Reply',
-                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
@@ -325,7 +326,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                           style: TextStyle(
                                                             fontSize: 13,
                                                             fontWeight: FontWeight.w500,
-                                                            color: Color(0xff97A1B4),
+                                                              color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)
                                                           ),
                                                         )
                                                       ],
@@ -388,14 +389,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       ),
                                       Text(
                                         '22 Likes',
-                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
                                       ),
                                       Text(
                                         'Reply',
-                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700,  color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
@@ -435,7 +436,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                           style: TextStyle(
                                                             fontSize: 13,
                                                             fontWeight: FontWeight.w500,
-                                                            color: Color(0xff97A1B4),
+                                                            color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff97A1B4),
                                                           ),
                                                         )
                                                       ],
@@ -498,14 +499,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                       ),
                                       Text(
                                         '22 Likes',
-                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
                                       ),
                                       Text(
                                         'Reply',
-                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: Color(0xff79869F)),
+                                        style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700,  color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
@@ -527,9 +528,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                       horizontal: 10,
                     ),
                     margin: EdgeInsets.only(bottom: 5.sp),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: Color(0xffE2E4EB)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),  color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) :  Color(0xffE2E4EB)),
                     child: TextFormField(
-                      style: TextStyle(fontSize: 16, color: Color(0xff9C9EB9)),
+                      style: TextStyle(fontSize: 16,  color: ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xff9C9EB9)),
                       onChanged: (value) {},
                       decoration: InputDecoration(
                         // prefixIconConstraints: BoxConstraints(
@@ -542,7 +543,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                             'assets/svgs/imoj.svg',
                             height: 20.sp,
                             width: 20.sp,
-                            color: Color(0xff79869F),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                           ),
                           iconSize: 20.sp,
                         ),
@@ -554,7 +555,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                               alignment: Alignment.centerRight,
                               child: Text(
                                 'Post',
-                                style: TextStyle(color: Color(0xff2A70C8), fontSize: 11.sp, fontWeight: FontWeight.w700),
+                                style: TextStyle(  color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8), fontSize: 11.sp, fontWeight: FontWeight.w700),
                               )),
                         ),
                         contentPadding: EdgeInsets.only(
@@ -562,7 +563,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                         ),
                         hintText: 'Comment as Ronaldo',
                         hintStyle: TextStyle(
-                          color: Color(0xff79869F),
+                            color: ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xff79869F),
                         ),
                         focusedBorder: InputBorder.none,
                         enabledBorder: InputBorder.none,
@@ -575,6 +576,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                 Container(
                   padding: EdgeInsets.only(top: 5.sp),
                   child: SocialMediaRecorder(
+                    recordIcon: Icon(Icons.mic,  color: ThemeService.isSavedDarkMode() ? Colors.white :  Colors.black),
                     sendRequestFunction: (soundFile) {},
                     backGroundColor: Colors.transparent,
                     encode: AudioEncoderType.AAC,

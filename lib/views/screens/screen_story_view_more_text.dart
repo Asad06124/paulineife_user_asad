@@ -78,10 +78,10 @@ class StoryTextViewScreen extends StatelessWidget {
             },
             child: Icon(
               Icons.arrow_back_ios_rounded,
-              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
               size: 30.sp,
             ),
-            backgroundColor: Color(0x66000000),
+            backgroundColor: Color(0xff3D3D3D),
           ),
         ),
       ),

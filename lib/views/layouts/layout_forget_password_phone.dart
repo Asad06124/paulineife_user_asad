@@ -85,7 +85,7 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                               ],
                             ),
                             SizedBox(
-                              height: 5.sp,
+                              height: 1.sp,
                             ),
                             Text(
                               '${country.dialCode}',
@@ -160,7 +160,7 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                           textStyle: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                           ),
                           elevation: 0,
                           height: 45.sp,
@@ -259,7 +259,7 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                   textStyle: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                   ),
                   elevation: 0,
                   height: 45.sp,

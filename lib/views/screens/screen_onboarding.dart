@@ -54,7 +54,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
       child: Scaffold(
         backgroundColor: kwhite,
         appBar: AppBar(
-          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
           elevation: 0.0,
         ),
         body: Stack(children: [
@@ -151,7 +151,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                     child: currentIndex != 2
                         ? Icon(
                             Icons.arrow_forward_ios,
-                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                           )
                         : Text(
                             "Get Started",
