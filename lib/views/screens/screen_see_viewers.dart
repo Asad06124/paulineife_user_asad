@@ -13,14 +13,13 @@ class SeeViewersScreen extends StatelessWidget {
         backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
-          foregroundColor: Colors.black,
+
           elevation: 0,
           title: Text(
             'Views and likes',
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w700,
-              color: Colors.black,
             ),
           ),
           centerTitle: true,
@@ -41,7 +40,7 @@ class SeeViewersScreen extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.remove_red_eye,
-                        color: Colors.black,
+
                         size: 30.sp,
                       ),
                       Text(
@@ -49,20 +48,20 @@ class SeeViewersScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 9.sp,
                             fontWeight: FontWeight.w500,
-                            color: Colors.black),
+                           ),
                       ),
                     ],
                   ),
                   Column(
                     children: [
                       Icon(Icons.favorite_outlined,
-                          color: Colors.black, size: 30.sp),
+                        size: 30.sp),
                       Text(
                         '10.9K',
                         style: TextStyle(
                             fontSize: 9.sp,
                             fontWeight: FontWeight.w500,
-                            color: Colors.black),
+                       ),
                       ),
                     ],
                   ),
@@ -74,7 +73,9 @@ class SeeViewersScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,
                 ),
-                fillColor: Color(0xffE2E4EB),
+                fillColor: Themes.setColor(context)
+                    ? Color(0xff3D3D3D):Colors.white
+                ,
                 prefix: Icon(Icons.search),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
@@ -83,7 +84,9 @@ class SeeViewersScreen extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     
-                    color: Color(0xff79869F)),
+                    color:Themes.setColor(context)
+                        ? Colors.white
+                        :  Color(0xff79869F),),
               ),
               Expanded(
                 child: ListView.builder(
@@ -109,7 +112,7 @@ class SeeViewersScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 13.sp,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xff000000),
+
                         ),
                       ),
                       subtitle: Text(
@@ -117,7 +120,9 @@ class SeeViewersScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 11.sp,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff2A70C8),
+                          color: Themes.setColor(context)
+                              ? Colors.white
+                              : Color(0xff2A70C8),
                         ),
                       ),
                       trailing: ElevatedButton(

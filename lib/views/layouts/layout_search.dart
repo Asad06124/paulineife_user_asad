@@ -28,7 +28,9 @@ class SearchLayout extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,
                 ),
-                fillColor: Color(0xffE2E4EB),
+                fillColor:Themes.setColor(context)
+                    ? Color(0xff3d3d3d)
+                    :  Color(0xffE2E4EB),
                 prefix: Icon(Icons.search),
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
@@ -37,7 +39,9 @@ class SearchLayout extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
                     
-                    color: Color(0xff79869F)),
+                    color:Themes.setColor(context)
+                        ? Colors.white
+                        :  Color(0xff79869F)),
               ),
               SizedBox(height: 10.sp,),
               Text(
@@ -46,7 +50,7 @@ class SearchLayout extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: Color(0xff000000),
+
                     ),
               ),
               Expanded(

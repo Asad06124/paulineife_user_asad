@@ -36,8 +36,7 @@ class StoryTextViewScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w700,
-                    
-                    color: Colors.black),
+                ),
               ),
               trailing: Icon(
                 Icons.more_vert,
@@ -55,8 +54,7 @@ class StoryTextViewScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 11.sp,
                       fontWeight: FontWeight.w400,
-                      
-                      color: Colors.black),
+                    ),
                 ),
               ),
             ),
@@ -79,7 +77,9 @@ class StoryTextViewScreen extends StatelessWidget {
               color: Colors.white,
               size: 30.sp,
             ),
-            backgroundColor: Color(0x66000000),
+            backgroundColor: Themes.setColor(context)
+              ? Color(0xff3D3D3D)
+              :Color(0x66000000),
           ),
         ),
       ),

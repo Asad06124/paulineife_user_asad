@@ -183,7 +183,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   fontSize: 11.sp,
                   fontWeight: FontWeight.w700,
                   
-                  color: Colors.black),
+              ),
             ),
             trailing: Icon(
               Icons.more_vert,
@@ -335,7 +335,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff000000),
+
                                   ),
                             ),
                           ),
@@ -350,7 +350,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff000000),
+
                                   ),
                             ),
                           ),
@@ -360,7 +360,6 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                               style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff000000),
                                   ),
                             ),
                           ),
@@ -454,7 +453,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   fontSize: 11.sp,
                   fontWeight: FontWeight.w400,
                   
-                  color: Colors.black),
+              ),
               children: [
                 TextSpan(
                   text: isExpanded ? '' : 'more',
@@ -477,7 +476,9 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
               onTap: () {
                 Get.to(StoryTextViewScreen(strl: _controller,));
               },
-              child: Icon(Icons.keyboard_arrow_down_sharp,color: Color(0xff79869F),),
+              child: Icon(Icons.keyboard_arrow_down_sharp,color: Themes.setColor(context)
+                  ? Colors.white
+                  : Color(0xff79869F),),
             ),
           ),
         ],

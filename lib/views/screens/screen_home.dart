@@ -54,11 +54,16 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: _controller.index == 0
               ? Padding(
-            padding: EdgeInsets.only(bottom: 5.0),
-                child: Themes.setColor(context) ?SvgPicture.asset("assets/svgs/Home_opened_black.svg"):SvgPicture.asset("assets/svgs/Home_opened.svg"),
-              )
-              : Themes.setColor(context) ?SvgPicture.asset("assets/svgs/Home_closed_black.svg"): SvgPicture.asset("assets/svgs/Home_closed.svg"),
-          activeColorPrimary: CupertinoColors.black,
+                  padding: EdgeInsets.only(bottom: 5.0),
+                  child: Themes.setColor(context)
+                      ? SvgPicture.asset("assets/svgs/Home_opened_black.svg")
+                      : SvgPicture.asset("assets/svgs/Home_opened.svg"),
+                )
+              : Themes.setColor(context)
+                  ? SvgPicture.asset("assets/svgs/Home_closed_black.svg")
+                  : SvgPicture.asset("assets/svgs/Home_closed.svg"),
+          activeColorPrimary:
+              Themes.setColor(context) ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -70,14 +75,19 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: _controller.index == 1
               ? Padding(
-            padding: EdgeInsets.only(bottom: 6.0),
-                child:Themes.setColor(context) ? SvgPicture.asset("assets/svgs/Search_opened_black.svg"):SvgPicture.asset("assets/svgs/search_opened.svg"),
-              )
+                  padding: EdgeInsets.only(bottom: 6.0),
+                  child: Themes.setColor(context)
+                      ? SvgPicture.asset("assets/svgs/Search_opened_black.svg")
+                      : SvgPicture.asset("assets/svgs/search_opened.svg"),
+                )
               : Padding(
-                padding: EdgeInsets.only(bottom: 6.0),
-                child: Themes.setColor(context) ? SvgPicture.asset("assets/svgs/Search_closed_black.svg"):SvgPicture.asset("assets/svgs/search_closed.svg"),
-              ),
-          activeColorPrimary: CupertinoColors.black,
+                  padding: EdgeInsets.only(bottom: 6.0),
+                  child: Themes.setColor(context)
+                      ? SvgPicture.asset("assets/svgs/Search_closed_black.svg")
+                      : SvgPicture.asset("assets/svgs/search_closed.svg"),
+                ),
+          activeColorPrimary:
+              Themes.setColor(context) ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -91,11 +101,14 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 height: 38.h + 5,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.sp),
-                      topRight: Radius.circular(20.sp),
-                    ),
-                    color: Colors.white),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.sp),
+                    topRight: Radius.circular(20.sp),
+                  ),
+                  color: Themes.setColor(context)
+                      ? Color(0xff3D3D3D)
+                      : Colors.white,
+                ),
                 child: Column(
                   children: [
                     Padding(
@@ -103,10 +116,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(
                         'Create Post',
                         style: TextStyle(
-                            fontSize: 22,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w700,
-                            ),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -117,6 +129,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         setState(() {
                           Get.bottomSheet(
                             Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20.sp),
+                                  topRight: Radius.circular(20.sp),
+                                ),
+                                color: Themes.setColor(context)
+                                    ? Color(0xff3D3D3D)
+                                    : Colors.white,
+                              ),
                               height: 18.h,
                               child: Column(
                                 children: [
@@ -125,33 +146,34 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Get.back();
                                       Get.bottomSheet(
                                         Container(
+
                                           height: 34.h + 5,
                                           decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(20.sp),
-                                                topRight: Radius.circular(20.sp),
-                                              ),
-                                              color: Colors.white),
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20.sp),
+                                              topRight: Radius.circular(20.sp),
+                                            ),
+                                            color: Themes.setColor(context) ?Color(0xff3D3D3D):Colors.white,),
                                           child: Column(
                                             children: [
                                               Padding(
-                                                padding: EdgeInsets.only(top: 35.sp),
+                                                padding:
+                                                    EdgeInsets.only(top: 35.sp),
                                                 child: Text(
                                                   'Post',
                                                   style: TextStyle(
                                                     fontSize: 22,
-                                                    color: Colors.black,
                                                     fontWeight: FontWeight.w700,
                                                   ),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsets.only(top: 15.sp),
+                                                padding:
+                                                    EdgeInsets.only(top: 15.sp),
                                                 child: Text(
                                                   'Post image as',
                                                   style: TextStyle(
                                                     fontSize: 16,
-                                                    color: Colors.black,
                                                     fontWeight: FontWeight.w400,
                                                   ),
                                                 ),
@@ -163,16 +185,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 onTap: () {
                                                   getFromCameraimg(true);
                                                 },
-                                                leading: SvgPicture.asset('assets/svgs/gallery.svg'),
+                                                leading: SvgPicture.asset(
+                                                    'assets/svgs/gallery.svg',color: Themes.setColor(context)
+                                                    ? Colors.white
+                                                    : Color(
+                                                  0xff97A1B4,
+                                                ),),
                                                 title: Text(
                                                   'Normal images',
                                                   style: TextStyle(
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.w400,
-                                                    color: Color(
-                                                      0xff000000,
-                                                    ),
-
                                                   ),
                                                 ),
                                               ),
@@ -184,16 +207,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 onTap: () {
                                                   getFromCameraimg(false);
                                                 },
-                                                leading: SvgPicture.asset('assets/svgs/thread.svg'),
+                                                leading: SvgPicture.asset(
+                                                    'assets/svgs/thread.svg',color: Themes.setColor(context)
+                                                    ? Colors.white
+                                                    : Color(
+                                                  0xff97A1B4,
+                                                ),),
                                                 title: Text(
                                                   'Thread',
                                                   style: TextStyle(
                                                     fontSize: 16,
                                                     fontWeight: FontWeight.w400,
-                                                    color: Color(
-                                                      0xff000000,
-                                                    ),
-
                                                   ),
                                                 ),
                                               ),
@@ -206,7 +230,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     },
                                     leading: Icon(
                                       Icons.camera_alt_outlined,
-                                      color: Color(
+                                      color: Themes.setColor(context)
+                                          ? Colors.white
+                                          : Color(
                                         0xff97A1B4,
                                       ),
                                       size: 20.sp,
@@ -216,10 +242,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(
-                                          0xff000000,
-                                        ),
-                                        
                                       ),
                                     ),
                                   ),
@@ -231,92 +253,100 @@ class _HomeScreenState extends State<HomeScreen> {
                                     onTap: () {
                                       Get.back();
 
-                                     setState(() {
-                                       Get.bottomSheet(
-                                         Container(
-                                           height: 34.h + 5,
-                                           decoration: BoxDecoration(
-                                               borderRadius: BorderRadius.only(
-                                                 topLeft: Radius.circular(20.sp),
-                                                 topRight: Radius.circular(20.sp),
-                                               ),
-                                               color: Colors.white),
-                                           child: Column(
-                                             children: [
-                                               Padding(
-                                                 padding: EdgeInsets.only(top: 35.sp),
-                                                 child: Text(
-                                                   'Post',
-                                                   style: TextStyle(
-                                                     fontSize: 22,
-                                                     color: Colors.black,
-                                                     fontWeight: FontWeight.w700,
-                                                   ),
-                                                 ),
-                                               ),
-                                               Padding(
-                                                 padding: EdgeInsets.only(top: 15.sp),
-                                                 child: Text(
-                                                   'Post image as',
-                                                   style: TextStyle(
-                                                     fontSize: 16,
-                                                     color: Colors.black,
-                                                     fontWeight: FontWeight.w400,
-                                                   ),
-                                                 ),
-                                               ),
-                                               SizedBox(
-                                                 height: 15.sp,
-                                               ),
-                                               ListTile(
-                                                 onTap: () {
-                                                   getFromGalleryimg(true);
-                                                 },
-                                                 leading: SvgPicture.asset('assets/svgs/gallery.svg'),
-                                                 title: Text(
-                                                   'Normal images',
-                                                   style: TextStyle(
-                                                     fontSize: 16,
-                                                     fontWeight: FontWeight.w400,
-                                                     color: Color(
-                                                       0xff000000,
-                                                     ),
-
-                                                   ),
-                                                 ),
-                                               ),
-                                               Divider(
-                                                 color: Color(0xffE2E4EB),
-                                                 thickness: 2.sp,
-                                               ),
-                                               ListTile(
-                                                 onTap: () {
-                                                   getFromGalleryimg(false);
-                                                 },
-                                                 leading: SvgPicture.asset('assets/svgs/thread.svg'),
-                                                 title: Text(
-                                                   'Thread',
-                                                   style: TextStyle(
-                                                     fontSize: 16,
-                                                     fontWeight: FontWeight.w400,
-                                                     color: Color(
-                                                       0xff000000,
-                                                     ),
-
-                                                   ),
-                                                 ),
-                                               ),
-                                             ],
-                                           ),
-                                         ),
-                                         backgroundColor: Colors.transparent,
-                                         elevation: 0,
-                                       );
-                                     });
+                                      setState(() {
+                                        Get.bottomSheet(
+                                          Container(
+                                            height: 34.h + 5,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(20.sp),
+                                                topRight:
+                                                    Radius.circular(20.sp),
+                                              ),
+                                              color: Themes.setColor(context)
+                                                  ? Color(0xff3D3D3D)
+                                                  : Colors.white,
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: 35.sp),
+                                                  child: Text(
+                                                    'Post',
+                                                    style: TextStyle(
+                                                      fontSize: 22,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: 15.sp),
+                                                  child: Text(
+                                                    'Post image as',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 15.sp,
+                                                ),
+                                                ListTile(
+                                                  onTap: () {
+                                                    getFromGalleryimg(true);
+                                                  },
+                                                  leading: SvgPicture.asset(
+                                                      'assets/svgs/gallery.svg',color: Themes.setColor(context)
+                                                      ? Colors.white
+                                                      : Color(
+                                                    0xff97A1B4,
+                                                  ),),
+                                                  title: Text(
+                                                    'Normal images',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Divider(
+                                                  color: Color(0xffE2E4EB),
+                                                  thickness: 2.sp,
+                                                ),
+                                                ListTile(
+                                                  onTap: () {
+                                                    getFromGalleryimg(false);
+                                                  },
+                                                  leading: SvgPicture.asset(
+                                                      'assets/svgs/thread.svg'),
+                                                  title: Text(
+                                                    'Thread',
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          backgroundColor: Colors.transparent,
+                                          elevation: 0,
+                                        );
+                                      });
                                     },
                                     leading: Icon(
                                       Icons.photo,
-                                      color: Color(
+                                      color: Themes.setColor(context)
+                                          ? Colors.white
+                                          : Color(
                                         0xff97A1B4,
                                       ),
                                       size: 20.sp,
@@ -326,26 +356,24 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: Color(
-                                          0xff000000,
-                                        ),
-                                        
                                       ),
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                            backgroundColor: Color(0xffffffff),
+                            backgroundColor: Colors.transparent,
                             elevation: 0,
                           );
                         });
                       },
                       leading: Icon(
                         Icons.camera_alt_outlined,
-                        color: Color(
-                          0xff97A1B4,
-                        ),
+                        color: Themes.setColor(context)
+                            ? Colors.white
+                            : Color(
+                                0xff97A1B4,
+                              ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -353,10 +381,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: Color(
-                            0xff000000,
-                          ),
-                          
                         ),
                       ),
                     ),
@@ -370,7 +394,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       leading: Icon(
                         Icons.text_snippet_outlined,
-                        color: Color(
+                        color: Themes.setColor(context)
+                            ? Colors.white
+                            : Color(
                           0xff97A1B4,
                         ),
                         size: 20.sp,
@@ -380,10 +406,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: Color(
-                            0xff000000,
-                          ),
-                          
                         ),
                       ),
                     ),
@@ -405,7 +427,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       leading: Icon(
                         Icons.videocam_outlined,
-                        color: Color(
+                        color: Themes.setColor(context)
+                            ? Colors.white
+                            : Color(
                           0xff97A1B4,
                         ),
                         size: 20.sp,
@@ -415,10 +439,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: Color(
-                            0xff000000,
-                          ),
-                          
                         ),
                       ),
                     ),
@@ -431,9 +451,12 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: Padding(
             padding: EdgeInsets.only(bottom: 6.0),
-            child: SvgPicture.asset("assets/svgs/add.svg"),
+            child: Themes.setColor(context)
+                ? SvgPicture.asset("assets/svgs/Add_black.svg")
+                : SvgPicture.asset("assets/svgs/add.svg"),
           ),
-          activeColorPrimary: CupertinoColors.black,
+          activeColorPrimary:
+              Themes.setColor(context) ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
@@ -446,15 +469,21 @@ class _HomeScreenState extends State<HomeScreen> {
             badgeContent: Text(
               '1',
               style: TextStyle(color: Colors.white),
-
             ),
-            position: BadgePosition.topEnd(end: -7,top: -13),
+            position: BadgePosition.topEnd(end: -7, top: -13),
             child: _controller.index == 3
-                ? SvgPicture.asset("assets/svgs/Notification_opened.svg")
-                : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
+                ? Themes.setColor(context)
+                    ? SvgPicture.asset(
+                        "assets/svgs/Notification_opened_black.svg")
+                    : SvgPicture.asset("assets/svgs/Notification_opened.svg")
+                : Themes.setColor(context)
+                    ? SvgPicture.asset(
+                        "assets/svgs/Notification_closed_black.svg")
+                    : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
           ),
           title: ("Settings"),
-          activeColorPrimary: CupertinoColors.black,
+          activeColorPrimary:
+              Themes.setColor(context) ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
@@ -474,7 +503,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
           ),
           title: ("Settings"),
-          activeColorPrimary: CupertinoColors.black,
+          activeColorPrimary:
+              Themes.setColor(context) ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
       ],
@@ -491,7 +521,8 @@ class _HomeScreenState extends State<HomeScreen> {
       // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
+        colorBehindNavBar:
+            Themes.setColor(context) ? Colors.black : Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -545,7 +576,9 @@ class _HomeScreenState extends State<HomeScreen> {
         pickedFile.forEach((element) {
           controller.images.add(File(element.path));
         });
-        Get.to(PostImageScreen(isnormal: isNormal,));
+        Get.to(PostImageScreen(
+          isnormal: isNormal,
+        ));
         controller.img = controller.images[0];
       });
     }
@@ -559,7 +592,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     if (pickedFile != null) {
       setState(() {
-        Get.to(PostImageScreen(isnormal: isNormal,));
+        Get.to(PostImageScreen(
+          isnormal: isNormal,
+        ));
         controller.img = File(pickedFile.path);
       });
     }
