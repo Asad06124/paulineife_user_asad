@@ -5,10 +5,11 @@ import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
+import 'package:video_trimmer/video_trimmer.dart';
 import '../../controller/registration_controller.dart';
-import '../../helpers/video_trimmer/trim_editor.dart';
-import '../../helpers/video_trimmer/trimmer.dart';
-import '../../helpers/video_trimmer/video_viewer.dart';
+import '../../helpers/theme.dart';
+
+
 
 class PostVideoScreen extends StatefulWidget {
   PostVideoScreen({
@@ -88,7 +89,7 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
             ],
             toolbarHeight: 65.sp,
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
           body: SingleChildScrollView(
             child: Column(
               children: [

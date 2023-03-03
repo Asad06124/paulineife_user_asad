@@ -3,8 +3,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:sizer/sizer.dart';
+import 'package:social_media_recorder/audio_encoder_type.dart';
 import '../../helpers/social_media_recorder/audio_encoder_type.dart';
 import '../../helpers/social_media_recorder/screen/social_media_recorder.dart';
+import '../../helpers/theme.dart';
 import '../../test_audio.dart';
 
 const url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3';
@@ -24,7 +26,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text('Comments'),
           centerTitle: true,

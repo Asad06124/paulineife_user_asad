@@ -16,6 +16,7 @@ import 'package:story_view/widgets/story_view.dart';
 
 
 
+import '../../helpers/theme.dart';
 import 'screen_story_view_more_text.dart';
 
 class StoryViewScreen extends StatefulWidget {
@@ -114,8 +115,8 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
       child: Scaffold(
         body:SlidingTopPanel(
           maxHeight: 27.h ,
-          decorationPanel: const BoxDecoration(
-            color: Colors.white,
+          decorationPanel:  BoxDecoration(
+            color: Themes.setColor(context) ? Colors.black : Colors.white,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20),

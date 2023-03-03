@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import '../../helpers/theme.dart';
 import '../layouts/layout_forget_password_email.dart';
 import '../layouts/layout_forget_password_phone.dart';
 
@@ -17,7 +18,7 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
       child: DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: Color(0xfff9f9f9),
+            backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9),
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               title: Padding(
@@ -27,14 +28,14 @@ class _ScreeForgetPasswordWithLayoutsState extends State<ScreeForgetPasswordWith
                   style: TextStyle(
                       fontSize: 19.sp,
                       fontWeight: FontWeight.w700,
-                      
-                      color: Colors.black),
+
+                    color: Themes.setColor(context) ? Colors.white : Colors.black,),
                 ),
               ),
               automaticallyImplyLeading: false,
               centerTitle: true,
               elevation: 0,
-              backgroundColor: Color(0xfff9f9f9),
+              backgroundColor: Themes.setColor(context) ? Colors.black :Color(0xfff9f9f9),
             ),
             body: Center(
               child: Column(

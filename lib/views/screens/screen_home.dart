@@ -17,6 +17,7 @@ import 'package:sizer/sizer.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import '../../controller/registration_controller.dart';
 import '../../helpers/fetch_all_videos.dart';
+import '../../helpers/theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -54,9 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: _controller.index == 0
               ? Padding(
             padding: EdgeInsets.only(bottom: 5.0),
-                child: SvgPicture.asset("assets/svgs/Home_opened.svg"),
+                child: Themes.setColor(context) ?SvgPicture.asset("assets/svgs/Home_opened_black.svg"):SvgPicture.asset("assets/svgs/Home_opened.svg"),
               )
-              : SvgPicture.asset("assets/svgs/Home_closed.svg"),
+              : Themes.setColor(context) ?SvgPicture.asset("assets/svgs/Home_closed_black.svg"): SvgPicture.asset("assets/svgs/Home_closed.svg"),
           activeColorPrimary: CupertinoColors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -70,11 +71,11 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: _controller.index == 1
               ? Padding(
             padding: EdgeInsets.only(bottom: 6.0),
-                child: SvgPicture.asset("assets/svgs/search_opened.svg"),
+                child:Themes.setColor(context) ? SvgPicture.asset("assets/svgs/Search_opened_black.svg"):SvgPicture.asset("assets/svgs/search_opened.svg"),
               )
               : Padding(
                 padding: EdgeInsets.only(bottom: 6.0),
-                child: SvgPicture.asset("assets/svgs/search_closed.svg"),
+                child: Themes.setColor(context) ? SvgPicture.asset("assets/svgs/Search_closed_black.svg"):SvgPicture.asset("assets/svgs/search_closed.svg"),
               ),
           activeColorPrimary: CupertinoColors.black,
           title: ("Settings"),
@@ -122,7 +123,86 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ListTile(
                                     onTap: () {
                                       Get.back();
-                                      getFromCameraimg();
+                                      Get.bottomSheet(
+                                        Container(
+                                          height: 34.h + 5,
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(20.sp),
+                                                topRight: Radius.circular(20.sp),
+                                              ),
+                                              color: Colors.white),
+                                          child: Column(
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.only(top: 35.sp),
+                                                child: Text(
+                                                  'Post',
+                                                  style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsets.only(top: 15.sp),
+                                                child: Text(
+                                                  'Post image as',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w400,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 15.sp,
+                                              ),
+                                              ListTile(
+                                                onTap: () {
+                                                  getFromCameraimg(true);
+                                                },
+                                                leading: SvgPicture.asset('assets/svgs/gallery.svg'),
+                                                title: Text(
+                                                  'Normal images',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Color(
+                                                      0xff000000,
+                                                    ),
+
+                                                  ),
+                                                ),
+                                              ),
+                                              Divider(
+                                                color: Color(0xffE2E4EB),
+                                                thickness: 2.sp,
+                                              ),
+                                              ListTile(
+                                                onTap: () {
+                                                  getFromCameraimg(false);
+                                                },
+                                                leading: SvgPicture.asset('assets/svgs/thread.svg'),
+                                                title: Text(
+                                                  'Thread',
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Color(
+                                                      0xff000000,
+                                                    ),
+
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        backgroundColor: Colors.transparent,
+                                        elevation: 0,
+                                      );
                                     },
                                     leading: Icon(
                                       Icons.camera_alt_outlined,
@@ -151,7 +231,88 @@ class _HomeScreenState extends State<HomeScreen> {
                                     onTap: () {
                                       Get.back();
 
-                                      getFromGalleryimg();
+                                     setState(() {
+                                       Get.bottomSheet(
+                                         Container(
+                                           height: 34.h + 5,
+                                           decoration: BoxDecoration(
+                                               borderRadius: BorderRadius.only(
+                                                 topLeft: Radius.circular(20.sp),
+                                                 topRight: Radius.circular(20.sp),
+                                               ),
+                                               color: Colors.white),
+                                           child: Column(
+                                             children: [
+                                               Padding(
+                                                 padding: EdgeInsets.only(top: 35.sp),
+                                                 child: Text(
+                                                   'Post',
+                                                   style: TextStyle(
+                                                     fontSize: 22,
+                                                     color: Colors.black,
+                                                     fontWeight: FontWeight.w700,
+                                                   ),
+                                                 ),
+                                               ),
+                                               Padding(
+                                                 padding: EdgeInsets.only(top: 15.sp),
+                                                 child: Text(
+                                                   'Post image as',
+                                                   style: TextStyle(
+                                                     fontSize: 16,
+                                                     color: Colors.black,
+                                                     fontWeight: FontWeight.w400,
+                                                   ),
+                                                 ),
+                                               ),
+                                               SizedBox(
+                                                 height: 15.sp,
+                                               ),
+                                               ListTile(
+                                                 onTap: () {
+                                                   getFromGalleryimg(true);
+                                                 },
+                                                 leading: SvgPicture.asset('assets/svgs/gallery.svg'),
+                                                 title: Text(
+                                                   'Normal images',
+                                                   style: TextStyle(
+                                                     fontSize: 16,
+                                                     fontWeight: FontWeight.w400,
+                                                     color: Color(
+                                                       0xff000000,
+                                                     ),
+
+                                                   ),
+                                                 ),
+                                               ),
+                                               Divider(
+                                                 color: Color(0xffE2E4EB),
+                                                 thickness: 2.sp,
+                                               ),
+                                               ListTile(
+                                                 onTap: () {
+                                                   getFromGalleryimg(false);
+                                                 },
+                                                 leading: SvgPicture.asset('assets/svgs/thread.svg'),
+                                                 title: Text(
+                                                   'Thread',
+                                                   style: TextStyle(
+                                                     fontSize: 16,
+                                                     fontWeight: FontWeight.w400,
+                                                     color: Color(
+                                                       0xff000000,
+                                                     ),
+
+                                                   ),
+                                                 ),
+                                               ),
+                                             ],
+                                           ),
+                                         ),
+                                         backgroundColor: Colors.transparent,
+                                         elevation: 0,
+                                       );
+                                     });
                                     },
                                     leading: Icon(
                                       Icons.photo,
@@ -318,7 +479,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
       confineInSafeArea: true,
-      backgroundColor: Colors.white,
+      backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
       // Default is Colors.white.
       handleAndroidBackButtonPress: true,
       // Default is true.
@@ -374,7 +535,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void getFromGalleryimg() async {
+  void getFromGalleryimg(isNormal) async {
     final pickedFile = await ImagePicker().pickMultiImage(
       maxWidth: 1800,
       maxHeight: 1800,
@@ -384,13 +545,13 @@ class _HomeScreenState extends State<HomeScreen> {
         pickedFile.forEach((element) {
           controller.images.add(File(element.path));
         });
-        Get.to(PostImageScreen());
+        Get.to(PostImageScreen(isnormal: isNormal,));
         controller.img = controller.images[0];
       });
     }
   }
 
-  void getFromCameraimg() async {
+  void getFromCameraimg(isNormal) async {
     final pickedFile = await ImagePicker().pickImage(
       source: ImageSource.camera,
       maxWidth: 1800,
@@ -398,7 +559,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     if (pickedFile != null) {
       setState(() {
-        Get.to(PostImageScreen());
+        Get.to(PostImageScreen(isnormal: isNormal,));
         controller.img = File(pickedFile.path);
       });
     }

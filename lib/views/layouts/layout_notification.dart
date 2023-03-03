@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
+
 class NotificationLayouts extends StatelessWidget {
   const NotificationLayouts({Key? key}) : super(key: key);
 
@@ -9,7 +11,7 @@ class NotificationLayouts extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             'Notifications',

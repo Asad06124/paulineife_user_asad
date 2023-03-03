@@ -8,6 +8,7 @@ import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:sizer/sizer.dart';
 import '../../constant/constant.dart';
+import '../../helpers/theme.dart';
 import '../screens/screen_follower.dart';
 import '../screens/screen_setting.dart';
 
@@ -25,7 +26,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             'Asad',

@@ -4,6 +4,7 @@ import 'package:paulineife_user/views/screens/screen_login.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../controller/registration_controller.dart';
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 
 class NewPasswordScreen extends StatelessWidget {
@@ -18,7 +19,7 @@ class NewPasswordScreen extends StatelessWidget {
     var WHeight = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
@@ -27,8 +28,8 @@ class NewPasswordScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: 19.sp,
                   fontWeight: FontWeight.w700,
-                  
-                  color: Colors.black),
+
+                color: Themes.setColor(context) ? Colors.white : Colors.black,),
             ),
           ),
           automaticallyImplyLeading: false,
@@ -100,8 +101,8 @@ class NewPasswordScreen extends StatelessWidget {
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  
-                                  color: Color(0xff000000),
+
+                                  color: Themes.setColor(context) ? Colors.white : Colors.black,
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
@@ -202,8 +203,7 @@ class NewPasswordScreen extends StatelessWidget {
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  
-                                  color: Color(0xff000000),
+                                  color: Themes.setColor(context) ? Colors.white : Colors.black,
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
@@ -253,6 +253,7 @@ class NewPasswordScreen extends StatelessWidget {
               textStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
+                color: Colors.white
                   ),
               onPressed: () {
                 Get.to(ScreenLogin());

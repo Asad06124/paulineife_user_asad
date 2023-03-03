@@ -3,6 +3,8 @@ import 'package:paulineife_user/views/layouts/layout_signup_email.dart';
 import 'package:paulineife_user/views/layouts/layout_signup_phone.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
+
 class ScreeSignUpWithLayouts extends StatefulWidget {
   const ScreeSignUpWithLayouts({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
       child: DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: Color(0xfff9f9f9),
+            backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9) ,
             resizeToAvoidBottomInset: false,
             appBar: AppBar(
               title: Padding(
@@ -27,14 +29,13 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
                   style: TextStyle(
                       fontSize: 21.sp,
                       fontWeight: FontWeight.w700,
-                      
-                      color: Colors.black),
+                  ),
                 ),
               ),
               automaticallyImplyLeading: false,
               centerTitle: true,
               elevation: 0,
-              backgroundColor: Color(0xfff9f9f9),
+              backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9) ,
             ),
             body: Center(
               child: Column(

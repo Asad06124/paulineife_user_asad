@@ -4,6 +4,7 @@ import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/views/screens/screen_terms_conditions.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 
 class SignUpGoogleScreen extends StatelessWidget {
@@ -14,7 +15,7 @@ class SignUpGoogleScreen extends StatelessWidget {
     var WHeight = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
@@ -146,6 +147,7 @@ class SignUpGoogleScreen extends StatelessWidget {
               textStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w700,
+                color: Colors.white
                   ),
               onPressed: () {
                 Get.to(TermsConditionsScreen());
@@ -156,12 +158,12 @@ class SignUpGoogleScreen extends StatelessWidget {
                 onPressed: () {},
                 child: RichText(
                   text: TextSpan(
-                      text: 'Already Have an Account?',
+                      text: 'Already Have an Account? ',
                       style: TextStyle(
                           fontSize: 11.sp,
                           fontWeight: FontWeight.w400,
-                          
-                          color: Color(0xff000000)),
+
+                        color: Themes.setColor(context) ? Colors.white : Colors.black,),
                       children: [
                         TextSpan(
                             text: ' Sign In',

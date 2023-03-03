@@ -13,6 +13,7 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../constant/constant.dart';
+import '../../helpers/theme.dart';
 
 class ProfileScreen extends StatefulWidget {
    ProfileScreen({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return SafeArea(
 
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             'Asad',

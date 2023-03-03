@@ -11,6 +11,7 @@ import 'package:paulineife_user/views/screens/screen_signup_google.dart';
 import 'package:paulineife_user/views/screens/screen_signup_with_layouts.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 
 class SignUpMenuScreen extends StatefulWidget {
@@ -54,16 +55,14 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
               'Sign Up',
               style: TextStyle(
                   fontSize: 21.sp,
-                  fontWeight: FontWeight.w700,
-                  
-                  color: Colors.black),
+                  fontWeight: FontWeight.w700,),
             ),
           ),
           automaticallyImplyLeading: false,
           centerTitle: true,
           elevation: 0,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         body: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
@@ -84,18 +83,18 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                 margin: EdgeInsets.only(bottom: 20.sp),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.sp),
-                  color: Color(0xffE2E4EB),
+                  color:Themes.setColor(context) ? Color(0xff3D3D3D) : Color(0xffE2E4EB),
                 ),
                 child: ListTile(
                   onTap: (){Get.to(ScreeSignUpWithLayouts());},
                   leading: Icon(
                     Icons.person,
-                    color: Colors.black,
+                    color: Themes.setColor(context) ? Colors.white : Colors.black,
                   ),
                   title: Text(
                     'Continue with Phone/Email',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Themes.setColor(context) ? Colors.white : Colors.black,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                       
@@ -111,38 +110,42 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
               style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xff79869F),
+                color: Themes.setColor(context) ? Colors.white : Color(0xff79869F),
                   ),
             ),
             Align(
               alignment: Alignment.center,
-              child: Container(
-                alignment: Alignment.center,
-                margin: EdgeInsets.only(top: 20.sp),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.sp),
-                  color: Color(0xffE2E4EB),
-                ),
-                child: ListTile(
-                  onTap: (){Get.to(SignUpGoogleScreen());},
-                  leading: Image.network(
-                    'http://pngimg.com/uploads/google/google_PNG19635.png',
-                    fit: BoxFit.cover,
-                    height: 30.sp,
-                    width: 30.sp,
+              child: GestureDetector(
+                onTap: (){Get.to(SignUpGoogleScreen());},
+                child: Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(top: 20.sp),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.sp),
+                    color:Themes.setColor(context) ? Color(0xff3D3D3D) : Color(0xffE2E4EB),
                   ),
-                  title: Text(
-                    'Continue with Google ',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
-                      
-                    ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+
+
+                      SvgPicture.asset('assets/svgs/google.svg'),
+                      SizedBox(width: 10.sp,),
+                      Text(
+                        'Continue with Google ',
+                        style: TextStyle(
+                          color: Themes.setColor(context) ? Colors.white : Colors.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700,
+
+                        ),
+                      ),
+
+                    ],
                   ),
+                  width: WHeight.width / 1.2,
+                  height: WHeight.height / 13.2,
                 ),
-                width: WHeight.width / 1.2,
-                height: WHeight.height / 13.2,
               ),
             ),
             SizedBox(
@@ -154,8 +157,8 @@ class _SignUpMenuScreenState extends State<SignUpMenuScreen> {
                   style: TextStyle(
                       fontSize: 11.sp,
                       fontWeight: FontWeight.w400,
-                      
-                      color: Color(0xff000000)),
+
+                    color: Themes.setColor(context) ? Colors.white : Colors.black,),
                   children: [
                     TextSpan(text: '  '),
                     TextSpan(

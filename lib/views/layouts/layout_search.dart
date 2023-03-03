@@ -5,6 +5,8 @@ import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
+
 class SearchLayout extends StatelessWidget {
   const SearchLayout({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class SearchLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         body: Padding(
           padding:  EdgeInsets.all(24),
           child: Column(

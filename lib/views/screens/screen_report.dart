@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 
 class ReportScreen extends StatelessWidget {
@@ -27,7 +28,7 @@ class ReportScreen extends StatelessWidget {
     ];
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             'Report',

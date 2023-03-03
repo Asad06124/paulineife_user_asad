@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 
 class TermsConditionsScreen extends StatelessWidget {
@@ -21,15 +22,14 @@ class TermsConditionsScreen extends StatelessWidget {
               style: TextStyle(
                   fontSize: 21.sp,
                   fontWeight: FontWeight.w700,
-                  
-                  color: Colors.black),
+                  ),
             ),
           ),
           automaticallyImplyLeading: false,
           centerTitle: true,
           elevation: 0,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         body: Column(
           children: [
             Container(
@@ -39,8 +39,8 @@ class TermsConditionsScreen extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
-                    
-                    color: Colors.black),
+
+                  color: Themes.setColor(context) ? Colors.white : Colors.black,),
                 textAlign: TextAlign.justify,
               ),
             ),
@@ -56,6 +56,7 @@ class TermsConditionsScreen extends StatelessWidget {
               textStyle: TextStyle(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w700,
+                color: Colors.white
                   ),
               onPressed: () {
                 Get.to(HomeScreen());

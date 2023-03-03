@@ -9,13 +9,15 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 import '../../controller/registration_controller.dart';
+import '../../helpers/theme.dart';
 
 class PostImageScreen extends StatelessWidget {
   PostImageScreen({
     Key? key,
+    required this.isnormal
   }) : super(key: key);
   var controller = Get.put(RegistrationController());
-
+var isnormal;
   @override
   Widget build(BuildContext context) {
     int a = 0;
@@ -34,86 +36,7 @@ class PostImageScreen extends StatelessWidget {
                   
                   color: Colors.white),
               onPressed: () {
-                Get.bottomSheet(
-                  Container(
-                    height: 34.h + 5,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20.sp),
-                          topRight: Radius.circular(20.sp),
-                        ),
-                        color: Colors.white),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 35.sp),
-                          child: Text(
-                            'Post',
-                            style: TextStyle(
-                                fontSize: 22,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w700,
-                                ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 15.sp),
-                          child: Text(
-                            'Post image as',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black,
-                                fontWeight: FontWeight.w400,
-                                ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 15.sp,
-                        ),
-                        ListTile(
-                          onTap: () {
-                            Get.to(HomeScreen());
-                          },
-                          leading: SvgPicture.asset('assets/svgs/gallery.svg'),
-                          title: Text(
-                            'Normal images',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(
-                                0xff000000,
-                              ),
-                              
-                            ),
-                          ),
-                        ),
-                        Divider(
-                          color: Color(0xffE2E4EB),
-                          thickness: 2.sp,
-                        ),
-                        ListTile(
-                          onTap: () {
-                            Get.to(HomeScreen());
-                          },
-                          leading: SvgPicture.asset('assets/svgs/thread.svg'),
-                          title: Text(
-                            'Thread',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(
-                                0xff000000,
-                              ),
-                              
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                );
+                Get.to(HomeScreen());
 
               },
               color: Color(0xff2A70C8),
@@ -125,7 +48,7 @@ class PostImageScreen extends StatelessWidget {
           ],
           toolbarHeight: 65.sp,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         body: GetBuilder<RegistrationController>(builder: (controller) {
           return SingleChildScrollView(
             child: Column(
@@ -199,13 +122,16 @@ class PostImageScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(10.sp),
-                  child: CustomInputField1(
-                    hint: 'Add a caption',
-                    maxLines: 5,
-                    minLines: 1,
-                    contentPadding: EdgeInsets.only(left: 5, right: 5),
+                Visibility(
+                  visible: isnormal,
+                  child: Container(
+                    padding: EdgeInsets.all(10.sp),
+                    child: CustomInputField1(
+                      hint: 'Add a caption',
+                      maxLines: 5,
+                      minLines: 1,
+                      contentPadding: EdgeInsets.only(left: 5, right: 5),
+                    ),
                   ),
                 ),
                 StatefulBuilder(

@@ -3,6 +3,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media_recorder/audio_encoder_type.dart';
 
 import '../audio_encoder_type.dart';
 import '../provider/sound_record_notifier.dart';

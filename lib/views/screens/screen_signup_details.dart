@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 import '../../controller/registration_controller.dart';
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 import 'screen_terms_conditions.dart';
 
@@ -16,7 +17,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
     var WHeight = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Padding(
             padding: EdgeInsets.only(top: 10.sp),
@@ -24,9 +25,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
               'Sign Up',
               style: TextStyle(
                   fontSize: 21.sp,
-                  fontWeight: FontWeight.w700,
-                  
-                  color: Colors.black),
+                  fontWeight: FontWeight.w700,),
             ),
           ),
           automaticallyImplyLeading: false,
@@ -222,8 +221,8 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  
-                                  color: Color(0xff000000),
+
+                                  color: Themes.setColor(context) ? Colors.white : Colors.black,
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
@@ -320,8 +319,8 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                               border: InputBorder.none,
                               hintText: '........',
                               hintStyle: TextStyle(
-                                  
-                                  color: Color(0xff000000),
+
+                                  color: Themes.setColor(context) ? Colors.white : Colors.black,
                                   fontSize: 30.sp,
                                   fontWeight: FontWeight.w400),
                               contentPadding:
@@ -372,6 +371,7 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                 textStyle: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
+                  color: Colors.white
                     ),
                 onPressed: () {
                   Get.to(TermsConditionsScreen());
@@ -381,12 +381,11 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                   onPressed: () {},
                   child: RichText(
                     text: TextSpan(
-                        text: 'Already Have an Account',
+                        text: 'Already Have an Account? ',
                         style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w700,
-                            
-                            color: Color(0xff000000)),
+                        ),
                         children: [
                           TextSpan(
                               text: ' Sign up',

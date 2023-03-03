@@ -280,20 +280,16 @@ class _ScreenLoginState extends State<ScreenLogin> {
                           alignment: Alignment.center,
                           margin: EdgeInsets.only(top: 20.sp),
                           decoration: BoxDecoration(
+                            border: Border.all(color: Color(0xff97A1B4)),
                             borderRadius: BorderRadius.circular(25.sp),
-                            color: Color(0xffE2E4EB),
+                            color:Themes.setColor(context) ? Colors.black : Colors.white,
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
 
 
-                               Image.network(
-                                  'http://pngimg.com/uploads/google/google_PNG19635.png',
-                                  fit: BoxFit.cover,
-                                  height: 30.sp,
-                                  width: 30.sp,
-                                ),
+                              SvgPicture.asset('assets/svgs/google.svg'),
                                 SizedBox(width: 10.sp,),
                                 Text(
                                   'Continue with Google ',

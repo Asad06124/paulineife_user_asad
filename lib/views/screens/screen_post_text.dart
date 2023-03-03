@@ -9,6 +9,7 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 import '../../controller/registration_controller.dart';
+import '../../helpers/theme.dart';
 
 class PostTextScreen extends StatelessWidget {
   PostTextScreen({
@@ -27,7 +28,7 @@ class PostTextScreen extends StatelessWidget {
           title: Text('Create Post'),
           centerTitle: true,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [

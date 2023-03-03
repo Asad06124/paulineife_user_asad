@@ -4,9 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:sizer/sizer.dart';
+import 'package:video_trimmer/video_trimmer.dart';
 import '../../controller/registration_controller.dart';
-import '../../helpers/video_trimmer/trimmer.dart';
-import '../../helpers/video_trimmer/video_viewer.dart';
 import '../../widgets/custom_buttom.dart';
 
 class VideoGalleryScreen extends StatelessWidget {

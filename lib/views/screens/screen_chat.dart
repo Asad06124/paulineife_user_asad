@@ -8,6 +8,7 @@ import 'package:paulineife_user/views/screens/screen_chat_list.dart';
 import 'package:paulineife_user/views/screens/screen_report.dart';
 
 import '../../../widgets/custom_input_field1.dart';
+import '../../helpers/theme.dart';
 
 class ChatScreen extends StatelessWidget {
   ChatScreen({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
           leadingWidth: 20.sp,

@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:paulineife_user/controller/registration_controller.dart';
 import 'package:sizer/sizer.dart';
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 
 
@@ -19,10 +20,10 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
           foregroundColor: Colors.black,
           elevation: 0,
           title: Text(

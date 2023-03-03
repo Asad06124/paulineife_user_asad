@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
+
 class SettingScreen extends StatelessWidget {
   SettingScreen({Key? key}) : super(key: key);
 
@@ -23,7 +25,7 @@ class SettingScreen extends StatelessWidget {
     ];
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text('Setting'),
           centerTitle: true,

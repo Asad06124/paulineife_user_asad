@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_top_panel/sliding_top_panel.dart';
 
+import '../../helpers/theme.dart';
+
 class StoryTextViewScreen extends StatelessWidget {
    StoryTextViewScreen({Key? key,required this.strl}) : super(key: key);
    SlidingPanelTopController strl;
@@ -11,7 +13,7 @@ class StoryTextViewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         body: Column(
           children: [
             ListTile(

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
+import 'package:social_media_recorder/audio_encoder_type.dart';
 import 'package:uuid/uuid.dart';
 
 import '../audio_encoder_type.dart';

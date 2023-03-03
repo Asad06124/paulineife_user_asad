@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+import '../../helpers/theme.dart';
 import '../../widgets/custom_input_field1.dart';
 
 class SeeViewersScreen extends StatelessWidget {
@@ -9,9 +10,9 @@ class SeeViewersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
           foregroundColor: Colors.black,
           elevation: 0,
           title: Text(

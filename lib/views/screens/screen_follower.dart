@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:sizer/sizer.dart';
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 import '../../widgets/custom_input_field1.dart';
 
@@ -12,9 +13,9 @@ class FollowerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
           foregroundColor: Colors.black,
           elevation: 0,
           title: Text(

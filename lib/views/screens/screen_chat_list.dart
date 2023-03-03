@@ -3,6 +3,7 @@ import 'package:flutter/material.dart' hide Badge;
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
 import 'package:sizer/sizer.dart';
+import '../../helpers/theme.dart';
 import '../../widgets/custom_input_field1.dart';
 
 class ChatListScreen extends StatelessWidget {
@@ -12,7 +13,7 @@ class ChatListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         body: Padding(
           padding:  EdgeInsets.all(12.0),
           child: Column(

@@ -10,6 +10,7 @@ import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
 import '../../constant/constant.dart';
 import '../../controller/registration_controller.dart';
+import '../../helpers/theme.dart';
 import '../../widgets/status_view_custom.dart';
 
 class HomeLayout extends StatefulWidget {
@@ -57,9 +58,9 @@ class _HomeLayoutState extends State<HomeLayout> {
             ),
           ],
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Themes.setColor(context) ? Colors.black : Colors.white,
         body: Padding(
           padding: EdgeInsets.all(10.sp),
           child: Column(

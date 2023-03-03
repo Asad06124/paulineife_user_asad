@@ -5,6 +5,7 @@ import 'package:paulineife_user/views/screens/screen_signup_details.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../helpers/theme.dart';
 import '../../widgets/custom_buttom.dart';
 
 class SignUpPhoneScreen extends StatefulWidget {
@@ -45,7 +46,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
     var WHeight = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xfff9f9f9),
+        backgroundColor: Themes.setColor(context) ? Colors.black : Color(0xfff9f9f9),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -64,7 +65,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                           border: Border.all(
                             color: Color(0xffD6D9E3),
                           ),
-                          color: Color(0xffFFFFFF),
+                          color:Themes.setColor(context) ? Colors.black :  Color(0xffFFFFFF),
                         ),
                         child: Column(
                           children: [
@@ -78,12 +79,12 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                                   style: TextStyle(
                                       fontSize: 15.sp,
                                       fontWeight: FontWeight.w500,
-                                      
+
                                       color: Color(0xff79869F)),
                                 ),
                                 Icon(
                                   Icons.keyboard_arrow_down_outlined,
-                                  color: Colors.black,
+                                  color:Themes.setColor(context) ?  Color(0xff79869F): Color(0xff79869F)  ,
                                 )
                               ],
                             ),
@@ -93,10 +94,10 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                             Text(
                               '${country.dialCode}',
                               style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w400,
-                                  
-                                  color: Colors.black),
+                                fontSize: 16.sp,
+                                fontWeight: FontWeight.w400,
+
+                                color: Themes.setColor(context) ? Colors.white : Colors.black,),
                             ),
                           ],
                         ),
@@ -114,14 +115,16 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                           border: Border.all(
                             color: Color(0xffD6D9E3),
                           ),
-                          color:  Color(0xffFFFFFF),
+                          color:Themes.setColor(context) ? Colors.black : Colors.white,
                           borderRadius: BorderRadius.circular(10)),
                       child: TextFormField(
                         controller: TextEditingController(text: '123456789'),
+                        style: TextStyle( color: Themes.setColor(context) ? Colors.white : Colors.black,),
                         decoration: InputDecoration(
+
                           filled: true,
-                          fillColor: Color(0xffFFFFFF),
-                          label: Text('Phone Number'),
+                          fillColor:Themes.setColor(context) ? Colors.black : Colors.white,
+                          label: Text('Phone Number',style: TextStyle( color:Themes.setColor(context) ?  Color(0xff79869F):Color(0xff79869F)  ,),),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.all(Radius.circular(15)),
                             borderSide: BorderSide.none,
@@ -167,15 +170,15 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                         width: 10.sp,
                       ),
                       Ink(
-                        decoration: const ShapeDecoration(
-                          color: Color(0xffE2E4EB),
+                        decoration:  ShapeDecoration(
+                          color: Themes.setColor(context) ? Color(0xff3D3D3D) : Color(0xffE2E4EB),
                           shape: CircleBorder(),
                         ),
                         child: IconButton(
                           onPressed: () {},
                           icon: Icon(
                             Icons.refresh,
-                            color: Colors.black,
+                            color: Themes.setColor(context) ? Colors.white : Colors.black,
                           ),
                           color: Color(0xffE2E4EB),
                           style: ElevatedButton.styleFrom(
