@@ -260,18 +260,49 @@ class PostImageScreen extends StatelessWidget {
                                   children: [
                                     controller.images.length > 1
                                         ? GestureDetector(
-                                            onTap: () {
-                                              controller.images.removeAt(a);
-                                              setState(() {});
-                                              if (controller.images[a] ==
-                                                  controller.images.last) {
-                                                setState(() {
-                                                  a = a - 1;
-                                                });
-                                              }
+                                      onTap: () {
+                                        setState(() {});
+                                        if (a ==
+                                            controller
+                                                .images.length -
+                                                1) {
+                                          if (controller
+                                              .images.length >=
+                                              3) {
+                                            controller.images
+                                                .removeAt(a);
+                                            a = a - 2;
 
-                                              controller.update();
-                                            },
+                                          }
+                                          if (controller
+                                              .images.length ==
+                                              2) {
+                                            controller.images
+                                                .removeAt(1);
+                                            a = 0;
+
+                                          }
+                                        }
+                                        else if (controller
+                                            .images.length ==
+                                            2) {
+                                          controller.images
+                                              .removeAt(1);
+                                        } else if (controller
+                                            .images.length<2) {
+                                          controller.images
+                                              .removeAt(0);
+                                          controller.update();
+                                        }
+                                        else if (controller
+                                            .images.length>2) {
+                                          controller.images
+                                              .removeAt(a);
+                                          controller.update();
+                                        }
+
+                                        controller.update();
+                                      },
                                             child: Padding(
                                               padding: EdgeInsets.all(8.0),
                                               child: SvgPicture.asset(
