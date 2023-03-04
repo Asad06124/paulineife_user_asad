@@ -22,16 +22,29 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        backgroundColor:
+            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         resizeToAvoidBottomInset: true,
         appBar: AppBar(
-          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          backgroundColor:
+              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           foregroundColor: Colors.black,
           elevation: 0,
           title: Text(
             'Edit Profile',
-            style: getAppbarTextTheme().copyWith(fontSize: 18, fontWeight: FontWeight.w700),
+            style: getAppbarTextTheme()
+                .copyWith(fontSize: 18, fontWeight: FontWeight.w700),
           ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Colors.white,
+              )),
           centerTitle: true,
         ),
         body: Container(
@@ -64,7 +77,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               textStyle: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                color: ThemeService.isSavedDarkMode()
+                                    ? Colors.white
+                                    : Colors.white,
                               ),
                               elevation: 0,
                               height: Get.height / 16,
@@ -84,7 +99,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               textStyle: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                color: ThemeService.isSavedDarkMode()
+                                    ? Colors.white
+                                    : Colors.white,
                               ),
                               elevation: 0,
                               height: Get.height / 16,
@@ -96,7 +113,9 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                               }),
                         ],
                       ),
-                      backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                      backgroundColor: ThemeService.isSavedDarkMode()
+                          ? Colors.black
+                          : Colors.white,
                       elevation: 0,
                     );
                   },
@@ -122,8 +141,16 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
                       controller: TextEditingController(text: 'Asad'),
+                      style: TextStyle(color: ThemeService.isSavedDarkMode()
+                          ? Colors.white
+                          : Colors.black,),
                       decoration: InputDecoration(
-                        label: Text('Name'),
+                        label: Text(
+                          'Name',
+                          style: TextStyle(
+                            color: Color(0xff79869F),
+                          ),
+                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           borderSide: BorderSide.none,
@@ -152,8 +179,13 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
                       controller: TextEditingController(text: 'AsadBalqani'),
+                      style: TextStyle(color: ThemeService.isSavedDarkMode()
+                          ? Colors.white
+                          : Colors.black,),
                       decoration: InputDecoration(
-                        label: Text('UserName'),
+                        label: Text('UserName',style: TextStyle(
+                          color: Color(0xff79869F),
+                        ),),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           borderSide: BorderSide.none,
@@ -181,9 +213,15 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      controller: TextEditingController(text: 'www.microprogramer.org'),
+                      controller:
+                          TextEditingController(text: 'www.microprogramer.org'),
+                      style: TextStyle(color: ThemeService.isSavedDarkMode()
+                          ? Colors.white
+                          : Colors.black,),
                       decoration: InputDecoration(
-                        label: Text('Website'),
+                        label: Text('Website',style: TextStyle(
+                          color: Color(0xff79869F),
+                        ),),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           borderSide: BorderSide.none,
@@ -211,9 +249,15 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      controller: TextEditingController(text: 'Flutter Developer'),
+                      controller:
+                          TextEditingController(text: 'Flutter Developer'),
+                      style: TextStyle(color: ThemeService.isSavedDarkMode()
+                          ? Colors.white
+                          : Colors.black,),
                       decoration: InputDecoration(
-                        label: Text('Bio'),
+                        label: Text('Bio',style: TextStyle(
+                          color: Color(0xff79869F),
+                        ),),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15)),
                           borderSide: BorderSide.none,
@@ -244,12 +288,17 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                   ),
                 ),
                 CustomButton1(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
                     height: Get.height / 16,
                     width: Get.width / 1.2,
                     color: Color(0xff2A70C8),
-                    textStyle:
-                        TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white, fontSize: 16.sp, fontWeight: FontWeight.w800),
+                    textStyle: TextStyle(
+                        color: ThemeService.isSavedDarkMode()
+                            ? Colors.white
+                            : Colors.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w800),
                     text: 'Save',
                     onPressed: () async {
                       Get.back();

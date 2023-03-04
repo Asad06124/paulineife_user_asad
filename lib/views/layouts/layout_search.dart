@@ -29,7 +29,7 @@ class SearchLayout extends StatelessWidget {
                   borderSide: BorderSide.none,
                 ),
                 fillColor: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
-                prefix: Icon(Icons.search),
+                prefix: Icon(Icons.search,color:ThemeService.isSavedDarkMode() ? Colors.white:Colors.black),
                 contentPadding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                 hint: 'Search',
                 hintStyle:
@@ -44,11 +44,13 @@ class SearchLayout extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
               ),
               Expanded(
                 flex: 2,
                 child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
                   itemCount: 5,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
@@ -70,10 +72,10 @@ class SearchLayout extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xff79869F),
+                          color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                         ),
                       ),
-                      trailing: SvgPicture.asset('assets/images/Vector.svg'),
+                      trailing: SvgPicture.asset('assets/images/Vector.svg', color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),),
                     );
                   },
                 ),
@@ -86,6 +88,7 @@ class SearchLayout extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
                   itemCount: 2,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
@@ -104,10 +107,10 @@ class SearchLayout extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xff79869F),
+                          color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                         ),
                       ),
-                      trailing: SvgPicture.asset('assets/images/Vector.svg'),
+                      trailing: SvgPicture.asset('assets/images/Vector.svg', color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),),
                     );
                   },
                 ),

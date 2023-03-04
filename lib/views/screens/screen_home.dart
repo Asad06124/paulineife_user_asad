@@ -119,6 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -143,91 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ListTile(
                                     onTap: () {
                                       Get.back();
-                                      Get.bottomSheet(
-                                        Container(
-                                          height: 34.h + 5,
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(20.sp),
-                                              topRight: Radius.circular(20.sp),
-                                            ),
-                                            color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
-                                          ),
-                                          child: Column(
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.only(top: 35.sp),
-                                                child: Text(
-                                                  'Post',
-                                                  style: TextStyle(
-                                                    fontSize: 22,
-                                                    fontWeight: FontWeight.w700,
-                                                  ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsets.only(top: 15.sp),
-                                                child: Text(
-                                                  'Post image as',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 15.sp,
-                                              ),
-                                              ListTile(
-                                                onTap: () {
-                                                  getFromCameraimg(true);
-                                                },
-                                                leading: SvgPicture.asset(
-                                                  'assets/svgs/gallery.svg',
-                                                  color: ThemeService.isSavedDarkMode()
-                                                      ? Colors.white
-                                                      : Color(
-                                                          0xff97A1B4,
-                                                        ),
-                                                ),
-                                                title: Text(
-                                                  'Normal images',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                ),
-                                              ),
-                                              Divider(
-                                                color: Color(0xffE2E4EB),
-                                                thickness: 2.sp,
-                                              ),
-                                              ListTile(
-                                                onTap: () {
-                                                  getFromCameraimg(false);
-                                                },
-                                                leading: SvgPicture.asset(
-                                                  'assets/svgs/thread.svg',
-                                                  color: ThemeService.isSavedDarkMode()
-                                                      ? Colors.white
-                                                      : Color(
-                                                          0xff97A1B4,
-                                                        ),
-                                                ),
-                                                title: Text(
-                                                  'Thread',
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        backgroundColor: Colors.transparent,
-                                        elevation: 0,
-                                      );
+                                      getFromCameraimg(false);
                                     },
                                     leading: Icon(
                                       Icons.camera_alt_outlined,
@@ -243,6 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -257,7 +175,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       setState(() {
                                         Get.bottomSheet(
                                           Container(
-                                            height: 34.h + 5,
+                                            height: 34.5.h + 5,
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.only(
                                                 topLeft: Radius.circular(20.sp),
@@ -274,6 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     style: TextStyle(
                                                       fontSize: 22,
                                                       fontWeight: FontWeight.w700,
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                                     ),
                                                   ),
                                                 ),
@@ -284,6 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     style: TextStyle(
                                                       fontSize: 16,
                                                       fontWeight: FontWeight.w400,
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                                     ),
                                                   ),
                                                 ),
@@ -307,6 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     style: TextStyle(
                                                       fontSize: 16,
                                                       fontWeight: FontWeight.w400,
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                                     ),
                                                   ),
                                                 ),
@@ -318,12 +239,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   onTap: () {
                                                     getFromGalleryimg(false);
                                                   },
-                                                  leading: SvgPicture.asset('assets/svgs/thread.svg'),
+                                                  leading: SvgPicture.asset('assets/svgs/thread.svg',color: ThemeService.isSavedDarkMode()
+                                                      ? Colors.white
+                                                      : Color(
+                                                    0xff97A1B4,
+                                                  ),),
                                                   title: Text(
                                                     'Thread',
                                                     style: TextStyle(
                                                       fontSize: 16,
                                                       fontWeight: FontWeight.w400,
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                                     ),
                                                   ),
                                                 ),
@@ -349,6 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -374,6 +301,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -399,6 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -408,14 +337,77 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ListTile(
                       onTap: () {
-                        setState(() async {
-                          FetchAllVideos ob = FetchAllVideos();
-                          controller.videos = await ob.getAllVideos();
-                          if (controller.videos.length >= 1) {
-                            Get.to(VideoGalleryScreen(
-                              videosList: controller.videos,
-                            ));
-                          }
+                        setState(() {
+                          Get.bottomSheet(
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20.sp),
+                                  topRight: Radius.circular(20.sp),
+                                ),
+                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
+                              ),
+                              height: 18.h,
+                              child: Column(
+                                children: [
+                                  ListTile(
+                                    onTap: () {
+                                      Get.back();
+                                      getFromCameravid();
+                                    },
+                                    leading: Icon(
+                                      Icons.camera_alt_outlined,
+                                      color: ThemeService.isSavedDarkMode()
+                                          ? Colors.white
+                                          : Color(
+                                        0xff97A1B4,
+                                      ),
+                                      size: 20.sp,
+                                    ),
+                                    title: Text(
+                                      'Camera',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                  Divider(
+                                    color: Color(0xffE2E4EB),
+                                    thickness: 2.sp,
+                                  ),
+                                  ListTile(
+                                    onTap: () {
+                                      Get.back();
+                                      setState(() {
+                                        getFromGalleryvid();
+                                      });
+                                    },
+                                    leading: Icon(
+                                      Icons.photo,
+                                      color: ThemeService.isSavedDarkMode()
+                                          ? Colors.white
+                                          : Color(
+                                        0xff97A1B4,
+                                      ),
+                                      size: 20.sp,
+                                    ),
+                                    title: Text(
+                                      'Gallery',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            backgroundColor: Colors.transparent,
+                            elevation: 0,
+                          );
                         });
                       },
                       leading: Icon(
@@ -432,6 +424,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),

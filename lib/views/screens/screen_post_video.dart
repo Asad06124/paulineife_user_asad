@@ -61,144 +61,149 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
   Widget build(BuildContext context) {
     bool swtch = true;
     return SafeArea(
-      child: WillPopScope(
-        onWillPop: () async {
-          if (Navigator.of(context).userGestureInProgress) {
-            return false;
-          } else {
-            return true;
-          }
-        },
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Create Post'),
-            centerTitle: true,
-            actions: [
-              CustomButton1(
-                text: 'Post',
-                textStyle: TextStyle(
-                  fontSize: 12.sp,
-                  fontWeight: FontWeight.w400,
-                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-                ),
-                onPressed: () {
-                  Get.to(HomeScreen());
-                },
-                color: Color(0xff2A70C8),
-                height: 35.sp,
-                width: 60.sp,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-              ),
-            ],
-            toolbarHeight: 65.sp,
-          ),
+      child: Scaffold(
+        appBar: AppBar(
           backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-          body: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 4.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Icon(
-                        CupertinoIcons.chat_bubble,
+          title: Text('Create Post'),
+          centerTitle: true,
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
+          actions: [
+            CustomButton1(
+              text: 'Post',
+              textStyle: TextStyle(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+              ),
+              onPressed: () {
+                Get.to(HomeScreen());
+              },
+              color: Color(0xff2A70C8),
+              height: 35.sp,
+              width: 60.sp,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+            ),
+          ],
+          toolbarHeight: 65.sp,
+        ),
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 4.h,
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Icon(
+                      CupertinoIcons.chat_bubble,
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    ),
+                    SizedBox(
+                      width: 6.sp,
+                    ),
+                    Text(
+                      'Allow Comments',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
                         color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                       ),
-                      SizedBox(
-                        width: 6.sp,
-                      ),
-                      Text(
-                        'Allow Comments',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                        ),
-                      ),
-                      Spacer(),
-                      StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
-                        return Switch(
-                            activeColor: Color(0xff3AA0FF),
-                            activeTrackColor: Color(0xffD5EBFF),
-                            value: swtch,
-                            onChanged: (val) {
-                              setState(() {
-                                swtch = val;
-                              });
+                    ),
+                    Spacer(),
+                    StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+                      return Switch(
+                          activeColor: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Color(0xff3AA0FF),
+                          activeTrackColor: ThemeService.isSavedDarkMode()
+                              ? Color(0xff3d3d3d)
+                              : Color(0xffD5EBFF),
+                          inactiveTrackColor: ThemeService.isSavedDarkMode()
+                              ? Colors.grey
+                              : Color(0xffD5EBFF),
+                          value: swtch,
+                          onChanged: (val) {
+                            setState(() {
+                              swtch = val;
                             });
-                      }),
-                    ],
-                  ),
+                          });
+                    }),
+                  ],
                 ),
-                Stack(children: [
-                  Container(
-                    height: 50.h,
-                    width: Get.width,
-                    child: VideoViewer(trimmer: _trimmer),
-                  ),
-                  Positioned(
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    child: TextButton(
-                      child: _isPlaying
-                          ? Icon(
-                              Icons.pause,
-                              size: 80.0,
-                              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-                            )
-                          : Icon(
-                              Icons.play_arrow,
-                              size: 80.0,
-                              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-                            ),
-                      onPressed: () async {
-                        bool playbackState = await _trimmer.videPlaybackControl(
-                          startValue: _startValue,
-                          endValue: _endValue,
-                        );
-                        setState(() => _isPlaying = playbackState);
-                      },
-                    ),
-                  ),
-                ]),
+              ),
+              Stack(children: [
                 Container(
-                  padding: EdgeInsets.all(10.sp),
-                  child: CustomInputField1(
-                    textAlign: TextAlign.start,
-                    hint: 'Add a caption',
-                    maxLines: 5,
-                    minLines: 1,
-                    contentPadding: EdgeInsets.only(left: 5, right: 5),
+                  height: 50.h,
+                  width: Get.width,
+                  child: VideoViewer(trimmer: _trimmer),
+                ),
+                Positioned(
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: TextButton(
+                    child: _isPlaying
+                        ? Icon(
+                            Icons.pause,
+                            size: 80.0,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          )
+                        : Icon(
+                            Icons.play_arrow,
+                            size: 80.0,
+                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          ),
+                    onPressed: () async {
+                      bool playbackState = await _trimmer.videPlaybackControl(
+                        startValue: _startValue,
+                        endValue: _endValue,
+                      );
+                      setState(() => _isPlaying = playbackState);
+                    },
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
-                  child: Container(
-                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                    width: Get.width,
-                    child: TrimEditor(
-                      trimmer: _trimmer,
-                      viewerHeight: 50,
-                      viewerWidth: Get.width,
-                      showDuration: false,
-                      maxVideoLength: Duration(seconds: _trimmer.videoPlayerController!.value.duration.inSeconds - 10),
-                      onChangeStart: (value) => _startValue = value,
-                      onChangeEnd: (value) => _endValue = value,
-                      onChangePlaybackState: (value) => setState(() => _isPlaying = value),
-                    ),
+              ]),
+              Container(
+                padding: EdgeInsets.all(10.sp),
+                child: CustomInputField1(
+                  textAlign: TextAlign.start,
+                  hint: 'Add a caption',
+                  hintStyle: TextStyle(color: Color(0xff666666)),
+                  maxLines: 5,
+                  minLines: 1,
+                  contentPadding: EdgeInsets.only(left: 5, right: 5),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: 8.0, right: 8, bottom: 8),
+                child: Container(
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                  width: Get.width,
+                  child: TrimEditor(
+                    trimmer: _trimmer,
+                    viewerHeight: 50,
+                    viewerWidth: Get.width,
+                    showDuration: false,
+                    maxVideoLength: Duration(seconds: _trimmer.videoPlayerController!.value.duration.inSeconds - 10),
+                    onChangeStart: (value) => _startValue = value,
+                    onChangeEnd: (value) => _endValue = value,
+                    onChangePlaybackState: (value) => setState(() => _isPlaying = value),
                   ),
                 ),
-                SizedBox(
-                  height: 10.sp,
-                ),
-              ],
-            ),
+              ),
+              SizedBox(
+                height: 10.sp,
+              ),
+            ],
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
@@ -21,6 +22,11 @@ class FollowingScreen extends StatelessWidget {
             'Following',
             style: getAppbarTextTheme(),
           ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,)),
           centerTitle: true,
         ),
         body: Padding(
@@ -38,15 +44,16 @@ class FollowingScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.sp),
                     borderSide: BorderSide.none,
                   ),
-                  fillColor: Color(0xffE2E4EB),
-                  prefix: Icon(Icons.search),
+                  fillColor:ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
+                  prefix: Icon(Icons.search,color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xffE2E4EB)),
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                   hint: 'Search',
-                  hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xff79869F)),
+                  hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,  color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                 ),
               ),
               Expanded(
                 child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
                   itemCount: 12,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
@@ -74,7 +81,7 @@ class FollowingScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff2A70C8),
+                          color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
                         ),
                       ),
                       trailing: ElevatedButton(
@@ -88,7 +95,7 @@ class FollowingScreen extends StatelessWidget {
                           ),
                           style: ButtonStyle(
                             elevation: MaterialStateProperty.all(0),
-                            backgroundColor: MaterialStateProperty.all(Color(0xdfffffff)),
+                            backgroundColor: MaterialStateProperty.all( ThemeService.isSavedDarkMode() ? Colors.black : Color(0xdfffffff)),
                           ),
                           onPressed: () {}),
                     );

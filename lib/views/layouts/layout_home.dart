@@ -72,6 +72,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                   child: Container(
                 width: size.width / 1.08,
                 child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
                   itemCount: StoryCount.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (BuildContext context, int index) {
@@ -174,6 +175,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                 ),
               )),
               SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
                 child: Column(
                   children: [
                     GestureDetector(

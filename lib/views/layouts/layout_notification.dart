@@ -13,6 +13,7 @@ class NotificationLayouts extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text(
             'Notifications',
             style: getAppbarTextTheme().copyWith(fontSize: 18),
@@ -42,6 +43,7 @@ class NotificationLayouts extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
                   itemCount: 2,
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
@@ -76,7 +78,7 @@ class NotificationLayouts extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            color: Color(0xff79869F),
+                              color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                           ),
                         ),
                         trailing: Icon(

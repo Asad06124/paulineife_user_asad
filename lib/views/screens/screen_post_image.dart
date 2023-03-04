@@ -18,6 +18,7 @@ class PostImageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PageController _pageController = PageController(initialPage: 0);
     int a = 0;
     bool swtch = true;
     return SafeArea(
@@ -25,22 +26,36 @@ class PostImageScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Create Post'),
           centerTitle: true,
+          backgroundColor:
+              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           actions: [
             CustomButton1(
               text: 'Post',
-              textStyle: getAppbarTextTheme().copyWith(fontSize: 12.sp),
+              textStyle: TextStyle(color: Colors.white),
               onPressed: () {
                 Get.to(HomeScreen());
               },
               color: Color(0xff2A70C8),
               height: 35.sp,
               width: 60.sp,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30)),
             ),
           ],
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Colors.white,
+              )),
           toolbarHeight: 65.sp,
         ),
-        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        backgroundColor:
+            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: GetBuilder<RegistrationController>(builder: (controller) {
           return SingleChildScrollView(
             child: Column(
@@ -54,7 +69,9 @@ class PostImageScreen extends StatelessWidget {
                     children: [
                       Icon(
                         CupertinoIcons.chat_bubble,
-                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        color: ThemeService.isSavedDarkMode()
+                            ? Colors.white
+                            : Colors.black,
                       ),
                       SizedBox(
                         width: 6.sp,
@@ -65,14 +82,24 @@ class PostImageScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.black,
                         ),
                       ),
                       Spacer(),
-                      StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+                      StatefulBuilder(builder:
+                          (BuildContext context, StateSetter setState) {
                         return Switch(
-                            activeColor: Color(0xff3AA0FF),
-                            activeTrackColor: Color(0xffD5EBFF),
+                            activeColor: ThemeService.isSavedDarkMode()
+                                ? Colors.white
+                                : Color(0xff3AA0FF),
+                            activeTrackColor: ThemeService.isSavedDarkMode()
+                                ? Color(0xff3d3d3d)
+                                : Color(0xffD5EBFF),
+                            inactiveTrackColor: ThemeService.isSavedDarkMode()
+                                ? Colors.grey
+                                : Color(0xffD5EBFF),
                             value: swtch,
                             onChanged: (val) {
                               setState(() {
@@ -83,48 +110,131 @@ class PostImageScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(10.sp),
-                  height: 53.5.h,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(image: FileImage(controller.images[a]), fit: BoxFit.cover),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      controller.images.length > 2
-                          ? GestureDetector(
-                              onTap: () {
-                                controller.images.removeAt(a);
-                                controller.update();
+                isnormal
+                    ? Container(
+                  height: 66.5.h,
+                      child: StatefulBuilder(
+                          builder: (BuildContext context,
+                              void Function(void Function()) setState) {
+                            return PageView.builder(
+                              itemCount: controller.images.length,
+                              controller: _pageController,
+                              physics: BouncingScrollPhysics(),
+                              // reverse: true,
+                              // physics: NeverScrollableScrollPhysics(),
+                              onPageChanged: (val){
+                                setState((){
+                                  a = val;
+                                });
                               },
-                              child: Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: SvgPicture.asset(
-                                  'assets/svgs/delete.svg',
-                                ),
-                              ),
-                            )
-                          : SizedBox(),
-                    ],
-                  ),
-                ),
-                Visibility(
-                  visible: isnormal,
-                  child: Container(
-                    padding: EdgeInsets.all(10.sp),
-                    child: CustomInputField1(
-                      hint: 'Add a caption',
-                      maxLines: 5,
-                      minLines: 1,
-                      contentPadding: EdgeInsets.only(left: 5, right: 5),
-                    ),
-                  ),
-                ),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Column(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.all(10.sp),
+                                      height: 53.5.h,
+                                      width: Get.width,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image:
+                                                FileImage(controller.images[a]),
+                                            fit: BoxFit.cover),
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.end,
+                                        children: [
+                                          controller.images.length > 1
+                                              ? GestureDetector(
+                                                  onTap: () {
+                                                    controller.images.removeAt(a);
+                                                    controller.update();
+                                                  },
+                                                  child: Padding(
+                                                    padding: EdgeInsets.all(8.0),
+                                                    child: SvgPicture.asset(
+                                                      'assets/svgs/delete.svg',
+                                                    ),
+                                                  ),
+                                                )
+                                              : SizedBox(),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.all(10.sp),
+                                      child: CustomInputField1(
+                                        hint: 'Add a caption',
+                                        textStyle: TextStyle(color: ThemeService.isSavedDarkMode()
+                                            ? Colors.white
+                                            : Colors.black,),
+                                        hintStyle:
+                                            TextStyle(color: Color(0xff666666)),
+                                        maxLines: 5,
+                                        minLines: 1,
+                                        contentPadding:
+                                            EdgeInsets.only(left: 5, right: 5),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                        ),
+                    )
+                    : Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(10.sp),
+                            height: 53.5.h,
+                            width: Get.width,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: FileImage(controller.images[a]),
+                                  fit: BoxFit.cover),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                controller.images.length > 2
+                                    ? GestureDetector(
+                                        onTap: () {
+                                          controller.images.removeAt(a);
+                                          controller.update();
+                                        },
+                                        child: Padding(
+                                          padding: EdgeInsets.all(8.0),
+                                          child: SvgPicture.asset(
+                                            'assets/svgs/delete.svg',
+                                          ),
+                                        ),
+                                      )
+                                    : SizedBox(),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10.sp),
+                            child: CustomInputField1(
+                              hint: 'Add a caption',
+                              hintStyle: TextStyle(color: Color(0xff666666)),
+                              textStyle: TextStyle(color: ThemeService.isSavedDarkMode()
+                                  ? Colors.white
+                                  : Colors.black,),
+                              maxLines: 5,
+                              minLines: 1,
+                              contentPadding:
+                                  EdgeInsets.only(left: 5, right: 5),
+                            ),
+                          ),
+                        ],
+                      ),
                 StatefulBuilder(
-                  builder: (BuildContext context, void Function(void Function()) setState) {
+                  builder: (BuildContext context,
+                      void Function(void Function()) setState) {
                     return Container(
                       height: 75.sp,
                       child: ListView.builder(
@@ -146,7 +256,9 @@ class PostImageScreen extends StatelessWidget {
                               width: 50.sp,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5.sp),
-                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                color: ThemeService.isSavedDarkMode()
+                                    ? Colors.white
+                                    : Colors.black,
                                 image: DecorationImage(
                                     image: FileImage(
                                       controller.images[index],

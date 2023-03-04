@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
@@ -22,6 +23,11 @@ class FollowerScreen extends StatelessWidget {
             style: getAppbarTextTheme().copyWith(fontSize: 18),
           ),
           centerTitle: true,
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,)),
         ),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 14.sp, vertical: 10.sp),
@@ -36,11 +42,11 @@ class FollowerScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,
                 ),
-                fillColor: Color(0xffE2E4EB),
-                prefix: Icon(Icons.search),
+                fillColor:ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
+                prefix: Icon(Icons.search,color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xffE2E4EB)),
                 contentPadding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                 hint: 'Search',
-                hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xff79869F)),
+                hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
               ),
               Expanded(
                 child: ListView.builder(
@@ -71,7 +77,7 @@ class FollowerScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xff2A70C8),
+                          color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
                         ),
                       ),
                       trailing: ElevatedButton(
@@ -80,7 +86,7 @@ class FollowerScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                           ),
                         ),
                         onPressed: () {},

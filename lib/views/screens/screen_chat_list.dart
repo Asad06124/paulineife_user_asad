@@ -28,11 +28,11 @@ class ChatListScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,
                 ),
-                fillColor: Color(0xffE2E4EB),
-                prefix: Icon(Icons.search),
+                fillColor: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) :  Color(0xffE2E4EB),
+                prefix: Icon(Icons.search,color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                 contentPadding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                 hint: 'Search',
-                hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: Color(0xff79869F)),
+                hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
               ),
               SizedBox(
                 height: 10.sp,
@@ -68,7 +68,7 @@ class ChatListScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xff79869F),
+                            color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                         ),
                       ),
                       trailing: Column(
@@ -80,14 +80,14 @@ class ChatListScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
-                              color: Color(0xff79869F),
+                                color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)
                             ),
                           ),
                           Badge(
                             badgeContent: Text(
                               '1',
                               style: TextStyle(
-                                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                               ),
                             ),
                             badgeStyle: BadgeStyle(badgeColor: Colors.blue),

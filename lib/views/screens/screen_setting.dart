@@ -20,10 +20,16 @@ class _SettingScreenState extends State<SettingScreen> {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text(
             'Settings',
             style: getAppbarTextTheme(),
           ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,)),
           centerTitle: true,
         ),
         body: Column(
@@ -31,6 +37,7 @@ class _SettingScreenState extends State<SettingScreen> {
             getSettingsTile(
                 leading: Icon(
                   Icons.chat_bubble_outline,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
                 title: "FAQ & Contact Support",
                 trailing: Icon(
@@ -40,6 +47,7 @@ class _SettingScreenState extends State<SettingScreen> {
             getSettingsTile(
                 leading: Icon(
                   Icons.info_outline_rounded,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
                 title: "About Us",
                 trailing: Icon(
@@ -49,6 +57,7 @@ class _SettingScreenState extends State<SettingScreen> {
             getSettingsTile(
                 leading: Icon(
                   Icons.view_list_sharp,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
                 title: "Terms & Conditions",
                 trailing: Icon(
@@ -58,6 +67,7 @@ class _SettingScreenState extends State<SettingScreen> {
             getSettingsTile(
                 leading: Icon(
                   Icons.chat_bubble_outline,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
                 title: "Privacy Policy",
                 trailing: Icon(
@@ -67,6 +77,7 @@ class _SettingScreenState extends State<SettingScreen> {
             getSettingsTile(
                 leading: Icon(
                   Icons.mode_night,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
                 title: "Dark Mode",
                 trailing: CupertinoSwitch(
@@ -78,11 +89,12 @@ class _SettingScreenState extends State<SettingScreen> {
             getSettingsTile(
                 leading: Icon(
                   Icons.logout,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
                 title: "Logout",
                 trailing: Icon(
                   Icons.arrow_forward_ios,
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff97A1B4),
                 )),
           ],
         ),

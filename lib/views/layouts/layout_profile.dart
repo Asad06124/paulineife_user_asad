@@ -30,16 +30,17 @@ class _ProfileLayoutState extends State<ProfileLayout> {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text(
             'Asad',
             style: getAppbarTextTheme(),
           ),
           centerTitle: true,
-          leading: Icon(Icons.arrow_back_rounded),
         ),
         body: Padding(
           padding: EdgeInsets.all(8.sp),
           child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               children: [
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -67,7 +68,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff2A70C8),
+                                    color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
                                 ),
                               )
                             ]),
@@ -130,7 +131,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff79869F),
+                                    color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                                 ),
                               )
                             ]),
@@ -152,7 +153,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xff79869F),
+                                color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                               ),
                             )
                           ],
@@ -175,7 +176,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                     elevation: 0,
                     height: Get.height / 16,
                     width: Get.width / 1.2,
-                    color: Color(0xffE2E4EB),
+                    color:ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
                     onPressed: () {
                       Get.to(ProfileEditScreen());
                     }),
@@ -242,7 +243,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 child: Text(
                                   '5',
                                   style: TextStyle(
-                                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                                   ),
                                 ),
                               ),

@@ -34,8 +34,15 @@ class ReportScreen extends StatelessWidget {
           title: Text(
             'Report',
             style: getAppbarTextTheme(),
+
           ),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
           centerTitle: true,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -56,7 +63,7 @@ class ReportScreen extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 11.sp,
                     fontWeight: FontWeight.w400,
-                    color: Color(0xff79869F),
+                    color:ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xff79869F),
                   ),
                   textAlign: TextAlign.justify,
                 ),
@@ -71,6 +78,7 @@ class ReportScreen extends StatelessWidget {
                       height: 32.sp,
                       child: CheckboxListTile(
                         contentPadding: EdgeInsets.symmetric(horizontal: 4.sp),
+                        side: BorderSide(color:Color(0xff79869F) ),
                         controlAffinity: ListTileControlAffinity.leading,
                         title: Text(
                           txt[index],
@@ -97,7 +105,7 @@ class ReportScreen extends StatelessWidget {
                 textStyle: TextStyle(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w500,
-                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                 ),
                 elevation: 0,
                 height: Get.height / 14,

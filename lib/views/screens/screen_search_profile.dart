@@ -26,14 +26,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text(
             'Asad',
             style: getAppbarTextTheme().copyWith(fontSize: 12.sp),
           ),
           centerTitle: true,
-          leading: Icon(Icons.arrow_back_rounded),
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
           actions: [
             PopupMenuButton(
+              color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.sp),
               ),
@@ -100,7 +106,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff2A70C8),
+                                  color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
                                 ),
                               )
                             ]),
@@ -154,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                  color: Color(0xff79869F),
+                                  color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                                 ),
                               )
                             ]),
@@ -176,7 +182,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xff79869F),
+                                color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                               ),
                             )
                           ],
@@ -196,7 +202,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         textStyle: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                         ),
                         elevation: 0,
                         height: Get.height / 16,

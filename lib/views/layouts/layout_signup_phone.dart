@@ -48,6 +48,7 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xfff9f9f9),
         body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Column(
             children: [
               Align(

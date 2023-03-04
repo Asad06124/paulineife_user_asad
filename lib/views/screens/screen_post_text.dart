@@ -14,7 +14,9 @@ class PostTextScreen extends StatelessWidget {
     Key? key,
   }) : super(key: key);
   var controller = Get.put(RegistrationController());
-  final scrollController = ScrollController(initialScrollOffset: 9); // set the initial scroll offset to start at line 10
+  final scrollController = ScrollController(
+      initialScrollOffset:
+          9); // set the initial scroll offset to start at line 10
   @override
   Widget build(BuildContext context) {
     bool swtch = true;
@@ -23,8 +25,21 @@ class PostTextScreen extends StatelessWidget {
         appBar: AppBar(
           title: Text('Create Post'),
           centerTitle: true,
+          leading: IconButton(
+              onPressed: () {
+                Get.back();
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Colors.white,
+              )),
+          backgroundColor:
+              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         ),
-        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        backgroundColor:
+            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -37,7 +52,9 @@ class PostTextScreen extends StatelessWidget {
                   children: [
                     Icon(
                       CupertinoIcons.chat_bubble,
-                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                      color: ThemeService.isSavedDarkMode()
+                          ? Colors.white
+                          : Colors.black,
                     ),
                     SizedBox(
                       width: 6.sp,
@@ -48,14 +65,24 @@ class PostTextScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                        color: ThemeService.isSavedDarkMode()
+                            ? Colors.white
+                            : Colors.black,
                       ),
                     ),
                     Spacer(),
-                    StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+                    StatefulBuilder(
+                        builder: (BuildContext context, StateSetter setState) {
                       return Switch(
-                          activeColor: Color(0xff3AA0FF),
-                          activeTrackColor: Color(0xffD5EBFF),
+                          activeColor: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Color(0xff3AA0FF),
+                          activeTrackColor: ThemeService.isSavedDarkMode()
+                              ? Color(0xff3d3d3d)
+                              : Color(0xffD5EBFF),
+                          inactiveTrackColor: ThemeService.isSavedDarkMode()
+                              ? Colors.grey
+                              : Color(0xffD5EBFF),
                           value: swtch,
                           onChanged: (val) {
                             setState(() {
@@ -68,22 +95,39 @@ class PostTextScreen extends StatelessWidget {
               ),
               Container(
                 height: 53.5.h,
-                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(color: Color(0xff666666)),
+                    bottom: BorderSide(color: Color(0xff666666)),
+                  ),
+                  color: ThemeService.isSavedDarkMode()
+                      ? Colors.black
+                      : Colors.white,
+                ),
                 child: CustomInputField1(
                   scrollController: scrollController,
                   textAlign: TextAlign.center,
                   textStyle: TextStyle(
-                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                    color: ThemeService.isSavedDarkMode()
+                        ? Colors.black
+                        : Colors.white,
                   ),
                   contentPadding: EdgeInsets.all(8),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
-                  enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
+                  focusedBorder:
+                      OutlineInputBorder(borderSide: BorderSide.none),
+                  enabledBorder:
+                      OutlineInputBorder(borderSide: BorderSide.none),
+                  fillColor: ThemeService.isSavedDarkMode()
+                      ? Colors.black
+                      : Colors.white,
                   maxLines: 15,
                   hint: 'Type Here',
                   hintStyle: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w500,
-                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                    color: ThemeService.isSavedDarkMode()
+                        ? Colors.white
+                        : Colors.black,
                   ),
                 ),
               ),
@@ -103,11 +147,18 @@ class PostTextScreen extends StatelessWidget {
                       height: 70.sp,
                       width: 50.sp,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.sp), color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                        borderRadius: BorderRadius.circular(5.sp),
+                        color: ThemeService.isSavedDarkMode()
+                            ? Colors.black
+                            : Colors.white,
+                        border: Border.all(color: Color(0xffffffff))
+                      ),
                       child: index == 0
                           ? Icon(
                               Icons.add_circle_outline_outlined,
-                              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                              color: ThemeService.isSavedDarkMode()
+                                  ? Colors.white
+                                  : Colors.black,
                             )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -115,7 +166,9 @@ class PostTextScreen extends StatelessWidget {
                               children: [
                                 Icon(
                                   Icons.text_snippet_outlined,
-                                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                  color: ThemeService.isSavedDarkMode()
+                                      ? Colors.white
+                                      : Colors.black,
                                   size: 20.sp,
                                 ),
                                 SizedBox(
@@ -126,7 +179,9 @@ class PostTextScreen extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 6.sp,
                                     fontWeight: FontWeight.w700,
-                                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                    color: ThemeService.isSavedDarkMode()
+                                        ? Colors.white
+                                        : Colors.black,
                                   ),
                                 )
                               ],
@@ -148,23 +203,27 @@ class PostTextScreen extends StatelessWidget {
             onPressed: () {
               Get.bottomSheet(
                 Container(
-                  height: 34.h + 5,
+                  height: 34.5.h + 5,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.sp),
                       topRight: Radius.circular(20.sp),
                     ),
-                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                    color: ThemeService.isSavedDarkMode()
+                        ? Colors.black
+                        : Colors.white,
                   ),
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 35.sp),
+                        padding: EdgeInsets.only(top: 30.sp),
                         child: Text(
                           'Post',
                           style: TextStyle(
                             fontSize: 22,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            color: ThemeService.isSavedDarkMode()
+                                ? Colors.white
+                                : Colors.black,
                             fontWeight: FontWeight.w700,
                           ),
                         ),
@@ -175,7 +234,9 @@ class PostTextScreen extends StatelessWidget {
                           'Post text as',
                           style: TextStyle(
                             fontSize: 16,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            color: ThemeService.isSavedDarkMode()
+                                ? Colors.white
+                                : Colors.black,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -189,9 +250,9 @@ class PostTextScreen extends StatelessWidget {
                         },
                         leading: Icon(
                           Icons.text_snippet_outlined,
-                          color: Color(
-                            0xff97A1B4,
-                          ),
+                            color:ThemeService.isSavedDarkMode()
+                            ? Colors.white
+                            : Color(0xff97A1B4),
                           size: 20.sp,
                         ),
                         title: Text(
@@ -199,27 +260,35 @@ class PostTextScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Color(
+                           color: ThemeService.isSavedDarkMode()
+                                ? Colors.white
+                                : Color(
                               0xff000000,
                             ),
                           ),
                         ),
                       ),
                       Divider(
-                        color: Color(0xffE2E4EB),
+                        color:ThemeService.isSavedDarkMode()
+                            ? Colors.white
+                            : Color(0xffE2E4EB),
                         thickness: 2.sp,
                       ),
                       ListTile(
                         onTap: () {
                           Get.to(HomeScreen());
                         },
-                        leading: SvgPicture.asset('assets/svgs/thread.svg'),
+                        leading: SvgPicture.asset('assets/svgs/thread.svg',color:ThemeService.isSavedDarkMode()
+                            ? Colors.white
+                            : Color(0xff97A1B4),),
                         title: Text(
                           'Thread',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
-                            color: Color(
+                            color:ThemeService.isSavedDarkMode()
+                                ? Colors.white
+                                : Color(
                               0xff000000,
                             ),
                           ),
