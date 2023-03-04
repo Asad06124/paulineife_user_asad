@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:paulineife_user/helpers/theme.dart';
@@ -27,5 +28,6 @@ class ThemeService {
   void setDarkThemeMode(bool dark) {
     Get.changeTheme(dark ? Themes().darkTheme : Themes().lightTheme);
     saveThemeMode(dark);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: dark ? Colors.black87 : Colors.white70));
   }
 }

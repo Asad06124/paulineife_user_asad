@@ -17,21 +17,21 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
       img: 'assets/images/onboarding1.svg',
       text: "Share With People",
       desc: "Share your experience, Time and Events with friends and family",
-      bg: Colors.white,
+      bg: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       button: Color(0xFF4756DF),
     ),
     OnboardModel(
       img: 'assets/images/onboarding2.svg',
       text: "Connect With People",
       desc: "Make new friends and connect with old ones",
-      bg: Color(0xFF4756DF),
+      bg: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       button: Colors.white,
     ),
     OnboardModel(
       img: 'assets/images/onboarding3.svg',
       text: "Spread Your Love",
       desc: "Spread love, like, comment and post",
-      bg: Colors.white,
+      bg: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       button: Color(0xFF4756DF),
     ),
   ];
@@ -52,9 +52,9 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kwhite,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
-          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           elevation: 0.0,
         ),
         body: Stack(children: [
@@ -83,7 +83,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                         style: TextStyle(
                           fontSize: 24.0,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xff000000),
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                       Text(
@@ -92,7 +92,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.w500,
-                          color: index % 2 == 0 ? kblack : kblack,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                       SizedBox(
@@ -155,7 +155,7 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
                           )
                         : Text(
                             "Get Started",
-                            style: TextStyle(fontSize: 16.0, color: currentIndex % 2 == 0 ? kwhite : kblue),
+                            style: TextStyle(fontSize: 16.0, color: Colors.white),
                           ),
                   ),
                 ),
@@ -203,8 +203,8 @@ class OnboardModel {
 }
 
 Color kblue = Color(0xFF4756DF);
-Color kwhite = Color(0xFFFFFFFF);
-Color kblack = Color(0x80000000);
+Color kwhite = ThemeService.isSavedDarkMode() ? Colors.black : Color(0xFFFFFFFF);
+Color kblack = ThemeService.isSavedDarkMode() ? Colors.white : Color(0x80000000);
 Color kbrown300 = Color(0xFF8D6E63);
 Color kbrown = Color(0xFF795548);
 Color kgrey = Color(0xFFC0C0C0);
