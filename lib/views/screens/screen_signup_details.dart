@@ -196,6 +196,9 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                         return Container(
                           height: WHeight.height / 18,
                           child: TextFormField(
+                            style: TextStyle(
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            ),
                             obscureText: isPasswordField,
                             keyboardType: TextInputType.emailAddress,
                             maxLines: 1,
@@ -284,6 +287,9 @@ class SignUpPhoneDetailsScreen extends StatelessWidget {
                         return Container(
                           height: WHeight.height / 18,
                           child: TextFormField(
+                            style: TextStyle(
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            ),
                             obscureText: isPasswordField,
                             keyboardType: TextInputType.emailAddress,
                             maxLines: 1,

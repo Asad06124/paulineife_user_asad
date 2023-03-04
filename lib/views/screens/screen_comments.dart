@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 import 'package:social_media_recorder/audio_encoder_type.dart';
 
 import '../../helpers/social_media_recorder/screen/social_media_recorder.dart';
+import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 import '../../test_audio.dart';
 
@@ -29,7 +30,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-          title: Text('Comments'),
+          title: Text('Comments',style: getAppbarTextTheme(),),
           centerTitle: true,
           leading: IconButton(
               onPressed: () {

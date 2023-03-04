@@ -24,6 +24,12 @@ class SearchLayout extends StatelessWidget {
                 height: 10.sp,
               ),
               CustomInputField1(
+                textStyle: TextStyle(
+                  color: ThemeService.isSavedDarkMode()
+                      ? Colors.white
+                      : Colors.black,
+                ),
+
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,

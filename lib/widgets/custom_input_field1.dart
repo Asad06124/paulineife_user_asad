@@ -124,6 +124,7 @@ class _CustomInputField1State extends State<CustomInputField1> {
     return Container(
       margin: widget.margin ?? EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
+
         scrollController: widget.scrollController,
         textAlign: widget.textAlign == null ? TextAlign.start : widget.textAlign!,
         maxLength: widget.limit,

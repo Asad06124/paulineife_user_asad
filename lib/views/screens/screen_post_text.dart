@@ -7,6 +7,7 @@ import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../controller/registration_controller.dart';
+import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
 class PostTextScreen extends StatelessWidget {
@@ -23,7 +24,8 @@ class PostTextScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Create Post'),
+          title: Text('Create Post',style: getAppbarTextTheme(),),
+
           centerTitle: true,
           leading: IconButton(
               onPressed: () {
@@ -33,7 +35,7 @@ class PostTextScreen extends StatelessWidget {
                 Icons.arrow_back,
                 color: ThemeService.isSavedDarkMode()
                     ? Colors.white
-                    : Colors.white,
+                    : Colors.black,
               )),
           backgroundColor:
               ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
@@ -102,14 +104,14 @@ class PostTextScreen extends StatelessWidget {
                   ),
                   color: ThemeService.isSavedDarkMode()
                       ? Colors.black
-                      : Colors.white,
+                      : Colors.black,
                 ),
                 child: CustomInputField1(
                   scrollController: scrollController,
                   textAlign: TextAlign.center,
                   textStyle: TextStyle(
                     color: ThemeService.isSavedDarkMode()
-                        ? Colors.black
+                        ? Colors.white
                         : Colors.white,
                   ),
                   contentPadding: EdgeInsets.all(8),
@@ -119,7 +121,7 @@ class PostTextScreen extends StatelessWidget {
                       OutlineInputBorder(borderSide: BorderSide.none),
                   fillColor: ThemeService.isSavedDarkMode()
                       ? Colors.black
-                      : Colors.white,
+                      : Colors.black,
                   maxLines: 15,
                   hint: 'Type Here',
                   hintStyle: TextStyle(
@@ -127,7 +129,7 @@ class PostTextScreen extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                     color: ThemeService.isSavedDarkMode()
                         ? Colors.white
-                        : Colors.black,
+                        : Colors.white,
                   ),
                 ),
               ),
@@ -150,7 +152,7 @@ class PostTextScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5.sp),
                         color: ThemeService.isSavedDarkMode()
                             ? Colors.black
-                            : Colors.white,
+                            : Colors.black,
                         border: Border.all(color: Color(0xffffffff))
                       ),
                       child: index == 0
@@ -158,7 +160,7 @@ class PostTextScreen extends StatelessWidget {
                               Icons.add_circle_outline_outlined,
                               color: ThemeService.isSavedDarkMode()
                                   ? Colors.white
-                                  : Colors.black,
+                                  : Colors.white,
                             )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -168,7 +170,7 @@ class PostTextScreen extends StatelessWidget {
                                   Icons.text_snippet_outlined,
                                   color: ThemeService.isSavedDarkMode()
                                       ? Colors.white
-                                      : Colors.black,
+                                      : Colors.white,
                                   size: 20.sp,
                                 ),
                                 SizedBox(
@@ -181,7 +183,7 @@ class PostTextScreen extends StatelessWidget {
                                     fontWeight: FontWeight.w700,
                                     color: ThemeService.isSavedDarkMode()
                                         ? Colors.white
-                                        : Colors.black,
+                                        : Colors.white,
                                   ),
                                 )
                               ],

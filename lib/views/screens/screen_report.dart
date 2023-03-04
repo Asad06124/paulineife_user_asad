@@ -40,7 +40,12 @@ class ReportScreen extends StatelessWidget {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Colors.black,
+              )),
           centerTitle: true,
           backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         ),

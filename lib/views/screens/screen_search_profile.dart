@@ -36,7 +36,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Colors.black,
+              )),
           actions: [
             PopupMenuButton(
               color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,

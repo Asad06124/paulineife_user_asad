@@ -68,6 +68,9 @@ class NewPasswordScreen extends StatelessWidget {
                         return Container(
                           height: WHeight.height / 18,
                           child: TextFormField(
+                            style: TextStyle(
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            ),
                             obscureText: isPasswordField,
                             keyboardType: TextInputType.emailAddress,
                             maxLines: 1,
@@ -79,6 +82,7 @@ class NewPasswordScreen extends StatelessWidget {
                             },
 
                             decoration: InputDecoration(
+
                               suffixIcon: IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -159,6 +163,9 @@ class NewPasswordScreen extends StatelessWidget {
                         return Container(
                           height: WHeight.height / 18,
                           child: TextFormField(
+                            style: TextStyle(
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            ),
                             obscureText: isPasswordField,
                             keyboardType: TextInputType.emailAddress,
                             maxLines: 1,

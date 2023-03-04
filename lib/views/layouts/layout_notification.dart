@@ -20,13 +20,13 @@ class NotificationLayouts extends StatelessWidget {
           ),
           centerTitle: true,
           automaticallyImplyLeading: true,
-          leading: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.arrow_back,
-              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-            ),
-          ),
+          // leading: IconButton(
+          //   onPressed: () {},
+          //   icon: Icon(
+          //     Icons.arrow_back,
+          //     color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          //   ),
+          // ),
         ),
         body: Padding(
           padding: EdgeInsets.all(8.0),

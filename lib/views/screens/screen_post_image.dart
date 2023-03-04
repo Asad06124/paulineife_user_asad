@@ -24,7 +24,7 @@ class PostImageScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Create Post'),
+          title: Text('Create Post',style: getAppbarTextTheme(),),
           centerTitle: true,
           backgroundColor:
               ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
@@ -49,7 +49,7 @@ class PostImageScreen extends StatelessWidget {
               icon: Icon(
                 Icons.arrow_back,
                 color: ThemeService.isSavedDarkMode()
-                    ? Colors.white
+                    ? Colors.black
                     : Colors.white,
               )),
           toolbarHeight: 65.sp,
@@ -112,8 +112,8 @@ class PostImageScreen extends StatelessWidget {
                 ),
                 isnormal
                     ? Container(
-                  height: 66.5.h,
-                      child: StatefulBuilder(
+                        height: 66.5.h,
+                        child: StatefulBuilder(
                           builder: (BuildContext context,
                               void Function(void Function()) setState) {
                             return PageView.builder(
@@ -122,8 +122,8 @@ class PostImageScreen extends StatelessWidget {
                               physics: BouncingScrollPhysics(),
                               // reverse: true,
                               // physics: NeverScrollableScrollPhysics(),
-                              onPageChanged: (val){
-                                setState((){
+                              onPageChanged: (val) {
+                                setState(() {
                                   a = val;
                                 });
                               },
@@ -141,18 +141,22 @@ class PostImageScreen extends StatelessWidget {
                                             fit: BoxFit.cover),
                                       ),
                                       child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.end,
                                         children: [
                                           controller.images.length > 1
                                               ? GestureDetector(
                                                   onTap: () {
-                                                    controller.images.removeAt(a);
+                                                    controller.images
+                                                        .removeAt(a);
+                                                    setState((){ a = a - 1;});
                                                     controller.update();
                                                   },
                                                   child: Padding(
-                                                    padding: EdgeInsets.all(8.0),
+                                                    padding:
+                                                        EdgeInsets.all(8.0),
                                                     child: SvgPicture.asset(
                                                       'assets/svgs/delete.svg',
                                                     ),
@@ -166,9 +170,11 @@ class PostImageScreen extends StatelessWidget {
                                       padding: EdgeInsets.all(10.sp),
                                       child: CustomInputField1(
                                         hint: 'Add a caption',
-                                        textStyle: TextStyle(color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,),
+                                        textStyle: TextStyle(
+                                          color: ThemeService.isSavedDarkMode()
+                                              ? Colors.white
+                                              : Colors.black,
+                                        ),
                                         hintStyle:
                                             TextStyle(color: Color(0xff666666)),
                                         maxLines: 5,
@@ -183,54 +189,65 @@ class PostImageScreen extends StatelessWidget {
                             );
                           },
                         ),
-                    )
-                    : Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(10.sp),
-                            height: 53.5.h,
-                            width: Get.width,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: FileImage(controller.images[a]),
-                                  fit: BoxFit.cover),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                controller.images.length > 2
-                                    ? GestureDetector(
-                                        onTap: () {
-                                          controller.images.removeAt(a);
-                                          controller.update();
-                                        },
-                                        child: Padding(
-                                          padding: EdgeInsets.all(8.0),
-                                          child: SvgPicture.asset(
-                                            'assets/svgs/delete.svg',
-                                          ),
-                                        ),
-                                      )
-                                    : SizedBox(),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(10.sp),
-                            child: CustomInputField1(
-                              hint: 'Add a caption',
-                              hintStyle: TextStyle(color: Color(0xff666666)),
-                              textStyle: TextStyle(color: ThemeService.isSavedDarkMode()
-                                  ? Colors.white
-                                  : Colors.black,),
-                              maxLines: 5,
-                              minLines: 1,
-                              contentPadding:
-                                  EdgeInsets.only(left: 5, right: 5),
-                            ),
-                          ),
-                        ],
+                      )
+                    : StatefulBuilder(
+                        builder: (BuildContext context,
+                            void Function(void Function()) setState) {
+                          return Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(10.sp),
+                                height: 53.5.h,
+                                width: Get.width,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: FileImage(controller.images[a]),
+                                      fit: BoxFit.cover),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    controller.images.length > 1
+                                        ? GestureDetector(
+                                            onTap: () {
+                                              controller.images.removeAt(a);
+                                              setState(() {
+                                                a = a - 1;
+                                              });
+                                              controller.update();
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: SvgPicture.asset(
+                                                'assets/svgs/delete.svg',
+                                              ),
+                                            ),
+                                          )
+                                        : SizedBox(),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(10.sp),
+                                child: CustomInputField1(
+                                  hint: 'Add a caption',
+                                  hintStyle:
+                                      TextStyle(color: Color(0xff666666)),
+                                  textStyle: TextStyle(
+                                    color: ThemeService.isSavedDarkMode()
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                  maxLines: 5,
+                                  minLines: 1,
+                                  contentPadding:
+                                      EdgeInsets.only(left: 5, right: 5),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
                 StatefulBuilder(
                   builder: (BuildContext context,

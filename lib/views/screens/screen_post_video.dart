@@ -8,6 +8,7 @@ import 'package:sizer/sizer.dart';
 import 'package:video_trimmer/video_trimmer.dart';
 
 import '../../controller/registration_controller.dart';
+import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
 class PostVideoScreen extends StatefulWidget {
@@ -64,13 +65,18 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-          title: Text('Create Post'),
+          title: Text('Create Post',style: getAppbarTextTheme(),),
           centerTitle: true,
           leading: IconButton(
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Colors.black,
+              )),
           actions: [
             CustomButton1(
               text: 'Post',
@@ -175,6 +181,11 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
               Container(
                 padding: EdgeInsets.all(10.sp),
                 child: CustomInputField1(
+                  textStyle: TextStyle(
+                    color: ThemeService.isSavedDarkMode()
+                        ? Colors.white
+                        : Colors.black,
+                  ),
                   textAlign: TextAlign.start,
                   hint: 'Add a caption',
                   hintStyle: TextStyle(color: Color(0xff666666)),

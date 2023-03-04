@@ -42,7 +42,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
               icon: Icon(
                 Icons.arrow_back,
                 color: ThemeService.isSavedDarkMode()
-                    ? Colors.white
+                    ? Colors.black
                     : Colors.white,
               )),
           centerTitle: true,

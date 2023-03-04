@@ -95,6 +95,9 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             child: Container(
                               height: WHeight.height / 20,
                               child: TextFormField(
+                                style: TextStyle(
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                ),
                                 keyboardType: TextInputType.emailAddress,
                                 maxLines: 1,
                                 validator: (value) {
@@ -151,6 +154,9 @@ class _ScreenLoginState extends State<ScreenLogin> {
                           Container(
                             height: WHeight.height / 18,
                             child: TextFormField(
+                              style: TextStyle(
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                              ),
                               obscureText: isPasswordField,
                               keyboardType: TextInputType.emailAddress,
                               maxLines: 1,

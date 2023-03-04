@@ -27,7 +27,12 @@ class SeeViewersScreen extends StatelessWidget {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,)),
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Colors.black,
+              )),
         ),
         body: Padding(
           padding: EdgeInsets.all(8.sp),
@@ -75,6 +80,11 @@ class SeeViewersScreen extends StatelessWidget {
                 ],
               ),
               CustomInputField1(
+                textStyle: TextStyle(
+                  color: ThemeService.isSavedDarkMode()
+                      ? Colors.white
+                      : Colors.black,
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.sp),
                   borderSide: BorderSide.none,

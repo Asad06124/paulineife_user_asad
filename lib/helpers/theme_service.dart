@@ -8,7 +8,7 @@ class ThemeService {
   static final storageKey = 'isDarkMode';
 
   static ThemeMode getThemeMode() {
-    return ThemeMode.system;
+    return isSavedDarkMode() ? ThemeMode.dark : ThemeMode.light;
   }
 
   static bool isSavedDarkMode() {
