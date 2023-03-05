@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:badges/badges.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
@@ -59,14 +60,14 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: _controller.index == 0
               ? Padding(
-                  padding: EdgeInsets.only(bottom: 5.0),
-                  child: ThemeService.isSavedDarkMode()
-                      ? SvgPicture.asset("assets/svgs/Home_opened_black.svg")
-                      : SvgPicture.asset("assets/svgs/Home_opened.svg"),
-                )
+            padding: EdgeInsets.only(bottom: 5.0),
+            child: ThemeService.isSavedDarkMode()
+                ? SvgPicture.asset("assets/svgs/Home_opened_black.svg")
+                : SvgPicture.asset("assets/svgs/Home_opened.svg"),
+          )
               : ThemeService.isSavedDarkMode()
-                  ? SvgPicture.asset("assets/svgs/Home_closed_black.svg")
-                  : SvgPicture.asset("assets/svgs/Home_closed.svg"),
+              ? SvgPicture.asset("assets/svgs/Home_closed_black.svg")
+              : SvgPicture.asset("assets/svgs/Home_closed.svg"),
           activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -79,17 +80,17 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: _controller.index == 1
               ? Padding(
-                  padding: EdgeInsets.only(bottom: 6.0),
-                  child: ThemeService.isSavedDarkMode()
-                      ? SvgPicture.asset("assets/svgs/Search_opened_black.svg")
-                      : SvgPicture.asset("assets/svgs/search_opened.svg"),
-                )
+            padding: EdgeInsets.only(bottom: 6.0),
+            child: ThemeService.isSavedDarkMode()
+                ? SvgPicture.asset("assets/svgs/Search_opened_black.svg")
+                : SvgPicture.asset("assets/svgs/search_opened.svg"),
+          )
               : Padding(
-                  padding: EdgeInsets.only(bottom: 6.0),
-                  child: ThemeService.isSavedDarkMode()
-                      ? SvgPicture.asset("assets/svgs/Search_closed_black.svg")
-                      : SvgPicture.asset("assets/svgs/search_closed.svg"),
-                ),
+            padding: EdgeInsets.only(bottom: 6.0),
+            child: ThemeService.isSavedDarkMode()
+                ? SvgPicture.asset("assets/svgs/Search_closed_black.svg")
+                : SvgPicture.asset("assets/svgs/search_closed.svg"),
+          ),
           activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -151,8 +152,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                              0xff97A1B4,
-                                            ),
+                                        0xff97A1B4,
+                                      ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -171,103 +172,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ListTile(
                                     onTap: () {
                                       Get.back();
-
-                                      setState(() {
-                                        Get.bottomSheet(
-                                          Container(
-                                            height: 34.5.h + 5,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(20.sp),
-                                                topRight: Radius.circular(20.sp),
-                                              ),
-                                              color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(top: 35.sp),
-                                                  child: Text(
-                                                    'Post',
-                                                    style: TextStyle(
-                                                      fontSize: 22,
-                                                      fontWeight: FontWeight.w700,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.only(top: 15.sp),
-                                                  child: Text(
-                                                    'Post image as',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 15.sp,
-                                                ),
-                                                ListTile(
-                                                  onTap: () {
-                                                    getFromGalleryimg(true);
-                                                  },
-                                                  leading: SvgPicture.asset(
-                                                    'assets/svgs/gallery.svg',
-                                                    color: ThemeService.isSavedDarkMode()
-                                                        ? Colors.white
-                                                        : Color(
-                                                            0xff97A1B4,
-                                                          ),
-                                                  ),
-                                                  title: Text(
-                                                    'Normal images',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Divider(
-                                                  color: Color(0xffE2E4EB),
-                                                  thickness: 2.sp,
-                                                ),
-                                                ListTile(
-                                                  onTap: () {
-                                                    getFromGalleryimg(false);
-                                                  },
-                                                  leading: SvgPicture.asset('assets/svgs/thread.svg',color: ThemeService.isSavedDarkMode()
-                                                      ? Colors.white
-                                                      : Color(
-                                                    0xff97A1B4,
-                                                  ),),
-                                                  title: Text(
-                                                    'Thread',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          backgroundColor: Colors.transparent,
-                                          elevation: 0,
-                                        );
-                                      });
+                                      getFromGalleryimg(true);
                                     },
                                     leading: Icon(
                                       Icons.photo,
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                              0xff97A1B4,
-                                            ),
+                                        0xff97A1B4,
+                                      ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -292,8 +205,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
-                                0xff97A1B4,
-                              ),
+                          0xff97A1B4,
+                        ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -318,8 +231,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
-                                0xff97A1B4,
-                              ),
+                          0xff97A1B4,
+                        ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -415,8 +328,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
-                                0xff97A1B4,
-                              ),
+                          0xff97A1B4,
+                        ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -456,11 +369,11 @@ class _HomeScreenState extends State<HomeScreen> {
             position: BadgePosition.topEnd(end: -7, top: -13),
             child: _controller.index == 3
                 ? ThemeService.isSavedDarkMode()
-                    ? SvgPicture.asset("assets/svgs/Notification_opened_black.svg")
-                    : SvgPicture.asset("assets/svgs/Notification_opened.svg")
+                ? SvgPicture.asset("assets/svgs/Notification_opened_black.svg")
+                : SvgPicture.asset("assets/svgs/Notification_opened.svg")
                 : ThemeService.isSavedDarkMode()
-                    ? SvgPicture.asset("assets/svgs/Notification_closed_black.svg")
-                    : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
+                ? SvgPicture.asset("assets/svgs/Notification_closed_black.svg")
+                : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
           ),
           title: ("Settings"),
           activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
@@ -518,13 +431,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getFromGalleryvid() async {
-    final pickedFile = await ImagePicker().pickVideo(
-      source: ImageSource.gallery,
+    final pickedFile = await FilePicker.platform.pickFiles(
+      type: FileType.video,
+      allowMultiple: false
     );
     if (pickedFile != null) {
       setState(() {
         Get.to(PostVideoScreen());
-        controller.vid = File(pickedFile.path);
+        controller.vid = File(pickedFile.files.first.path!);
       });
     }
   }
@@ -541,25 +455,25 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void getFromGalleryimg(isNormal) async {
-    final pickedFile = await ImagePicker().pickMultiImage(
-      maxWidth: 1800,
-      maxHeight: 1800,
+  void getFromGalleryimg(isGallery) async {
+    final pickedFile = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+      type: FileType.image
     );
     if (pickedFile != null) {
       setState(() {
-        pickedFile.forEach((element) {
-          controller.images.add(File(element.path));
+        pickedFile.files.forEach((element) {
+          controller.images.add(File(element.path!));
         });
         Get.to(PostImageScreen(
-          isnormal: isNormal,
+          isgallery: isGallery,
         ));
         controller.img = controller.images[0];
       });
     }
   }
 
-  void getFromCameraimg(isNormal) async {
+  void getFromCameraimg(isGallery) async {
     final pickedFile = await ImagePicker().pickImage(
       source: ImageSource.camera,
       maxWidth: 1800,
@@ -568,9 +482,10 @@ class _HomeScreenState extends State<HomeScreen> {
     if (pickedFile != null) {
       setState(() {
         Get.to(PostImageScreen(
-          isnormal: isNormal,
+          isgallery: isGallery,
         ));
-        controller.img = File(pickedFile.path);
+        controller.images.add(File(pickedFile.path));
+        controller.img = controller.images[0];
       });
     }
   }
