@@ -171,95 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ListTile(
                                     onTap: () {
                                       Get.back();
-
-                                      setState(() {
-                                        Get.bottomSheet(
-                                          Container(
-                                            height: 34.5.h + 5,
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.only(
-                                                topLeft: Radius.circular(20.sp),
-                                                topRight: Radius.circular(20.sp),
-                                              ),
-                                              color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsets.only(top: 35.sp),
-                                                  child: Text(
-                                                    'Post',
-                                                    style: TextStyle(
-                                                      fontSize: 22,
-                                                      fontWeight: FontWeight.w700,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsets.only(top: 15.sp),
-                                                  child: Text(
-                                                    'Post image as',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  height: 15.sp,
-                                                ),
-                                                ListTile(
-                                                  onTap: () {
-                                                    getFromGalleryimg(true);
-                                                  },
-                                                  leading: SvgPicture.asset(
-                                                    'assets/svgs/gallery.svg',
-                                                    color: ThemeService.isSavedDarkMode()
-                                                        ? Colors.white
-                                                        : Color(
-                                                            0xff97A1B4,
-                                                          ),
-                                                  ),
-                                                  title: Text(
-                                                    'Normal images',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Divider(
-                                                  color: Color(0xffE2E4EB),
-                                                  thickness: 2.sp,
-                                                ),
-                                                ListTile(
-                                                  onTap: () {
-                                                    getFromGalleryimg(false);
-                                                  },
-                                                  leading: SvgPicture.asset('assets/svgs/thread.svg',color: ThemeService.isSavedDarkMode()
-                                                      ? Colors.white
-                                                      : Color(
-                                                    0xff97A1B4,
-                                                  ),),
-                                                  title: Text(
-                                                    'Thread',
-                                                    style: TextStyle(
-                                                      fontSize: 16,
-                                                      fontWeight: FontWeight.w400,
-                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          backgroundColor: Colors.transparent,
-                                          elevation: 0,
-                                        );
-                                      });
+                                      getFromGalleryimg(true);
                                     },
                                     leading: Icon(
                                       Icons.photo,
@@ -541,7 +453,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void getFromGalleryimg(isNormal) async {
+  void getFromGalleryimg(isGallery) async {
     final pickedFile = await ImagePicker().pickMultiImage(
       maxWidth: 1800,
       maxHeight: 1800,
@@ -552,14 +464,14 @@ class _HomeScreenState extends State<HomeScreen> {
           controller.images.add(File(element.path));
         });
         Get.to(PostImageScreen(
-          isnormal: isNormal,
+          isgallery: isGallery,
         ));
         controller.img = controller.images[0];
       });
     }
   }
 
-  void getFromCameraimg(isNormal) async {
+  void getFromCameraimg(isGallery) async {
     final pickedFile = await ImagePicker().pickImage(
       source: ImageSource.camera,
       maxWidth: 1800,
@@ -568,9 +480,10 @@ class _HomeScreenState extends State<HomeScreen> {
     if (pickedFile != null) {
       setState(() {
         Get.to(PostImageScreen(
-          isnormal: isNormal,
+          isgallery: isGallery,
         ));
-        controller.img = File(pickedFile.path);
+        controller.images.add(File(pickedFile.path));
+        controller.img = controller.images[0];
       });
     }
   }
