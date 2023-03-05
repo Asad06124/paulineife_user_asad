@@ -23,110 +23,128 @@ class _PostImageScreenState extends State<PostImageScreen> {
   var controller = Get.put(RegistrationController());
   bool? isnormal = false;
 
-
   @override
   void initState() {
-    super.initState();WidgetsBinding.instance.addPostFrameCallback((_) async {
-    widget.isgallery? Get.bottomSheet(
-      Container(
-        height:34.5.h+5,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.sp),
-            topRight: Radius.circular(20.sp),
-          ),
-          color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 35.sp),
-              child: Text(
-                'Post',
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      widget.isgallery
+          ? Get.bottomSheet(
+              Container(
+                height: 34.5.h + 5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.sp),
+                    topRight: Radius.circular(20.sp),
+                  ),
+                  color: ThemeService.isSavedDarkMode()
+                      ? Color(0xff3D3D3D)
+                      : Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 35.sp),
+                      child: Text(
+                        'Post',
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.black,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 15.sp),
+                      child: Text(
+                        'Post image as',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15.sp,
+                    ),
+                    ListTile(
+                      onTap: () {
+                        setState(() {
+                          isnormal = true;
+                          Navigator.pop(context);
+                        });
+                      },
+                      leading: SvgPicture.asset(
+                        'assets/svgs/gallery.svg',
+                        color: ThemeService.isSavedDarkMode()
+                            ? Colors.white
+                            : Color(
+                                0xff97A1B4,
+                              ),
+                      ),
+                      title: Text(
+                        'Normal images',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.black,
+                        ),
+                      ),
+                    ),
+                    Divider(
+                      color: Color(0xffE2E4EB),
+                      thickness: 2.sp,
+                    ),
+                    ListTile(
+                      onTap: () {
+                        setState(() {
+                          isnormal = false;
+                          Navigator.pop(context);
+                        });
+                      },
+                      leading: SvgPicture.asset(
+                        'assets/svgs/thread.svg',
+                        color: ThemeService.isSavedDarkMode()
+                            ? Colors.white
+                            : Color(
+                                0xff97A1B4,
+                              ),
+                      ),
+                      title: Text(
+                        'Thread',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.black,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: 15.sp),
-              child: Text(
-                'Post image as',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 15.sp,
-            ),
-            ListTile(
-              onTap: () {
-                setState(() {
-                  isnormal = true;
-                  Navigator.pop(context);
-                });
-              },
-              leading: SvgPicture.asset(
-                'assets/svgs/gallery.svg',
-                color: ThemeService.isSavedDarkMode()
-                    ? Colors.white
-                    : Color(
-                  0xff97A1B4,
-                ),
-              ),
-              title: Text(
-                'Normal images',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                ),
-              ),
-            ),
-            Divider(
-              color: Color(0xffE2E4EB),
-              thickness: 2.sp,
-            ),
-            ListTile(
-              onTap: () {
-                setState(() {
-                  isnormal = false;
-                  Navigator.pop(context);
-                });
-              },
-              leading: SvgPicture.asset('assets/svgs/thread.svg',color: ThemeService.isSavedDarkMode()
-                  ? Colors.white
-                  : Color(
-                0xff97A1B4,
-              ),),
-              title: Text(
-                'Thread',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      isDismissible: false
-    ):null;
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              isDismissible: false,
+              enableDrag: false,
+            )
+          : null;
     });
   }
-  void dispose(){
+
+  void dispose() {
     //...
     super.dispose();
     //...
   }
+
   @override
   Widget build(BuildContext context) {
     PageController _pageController = PageController(initialPage: 0);
@@ -134,8 +152,9 @@ class _PostImageScreenState extends State<PostImageScreen> {
     bool swtch = true;
     return SafeArea(
       child: WillPopScope(
-
-        onWillPop: () async {return false;} ,
+        onWillPop: () async {
+          return false;
+        },
         child: Scaffold(
           appBar: AppBar(
             title: Text(
@@ -189,7 +208,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 8.h,
+                    height: 1.5.h,
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
@@ -238,7 +257,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
                       ],
                     ),
                   ),
-                  isnormal==true
+                  isnormal == true
                       ? Container(
                           height: 66.5.h,
                           child: StatefulBuilder(
@@ -264,8 +283,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                         width: Get.width,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
-                                              image:
-                                                  FileImage(controller.images[a]),
+                                              image: FileImage(
+                                                  controller.images[a]),
                                               fit: BoxFit.cover),
                                         ),
                                         child: Column(
@@ -279,39 +298,37 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                                     onTap: () {
                                                       setState(() {});
                                                       if (a ==
-                                                          controller
-                                                                  .images.length -
+                                                          controller.images
+                                                                  .length -
                                                               1) {
-                                                        if (controller
-                                                                .images.length >=
+                                                        if (controller.images
+                                                                .length >=
                                                             3) {
                                                           controller.images
                                                               .removeAt(a);
                                                           a = a - 2;
-
                                                         }
-                                                        if (controller
-                                                            .images.length ==
+                                                        if (controller.images
+                                                                .length ==
                                                             2) {
                                                           controller.images
                                                               .removeAt(1);
                                                           a = 0;
-
                                                         }
-                                                      }
-                                                     else if (controller
-                                                          .images.length ==
+                                                      } else if (controller
+                                                              .images.length ==
                                                           2) {
                                                         controller.images
                                                             .removeAt(1);
                                                       } else if (controller
-                                                          .images.length<2) {
+                                                              .images.length <
+                                                          2) {
                                                         controller.images
                                                             .removeAt(0);
                                                         controller.update();
-                                                      }
-                                                      else if (controller
-                                                          .images.length>2) {
+                                                      } else if (controller
+                                                              .images.length >
+                                                          2) {
                                                         controller.images
                                                             .removeAt(a);
                                                         controller.update();
@@ -336,16 +353,17 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                         child: CustomInputField1(
                                           hint: 'Add a caption',
                                           textStyle: TextStyle(
-                                            color: ThemeService.isSavedDarkMode()
-                                                ? Colors.white
-                                                : Colors.black,
+                                            color:
+                                                ThemeService.isSavedDarkMode()
+                                                    ? Colors.white
+                                                    : Colors.black,
                                           ),
-                                          hintStyle:
-                                              TextStyle(color: Color(0xff666666)),
+                                          hintStyle: TextStyle(
+                                              color: Color(0xff666666)),
                                           maxLines: 5,
                                           minLines: 1,
-                                          contentPadding:
-                                              EdgeInsets.only(left: 5, right: 5),
+                                          contentPadding: EdgeInsets.only(
+                                              left: 5, right: 5),
                                         ),
                                       ),
                                     ],
@@ -375,49 +393,43 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                     children: [
                                       controller.images.length > 1
                                           ? GestureDetector(
-                                        onTap: () {
-                                          setState(() {});
-                                          if (a ==
-                                              controller
-                                                  .images.length -
-                                                  1) {
-                                            if (controller
-                                                .images.length >=
-                                                3) {
-                                              controller.images
-                                                  .removeAt(a);
-                                              a = a - 2;
+                                              onTap: () {
+                                                setState(() {});
+                                                if (a ==
+                                                    controller.images.length -
+                                                        1) {
+                                                  if (controller
+                                                          .images.length >=
+                                                      3) {
+                                                    controller.images
+                                                        .removeAt(a);
+                                                    a = a - 2;
+                                                  }
+                                                  if (controller
+                                                          .images.length ==
+                                                      2) {
+                                                    controller.images
+                                                        .removeAt(1);
+                                                    a = 0;
+                                                  }
+                                                } else if (controller
+                                                        .images.length ==
+                                                    2) {
+                                                  controller.images.removeAt(1);
+                                                } else if (controller
+                                                        .images.length <
+                                                    2) {
+                                                  controller.images.removeAt(0);
+                                                  controller.update();
+                                                } else if (controller
+                                                        .images.length >
+                                                    2) {
+                                                  controller.images.removeAt(a);
+                                                  controller.update();
+                                                }
 
-                                            }
-                                            if (controller
-                                                .images.length ==
-                                                2) {
-                                              controller.images
-                                                  .removeAt(1);
-                                              a = 0;
-
-                                            }
-                                          }
-                                          else if (controller
-                                              .images.length ==
-                                              2) {
-                                            controller.images
-                                                .removeAt(1);
-                                          } else if (controller
-                                              .images.length<2) {
-                                            controller.images
-                                                .removeAt(0);
-                                            controller.update();
-                                          }
-                                          else if (controller
-                                              .images.length>2) {
-                                            controller.images
-                                                .removeAt(a);
-                                            controller.update();
-                                          }
-
-                                          controller.update();
-                                        },
+                                                controller.update();
+                                              },
                                               child: Padding(
                                                 padding: EdgeInsets.all(8.0),
                                                 child: SvgPicture.asset(
@@ -463,8 +475,17 @@ class _PostImageScreenState extends State<PostImageScreen> {
                             return GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  controller.update();
-                                  a = index;
+                                  if (isnormal == true) {
+                                    Get.snackbar(
+                                      'Alert',
+                                      'You can only select in thread mode',
+                                      overlayBlur: 0.02,
+                                      overlayColor: Colors.red.withOpacity(0.2),
+                                    );
+                                  } else {
+                                    controller.update();
+                                    a = index;
+                                  }
                                 });
                               },
                               child: Container(

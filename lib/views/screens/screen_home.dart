@@ -1,6 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:badges/badges.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +17,6 @@ import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
 import 'package:ux_images_picker/images_picker.dart';
-
 import '../../controller/registration_controller.dart';
 
 class HomeScreen extends StatefulWidget {
