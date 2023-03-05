@@ -34,3 +34,22 @@
 //     throw 'Could not launch $url';
 //   }
 // }
+
+
+import 'package:device_info/device_info.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+Future<bool> getStoragePermission() async {
+  var status = await Permission.manageExternalStorage.request();
+  if (status == PermissionStatus.permanentlyDenied){
+    openAppSettings();
+  }
+  return status.isGranted;
+}
+
+Future<int> get getAndroidVersion async {
+
+  var androidInfo = await DeviceInfoPlugin().androidInfo;
+  var release = androidInfo.version.release;
+  return (int.tryParse(release) ?? 0);
+}
