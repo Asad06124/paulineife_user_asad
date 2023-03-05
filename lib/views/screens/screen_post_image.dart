@@ -148,6 +148,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
             leading: IconButton(
                 onPressed: () {
                   Get.back();
+                  controller.images.clear();
                 },
                 icon: Icon(
                   Icons.arrow_back,
