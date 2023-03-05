@@ -99,7 +99,10 @@ dependencies:
   page_transition: ^2.0.9
   bottom_sheet_scaffold: ^0.1.6
   device_info: ^2.0.3
+#  multiple_images_picker: ^1.0.1
 
+
+  ux_images_picker: ^1.2.16
 
 
 

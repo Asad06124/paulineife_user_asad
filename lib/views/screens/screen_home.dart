@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:badges/badges.dart';
 import 'package:file_picker/file_picker.dart';
@@ -15,12 +16,11 @@ import 'package:paulineife_user/views/layouts/layout_search.dart';
 import 'package:paulineife_user/views/screens/screen_post_image.dart';
 import 'package:paulineife_user/views/screens/screen_post_text.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
-import 'package:paulineife_user/views/screens/screen_video_gallery.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
+import 'package:ux_images_picker/images_picker.dart';
 
 import '../../controller/registration_controller.dart';
-import '../../helpers/fetch_all_videos.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -60,14 +60,14 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: _controller.index == 0
               ? Padding(
-            padding: EdgeInsets.only(bottom: 5.0),
-            child: ThemeService.isSavedDarkMode()
-                ? SvgPicture.asset("assets/svgs/Home_opened_black.svg")
-                : SvgPicture.asset("assets/svgs/Home_opened.svg"),
-          )
+                  padding: EdgeInsets.only(bottom: 5.0),
+                  child: ThemeService.isSavedDarkMode()
+                      ? SvgPicture.asset("assets/svgs/Home_opened_black.svg")
+                      : SvgPicture.asset("assets/svgs/Home_opened.svg"),
+                )
               : ThemeService.isSavedDarkMode()
-              ? SvgPicture.asset("assets/svgs/Home_closed_black.svg")
-              : SvgPicture.asset("assets/svgs/Home_closed.svg"),
+                  ? SvgPicture.asset("assets/svgs/Home_closed_black.svg")
+                  : SvgPicture.asset("assets/svgs/Home_closed.svg"),
           activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -80,17 +80,17 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: _controller.index == 1
               ? Padding(
-            padding: EdgeInsets.only(bottom: 6.0),
-            child: ThemeService.isSavedDarkMode()
-                ? SvgPicture.asset("assets/svgs/Search_opened_black.svg")
-                : SvgPicture.asset("assets/svgs/search_opened.svg"),
-          )
+                  padding: EdgeInsets.only(bottom: 6.0),
+                  child: ThemeService.isSavedDarkMode()
+                      ? SvgPicture.asset("assets/svgs/Search_opened_black.svg")
+                      : SvgPicture.asset("assets/svgs/search_opened.svg"),
+                )
               : Padding(
-            padding: EdgeInsets.only(bottom: 6.0),
-            child: ThemeService.isSavedDarkMode()
-                ? SvgPicture.asset("assets/svgs/Search_closed_black.svg")
-                : SvgPicture.asset("assets/svgs/search_closed.svg"),
-          ),
+                  padding: EdgeInsets.only(bottom: 6.0),
+                  child: ThemeService.isSavedDarkMode()
+                      ? SvgPicture.asset("assets/svgs/Search_closed_black.svg")
+                      : SvgPicture.asset("assets/svgs/search_closed.svg"),
+                ),
           activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
@@ -152,8 +152,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                        0xff97A1B4,
-                                      ),
+                                              0xff97A1B4,
+                                            ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -179,8 +179,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                        0xff97A1B4,
-                                      ),
+                                              0xff97A1B4,
+                                            ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -205,8 +205,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
-                          0xff97A1B4,
-                        ),
+                                0xff97A1B4,
+                              ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -231,8 +231,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
-                          0xff97A1B4,
-                        ),
+                                0xff97A1B4,
+                              ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -273,8 +273,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                        0xff97A1B4,
-                                      ),
+                                              0xff97A1B4,
+                                            ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -302,8 +302,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                        0xff97A1B4,
-                                      ),
+                                              0xff97A1B4,
+                                            ),
                                       size: 20.sp,
                                     ),
                                     title: Text(
@@ -328,8 +328,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: ThemeService.isSavedDarkMode()
                             ? Colors.white
                             : Color(
-                          0xff97A1B4,
-                        ),
+                                0xff97A1B4,
+                              ),
                         size: 20.sp,
                       ),
                       title: Text(
@@ -369,11 +369,11 @@ class _HomeScreenState extends State<HomeScreen> {
             position: BadgePosition.topEnd(end: -7, top: -13),
             child: _controller.index == 3
                 ? ThemeService.isSavedDarkMode()
-                ? SvgPicture.asset("assets/svgs/Notification_opened_black.svg")
-                : SvgPicture.asset("assets/svgs/Notification_opened.svg")
+                    ? SvgPicture.asset("assets/svgs/Notification_opened_black.svg")
+                    : SvgPicture.asset("assets/svgs/Notification_opened.svg")
                 : ThemeService.isSavedDarkMode()
-                ? SvgPicture.asset("assets/svgs/Notification_closed_black.svg")
-                : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
+                    ? SvgPicture.asset("assets/svgs/Notification_closed_black.svg")
+                    : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
           ),
           title: ("Settings"),
           activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
@@ -431,10 +431,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getFromGalleryvid() async {
-    final pickedFile = await FilePicker.platform.pickFiles(
-      type: FileType.video,
-      allowMultiple: false
-    );
+    final pickedFile = await FilePicker.platform.pickFiles(type: FileType.video, allowMultiple: false);
     if (pickedFile != null) {
       setState(() {
         Get.to(PostVideoScreen());
@@ -456,15 +453,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getFromGalleryimg(isGallery) async {
-    final pickedFile = await FilePicker.platform.pickFiles(
-      allowMultiple: true,
-      type: FileType.image
-    );
+    final pickedFile = await pickMultiImages();
     if (pickedFile != null) {
       setState(() {
-        pickedFile.files.forEach((element) {
-          controller.images.add(File(element.path!));
-        });
+        controller.images = pickedFile;
         Get.to(PostImageScreen(
           isgallery: isGallery,
         ));
@@ -488,5 +480,17 @@ class _HomeScreenState extends State<HomeScreen> {
         controller.img = controller.images[0];
       });
     }
+  }
+
+  Future<List<File>?> pickMultiImages() async {
+    List<Media>? res = await ImagesPicker.pick(
+      count: 5,
+      pickType: PickType.image,
+      cropOpt: CropOption(
+        aspectRatio: CropAspectRatio.custom,
+        cropType: CropType.rect
+      )
+    );
+    return res?.map((e) => File(e.path)).toList();
   }
 }
