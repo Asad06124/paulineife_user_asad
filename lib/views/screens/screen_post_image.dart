@@ -22,15 +22,19 @@ class PostImageScreen extends StatefulWidget {
 class _PostImageScreenState extends State<PostImageScreen> {
   var controller = Get.put(RegistrationController());
   bool? isnormal = false;
+  List TextEditController = [];
 
   @override
   void initState() {
     super.initState();
+    for(int i = 0; i<=controller.images.length; i++){
+      TextEditController.add(TextEditingController());
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       widget.isgallery
           ? Get.bottomSheet(
               Container(
-                height: 34.5.h + 5,
+                height: 36.h + 5,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.sp),
@@ -279,7 +283,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                     children: [
                                       Container(
                                         padding: EdgeInsets.all(10.sp),
-                                        height: 53.5.h,
+                                        height: 50.5.h,
                                         width: Get.width,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
@@ -351,6 +355,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                       Container(
                                         padding: EdgeInsets.all(10.sp),
                                         child: CustomInputField1(
+                                          controller: TextEditController[a],
                                           hint: 'Add a caption',
                                           textStyle: TextStyle(
                                             color:
@@ -380,7 +385,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
                               children: [
                                 Container(
                                   padding: EdgeInsets.all(10.sp),
-                                  height: 53.5.h,
+                                  height: 50.5.h,
                                   width: Get.width,
                                   decoration: BoxDecoration(
                                     image: DecorationImage(
@@ -462,7 +467,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
                             );
                           },
                         ),
-                  StatefulBuilder(
+                 isnormal == true ? StatefulBuilder(
                     builder: (BuildContext context,
                         void Function(void Function()) setState) {
                       return Container(
@@ -475,17 +480,9 @@ class _PostImageScreenState extends State<PostImageScreen> {
                             return GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  if (isnormal == true) {
-                                    Get.snackbar(
-                                      'Alert',
-                                      'You can only select in thread mode',
-                                      overlayBlur: 0.02,
-                                      overlayColor: Colors.red.withOpacity(0.2),
-                                    );
-                                  } else {
-                                    controller.update();
-                                    a = index;
-                                  }
+                                  controller.update();
+                                  a = index;
+                                  _pageController = PageController(initialPage: index);
                                 });
                               },
                               child: Container(
@@ -510,7 +507,46 @@ class _PostImageScreenState extends State<PostImageScreen> {
                         ),
                       );
                     },
-                  ),
+                  ):StatefulBuilder(
+                   builder: (BuildContext context,
+                       void Function(void Function()) setState) {
+                     return Container(
+                       height: 75.sp,
+                       child: ListView.builder(
+                         itemCount: controller.images.length,
+                         shrinkWrap: true,
+                         scrollDirection: Axis.horizontal,
+                         itemBuilder: (BuildContext context, int index) {
+                           return GestureDetector(
+                             onTap: () {
+                               setState(() {
+                                 controller.update();
+                                 a = index;
+                               });
+                             },
+                             child: Container(
+                               margin: EdgeInsets.all(8.sp),
+                               alignment: Alignment.center,
+                               height: 70.sp,
+                               width: 50.sp,
+                               decoration: BoxDecoration(
+                                 borderRadius: BorderRadius.circular(5.sp),
+                                 color: ThemeService.isSavedDarkMode()
+                                     ? Colors.white
+                                     : Colors.black,
+                                 image: DecorationImage(
+                                     image: FileImage(
+                                       controller.images[index],
+                                     ),
+                                     fit: BoxFit.cover),
+                               ),
+                             ),
+                           );
+                         },
+                       ),
+                     );
+                   },
+                 ),
                   SizedBox(
                     height: 10.sp,
                   ),
