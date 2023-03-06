@@ -313,11 +313,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
-  ffmpeg_kit_flutter:
+  ffmpeg_kit_flutter_min_gpl:
     dependency: transitive
     description:
-      name: ffmpeg_kit_flutter
-      sha256: f631fbf54e8a62ac36d79475280d7a0b042139ffa6662c88cb6896c71f3f0cfa
+      name: ffmpeg_kit_flutter_min_gpl
+      sha256: ca3dc2330c176c8ef96fb512e7a1a37ab369e15685d2e72a52ec1d50726360a0
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
@@ -490,10 +490,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_native_splash
-      sha256: e301ae206ff0fb09b67d3716009c6c28c2da57a0ad164827b178421bb9d601f7
+      sha256: af665ef80a213a9ed502845a3d7a61b9acca4100ee7e9f067a7440bc3acd6730
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.18"
+    version: "2.2.19"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -552,6 +552,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  helpers:
+    dependency: "direct main"
+    description:
+      name: helpers
+      sha256: "7b2354fe7a3be05635766426a298ba9272dd7e1ceb8036d9c7ecb63ede300b9c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
   html:
     dependency: transitive
     description:
@@ -1189,6 +1197,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  video_editor:
+    dependency: "direct main"
+    description:
+      name: video_editor
+      sha256: "180e1470e10d5f1b69de8996e282e024e36736c6ece36025ea040e8cdacd798f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
   video_player:
     dependency: "direct main"
     description:
@@ -1237,14 +1253,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.5.3"
-  video_trimmer:
-    dependency: "direct main"
-    description:
-      name: video_trimmer
-      sha256: b22375a16bab67a9c2f8f1336a35a32cfdb570c552c33d2d92fe0b9f7cc99661
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.0"
   widget_event:
     dependency: transitive
     description:

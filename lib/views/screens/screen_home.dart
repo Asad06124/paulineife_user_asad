@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
             });
             Get.bottomSheet(
               Container(
-                height: 38.h + 5,
+                height: MediaQuery.of(context).size.height*0.40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.sp),

@@ -1,3 +1,5 @@
+
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,6 @@ class ShowMicWithText extends StatelessWidget {
   final Color? backGroundColor;
   final Widget? recordIcon;
   final Color? counterBackGroundColor;
-
   // ignore: sort_constructors_first
   ShowMicWithText({
     required this.backGroundColor,
@@ -34,11 +35,12 @@ class ShowMicWithText extends StatelessWidget {
     fontSize: 14.0,
     // fontFamily: 'Horizon',
   );
-
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: !soundRecorderState.buttonPressed ? MainAxisAlignment.center : MainAxisAlignment.start,
+      mainAxisAlignment: !soundRecorderState.buttonPressed
+          ? MainAxisAlignment.center
+          : MainAxisAlignment.start,
       children: [
         Row(
           children: [
@@ -53,14 +55,19 @@ class ShowMicWithText extends StatelessWidget {
                   width: soundRecorderState.buttonPressed ? 50 : 35,
                   height: soundRecorderState.buttonPressed ? 50 : 35,
                   child: Container(
-                    color: (soundRecorderState.buttonPressed) ? backGroundColor ?? Theme.of(context).colorScheme.secondary : Colors.transparent,
+                    color: (soundRecorderState.buttonPressed)
+                        ? backGroundColor ??
+                            Theme.of(context).colorScheme.secondary
+                        : Colors.transparent,
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: recordIcon ??
                           Icon(
                             Icons.mic,
                             size: 28,
-                            color: (soundRecorderState.buttonPressed) ? Colors.grey.shade200 : Colors.black,
+                            color: (soundRecorderState.buttonPressed)
+                                ? Colors.grey.shade200
+                                : Colors.black,
                           ),
                     ),
                   ),
