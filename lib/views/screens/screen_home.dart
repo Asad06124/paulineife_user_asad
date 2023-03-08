@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:badges/badges.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,9 +18,7 @@ import 'package:paulineife_user/views/screens/screen_post_text.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
-
 // import 'package:ux_images_picker/images_picker.dart';
-
 import '../../controller/registration_controller.dart';
 import '../../helpers/gallery_grid/src/grid_gallery.dart';
 import '../../widgets/custom_buttom.dart';
@@ -567,7 +564,7 @@ class _MyGalleryState extends State<MyGallery> {
             ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
-            "Create Post,${controller.images.length}",
+            "Create Post",
             style: getAppbarTextTheme(),
           ),
           leading: IconButton(
