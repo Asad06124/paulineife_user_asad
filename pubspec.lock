@@ -161,6 +161,46 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
+  camera:
+    dependency: transitive
+    description:
+      name: camera
+      sha256: ad1c53c554a2f3e5708f3b01eb738d60b902bb61f7f4ad420c65c715e65a7379
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.10.3+2"
+  camera_android:
+    dependency: transitive
+    description:
+      name: camera_android
+      sha256: "467e95dc1b4e7415f3de3a2ac48a2c35a99396f7a2cfbc6b567c2820fba05fbb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.10.4+2"
+  camera_avfoundation:
+    dependency: transitive
+    description:
+      name: camera_avfoundation
+      sha256: a1ebce7132e2c1ffd3138e672538f6f2360715e181cf5b7eb5a073f1a735235e
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.12"
+  camera_platform_interface:
+    dependency: transitive
+    description:
+      name: camera_platform_interface
+      sha256: "00d972adee2e8a282b4d7445e8e694aa1dc0c36b70455b99afa96fbf5e814119"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
+  camera_web:
+    dependency: transitive
+    description:
+      name: camera_web
+      sha256: f7a949ce4d2e091234f2e6607557a0a65398c34c84c1161fb249498595e3b4ce
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.1+2"
   characters:
     dependency: transitive
     description:
@@ -173,10 +213,10 @@ packages:
     dependency: "direct main"
     description:
       name: chat_bubbles
-      sha256: "63703c22ba2e1938e17a396d0e1fdd368f935795c2d7779133a9dae786a3311a"
+      sha256: e972985286ecbc738dd7b39383f593939df30fe4a9142be741b23f1ac6e424ed
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.0"
+    version: "1.4.1"
   clock:
     dependency: transitive
     description:
@@ -257,14 +297,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  custom_gallery_display:
+    dependency: "direct main"
+    description:
+      name: custom_gallery_display
+      sha256: "281197249391a0a71b48e55ca1c70741442a7507dbef3be1286f0387738e85bd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.0"
   custom_utils:
     dependency: "direct main"
     description:
       name: custom_utils
-      sha256: "93d3cb274dd78888e659b7a4da1a4725bedb745f3131181a1389f553c0c90f02"
+      sha256: d4f4312dd90410bb21b5b9aabdcefd44ef8a592c49ff58271e8bdb36220f26b1
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.33"
+    version: "0.0.34"
   dbus:
     dependency: transitive
     description:
@@ -486,14 +534,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.0"
-  flutter_native_splash:
-    dependency: "direct main"
-    description:
-      name: flutter_native_splash
-      sha256: af665ef80a213a9ed502845a3d7a61b9acca4100ee7e9f067a7440bc3acd6730
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.19"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -552,6 +592,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  grid_gallery:
+    dependency: "direct main"
+    description:
+      name: grid_gallery
+      sha256: "259a8c419d5279847831ccc0be971429306a437655ada3bfebfa902e9dd2b2d6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3+6"
   helpers:
     dependency: "direct main"
     description:
@@ -588,10 +636,18 @@ packages:
     dependency: transitive
     description:
       name: image
-      sha256: "483a389d6ccb292b570c31b3a193779b1b0178e7eb571986d9a49904b6861227"
+      sha256: "8e9d133755c3e84c73288363e6343157c383a0c6c56fc51afcc5d4d7180306d6"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.15"
+    version: "3.3.0"
+  image_crop:
+    dependency: transitive
+    description:
+      name: image_crop
+      sha256: a580010f9e90b20581ecf5e8f4e9aa838cb935ea1497f9d1b196baa382b84a6d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.1"
   image_picker:
     dependency: "direct main"
     description:
@@ -636,10 +692,10 @@ packages:
     dependency: transitive
     description:
       name: intl
-      sha256: "910f85bce16fb5c6f614e117efa303e85a1731bb0081edf3604a2ae6e9a3cc91"
+      sha256: a3715e3bc90294e971cb7dc063fbf3cd9ee0ebf8604ffeafabd9e6f16abbdbe6
       url: "https://pub.dev"
     source: hosted
-    version: "0.17.0"
+    version: "0.18.0"
   js:
     dependency: transitive
     description:
@@ -840,6 +896,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  photo_manager:
+    dependency: transitive
+    description:
+      name: photo_manager
+      sha256: "55d50ad1b8f984c57fa7c4bd4980f4760e80d3d9355263cf72624a6ff1bf2b5b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.5.2"
   pinput:
     dependency: "direct main"
     description:
@@ -888,6 +952,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
+  quiver:
+    dependency: transitive
+    description:
+      name: quiver
+      sha256: b1c1ac5ce6688d77f65f3375a9abb9319b3cb32486bdc7a1e0fdf004d7ba4e47
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.1"
   record:
     dependency: transitive
     description:
@@ -920,6 +992,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
+  shimmer:
+    dependency: transitive
+    description:
+      name: shimmer
+      sha256: "1f1009b5845a1f88f1c5630212279540486f97409e9fc3f63883e71070d107bf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   sizer:
     dependency: "direct main"
     description:
@@ -1013,6 +1093,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  stream_transform:
+    dependency: transitive
+    description:
+      name: stream_transform
+      sha256: "14a00e794c7c11aa145a170587321aedce29769c08d7f58b1d141da75e3b1c6f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   string_scanner:
     dependency: transitive
     description:
@@ -1157,14 +1245,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
-  ux_images_picker:
-    dependency: "direct main"
-    description:
-      name: ux_images_picker
-      sha256: c74645daa67957a7aea55fc0be50764b0002cf6f8aa22dbb5419ab0ca3078b19
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.16"
   vector_graphics:
     dependency: transitive
     description:
@@ -1285,14 +1365,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.2.2"
-  yaml:
-    dependency: transitive
-    description:
-      name: yaml
-      sha256: "23812a9b125b48d4007117254bca50abb6c712352927eece9e155207b1db2370"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.1.1"
 sdks:
   dart: ">=2.19.0-0 <3.0.0"
   flutter: ">=3.7.0"

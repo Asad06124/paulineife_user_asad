@@ -1,11 +1,14 @@
 import 'dart:io';
+
 import 'package:badges/badges.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:grid_gallery/grid_gallery.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:paulineife_user/helpers/theme.dart';
 import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/layouts/layout_home.dart';
 import 'package:paulineife_user/views/layouts/layout_notification.dart';
@@ -16,7 +19,9 @@ import 'package:paulineife_user/views/screens/screen_post_text.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
-import 'package:ux_images_picker/images_picker.dart';
+
+// import 'package:ux_images_picker/images_picker.dart';
+
 import '../../controller/registration_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -100,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
             });
             Get.bottomSheet(
               Container(
-                height: MediaQuery.of(context).size.height*0.40,
+                height: MediaQuery.of(context).size.height * 0.40,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.sp),
@@ -168,8 +173,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   ListTile(
                                     onTap: () {
-                                      Get.back();
-                                      getFromGalleryimg(true);
+                                      // Get.back();
+                                      // getFromGalleryimg(true);
+                                      // Get.to(CustomGalleryPicker(
+                                      //   onPicked: (files, isNormal) {
+                                      //     controller.images = files;
+                                      //     controller.img = controller.images[0];
+                                      //
+                                      //     Get.to(PostImageScreen(isNormal: isNormal));
+                                      //   },
+                                      // ));
+
+                                      testPicker();
                                     },
                                     leading: Icon(
                                       Icons.photo,
@@ -450,16 +465,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getFromGalleryimg(isGallery) async {
-    final pickedFile = await pickMultiImages();
-    if (pickedFile != null) {
-      setState(() {
-        controller.images = pickedFile;
-        Get.to(PostImageScreen(
-          isgallery: isGallery,
-        ));
-        controller.img = controller.images[0];
-      });
-    }
+    // final pickedFile = await pickMultiImages();
+    // if (pickedFile != null) {
+    //   setState(() {
+    //     controller.images = pickedFile;
+    //     Get.to(PostImageScreen(
+    //       isNormal: true,
+    //     ));
+    //     controller.img = controller.images[0];
+    //   });
+    // }
   }
 
   void getFromCameraimg(isGallery) async {
@@ -471,7 +486,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (pickedFile != null) {
       setState(() {
         Get.to(PostImageScreen(
-          isgallery: isGallery,
+          isNormal: true,
         ));
         controller.images.add(File(pickedFile.path));
         controller.img = controller.images[0];
@@ -479,15 +494,95 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  Future<List<File>?> pickMultiImages() async {
-    List<Media>? res = await ImagesPicker.pick(
-      count: 5,
-      pickType: PickType.image,
-      cropOpt: CropOption(
-        aspectRatio: CropAspectRatio.custom,
-        cropType: CropType.rect
-      )
+  // Future<List<File>?> pickMultiImages() async {
+  //   List<Media>? res = await ImagesPicker.pick(
+  //       count: 10, pickType: PickType.image, cropOpt: CropOption(aspectRatio: CropAspectRatio.custom, cropType: CropType.rect));
+  //   return res?.map((e) => File(e.path)).toList();
+  // }
+
+  void testPicker() async {
+    // Get.to(CustomGalleryPicker(onPicked: (files, isNormal) {}));
+    Get.to(MyGallery());
+  }
+}
+
+class MyGallery extends StatefulWidget {
+  @override
+  State<MyGallery> createState() => _MyGalleryState();
+}
+
+class _MyGalleryState extends State<MyGallery> {
+  var galleryController = GalleryController();
+  File? clickedImage;
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "Select images (${galleryController.selectedIndexes.length}/10)",
+          style: getAppbarTextTheme(),
+        ),
+      ),
+      body: Column(
+        children: [
+          Container(
+            color: Colors.grey,
+            margin: EdgeInsets.all(8.sp),
+            padding:  EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.sp),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: galleryController.selectedIndexes
+                    .map(
+                      (e) {
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          height: Get.width * .2,
+                          width: Get.width * .2,
+                          color: Colors.red,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                      ],
+                    );
+                  },
+                )
+                    .toList(),
+              ),
+            ),
+          ),
+          if (clickedImage != null)
+          Expanded(child: Container(
+            child: Image.file(clickedImage!),
+          )),
+          Expanded(
+            child: GridGallery(
+              onChanged: () {
+                print("Change");
+                setState(() {});
+                print("${galleryController.selectedIndexes.length} items");
+              },
+              onAdded: (x) {
+                setState(() {
+                  clickedImage = galleryController.items[x].data;
+                });
+              },
+              onRemoved: (x) {
+                // print(x);
+              },
+              isCameraSupported: false,
+              selectedBackgroundColor: Colors.red,
+              controller: galleryController,
+            ),
+          ),
+        ],
+      ),
     );
-    return res?.map((e) => File(e.path)).toList();
   }
 }

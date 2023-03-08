@@ -59,7 +59,7 @@ dependencies:
   cached_network_image: ^3.2.3
   #  extended_image: ^7.0.2
   #  flutter_onboard: ^2.0.0
-  flutter_native_splash: ^2.2.18
+#  flutter_native_splash: ^2.2.18
   flutter_svg: any
   sizer: ^2.0.15
   #  email_validator: ^2.1.17
@@ -102,9 +102,12 @@ dependencies:
   #  multiple_images_picker: ^1.0.1
 
 
-  ux_images_picker: ^1.2.16
+#  ux_images_picker: ^1.2.16
+
   video_editor: ^2.4.0
   helpers: ^1.2.0
+  custom_gallery_display: ^0.5.0
+  grid_gallery: ^0.0.3+6
 #  video_editor: ^2.4.0
 
 
