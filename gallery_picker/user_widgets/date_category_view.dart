@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/media_file.dart';
-import '../views/gridview_static.dart';
-import 'package:paulineife_user/helpers/gallery_picker/gallery_picker_importer.dart';
-import 'thumbnail_media.dart';
+import '../gallery_picker_importer.dart';
+
 
 class DateCategoryWiew extends StatelessWidget {
   final TextStyle? textStyle;

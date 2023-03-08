@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:paulineife_user/helpers/gallery_picker/gallery_picker_importer.dart';
 import 'package:transparent_image/transparent_image.dart';
+import '../gallery_picker_importer.dart';
 
 class ThumbnailMedia extends StatelessWidget {
   final MediaFile media;

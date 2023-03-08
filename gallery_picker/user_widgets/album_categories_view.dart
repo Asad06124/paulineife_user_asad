@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:paulineife_user/helpers/gallery_picker/gallery_picker_importer.dart';
-import 'thumbnail_album.dart';
-import '../models/mode.dart';
+import '../gallery_picker_importer.dart';
+
 
 class AlbumCategoriesView extends StatelessWidget {
   final List<GalleryAlbum> albums;

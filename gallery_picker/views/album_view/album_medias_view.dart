@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paulineife_user/helpers/gallery_picker/gallery_picker_importer.dart';
+import '../../gallery_picker_importer.dart';
 
 import 'date_category_view.dart';
 import 'selected_medias_view.dart';

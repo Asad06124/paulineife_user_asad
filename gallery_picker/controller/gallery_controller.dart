@@ -1,14 +1,14 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:device_info/device_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/helpers/gallery_picker/gallery_picker_importer.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:photo_gallery/photo_gallery.dart';
+
+import '../gallery_picker_importer.dart';
 
 class PhoneGalleryController extends GetxController {
   late Config config;

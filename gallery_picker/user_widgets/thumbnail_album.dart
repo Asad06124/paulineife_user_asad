@@ -2,8 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:paulineife_user/helpers/gallery_picker/gallery_picker_importer.dart';
-import '../models/mode.dart';
+import '../gallery_picker_importer.dart';
 
 class ThumbnailAlbum extends StatelessWidget {
   final GalleryAlbum album;

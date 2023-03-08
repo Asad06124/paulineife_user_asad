@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:photo_gallery/photo_gallery.dart';
 import '../controller/gallery_controller.dart';
-import 'package:paulineife_user/helpers/gallery_picker/gallery_picker_importer.dart';
 
+import '../gallery_picker_importer.dart';
 import 'config.dart';
 
 class GalleryAlbum {

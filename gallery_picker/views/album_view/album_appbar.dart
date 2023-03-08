@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paulineife_user/helpers/gallery_picker/gallery_picker_importer.dart';
+import '../../gallery_picker_importer.dart';
 import '../../controller/gallery_controller.dart';
 
 class AlbumAppBar extends StatelessWidget with PreferredSizeWidget {

@@ -12,16 +12,14 @@ import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
 class PostImageScreen extends StatefulWidget {
-
-  bool isNormal;
-
-
-  @override
-  State<PostImageScreen> createState() => _PostImageScreenState();
-
   PostImageScreen({
     required this.isNormal,
   });
+
+  bool isNormal;
+
+  @override
+  State<PostImageScreen> createState() => _PostImageScreenState();
 }
 
 class _PostImageScreenState extends State<PostImageScreen> {
@@ -36,113 +34,10 @@ class _PostImageScreenState extends State<PostImageScreen> {
     for (int i = 0; i <= controller.images.length; i++) {
       TextEditController.add(TextEditingController());
     }
-    // WidgetsBinding.instance.addPostFrameCallback((_) async {
-    //   widget.isgallery
-    //       ? Get.bottomSheet(
-    //           Container(
-    //             height: 36.h + 5,
-    //             decoration: BoxDecoration(
-    //               borderRadius: BorderRadius.only(
-    //                 topLeft: Radius.circular(20.sp),
-    //                 topRight: Radius.circular(20.sp),
-    //               ),
-    //               color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
-    //             ),
-    //             child: Column(
-    //               children: [
-    //                 Padding(
-    //                   padding: EdgeInsets.only(top: 35.sp),
-    //                   child: Text(
-    //                     'Post',
-    //                     style: TextStyle(
-    //                       fontSize: 22,
-    //                       fontWeight: FontWeight.w700,
-    //                       color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-    //                     ),
-    //                   ),
-    //                 ),
-    //                 Padding(
-    //                   padding: EdgeInsets.only(top: 15.sp),
-    //                   child: Text(
-    //                     'Post image as',
-    //                     style: TextStyle(
-    //                       fontSize: 16,
-    //                       fontWeight: FontWeight.w400,
-    //                       color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-    //                     ),
-    //                   ),
-    //                 ),
-    //                 SizedBox(
-    //                   height: 15.sp,
-    //                 ),
-    //                 ListTile(
-    //                   onTap: () {
-    //                     setState(() {
-    //                       isnormal = true;
-    //                       Navigator.pop(context);
-    //                     });
-    //                   },
-    //                   leading: SvgPicture.asset(
-    //                     'assets/svgs/gallery.svg',
-    //                     color: ThemeService.isSavedDarkMode()
-    //                         ? Colors.white
-    //                         : Color(
-    //                             0xff97A1B4,
-    //                           ),
-    //                   ),
-    //                   title: Text(
-    //                     'Normal images',
-    //                     style: TextStyle(
-    //                       fontSize: 16,
-    //                       fontWeight: FontWeight.w400,
-    //                       color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-    //                     ),
-    //                   ),
-    //                 ),
-    //                 Divider(
-    //                   color: Color(0xffE2E4EB),
-    //                   thickness: 2.sp,
-    //                 ),
-    //                 ListTile(
-    //                   onTap: () {
-    //                     setState(() {
-    //                       isnormal = false;
-    //                       Navigator.pop(context);
-    //                     });
-    //                   },
-    //                   leading: SvgPicture.asset(
-    //                     'assets/svgs/thread.svg',
-    //                     color: ThemeService.isSavedDarkMode()
-    //                         ? Colors.white
-    //                         : Color(
-    //                             0xff97A1B4,
-    //                           ),
-    //                   ),
-    //                   title: Text(
-    //                     'Thread',
-    //                     style: TextStyle(
-    //                       fontSize: 16,
-    //                       fontWeight: FontWeight.w400,
-    //                       color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-    //                     ),
-    //                   ),
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //           backgroundColor: Colors.transparent,
-    //           elevation: 0,
-    //           isDismissible: false,
-    //           enableDrag: false,
-    //         )
-    //       : null;
-    // });
   }
 
   void dispose() {
-    //...
     super.dispose();
-    //...
   }
 
   @override
@@ -162,15 +57,20 @@ class _PostImageScreenState extends State<PostImageScreen> {
               style: getAppbarTextTheme(),
             ),
             centerTitle: true,
-            backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+            backgroundColor:
+                ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
             leading: IconButton(
                 onPressed: () {
-                  Get.back();
-                  controller.images.clear();
+                  setState(() {
+                    Get.to(HomeScreen());
+                    controller.images.clear();
+                  });
                 },
                 icon: Icon(
                   Icons.arrow_back,
-                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                  color: ThemeService.isSavedDarkMode()
+                      ? Colors.white
+                      : Colors.black,
                 )),
             actions: [
               CustomButton1(
@@ -182,7 +82,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
                 color: Color(0xff2A70C8),
                 height: 35.sp,
                 width: 60.sp,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
               ),
             ],
             // leading: IconButton(
@@ -197,7 +98,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
             //     )),
             toolbarHeight: 65.sp,
           ),
-          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          backgroundColor:
+              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           body: GetBuilder<RegistrationController>(builder: (controller) {
             return SingleChildScrollView(
               child: Column(
@@ -211,7 +113,9 @@ class _PostImageScreenState extends State<PostImageScreen> {
                       children: [
                         Icon(
                           CupertinoIcons.chat_bubble,
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.black,
                         ),
                         SizedBox(
                           width: 6.sp,
@@ -222,15 +126,24 @@ class _PostImageScreenState extends State<PostImageScreen> {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                            color: ThemeService.isSavedDarkMode()
+                                ? Colors.white
+                                : Colors.black,
                           ),
                         ),
                         Spacer(),
-                        StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
+                        StatefulBuilder(builder:
+                            (BuildContext context, StateSetter setState) {
                           return Switch(
-                              activeColor: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff3AA0FF),
-                              activeTrackColor: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffD5EBFF),
-                              inactiveTrackColor: ThemeService.isSavedDarkMode() ? Colors.grey : Color(0xffD5EBFF),
+                              activeColor: ThemeService.isSavedDarkMode()
+                                  ? Colors.white
+                                  : Color(0xff3AA0FF),
+                              activeTrackColor: ThemeService.isSavedDarkMode()
+                                  ? Color(0xff3d3d3d)
+                                  : Color(0xffD5EBFF),
+                              inactiveTrackColor: ThemeService.isSavedDarkMode()
+                                  ? Colors.grey
+                                  : Color(0xffD5EBFF),
                               value: swtch,
                               onChanged: (val) {
                                 setState(() {
@@ -245,7 +158,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
                       ? Container(
                           height: 66.5.h,
                           child: StatefulBuilder(
-                            builder: (BuildContext context, void Function(void Function()) setState) {
+                            builder: (BuildContext context,
+                                void Function(void Function()) setState) {
                               return PageView.builder(
                                 itemCount: controller.images.length,
                                 controller: _pageController,
@@ -265,39 +179,63 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                         height: 50.5.h,
                                         width: Get.width,
                                         decoration: BoxDecoration(
-                                          image: DecorationImage(image: FileImage(controller.images[a]), fit: BoxFit.cover),
+                                          image: DecorationImage(
+                                              image: FileImage(
+                                                  controller.images[a]),
+                                              fit: BoxFit.cover),
                                         ),
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
                                           children: [
                                             controller.images.length > 1
                                                 ? GestureDetector(
                                                     onTap: () {
                                                       setState(() {});
-                                                      if (a == controller.images.length - 1) {
-                                                        if (controller.images.length >= 3) {
-                                                          controller.images.removeAt(a);
+                                                      if (a ==
+                                                          controller.images
+                                                                  .length -
+                                                              1) {
+                                                        if (controller.images
+                                                                .length >=
+                                                            3) {
+                                                          controller.images
+                                                              .removeAt(a);
                                                           a = a - 2;
                                                         }
-                                                        if (controller.images.length == 2) {
-                                                          controller.images.removeAt(1);
+                                                        if (controller.images
+                                                                .length ==
+                                                            2) {
+                                                          controller.images
+                                                              .removeAt(1);
                                                           a = 0;
                                                         }
-                                                      } else if (controller.images.length == 2) {
-                                                        controller.images.removeAt(1);
-                                                      } else if (controller.images.length < 2) {
-                                                        controller.images.removeAt(0);
+                                                      } else if (controller
+                                                              .images.length ==
+                                                          2) {
+                                                        controller.images
+                                                            .removeAt(1);
+                                                      } else if (controller
+                                                              .images.length <
+                                                          2) {
+                                                        controller.images
+                                                            .removeAt(0);
                                                         controller.update();
-                                                      } else if (controller.images.length > 2) {
-                                                        controller.images.removeAt(a);
+                                                      } else if (controller
+                                                              .images.length >
+                                                          2) {
+                                                        controller.images
+                                                            .removeAt(a);
                                                         controller.update();
                                                       }
 
                                                       controller.update();
                                                     },
                                                     child: Padding(
-                                                      padding: EdgeInsets.all(8.0),
+                                                      padding:
+                                                          EdgeInsets.all(8.0),
                                                       child: SvgPicture.asset(
                                                         'assets/svgs/delete.svg',
                                                       ),
@@ -313,12 +251,17 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                           controller: TextEditController[a],
                                           hint: 'Add a caption',
                                           textStyle: TextStyle(
-                                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                            color:
+                                                ThemeService.isSavedDarkMode()
+                                                    ? Colors.white
+                                                    : Colors.black,
                                           ),
-                                          hintStyle: TextStyle(color: Color(0xff666666)),
+                                          hintStyle: TextStyle(
+                                              color: Color(0xff666666)),
                                           maxLines: 5,
                                           minLines: 1,
-                                          contentPadding: EdgeInsets.only(left: 5, right: 5),
+                                          contentPadding: EdgeInsets.only(
+                                              left: 5, right: 5),
                                         ),
                                       ),
                                     ],
@@ -329,7 +272,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
                           ),
                         )
                       : StatefulBuilder(
-                          builder: (BuildContext context, void Function(void Function()) setState) {
+                          builder: (BuildContext context,
+                              void Function(void Function()) setState) {
                             return Column(
                               children: [
                                 Container(
@@ -337,7 +281,9 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                   height: 50.5.h,
                                   width: Get.width,
                                   decoration: BoxDecoration(
-                                    image: DecorationImage(image: FileImage(controller.images[a]), fit: BoxFit.cover),
+                                    image: DecorationImage(
+                                        image: FileImage(controller.images[a]),
+                                        fit: BoxFit.cover),
                                   ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.end,
@@ -347,21 +293,35 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                           ? GestureDetector(
                                               onTap: () {
                                                 setState(() {});
-                                                if (a == controller.images.length - 1) {
-                                                  if (controller.images.length >= 3) {
-                                                    controller.images.removeAt(a);
+                                                if (a ==
+                                                    controller.images.length -
+                                                        1) {
+                                                  if (controller
+                                                          .images.length >=
+                                                      3) {
+                                                    controller.images
+                                                        .removeAt(a);
                                                     a = a - 2;
                                                   }
-                                                  if (controller.images.length == 2) {
-                                                    controller.images.removeAt(1);
+                                                  if (controller
+                                                          .images.length ==
+                                                      2) {
+                                                    controller.images
+                                                        .removeAt(1);
                                                     a = 0;
                                                   }
-                                                } else if (controller.images.length == 2) {
+                                                } else if (controller
+                                                        .images.length ==
+                                                    2) {
                                                   controller.images.removeAt(1);
-                                                } else if (controller.images.length < 2) {
+                                                } else if (controller
+                                                        .images.length <
+                                                    2) {
                                                   controller.images.removeAt(0);
                                                   controller.update();
-                                                } else if (controller.images.length > 2) {
+                                                } else if (controller
+                                                        .images.length >
+                                                    2) {
                                                   controller.images.removeAt(a);
                                                   controller.update();
                                                 }
@@ -383,13 +343,17 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                   padding: EdgeInsets.all(10.sp),
                                   child: CustomInputField1(
                                     hint: 'Add a caption',
-                                    hintStyle: TextStyle(color: Color(0xff666666)),
+                                    hintStyle:
+                                        TextStyle(color: Color(0xff666666)),
                                     textStyle: TextStyle(
-                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                      color: ThemeService.isSavedDarkMode()
+                                          ? Colors.white
+                                          : Colors.black,
                                     ),
                                     maxLines: 5,
                                     minLines: 1,
-                                    contentPadding: EdgeInsets.only(left: 5, right: 5),
+                                    contentPadding:
+                                        EdgeInsets.only(left: 5, right: 5),
                                   ),
                                 ),
                               ],
@@ -398,7 +362,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
                         ),
                   isNormal == true
                       ? StatefulBuilder(
-                          builder: (BuildContext context, void Function(void Function()) setState) {
+                          builder: (BuildContext context,
+                              void Function(void Function()) setState) {
                             return Container(
                               height: 75.sp,
                               child: ListView.builder(
@@ -411,7 +376,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                       setState(() {
                                         controller.update();
                                         a = index;
-                                        _pageController = PageController(initialPage: index);
+                                        _pageController =
+                                            PageController(initialPage: index);
                                       });
                                     },
                                     child: Container(
@@ -420,8 +386,11 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                       height: 70.sp,
                                       width: 50.sp,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5.sp),
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                        borderRadius:
+                                            BorderRadius.circular(5.sp),
+                                        color: ThemeService.isSavedDarkMode()
+                                            ? Colors.white
+                                            : Colors.black,
                                         image: DecorationImage(
                                             image: FileImage(
                                               controller.images[index],
@@ -436,7 +405,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
                           },
                         )
                       : StatefulBuilder(
-                          builder: (BuildContext context, void Function(void Function()) setState) {
+                          builder: (BuildContext context,
+                              void Function(void Function()) setState) {
                             return Container(
                               height: 75.sp,
                               child: ListView.builder(
@@ -457,8 +427,11 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                       height: 70.sp,
                                       width: 50.sp,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5.sp),
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                        borderRadius:
+                                            BorderRadius.circular(5.sp),
+                                        color: ThemeService.isSavedDarkMode()
+                                            ? Colors.white
+                                            : Colors.black,
                                         image: DecorationImage(
                                             image: FileImage(
                                               controller.images[index],
