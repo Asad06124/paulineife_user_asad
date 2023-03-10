@@ -18,6 +18,7 @@ import 'package:paulineife_user/views/screens/screen_post_text.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
+
 // import 'package:ux_images_picker/images_picker.dart';
 import '../../controller/registration_controller.dart';
 import '../../helpers/gallery_grid/src/grid_gallery.dart';
@@ -574,7 +575,9 @@ class _MyGalleryState extends State<MyGallery> {
               },
               icon: Icon(
                 Icons.arrow_back,
-                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Colors.black,
               )),
           centerTitle: true,
           elevation: 0,
@@ -584,12 +587,13 @@ class _MyGalleryState extends State<MyGallery> {
             Container(
               color: Colors.white,
               child: Column(
-                children:[
+                children: [
                   Align(
                     alignment: Alignment.centerRight,
                     child: CustomButton1(
                       text: 'Select',
-                      textStyle: TextStyle(color: Colors.black, fontSize: 13.sp),
+                      textStyle:
+                          TextStyle(color: Colors.black, fontSize: 13.sp),
                       onPressed: () {
                         setState(() {
                           Get.bottomSheet(
@@ -600,7 +604,9 @@ class _MyGalleryState extends State<MyGallery> {
                                   topLeft: Radius.circular(20.sp),
                                   topRight: Radius.circular(20.sp),
                                 ),
-                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
+                                color: ThemeService.isSavedDarkMode()
+                                    ? Color(0xff3D3D3D)
+                                    : Colors.white,
                               ),
                               child: Column(
                                 children: [
@@ -611,7 +617,9 @@ class _MyGalleryState extends State<MyGallery> {
                                       style: TextStyle(
                                         fontSize: 22,
                                         fontWeight: FontWeight.w700,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                        color: ThemeService.isSavedDarkMode()
+                                            ? Colors.white
+                                            : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -622,7 +630,9 @@ class _MyGalleryState extends State<MyGallery> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                        color: ThemeService.isSavedDarkMode()
+                                            ? Colors.white
+                                            : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -631,23 +641,29 @@ class _MyGalleryState extends State<MyGallery> {
                                   ),
                                   ListTile(
                                     onTap: () {
-                                      Get.to(PostImageScreen(isNormal: true,))!.then((value) {    Navigator.pop(context);});
-
+                                      Get.to(PostImageScreen(
+                                        isNormal: true,
+                                      ))!
+                                          .then((value) {
+                                        Navigator.pop(context);
+                                      });
                                     },
                                     leading: SvgPicture.asset(
                                       'assets/svgs/gallery.svg',
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                        0xff97A1B4,
-                                      ),
+                                              0xff97A1B4,
+                                            ),
                                     ),
                                     title: Text(
                                       'Normal images',
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                        color: ThemeService.isSavedDarkMode()
+                                            ? Colors.white
+                                            : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -657,7 +673,13 @@ class _MyGalleryState extends State<MyGallery> {
                                   ),
                                   ListTile(
                                     onTap: () {
-                                      Get.to(PostImageScreen(isNormal: false,))!.then((value) {    Navigator.pop(context);});;
+                                      Get.to(PostImageScreen(
+                                        isNormal: false,
+                                      ))!
+                                          .then((value) {
+                                        Navigator.pop(context);
+                                      });
+                                      ;
                                       // Navigator.pop(context);
                                     },
                                     leading: SvgPicture.asset(
@@ -665,15 +687,17 @@ class _MyGalleryState extends State<MyGallery> {
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Color(
-                                        0xff97A1B4,
-                                      ),
+                                              0xff97A1B4,
+                                            ),
                                     ),
                                     title: Text(
                                       'Thread',
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                        color: ThemeService.isSavedDarkMode()
+                                            ? Colors.white
+                                            : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -700,7 +724,7 @@ class _MyGalleryState extends State<MyGallery> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: galleryController.selectedIndexes.map(
-                              (e) {
+                          (e) {
                             return Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -710,8 +734,8 @@ class _MyGalleryState extends State<MyGallery> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5.sp),
                                     image: DecorationImage(
-                                        image:
-                                        FileImage(galleryController.items[e].data),
+                                        image: FileImage(
+                                            galleryController.items[e].data),
                                         fit: BoxFit.cover),
                                   ),
                                 ),
