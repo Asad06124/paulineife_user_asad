@@ -20,7 +20,7 @@ class CommentsScreen extends StatefulWidget {
 
 class _CommentsScreenState extends State<CommentsScreen> {
   var controller = Get.put(RegistrationController());
-
+var liked = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -53,152 +53,160 @@ class _CommentsScreenState extends State<CommentsScreen> {
               child: ListView.builder(
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
-                  return Column(
-                    children: [
-                      Divider(
-                        thickness: 1,
-                        color: Color(0xffE2E4EB),
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 5.sp, top: 10.sp),
-                            child: CircleAvatar(
-                              radius: 20.sp,
-                              backgroundImage:
-                                  AssetImage('assets/images/12.png'),
+                  return StatefulBuilder(
+                      builder: (BuildContext context, StateSetter setState) {
+                        return Column(
+                          children: [
+                            Divider(
+                              thickness: 1,
+                              color: Color(0xffE2E4EB),
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 8.sp),
-                            child: Row(
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 3.5.w),
-                                      child: RichText(
-                                        textAlign: TextAlign.center,
-                                        text: TextSpan(
-                                          text: 'Asad . ',
-                                          style: TextStyle(
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w700,
-                                              color:
-                                                  ThemeService.isSavedDarkMode()
-                                                      ? Colors.white
-                                                      : Colors.black),
-                                          children: [
-                                            TextSpan(
-                                              text: ' 5h ago',
-                                              style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight: FontWeight.w500,
-                                                color: ThemeService
+                                Container(
+                                  padding: EdgeInsets.only(
+                                      left: 5.sp, top: 10.sp),
+                                  child: CircleAvatar(
+                                    radius: 20.sp,
+                                    backgroundImage:
+                                    AssetImage('assets/images/12.png'),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(top: 8.sp),
+                                  child: Row(
+                                    children: [
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment
+                                            .start,
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                left: 3.5.w),
+                                            child: RichText(
+                                              textAlign: TextAlign.center,
+                                              text: TextSpan(
+                                                text: 'Asad . ',
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w700,
+                                                    color:
+                                                    ThemeService
                                                         .isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Color(0xff97A1B4),
+                                                        ? Colors.white
+                                                        : Colors.black),
+                                                children: [
+                                                  TextSpan(
+                                                    text: ' 5h ago',
+                                                    style: TextStyle(
+                                                      fontSize: 13,
+                                                      fontWeight: FontWeight
+                                                          .w500,
+                                                      color: ThemeService
+                                                          .isSavedDarkMode()
+                                                          ? Colors.white
+                                                          : Color(0xff97A1B4),
+                                                    ),
+                                                  )
+                                                ],
                                               ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.only(
-                                          left: 10.sp, right: 10.sp),
-                                      width: 65.w,
-                                      child: index == 2
-                                          ? Container(
+                                            ),
+                                          ),
+                                          Container(
+                                            padding: EdgeInsets.only(
+                                                left: 10.sp, right: 10.sp),
+                                            width: 65.w,
+                                            child: index == 2
+                                                ? Container(
                                               width: 20.w,
                                               child: ItemAudioPlay(
                                                 url: url,
                                               ),
                                             )
-                                          : Text(
+                                                : Text(
                                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac hendrerit leo.',
                                               style: TextStyle(
                                                 fontSize: 9.sp,
                                                 fontWeight: FontWeight.w400,
                                                 color: ThemeService
-                                                        .isSavedDarkMode()
+                                                    .isSavedDarkMode()
                                                     ? Colors.white
                                                     : Colors.black,
                                               ),
                                               textAlign: TextAlign.justify,
                                             ),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.more_vert,
-                                      color: Color(0xff97A1B4),
-                                    ),
-                                    SizedBox(
-                                      height: 1.5.h,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(right: 10.sp),
-                                      child: Obx(() {
-                                        return IconButton(
-                                          onPressed: () {
-                                            controller.liked.value =
-                                                !controller.liked.value;
-                                            controller.update();
-                                          },
-                                          icon: Icon(
-                                            controller.liked.value == true
-                                                ? Icons.favorite_outlined
-                                                : Icons.favorite_outline,
-                                            color:
-                                                controller.liked.value == true
-                                                    ? Colors.red
-                                                    : Colors.grey,
                                           ),
-                                        );
-                                      }),
-                                    )
-                                  ],
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          Icon(
+                                            Icons.more_vert,
+                                            color: Color(0xff97A1B4),
+                                          ),
+                                          SizedBox(
+                                            height: 1.5.h,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                right: 10.sp),
+                                            child: Obx(() {
+                                              return IconButton(
+                                                onPressed: () {  setState((){});
+                                                  liked =
+                                                  !liked;
+                                                  controller.update();
+                                                },
+                                                icon: Icon(
+                                                  liked == true
+                                                      ? Icons.favorite_outlined
+                                                      : Icons.favorite_outline,
+                                                  color:
+                                                  liked == true
+                                                      ? Colors.red
+                                                      : Colors.grey,
+                                                ),
+                                              );
+                                            }),
+                                          )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: Get.width / 4.6,
-                          ),
-                          Text(
-                            '22 Likes',
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w700,
-                                color: ThemeService.isSavedDarkMode()
-                                    ? Colors.white
-                                    : Color(0xff79869F)),
-                          ),
-                          SizedBox(
-                            width: 8.sp,
-                          ),
-                          Text(
-                            'Reply',
-                            style: TextStyle(
-                                fontSize: 10.sp,
-                                fontWeight: FontWeight.w700,
-                                color: ThemeService.isSavedDarkMode()
-                                    ? Colors.white
-                                    : Color(0xff79869F)),
-                          ),
-                        ],
-                      ),
-                      index == 2
-                          ? ExpansionTile(
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: Get.width / 4.6,
+                                ),
+                                Text(
+                                  '22 Likes',
+                                  style: TextStyle(
+                                      fontSize: 10.sp,
+                                      fontWeight: FontWeight.w700,
+                                      color: ThemeService.isSavedDarkMode()
+                                          ? Colors.white
+                                          : Color(0xff79869F)),
+                                ),
+                                SizedBox(
+                                  width: 8.sp,
+                                ),
+                                Text(
+                                  'Reply',
+                                  style: TextStyle(
+                                      fontSize: 10.sp,
+                                      fontWeight: FontWeight.w700,
+                                      color: ThemeService.isSavedDarkMode()
+                                          ? Colors.white
+                                          : Color(0xff79869F)),
+                                ),
+                              ],
+                            ),
+                            index == 2
+                                ? ExpansionTile(
                               trailing: SizedBox(),
                               expandedAlignment: Alignment.centerRight,
                               title: Row(
@@ -224,7 +232,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                   width: Get.width / 1.2,
                                   child: Row(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         padding: EdgeInsets.only(
@@ -241,7 +249,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                           children: [
                                             Column(
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsets.only(
@@ -253,9 +261,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                       style: TextStyle(
                                                           fontSize: 14,
                                                           fontWeight:
-                                                              FontWeight.w700,
+                                                          FontWeight.w700,
                                                           color: ThemeService
-                                                                  .isSavedDarkMode()
+                                                              .isSavedDarkMode()
                                                               ? Colors.white
                                                               : Colors.black),
                                                       children: [
@@ -264,12 +272,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                           style: TextStyle(
                                                             fontSize: 13,
                                                             fontWeight:
-                                                                FontWeight.w500,
+                                                            FontWeight.w500,
                                                             color: ThemeService
-                                                                    .isSavedDarkMode()
+                                                                .isSavedDarkMode()
                                                                 ? Colors.white
                                                                 : Color(
-                                                                    0xff97A1B4),
+                                                                0xff97A1B4),
                                                           ),
                                                         )
                                                       ],
@@ -286,14 +294,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     style: TextStyle(
                                                       fontSize: 9.sp,
                                                       fontWeight:
-                                                          FontWeight.w400,
+                                                      FontWeight.w400,
                                                       color: ThemeService
-                                                              .isSavedDarkMode()
+                                                          .isSavedDarkMode()
                                                           ? Colors.white
                                                           : Colors.black,
                                                     ),
                                                     textAlign:
-                                                        TextAlign.justify,
+                                                    TextAlign.justify,
                                                   ),
                                                 ),
                                               ],
@@ -312,23 +320,23 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                       right: 10.sp),
                                                   child: Obx(() {
                                                     return IconButton(
-                                                      onPressed: () {
-                                                        controller.liked.value =
-                                                            !controller
-                                                                .liked.value;
+                                                      onPressed: () {  setState((){});
+                                                        liked =
+                                                        !controller
+                                                            .liked.value;
                                                         controller.update();
                                                       },
                                                       icon: Icon(
                                                         controller.liked
-                                                                    .value ==
-                                                                true
+                                                            .value ==
+                                                            true
                                                             ? Icons
-                                                                .favorite_outlined
+                                                            .favorite_outlined
                                                             : Icons
-                                                                .favorite_outline,
+                                                            .favorite_outline,
                                                         color: controller.liked
-                                                                    .value ==
-                                                                true
+                                                            .value ==
+                                                            true
                                                             ? Colors.red
                                                             : Colors.grey,
                                                       ),
@@ -356,9 +364,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.w700,
                                             color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Color(0xff79869F)),
+                                            ThemeService.isSavedDarkMode()
+                                                ? Colors.white
+                                                : Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
@@ -369,9 +377,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.w700,
                                             color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Color(0xff79869F)),
+                                            ThemeService.isSavedDarkMode()
+                                                ? Colors.white
+                                                : Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
@@ -380,7 +388,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                   width: Get.width / 1.2,
                                   child: Row(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         padding: EdgeInsets.only(
@@ -397,7 +405,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                           children: [
                                             Column(
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsets.only(
@@ -409,9 +417,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                       style: TextStyle(
                                                           fontSize: 14,
                                                           fontWeight:
-                                                              FontWeight.w700,
+                                                          FontWeight.w700,
                                                           color: ThemeService
-                                                                  .isSavedDarkMode()
+                                                              .isSavedDarkMode()
                                                               ? Colors.white
                                                               : Colors.black),
                                                       children: [
@@ -420,13 +428,13 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                           style: TextStyle(
                                                               fontSize: 13,
                                                               fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
+                                                              FontWeight
+                                                                  .w500,
                                                               color: ThemeService
-                                                                      .isSavedDarkMode()
+                                                                  .isSavedDarkMode()
                                                                   ? Colors.white
                                                                   : Color(
-                                                                      0xff79869F)),
+                                                                  0xff79869F)),
                                                         )
                                                       ],
                                                     ),
@@ -442,14 +450,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     style: TextStyle(
                                                       fontSize: 9.sp,
                                                       fontWeight:
-                                                          FontWeight.w400,
+                                                      FontWeight.w400,
                                                       color: ThemeService
-                                                              .isSavedDarkMode()
+                                                          .isSavedDarkMode()
                                                           ? Colors.white
                                                           : Colors.black,
                                                     ),
                                                     textAlign:
-                                                        TextAlign.justify,
+                                                    TextAlign.justify,
                                                   ),
                                                 ),
                                               ],
@@ -468,23 +476,23 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                       right: 10.sp),
                                                   child: Obx(() {
                                                     return IconButton(
-                                                      onPressed: () {
-                                                        controller.liked.value =
-                                                            !controller
-                                                                .liked.value;
+                                                      onPressed: () {  setState((){});
+                                                        liked =
+                                                        !controller
+                                                            .liked.value;
                                                         controller.update();
                                                       },
                                                       icon: Icon(
                                                         controller.liked
-                                                                    .value ==
-                                                                true
+                                                            .value ==
+                                                            true
                                                             ? Icons
-                                                                .favorite_outlined
+                                                            .favorite_outlined
                                                             : Icons
-                                                                .favorite_outline,
+                                                            .favorite_outline,
                                                         color: controller.liked
-                                                                    .value ==
-                                                                true
+                                                            .value ==
+                                                            true
                                                             ? Colors.red
                                                             : Colors.grey,
                                                       ),
@@ -512,9 +520,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.w700,
                                             color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Color(0xff79869F)),
+                                            ThemeService.isSavedDarkMode()
+                                                ? Colors.white
+                                                : Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
@@ -525,9 +533,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.w700,
                                             color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Color(0xff79869F)),
+                                            ThemeService.isSavedDarkMode()
+                                                ? Colors.white
+                                                : Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
@@ -536,7 +544,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                   width: Get.width / 1.2,
                                   child: Row(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         padding: EdgeInsets.only(
@@ -553,7 +561,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                           children: [
                                             Column(
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                               children: [
                                                 Padding(
                                                   padding: EdgeInsets.only(
@@ -565,9 +573,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                       style: TextStyle(
                                                           fontSize: 14,
                                                           fontWeight:
-                                                              FontWeight.w700,
+                                                          FontWeight.w700,
                                                           color: ThemeService
-                                                                  .isSavedDarkMode()
+                                                              .isSavedDarkMode()
                                                               ? Colors.white
                                                               : Colors.black),
                                                       children: [
@@ -576,12 +584,12 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                           style: TextStyle(
                                                             fontSize: 13,
                                                             fontWeight:
-                                                                FontWeight.w500,
+                                                            FontWeight.w500,
                                                             color: ThemeService
-                                                                    .isSavedDarkMode()
+                                                                .isSavedDarkMode()
                                                                 ? Colors.white
                                                                 : Color(
-                                                                    0xff97A1B4),
+                                                                0xff97A1B4),
                                                           ),
                                                         )
                                                       ],
@@ -598,14 +606,14 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                     style: TextStyle(
                                                       fontSize: 9.sp,
                                                       fontWeight:
-                                                          FontWeight.w400,
+                                                      FontWeight.w400,
                                                       color: ThemeService
-                                                              .isSavedDarkMode()
+                                                          .isSavedDarkMode()
                                                           ? Colors.white
                                                           : Colors.black,
                                                     ),
                                                     textAlign:
-                                                        TextAlign.justify,
+                                                    TextAlign.justify,
                                                   ),
                                                 ),
                                               ],
@@ -624,23 +632,23 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                                       right: 10.sp),
                                                   child: Obx(() {
                                                     return IconButton(
-                                                      onPressed: () {
-                                                        controller.liked.value =
-                                                            !controller
-                                                                .liked.value;
+                                                      onPressed: () {  setState((){});
+                                                        liked =
+                                                        !controller
+                                                            .liked.value;
                                                         controller.update();
                                                       },
                                                       icon: Icon(
                                                         controller.liked
-                                                                    .value ==
-                                                                true
+                                                            .value ==
+                                                            true
                                                             ? Icons
-                                                                .favorite_outlined
+                                                            .favorite_outlined
                                                             : Icons
-                                                                .favorite_outline,
+                                                            .favorite_outline,
                                                         color: controller.liked
-                                                                    .value ==
-                                                                true
+                                                            .value ==
+                                                            true
                                                             ? Colors.red
                                                             : Colors.grey,
                                                       ),
@@ -668,9 +676,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.w700,
                                             color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Color(0xff79869F)),
+                                            ThemeService.isSavedDarkMode()
+                                                ? Colors.white
+                                                : Color(0xff79869F)),
                                       ),
                                       SizedBox(
                                         width: 8.sp,
@@ -681,18 +689,21 @@ class _CommentsScreenState extends State<CommentsScreen> {
                                             fontSize: 10.sp,
                                             fontWeight: FontWeight.w700,
                                             color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Color(0xff79869F)),
+                                            ThemeService.isSavedDarkMode()
+                                                ? Colors.white
+                                                : Color(0xff79869F)),
                                       ),
                                     ],
                                   ),
                                 ),
                               ],
                             )
-                          : SizedBox(),
-                    ],
-                  );
+                                : SizedBox(),
+                          ],
+                        );
+                      }
+                  )
+                  ;
                 },
               ),
             ),
