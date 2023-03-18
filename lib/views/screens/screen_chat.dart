@@ -525,7 +525,7 @@ class ChatScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) :  Color(0xffE2E4EB)),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 16, color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white, ),
+                    style: TextStyle(fontSize: 16, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, ),
                     onChanged: (value) {},
                     decoration: InputDecoration(
                       // prefixIconConstraints: BoxConstraints(

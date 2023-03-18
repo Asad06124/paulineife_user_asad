@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ola_like_country_picker/ola_like_country_picker.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
@@ -18,28 +17,9 @@ class ForgetPasswordEmailScreen extends StatefulWidget {
 class _ForgetPasswordEmailScreenState extends State<ForgetPasswordEmailScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController controller = TextEditingController();
-  late CountryPicker c;
-  Country country = Country.fromJson(countryCodes[94]);
+
   final pinController = TextEditingController();
   final focusNode = FocusNode();
-
-  @override
-  void dispose() {
-    pinController.dispose();
-    focusNode.dispose();
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    c = CountryPicker(onCountrySelected: (Country country) {
-      print(country);
-      setState(() {
-        this.country = country;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
