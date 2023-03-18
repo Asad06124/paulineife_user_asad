@@ -125,7 +125,7 @@ class _GridGalleryState extends State<GridGallery> {
   }
 
   _handleScrollEvent(ScrollNotification scroll) async {
-    if (scroll.metrics.pixels / scroll.metrics.maxScrollExtent > 0.7) {
+    if (scroll.metrics.pixels / scroll.metrics.maxScrollExtent > 0.3) {
       if (widget.controller.currentPage != widget.controller.lastPage) {
         await _load();
       }
@@ -138,102 +138,108 @@ class _GridGalleryState extends State<GridGallery> {
         ? widget.controller.items.length + 1
         : widget.controller.items.length;
 
-    return GridView.builder(
-      physics: const AlwaysScrollableScrollPhysics(
-          parent: ClampingScrollPhysics()),
-      controller: scrollController,
-      itemCount: itemCount,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: widget.crossAxisCount,
-      ),
-      itemBuilder: (context, index) {
-        final itemIndex = widget.isCameraSupported ? index - 1 : index;
-        if (widget.isCameraSupported && index == 0) {
-          return InkWell(
-            onTap: () async => widget.controller.getPhoto(),
-            child: Ink(
-              color: widget.cameraSectionBackgroundColor,
-              child: widget.cameraIcon,
-            ),
-          );
-        }
-        return InkWell(
-          onTap: () {
-            _toggle(data: widget.controller.items[itemIndex]);
-          },
-          child: Stack(
-            children: <Widget>[
-              Positioned.fill(
-                child: Ink(
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: MemoryImage(
-                          widget.controller.items[itemIndex].thumbnail),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+    return NotificationListener<ScrollNotification>(
+      onNotification: (ScrollNotification scroll) {
+        _handleScrollEvent(scroll);
+        return false;
+      },
+      child: GridView.builder(
+        physics: const AlwaysScrollableScrollPhysics(
+            parent: ClampingScrollPhysics()),
+        controller: scrollController,
+        itemCount: itemCount,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: widget.crossAxisCount,
+        ),
+        itemBuilder: (context, index) {
+          final itemIndex = widget.isCameraSupported ? index - 1 : index;
+          if (widget.isCameraSupported && index == 0) {
+            return InkWell(
+              onTap: () async => widget.controller.getPhoto(),
+              child: Ink(
+                color: widget.cameraSectionBackgroundColor,
+                child: widget.cameraIcon,
               ),
-              if (widget.controller.items[itemIndex].asset.type ==
-                  AssetType.video)
-                Align(
-                  alignment: widget.videoIconAlign,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 5.0, bottom: 5.0),
-                    child: widget.videoIcon,
-                  ),
-                ),
-              if (!widget.controller.items[itemIndex].isSelected)
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 5.0, top: 5.0),
-                    child: Container(
-                      width: widget.unselectedCircleSize,
-                      height: widget.unselectedCircleSize,
-                      decoration: BoxDecoration(
-                        color: widget.unselectedBackgroundColor,
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: widget.unselectedBorderColor,
-                          width: widget.unselectedCircleBorderWidth,
-                        ),
+            );
+          }
+          return InkWell(
+            onTap: () {
+              _toggle(data: widget.controller.items[itemIndex]);
+            },
+            child: Stack(
+              children: <Widget>[
+                Positioned.fill(
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: MemoryImage(
+                            widget.controller.items[itemIndex].thumbnail),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ),
-              if (widget.controller.items[itemIndex].isSelected)
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 5.0, top: 5.0),
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          width: widget.selectedCircleSize,
-                          height: widget.selectedCircleSize,
-                          decoration: BoxDecoration(
-                            color: widget.selectedBackgroundColor,
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.white.withOpacity(0.8),
-                              width: widget.selectedCircleBorderWidth,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          '${widget.controller.selectedIndexes.indexOf(itemIndex) + 1}',
-                          style: widget.selectedTextStyle,
-                        ),
-                      ],
+                if (widget.controller.items[itemIndex].asset.type ==
+                    AssetType.video)
+                  Align(
+                    alignment: widget.videoIconAlign,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 5.0, bottom: 5.0),
+                      child: widget.videoIcon,
                     ),
                   ),
-                ),
-            ],
-          ),
-        );
-      },
+                if (!widget.controller.items[itemIndex].isSelected)
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 5.0, top: 5.0),
+                      child: Container(
+                        width: widget.unselectedCircleSize,
+                        height: widget.unselectedCircleSize,
+                        decoration: BoxDecoration(
+                          color: widget.unselectedBackgroundColor,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: widget.unselectedBorderColor,
+                            width: widget.unselectedCircleBorderWidth,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                if (widget.controller.items[itemIndex].isSelected)
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 5.0, top: 5.0),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          Container(
+                            width: widget.selectedCircleSize,
+                            height: widget.selectedCircleSize,
+                            decoration: BoxDecoration(
+                              color: widget.selectedBackgroundColor,
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.white.withOpacity(0.8),
+                                width: widget.selectedCircleBorderWidth,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            '${widget.controller.selectedIndexes.indexOf(itemIndex) + 1}',
+                            style: widget.selectedTextStyle,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

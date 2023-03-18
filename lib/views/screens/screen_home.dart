@@ -1,10 +1,12 @@
 import 'dart:io';
+
+import 'package:album_image/album_image.dart';
 import 'package:badges/badges.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:photo_manager/src/internal/enums.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:paulineife_user/helpers/theme.dart';
@@ -18,9 +20,11 @@ import 'package:paulineife_user/views/screens/screen_post_text.dart';
 import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
+
 // import 'package:ux_images_picker/images_picker.dart';
 import '../../controller/registration_controller.dart';
 import '../../helpers/gallery_grid/src/grid_gallery.dart';
+import '../../helpers/helpers.dart';
 import '../../widgets/custom_buttom.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,8 +37,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var controller = Get.put(RegistrationController());
 
-  PersistentTabController _controller =
-      PersistentTabController(initialIndex: 0);
+  PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
               : ThemeService.isSavedDarkMode()
                   ? SvgPicture.asset("assets/svgs/Home_closed_black.svg")
                   : SvgPicture.asset("assets/svgs/Home_closed.svg"),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -94,8 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? SvgPicture.asset("assets/svgs/Search_closed_black.svg")
                       : SvgPicture.asset("assets/svgs/search_closed.svg"),
                 ),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -113,9 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     topLeft: Radius.circular(20.sp),
                     topRight: Radius.circular(20.sp),
                   ),
-                  color: ThemeService.isSavedDarkMode()
-                      ? Color(0xff3D3D3D)
-                      : Colors.white,
+                  color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                 ),
                 child: Column(
                   children: [
@@ -126,9 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -145,9 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   topLeft: Radius.circular(20.sp),
                                   topRight: Radius.circular(20.sp),
                                 ),
-                                color: ThemeService.isSavedDarkMode()
-                                    ? Color(0xff3D3D3D)
-                                    : Colors.white,
+                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                               ),
                               height: 18.h,
                               child: Column(
@@ -171,9 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -210,9 +203,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -238,9 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -266,9 +255,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -286,9 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   topLeft: Radius.circular(20.sp),
                                   topRight: Radius.circular(20.sp),
                                 ),
-                                color: ThemeService.isSavedDarkMode()
-                                    ? Color(0xff3D3D3D)
-                                    : Colors.white,
+                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                               ),
                               height: 18.h,
                               child: Column(
@@ -312,9 +297,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -343,9 +326,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -371,9 +352,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -386,12 +365,9 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: Padding(
             padding: EdgeInsets.only(bottom: 6.0),
-            child: ThemeService.isSavedDarkMode()
-                ? SvgPicture.asset("assets/svgs/Add_black.svg")
-                : SvgPicture.asset("assets/svgs/add.svg"),
+            child: ThemeService.isSavedDarkMode() ? SvgPicture.asset("assets/svgs/Add_black.svg") : SvgPicture.asset("assets/svgs/add.svg"),
           ),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
@@ -408,17 +384,14 @@ class _HomeScreenState extends State<HomeScreen> {
             position: BadgePosition.topEnd(end: -7, top: -13),
             child: _controller.index == 3
                 ? ThemeService.isSavedDarkMode()
-                    ? SvgPicture.asset(
-                        "assets/svgs/Notification_opened_black.svg")
+                    ? SvgPicture.asset("assets/svgs/Notification_opened_black.svg")
                     : SvgPicture.asset("assets/svgs/Notification_opened.svg")
                 : ThemeService.isSavedDarkMode()
-                    ? SvgPicture.asset(
-                        "assets/svgs/Notification_closed_black.svg")
+                    ? SvgPicture.asset("assets/svgs/Notification_closed_black.svg")
                     : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
           ),
           title: ("Settings"),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
@@ -430,22 +403,18 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: Padding(
             padding: EdgeInsets.only(bottom: 3.0),
             child: Container(
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Color(0xff3AA0FF), width: 2.sp)),
+                decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Color(0xff3AA0FF), width: 2.sp)),
                 child: CircleAvatar(
                   backgroundImage: AssetImage('assets/images/12.png'),
                 )),
           ),
           title: ("Settings"),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
       ],
       confineInSafeArea: true,
-      backgroundColor:
-          ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+      backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       // Default is Colors.white.
       handleAndroidBackButtonPress: true,
       // Default is true.
@@ -457,8 +426,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar:
-            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        colorBehindNavBar: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -473,14 +441,12 @@ class _HomeScreenState extends State<HomeScreen> {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle:
-          NavBarStyle.style13, // Choose the nav bar style with this property.
+      navBarStyle: NavBarStyle.style13, // Choose the nav bar style with this property.
     );
   }
 
   void getFromGalleryvid() async {
-    final pickedFile = await FilePicker.platform
-        .pickFiles(type: FileType.video, allowMultiple: false);
+    final pickedFile = await FilePicker.platform.pickFiles(type: FileType.video, allowMultiple: false);
     if (pickedFile != null) {
       setState(() {
         Get.to(PostVideoScreen());
@@ -560,8 +526,7 @@ class _MyGalleryState extends State<MyGallery> {
         return false;
       },
       child: Scaffold(
-        backgroundColor:
-            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             "Create Post",
@@ -582,183 +547,268 @@ class _MyGalleryState extends State<MyGallery> {
         body: Column(
           children: [
             Container(
-              color: Colors.white,
+              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
               child: Column(
-                children:[
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: CustomButton1(
-                      text: 'Select',
-                      textStyle: TextStyle(color: Colors.black, fontSize: 13.sp),
-                      onPressed: () {
-                        setState(() {
-                          Get.bottomSheet(
-                            Container(
-                              height: 36.h + 5,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20.sp),
-                                  topRight: Radius.circular(20.sp),
-                                ),
-                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
-                              ),
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.only(top: 35.sp),
-                                    child: Text(
-                                      'Post',
-                                      style: TextStyle(
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w700,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                children: [
+                  if (controller.images.isNotEmpty)
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.all(5.sp),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: controller.images.map(
+                                (e) {
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(5.sp),
+                                        child: GestureDetector(
+                                          child: Container(
+                                            height: Get.width * .17,
+                                            width: Get.width * .2,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(5.sp),
+                                              image: DecorationImage(image: FileImage(e), fit: BoxFit.cover),
+                                            ),
+                                          ),
+                                          onTap: () {
+                                            if (clickedImage == e) {
+                                              clickedImage = null;
+                                            } else {
+                                              clickedImage = e;
+                                            }
+                                            setState(() {});
+                                          },
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(top: 15.sp),
-                                    child: Text(
-                                      'Post image as',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                      SizedBox(
+                                        width: 10,
                                       ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 15.sp,
-                                  ),
-                                  ListTile(
-                                    onTap: () {
-                                      Get.to(PostImageScreen(isNormal: true,))!.then((value) {    Navigator.pop(context);});
+                                    ],
+                                  );
+                                },
+                              ).toList(),
+                            ),
+                          ),
+                        ),
+                      ),
+                      CustomButton1(
+                        text: 'Select',
+                        textStyle: TextStyle(color: Colors.black, fontSize: 13.sp),
+                        onPressed: () {
+                          // setState(() {
+                          //   Get.bottomSheet(
+                          //     Container(
+                          //       height: 36.h + 5,
+                          //       decoration: BoxDecoration(
+                          //         borderRadius: BorderRadius.only(
+                          //           topLeft: Radius.circular(20.sp),
+                          //           topRight: Radius.circular(20.sp),
+                          //         ),
+                          //         color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
+                          //       ),
+                          //       child: Column(
+                          //         children: [
+                          //           Padding(
+                          //             padding: EdgeInsets.only(top: 35.sp),
+                          //             child: Text(
+                          //               'Post',
+                          //               style: TextStyle(
+                          //                 fontSize: 22,
+                          //                 fontWeight: FontWeight.w700,
+                          //                 color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //           Padding(
+                          //             padding: EdgeInsets.only(top: 15.sp),
+                          //             child: Text(
+                          //               'Post image as',
+                          //               style: TextStyle(
+                          //                 fontSize: 16,
+                          //                 fontWeight: FontWeight.w400,
+                          //                 color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //           SizedBox(
+                          //             height: 15.sp,
+                          //           ),
+                          //           ListTile(
+                          //             onTap: () {
+                          //               Get.to(PostImageScreen(
+                          //                 isNormal: true,
+                          //               ))!
+                          //                   .then((value) {
+                          //                 Navigator.pop(context);
+                          //               });
+                          //             },
+                          //             leading: SvgPicture.asset(
+                          //               'assets/svgs/gallery.svg',
+                          //               color: ThemeService.isSavedDarkMode()
+                          //                   ? Colors.white
+                          //                   : Color(
+                          //                       0xff97A1B4,
+                          //                     ),
+                          //             ),
+                          //             title: Text(
+                          //               'Normal images',
+                          //               style: TextStyle(
+                          //                 fontSize: 16,
+                          //                 fontWeight: FontWeight.w400,
+                          //                 color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //           Divider(
+                          //             color: Color(0xffE2E4EB),
+                          //             thickness: 2.sp,
+                          //           ),
+                          //           ListTile(
+                          //             onTap: () {
+                          //               Get.to(PostImageScreen(
+                          //                 isNormal: false,
+                          //               ))!
+                          //                   .then((value) {
+                          //                 Navigator.pop(context);
+                          //               });
+                          //               ;
+                          //               // Navigator.pop(context);
+                          //             },
+                          //             leading: SvgPicture.asset(
+                          //               'assets/svgs/thread.svg',
+                          //               color: ThemeService.isSavedDarkMode()
+                          //                   ? Colors.white
+                          //                   : Color(
+                          //                       0xff97A1B4,
+                          //                     ),
+                          //             ),
+                          //             title: Text(
+                          //               'Thread',
+                          //               style: TextStyle(
+                          //                 fontSize: 16,
+                          //                 fontWeight: FontWeight.w400,
+                          //                 color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                          //               ),
+                          //             ),
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     ),
+                          //     backgroundColor: Colors.transparent,
+                          //     elevation: 0,
+                          //     // isDismissible: false,
+                          //     // enableDrag: false,
+                          //   );
+                          // });
 
+                          showCupertinoModalPopup<String>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return CupertinoActionSheet(
+                                title: Text('Post images as?'),
+                                actions: [
+                                  CupertinoActionSheetAction(
+                                    onPressed: () {
+                                      // do something
+                                      Navigator.pop(context);
+                                      Get.to(PostImageScreen(
+                                        isNormal: true,
+                                      ));
                                     },
-                                    leading: SvgPicture.asset(
-                                      'assets/svgs/gallery.svg',
-                                      color: ThemeService.isSavedDarkMode()
-                                          ? Colors.white
-                                          : Color(
-                                        0xff97A1B4,
-                                      ),
-                                    ),
-                                    title: Text(
-                                      'Normal images',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                      ),
-                                    ),
+                                    child: Text('Normal Image'),
                                   ),
-                                  Divider(
-                                    color: Color(0xffE2E4EB),
-                                    thickness: 2.sp,
-                                  ),
-                                  ListTile(
-                                    onTap: () {
-                                      Get.to(PostImageScreen(isNormal: false,))!.then((value) {    Navigator.pop(context);});;
-                                      // Navigator.pop(context);
+                                  CupertinoActionSheetAction(
+                                    onPressed: () {
+                                      // do something
+                                      Navigator.pop(context);
+                                      Get.to(PostImageScreen(
+                                        isNormal: false,
+                                      ));
                                     },
-                                    leading: SvgPicture.asset(
-                                      'assets/svgs/thread.svg',
-                                      color: ThemeService.isSavedDarkMode()
-                                          ? Colors.white
-                                          : Color(
-                                        0xff97A1B4,
-                                      ),
-                                    ),
-                                    title: Text(
-                                      'Thread',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                      ),
-                                    ),
+                                    child: Text('Thread'),
                                   ),
                                 ],
-                              ),
-                            ),
-                            backgroundColor: Colors.transparent,
-                            elevation: 0,
-                            // isDismissible: false,
-                            // enableDrag: false,
+                                cancelButton: CupertinoActionSheetAction(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text('Cancel'),
+                                ),
+                              );
+                            },
                           );
-                        });
-                      },
-                      color: Color(0xffE2E4EB),
-                      height: 30.sp,
-                      width: 70.sp,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30)),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(8.sp),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: galleryController.selectedIndexes.map(
-                              (e) {
-                            return Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Container(
-                                  height: Get.width * .15,
-                                  width: Get.width * .2,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5.sp),
-                                    image: DecorationImage(
-                                        image:
-                                        FileImage(galleryController.items[e].data),
-                                        fit: BoxFit.cover),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                              ],
-                            );
-                          },
-                        ).toList(),
+                        },
+                        color: Color(0xffE2E4EB),
+                        height: 25.sp,
+                        width: 65.sp,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                       ),
-                    ),
+                    ],
                   ),
-                  if (clickedImage != null)
-                    Container(
+                  if (controller.images.isNotEmpty && clickedImage != null)
+                    ExtendedImage.file(
+                      clickedImage!,
                       height: 30.h,
                       width: Get.width,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: FileImage(clickedImage!), fit: BoxFit.cover),
-                      ),
+                      fit: BoxFit.cover,
+                      mode: ExtendedImageMode.gesture,
+                      initGestureConfigHandler: (state) {
+                        return getImageZoomScale();
+                      },
                     ),
                 ],
               ),
             ),
             Expanded(
-              child: GridGallery(
-                onChanged: () {
-                  print("Change");
-                  setState(() {});
-                  print("${galleryController.selectedIndexes.length} items");
-                },
-                onAdded: (x) {
-                  setState(() {
-                    clickedImage = galleryController.items[x].data;
-                    controller.images.add(galleryController.items[x].data);
-                  });
-                },
-                onRemoved: (x) {
-                  setState(() {
-                    controller.images.remove(galleryController.items[x].data);
-                  });
-                },
-                isCameraSupported: false,
-                selectedBackgroundColor: Colors.red,
-                controller: galleryController,
-              ),
+              child: Builder(builder: (context) {
+                final thumbnailQuality = MediaQuery.of(context).size.width ~/ 3;
+                return AlbumImagePicker(
+                  onSelected: (items) async {
+                    // controller.images = items.map((e) => e.);
+
+                    var selectedFiles = (await Future.wait(items.map((e) => e.file).toList())).map((e) => e!).toList();
+                    controller.images = selectedFiles;
+                    setState(() {});
+                  },
+                  selectionBuilder: (_, selected, index) {
+                    if (selected) {
+                      return CircleAvatar(
+                        child: Text(
+                          '${index + 1}',
+                          style: const TextStyle(fontSize: 10, height: 1.4),
+                        ),
+                        radius: 10,
+                      );
+                    }
+                    return Container();
+                  },
+                  crossAxisCount: 3,
+                  maxSelection: 10,
+                  onSelectedMax: () {
+                    print('Reach max');
+                  },
+
+                  // albumBackGroundColor: Colors.black,
+                  appBarHeight: 45,
+                  itemBackgroundColor: Colors.grey[100]!,
+                  albumDividerColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  appBarColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  albumHeaderTextStyle: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, fontSize: 13.sp),
+                  albumBackGroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  albumTextStyle: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, fontSize: 14),
+                  albumSubTextStyle: const TextStyle(color: Colors.grey, fontSize: 10),
+                  type: AlbumType.image,
+                  // closeWidget: const BackButton(
+                  //   color: Colors.black,
+                  // ),
+                  thumbnailQuality: thumbnailQuality * 3,
+                );
+              }),
             ),
           ],
         ),

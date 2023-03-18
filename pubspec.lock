@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.16"
+  album_image:
+    dependency: "direct main"
+    description:
+      name: album_image
+      sha256: fb450174996061dc01cf7f21a643821b6c0b7eda168e5d4337df30e4825cf47c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2+1"
   animated_checkmark:
     dependency: transitive
     description:
@@ -129,14 +137,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
-  bottom_sheet_scaffold:
-    dependency: "direct main"
-    description:
-      name: bottom_sheet_scaffold
-      sha256: d34341831cf9ec8d42f28ca094a0362d7914f83e580d50405f340d24a1a37c9e
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.6"
   cached_network_image:
     dependency: "direct main"
     description:
@@ -345,6 +345,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.1"
+  extended_image:
+    dependency: "direct main"
+    description:
+      name: extended_image
+      sha256: "75e4b0ad0f8f63eed7935ff2506c809a670f5e6dd0f61304525879d53fc41a17"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.2"
+  extended_image_library:
+    dependency: transitive
+    description:
+      name: extended_image_library
+      sha256: b1de389378589e4dffb3564d782373238f19064037458092c49b3043b2791b2b
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.4.1"
   fake_async:
     dependency: transitive
     description:
@@ -616,6 +632,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.5"
+  http_client_helper:
+    dependency: transitive
+    description:
+      name: http_client_helper
+      sha256: "1f32359bd07a064ad256d1f84ae5f973f69bc972e7287223fa198abe1d969c28"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
   http_parser:
     dependency: transitive
     description:
@@ -744,14 +768,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.1.2"
-  page_transition:
-    dependency: "direct main"
-    description:
-      name: page_transition
-      sha256: a7694bc120b7064a7f57c336914bb8885acf4f70bb3772c30c2fcfe6a85e43ff
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.9"
   path:
     dependency: transitive
     description:
@@ -880,14 +896,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.0"
-  photo_gallery:
-    dependency: "direct main"
-    description:
-      name: photo_gallery
-      sha256: e12a46d036dc082931621e1c384e5cfc3910051aa8c07bef5be0b9261e4f7e5f
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.1"
   photo_manager:
     dependency: transitive
     description:
@@ -1134,7 +1142,7 @@ packages:
     source: hosted
     version: "0.9.1"
   transparent_image:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: transparent_image
       sha256: e8991d955a2094e197ca24c645efec2faf4285772a4746126ca12875e54ca02f
@@ -1278,7 +1286,7 @@ packages:
     source: hosted
     version: "2.4.0"
   video_player:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: video_player
       sha256: "58dc3d6ceb199b82e652ec27f16485e33167ef021fe4221a954ff1aa12b1a5c0"
@@ -1318,7 +1326,7 @@ packages:
     source: hosted
     version: "2.0.14"
   video_thumbnail:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: video_thumbnail
       sha256: "3455c189d3f0bb4e3fc2236475aa84fe598b9b2d0e08f43b9761f5bc44210016"
