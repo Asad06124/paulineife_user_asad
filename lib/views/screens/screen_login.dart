@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/controller/registration_controller.dart';
+import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_forget_password_with_layouts.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
@@ -24,7 +24,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
   bool isPasswordField = false;
   final _formKey = GlobalKey<FormState>();
 
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
   late TapGestureRecognizer _longPressRecognizer;
 
   @override

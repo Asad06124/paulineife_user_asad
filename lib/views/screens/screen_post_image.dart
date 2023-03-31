@@ -7,7 +7,7 @@ import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../controller/registration_controller.dart';
+import '../../controller/otp_controller.dart';
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
@@ -23,7 +23,7 @@ class PostImageScreen extends StatefulWidget {
 }
 
 class _PostImageScreenState extends State<PostImageScreen> {
-  var controller = Get.find<RegistrationController>();
+  var controller = Get.find<OtpController>();
   bool isNormal = false;
   List TextEditController = [];
 
@@ -96,7 +96,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
         ),
         backgroundColor:
             ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-        body: GetBuilder<RegistrationController>(builder: (controller) {
+        body: GetBuilder<OtpController>(builder: (controller) {
           return SingleChildScrollView(
             child: Column(
               children: [

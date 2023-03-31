@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/controller/registration_controller.dart';
+import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
@@ -9,7 +9,7 @@ import '../../widgets/custom_buttom.dart';
 
 class ReportScreen extends StatelessWidget {
   ReportScreen({Key? key}) : super(key: key);
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
 
   @override
   Widget build(BuildContext context) {

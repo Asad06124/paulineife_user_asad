@@ -184,7 +184,7 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
                   width: 115.sp,
                   color: Color(0xff2A70C8),
                   onPressed: () {
-                    Get.to(SignUpPhoneDetailsScreen());
+                    Get.to(SignUpDetailsScreen());
                   }),
             ],
           ),

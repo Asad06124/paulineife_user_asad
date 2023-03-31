@@ -22,7 +22,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
 
 // import 'package:ux_images_picker/images_picker.dart';
-import '../../controller/registration_controller.dart';
+import '../../controller/otp_controller.dart';
 import '../../helpers/gallery_grid/src/grid_gallery.dart';
 import '../../helpers/helpers.dart';
 import '../../widgets/custom_buttom.dart';
@@ -35,7 +35,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
 
   PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
@@ -517,7 +517,7 @@ class MyGallery extends StatefulWidget {
 class _MyGalleryState extends State<MyGallery> {
   var galleryController = GalleryController(type: AssetType.image);
   File? clickedImage;
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
 
   @override
   Widget build(BuildContext context) {

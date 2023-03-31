@@ -6,7 +6,7 @@ import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../controller/registration_controller.dart';
+import '../../controller/otp_controller.dart';
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
@@ -14,7 +14,7 @@ class PostTextScreen extends StatelessWidget {
   PostTextScreen({
     Key? key,
   }) : super(key: key);
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
   final scrollController = ScrollController(
       initialScrollOffset:
           9); // set the initial scroll offset to start at line 10

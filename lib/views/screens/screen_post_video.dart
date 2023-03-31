@@ -14,7 +14,7 @@ import 'package:video_editor/ui/trim/trim_slider.dart';
 import 'package:video_editor/ui/video_viewer.dart';
 // import 'package:video_trimmer/video_trimmer.dart';
 // import 'package:video_trimmer/video_trimmer.dart';
-import '../../controller/registration_controller.dart';
+import '../../controller/otp_controller.dart';
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
@@ -22,7 +22,7 @@ class PostVideoScreen extends StatefulWidget {
   PostVideoScreen({
     Key? key,
   }) : super(key: key);
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
   @override
   State<PostVideoScreen> createState() => _PostVideoScreenState();
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/controller/registration_controller.dart';
+import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:social_media_recorder/audio_encoder_type.dart';
 import '../../helpers/social_media_recorder/screen/social_media_recorder.dart';
@@ -19,7 +19,7 @@ class CommentsScreen extends StatefulWidget {
 }
 
 class _CommentsScreenState extends State<CommentsScreen> {
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
 
   @override
   Widget build(BuildContext context) {

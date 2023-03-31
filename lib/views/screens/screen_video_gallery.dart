@@ -6,7 +6,7 @@
 // import 'package:sizer/sizer.dart';
 // // import 'package:video_trimmer/video_trimmer.dart';
 //
-// import '../../controller/registration_controller.dart';
+// import '../../controller/otp_controller.dart';
 // import '../../helpers/theme_service.dart';
 // import '../../widgets/custom_buttom.dart';
 //

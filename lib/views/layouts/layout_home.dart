@@ -11,7 +11,7 @@ import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../constant/constant.dart';
-import '../../controller/registration_controller.dart';
+import '../../controller/otp_controller.dart';
 import '../../helpers/theme_service.dart';
 import '../../widgets/status_view_custom.dart';
 
@@ -23,7 +23,7 @@ class HomeLayout extends StatefulWidget {
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
 
   @override
   Widget build(BuildContext context) {

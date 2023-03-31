@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_login.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../controller/registration_controller.dart';
+import '../../controller/otp_controller.dart';
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
@@ -13,7 +13,7 @@ class NewPasswordScreen extends StatelessWidget {
   bool isPasswordField = false;
   final _formKey = GlobalKey<FormState>();
 
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
 
   @override
   Widget build(BuildContext context) {

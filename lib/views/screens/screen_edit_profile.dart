@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:paulineife_user/controller/registration_controller.dart';
+import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
@@ -16,7 +16,7 @@ class ProfileEditScreen extends StatefulWidget {
 }
 
 class _ProfileEditScreenState extends State<ProfileEditScreen> {
-  var controller = Get.put(RegistrationController());
+  var controller = Get.put(OtpController());
 
   @override
   Widget build(BuildContext context) {
