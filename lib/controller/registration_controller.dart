@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:paulineife_user/controller/otp_controller.dart';
 
+import '../views/screens/screen_terms_conditions.dart';
+
 class RegistrationController extends GetxController {
   var emailController = TextEditingController().obs;
   var passwordController = TextEditingController().obs;
@@ -85,6 +87,7 @@ class RegistrationController extends GetxController {
     if (response.statusCode == 200) {
       Map jsonResponse = json.decode(response.body);
       print(jsonResponse);
+      Get.to(TermsConditionsScreen());
     }
     else{
       Map jsonResponse = json.decode(response.body);
