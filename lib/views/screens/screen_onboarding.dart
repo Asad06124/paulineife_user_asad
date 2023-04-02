@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ScreenOnboarding extends StatefulWidget {
   @override
@@ -38,7 +40,9 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
 
   @override
   void initState() {
+    isOpen();
     _pageController = PageController(initialPage: 0);
+    Get.put(HomeController());
     super.initState();
   }
 
@@ -46,6 +50,14 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  Future<void> isOpen() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    bool isOpen = sp.getBool('isOpen') ?? false;
+    if (isOpen) {
+      Get.offAll(ScreenLogin());
+    }
   }
 
   @override
@@ -63,8 +75,6 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
             child: PageView.builder(
                 itemCount: screens.length,
                 controller: _pageController,
-                // reverse: true,
-                // physics: NeverScrollableScrollPhysics(),
                 onPageChanged: (int index) {
                   setState(() {
                     currentIndex = index;
@@ -133,8 +143,9 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
               children: [
                 GestureDetector(
                   onTap: () async {
-                    // print(index);
                     if (currentIndex == screens.length - 1) {
+                      SharedPreferences sp = await SharedPreferences.getInstance();
+                      sp.setBool("isOpen", true);
                       Get.offAll(ScreenLogin());
                     }
 
@@ -168,7 +179,9 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
             top: currentIndex != screens.length - 1 ? MediaQuery.of(context).size.height * 0.81 : MediaQuery.of(context).size.height * 0,
             child: currentIndex != 2
                 ? TextButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      SharedPreferences sp = await SharedPreferences.getInstance();
+                      sp.setBool("isOpen", true);
                       Get.offAll(ScreenLogin());
                     },
                     child: Text(

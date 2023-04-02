@@ -48,10 +48,11 @@ android {
         multiDexEnabled true
         applicationId "org.microprogramers.paulineife_user"
         minSdkVersion 24
-        targetSdkVersion 32
+        targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
+
 
     buildTypes {
         release {

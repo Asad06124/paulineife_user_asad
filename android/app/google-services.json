@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:984228719401:android:e0b31aea86a54459106538",
+        "mobilesdk_app_id": "1:984228719401:android:eac91e1a07497e91106538",
         "android_client_info": {
-          "package_name": "org.microprogramers.paulineife_user"
+          "package_name": "org.microprogramers.paulineife_admin_app"
         }
       },
       "oauth_client": [
@@ -29,6 +29,65 @@
             {
               "client_id": "984228719401-9et9hko7v5s3g41qr0mfaelqmsmomf3t.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "984228719401-aodhlbojsc2njnfqut1ior4plv44biik.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.microprogramers.paulineifeUser"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984228719401:android:e0b31aea86a54459106538",
+        "android_client_info": {
+          "package_name": "org.microprogramers.paulineife_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984228719401-dh8alugoqagld6vfnq6m14sfllibp6na.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.microprogramers.paulineife_user",
+            "certificate_hash": "6b25dc6ce555602914e717d635d0e882c13c0bdc"
+          }
+        },
+        {
+          "client_id": "984228719401-pmss6cmmsusqcl08ued443p7vu1pih0n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.microprogramers.paulineife_user",
+            "certificate_hash": "dc46682a40fa4dc0fbf26c3aaab40d1485ea2d84"
+          }
+        },
+        {
+          "client_id": "984228719401-9et9hko7v5s3g41qr0mfaelqmsmomf3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6TxToVdkYJCjm-6vFyhPSuRjhumF3tr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984228719401-9et9hko7v5s3g41qr0mfaelqmsmomf3t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "984228719401-aodhlbojsc2njnfqut1ior4plv44biik.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.microprogramers.paulineifeUser"
+              }
             }
           ]
         }

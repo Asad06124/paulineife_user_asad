@@ -1,3 +1,4 @@
+
 name: paulineife_user
 description: A new Flutter project.
 
@@ -40,68 +41,33 @@ dependencies:
   get: ^4.6.5
   custom_utils: any
   auto_size_text: ^3.0.0
-  #  firebase_auth: ^4.2.8
   firebase_core: ^2.6.1
   firebase_storage: ^11.0.13
   cloud_firestore: ^4.4.2
   dio: ^5.0.0
   image_picker: ^0.8.6+1
-  #  flare_flutter: ^3.0.2
-  #  path_provider: ^2.0.12
-  #  open_file: ^3.2.1
   flutter_downloader: ^1.10.1+2
   file_picker: ^5.2.5
-  #  device_info: ^2.0.3
-  #  android_path_provider: ^0.3.0
   firebase_messaging: ^14.2.2
   flutter_app_badger: ^1.5.0
   flutter_local_notifications: ^13.0.0
   cached_network_image: ^3.2.3
-  #  extended_image: ^7.0.2
-  #  flutter_onboard: ^2.0.0
-#  flutter_native_splash: ^2.2.18
   flutter_svg: any
   sizer: ^2.0.15
-  #  email_validator: ^2.1.17
-  #  shared_preferences: ^2.0.17
   flutter_signin_button: ^2.0.0
   persistent_bottom_nav_bar: ^5.0.2
   story_view: ^0.14.0
   status_view: ^0.0.2
-  #  story: ^1.0.0+1
-  #  chatview: ^1.2.0+1
   chat_bubbles: any
   sliding_top_panel: ^0.0.7
-  #  favorite_button: ^0.0.4
-  #  intl_phone_number_input: ^0.7.2
   ola_like_country_picker: ^0.1.2
   pinput: any
-#  video_trimmer: 1.1.3
-  #  fetch_all_videos: any
-  #  appinio_video_player: ^1.2.0
-  #  vibration: ^1.7.6
   social_media_recorder: any
-  #  just_audio: ^0.9.31
-  #  audio_video_progress_bar: ^1.0.0
-  #  audio_session: ^0.1.13
   badges: ^3.0.2
-  #  flutter_svg_provider: any
   audioplayers: ^3.0.1
   get_storage: ^2.1.1
-
-  #  Gallery Picker
-
-#  photo_gallery: ^1.1.1
   permission_handler: ^10.2.0
-#  transparent_image: ^2.0.0
-#  video_player: ^2.4.10
-#  video_thumbnail: ^0.5.3
-#  page_transition: ^2.0.9
-#  bottom_sheet_scaffold: ^0.1.6
   device_info: ^2.0.3
-  #  multiple_images_picker: ^1.0.1
-#  ux_images_picker: ^1.2.16
-
   video_editor: ^2.4.0
   helpers: ^1.2.0
   custom_gallery_display: ^0.5.0
@@ -109,14 +75,7 @@ dependencies:
   extended_image: ^7.0.2
   http: ^0.13.5
   firebase_auth: ^4.3.0
-#  grid_gallery: ^0.0.3+6
-#  video_editor: ^2.4.0
-
-
-
-
-
-
+  shared_preferences: ^2.1.0
 
 dev_dependencies:
   flutter_test:

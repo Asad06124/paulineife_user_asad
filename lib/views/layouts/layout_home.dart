@@ -28,7 +28,6 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     List StoryCount = [1, 2, 5, 6, 8];
-
     var size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
@@ -37,7 +36,11 @@ class _HomeLayoutState extends State<HomeLayout> {
             padding: EdgeInsets.only(top: 2.sp),
             child: Text(
               'Roll Upp',
-              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700, color: Color(0xff2A70C8), fontFamily: 'ubuntu'),
+              style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xff2A70C8),
+                  fontFamily: 'ubuntu'),
             ),
           ),
           actions: [
@@ -51,7 +54,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                   badgeContent: Text(
                     '1',
                     style: TextStyle(
-                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                      color: ThemeService.isSavedDarkMode()
+                          ? Colors.white
+                          : Colors.white,
                     ),
                   ),
                   position: BadgePosition.topEnd(end: -7, top: -13),
@@ -61,9 +66,11 @@ class _HomeLayoutState extends State<HomeLayout> {
             ),
           ],
           elevation: 0,
-          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          backgroundColor:
+              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         ),
-        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        backgroundColor:
+            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: Padding(
           padding: EdgeInsets.all(10.sp),
           child: Column(
@@ -79,7 +86,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                     return Column(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(top: 1.sp, bottom: 2.sp, left: 4.sp, right: 4.sp),
+                          padding: EdgeInsets.only(
+                              top: 1.sp, bottom: 2.sp, left: 4.sp, right: 4.sp),
                           child: StatusViewCustom(
                             onTap: () {
                               index != 0
@@ -106,7 +114,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                     'Camera',
                                                     style: TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight: FontWeight.w400,
+                                                      fontWeight:
+                                                          FontWeight.w400,
                                                       color: Color(
                                                         0xff000000,
                                                       ),
@@ -134,7 +143,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                     'Gallery',
                                                     style: TextStyle(
                                                       fontSize: 16,
-                                                      fontWeight: FontWeight.w400,
+                                                      fontWeight:
+                                                          FontWeight.w400,
                                                       color: Color(
                                                         0xff000000,
                                                       ),
@@ -144,7 +154,10 @@ class _HomeLayoutState extends State<HomeLayout> {
                                               ],
                                             ),
                                           ),
-                                          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                          backgroundColor:
+                                              ThemeService.isSavedDarkMode()
+                                                  ? Colors.black
+                                                  : Colors.white,
                                           elevation: 0,
                                         )
                                       : Get.to(StoryViewScreen());
@@ -156,7 +169,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                             indexOfSeenStatus: 1,
                             numberOfStatus: 1,
                             padding: 4,
-                            centerImageUrl: index != 0 ? 'assets/images/12.png' : 'assets/images/camera.png',
+                            centerImageUrl: index != 0
+                                ? 'assets/images/12.png'
+                                : 'assets/images/camera.png',
                             seenColor: Color(0xff3AA0FF),
                             unSeenColor: Colors.red,
                           ),
@@ -164,7 +179,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                         Text(
                           index == 0 ? 'Your Story' : 'Asad',
                           style: TextStyle(
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                              color: ThemeService.isSavedDarkMode()
+                                  ? Colors.white
+                                  : Colors.black,
                               fontSize: font12,
                               fontWeight: FontWeight5,
                               fontFamily: fontFamilyD),
@@ -187,7 +204,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                         alignment: Alignment.bottomLeft,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.sp),
-                          image: DecorationImage(image: AssetImage('assets/images/post.png'), fit: BoxFit.cover),
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/post.png'),
+                              fit: BoxFit.cover),
                         ),
                         child: GestureDetector(
                           onTap: () {
@@ -209,10 +228,13 @@ class _HomeLayoutState extends State<HomeLayout> {
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         border: Border.all(
-                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                          color: ThemeService.isSavedDarkMode()
+                                              ? Colors.white
+                                              : Colors.white,
                                         )),
                                     child: CircleAvatar(
-                                      backgroundImage: AssetImage('assets/images/12.png'),
+                                      backgroundImage:
+                                          AssetImage('assets/images/12.png'),
                                     ),
                                   ),
                                   SizedBox(
@@ -221,7 +243,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                                   Column(
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Asad Ullah',
@@ -229,7 +252,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                                         style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w700,
-                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                          color: ThemeService.isSavedDarkMode()
+                                              ? Colors.white
+                                              : Colors.white,
                                         ),
                                       ),
                                       SizedBox(
@@ -241,7 +266,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                                         style: TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500,
-                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                          color: ThemeService.isSavedDarkMode()
+                                              ? Colors.white
+                                              : Colors.white,
                                         ),
                                       ),
                                     ],
@@ -264,7 +291,8 @@ class _HomeLayoutState extends State<HomeLayout> {
                             onTap: () {
                               Get.to(StoryViewScreen());
                             },
-                            child: SvgPicture.asset('assets/images/repeat.svg')),
+                            child:
+                                SvgPicture.asset('assets/images/repeat.svg')),
                       ],
                     ),
                   ],
