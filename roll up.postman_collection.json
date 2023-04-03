@@ -1,0 +1,1049 @@
+{
+	"info": {
+		"_postman_id": "c9ba8c58-0777-4578-bd1f-39bce2265661",
+		"name": "roll up",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"testing@gmail.com\",\r\n    \"username\": \"testing\",\r\n    \"firstname\": \"ali\",\r\n    \"dob\": \"77/88/0009\",\r\n    \"phone\": \"1247890\",\r\n    \"password\": \"1122\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rollupp.co/api/register/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "phone",
+							"value": "mani@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1122",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rollupp.co/api/login/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "change password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzU5NDE5LCJpYXQiOjE2NzI3NTk0MTksImp0aSI6Ijc0YzAzZDA3ZGViYTQ3NWY4ZjZiYzc4ODQwNWQ2NmYzIiwidXNlcl9pZCI6MTN9.EtcCwAbRExo3vTK12UxUdllb3Vehx6I6OxIncfglkPE",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"2211\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rollupp.co/api/changepassword/13",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"changepassword",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "details update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYwMjY2LCJpYXQiOjE2NzI3NjAyNjYsImp0aSI6ImYxMTJlNzMzMzI2NjRjNjU5ZGM4ODY5ZjQwNDA2YTZiIiwidXNlcl9pZCI6MTN9.5hha9Wn5KF7PAey61Uzki7xPy967_nKFwtPq7BqYIAg",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/Projects/fyp/school.jpg"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rollupp.co/api/detailupdate/13",
+					"protocol": "https",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"detailupdate",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzU5NDE5LCJpYXQiOjE2NzI3NTk0MTksImp0aSI6Ijc0YzAzZDA3ZGViYTQ3NWY4ZjZiYzc4ODQwNWQ2NmYzIiwidXNlcl9pZCI6MTN9.EtcCwAbRExo3vTK12UxUdllb3Vehx6I6OxIncfglkPE",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://rollupp.co/api/profile/testing",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"profile",
+						"testing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get chat",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMTgzMTY1LCJpYXQiOjE2NzIxODMxNjUsImp0aSI6IjRmOGZiMGM4ZmQzMjRjNTk4N2FmNjY2MDMyYjgyNjRkIiwidXNlcl9pZCI6MTB9.3fn5JPDXmNselB8CTJqZfazEF6LdZbAy7jzttqHzuAM",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/chat/userchat/12",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"chat",
+						"userchat",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ulpoad post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYwMjY2LCJpYXQiOjE2NzI3NjAyNjYsImp0aSI6ImYxMTJlNzMzMzI2NjRjNjU5ZGM4ODY5ZjQwNDA2YTZiIiwidXNlcl9pZCI6MTN9.5hha9Wn5KF7PAey61Uzki7xPy967_nKFwtPq7BqYIAg",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post\": [\r\n        {\r\n            \"caption\": \"normal 2\",\r\n            \"is_thread\": 0,\r\n            \"user\": 13\r\n        }\r\n       \r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rollupp.co/post/upload/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"post",
+						"upload",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "thread post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYwMjY2LCJpYXQiOjE2NzI3NjAyNjYsImp0aSI6ImYxMTJlNzMzMzI2NjRjNjU5ZGM4ODY5ZjQwNDA2YTZiIiwidXNlcl9pZCI6MTN9.5hha9Wn5KF7PAey61Uzki7xPy967_nKFwtPq7BqYIAg",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"post\": [\r\n            {\r\n                \"caption\": \"thread caption\"\r\n            },\r\n            {\r\n            \"caption\": \"thread 1\",\r\n            \"is_thread\": 1\r\n            },\r\n            {\r\n            \"caption\": \"thread 2\",\r\n            \"is_thread\": 1\r\n            }\r\n        ]\r\n}\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://rollupp.co/post/uploadthread/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"post",
+						"uploadthread",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update views",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxMzg5NTkzLCJpYXQiOjE2NzEzODk1OTMsImp0aSI6IjdjZDZkZTM5MDExZjQyYTQ5Y2QzNWU2YmNhOTYzMjI5IiwidXNlcl9pZCI6MX0.84OBNdb9BDlM4QUlvI_LcBEK3HxZJNA8kAcdPKNVOXk",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/updateviews/39/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"updateviews",
+						"39",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "like/unlike",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYxNTk5LCJpYXQiOjE2NzI3NjE1OTksImp0aSI6ImRkMmJkNWJiMmRlMzRjZjdhYjRlZGQ1YmQxZmVkMmRmIiwidXNlcl9pZCI6MTJ9.dKB5IwpXWOQpRe0WTZPZ_jAI241KbELuj50epbv0PSU",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://rollupp.co/post/like/57/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"post",
+						"like",
+						"57",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get like",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://rollupp.co/post/get-likers/57/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"post",
+						"get-likers",
+						"57",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "follow",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxODgyMTczLCJpYXQiOjE2NzE4ODIxNzMsImp0aSI6IjE0ZGE5NjA1ZTc3OTRhZGI4Mjg2ODI5OGE1MjFiMzc2IiwidXNlcl9pZCI6OH0.PcCTlubglbLFf48MDK0IeYX_PUf_KRqE1eJBLBAJJgU",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/follow/test",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"follow",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get follower",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMzE4NjIwLCJpYXQiOjE2NzIzMTg2MjAsImp0aSI6IjE1ZjI1OWI4MmRmZTRlNjBhNzU0Njk1ZGI3ZDQ3MWU1IiwidXNlcl9pZCI6MTJ9.Rbpqfn1UDBbEEsKuYW3nrObfGocPlF1OsSwBtT25fVQ",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://rollupp.co/api/get-following/mani",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"get-following",
+						"mani"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get following",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxODgyMTczLCJpYXQiOjE2NzE4ODIxNzMsImp0aSI6IjE0ZGE5NjA1ZTc3OTRhZGI4Mjg2ODI5OGE1MjFiMzc2IiwidXNlcl9pZCI6OH0.PcCTlubglbLFf48MDK0IeYX_PUf_KRqE1eJBLBAJJgU",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/follow/ali/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"follow",
+						"ali",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "referesh post",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYxNTk5LCJpYXQiOjE2NzI3NjE1OTksImp0aSI6ImRkMmJkNWJiMmRlMzRjZjdhYjRlZGQ1YmQxZmVkMmRmIiwidXNlcl9pZCI6MTJ9.dKB5IwpXWOQpRe0WTZPZ_jAI241KbELuj50epbv0PSU",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://rollupp.co/api/refereshpost/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"refereshpost",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "random post",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYxNTk5LCJpYXQiOjE2NzI3NjE1OTksImp0aSI6ImRkMmJkNWJiMmRlMzRjZjdhYjRlZGQ1YmQxZmVkMmRmIiwidXNlcl9pZCI6MTJ9.dKB5IwpXWOQpRe0WTZPZ_jAI241KbELuj50epbv0PSU",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://rollupp.co/api/randompost/?page=2",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"randompost",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "home",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYxNTk5LCJpYXQiOjE2NzI3NjE1OTksImp0aSI6ImRkMmJkNWJiMmRlMzRjZjdhYjRlZGQ1YmQxZmVkMmRmIiwidXNlcl9pZCI6MTJ9.dKB5IwpXWOQpRe0WTZPZ_jAI241KbELuj50epbv0PSU",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://rollupp.co/api/home/?page=1",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"api",
+						"home",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNzI1NzUwLCJpYXQiOjE2NzM3MjU3NTAsImp0aSI6IjlhNDVkZTE0ZGU4NDRiNmQ4MDZiMzA0OTk5MmYwMWRiIiwidXNlcl9pZCI6MX0.mRGmrBYGGdXHwWItVdUU25zf3mfIlxZivrqJGwWTqxw",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "voice",
+							"type": "file",
+							"src": "/C:/Users/abdulrehman/Downloads/Titliaan Afsana Khan 2020 High.mp3"
+						},
+						{
+							"key": "posts",
+							"value": "22",
+							"type": "default"
+						},
+						{
+							"key": "user",
+							"value": "1",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/upload-comment/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"upload-comment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "comment-reply",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxODg3NjU2LCJpYXQiOjE2NzE4ODc2NTYsImp0aSI6IjgzMzYyYWYyMzYxMzQ1ZTFiMWIwZjlmN2IxMTdmOTI4IiwidXNlcl9pZCI6OH0.8CGFM718ko_ILZIhKvjDY0i6dZEz1Mql4SxMcnmULhc",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "voice",
+							"type": "file",
+							"src": "/C:/Users/abdulrehman/Downloads/Titliaan Afsana Khan 2020 High.mp3"
+						},
+						{
+							"key": "parent",
+							"value": "22",
+							"type": "default"
+						},
+						{
+							"key": "user",
+							"value": "8",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/reply-comment/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"reply-comment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getcomment",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxODg3NjU2LCJpYXQiOjE2NzE4ODc2NTYsImp0aSI6IjgzMzYyYWYyMzYxMzQ1ZTFiMWIwZjlmN2IxMTdmOTI4IiwidXNlcl9pZCI6OH0.8CGFM718ko_ILZIhKvjDY0i6dZEz1Mql4SxMcnmULhc",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/get-comments/50",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"get-comments",
+						"50"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMxODg3NjU2LCJpYXQiOjE2NzE4ODc2NTYsImp0aSI6IjgzMzYyYWYyMzYxMzQ1ZTFiMWIwZjlmN2IxMTdmOTI4IiwidXNlcl9pZCI6OH0.8CGFM718ko_ILZIhKvjDY0i6dZEz1Mql4SxMcnmULhc",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/search/test",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"search",
+						"test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single post",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMDc5NjcxLCJpYXQiOjE2NzIwNzk2NzEsImp0aSI6ImFlNmIyYzJkZTk1ZjQxN2NiYmZjZjM2OTgzNGVhMWUwIiwidXNlcl9pZCI6OH0.MTpYRm_3qcWXoU7rs-QtKNfZU9oaIE0yTXTQNMXz2Rc",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/get-post/21",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"get-post",
+						"21"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete reply comment",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMTgxODkzLCJpYXQiOjE2NzIxODE4OTMsImp0aSI6IjU2ODRhYTJmMTdlNjRiOWU5OTJkYzhlZGZlMjZlNDZhIiwidXNlcl9pZCI6M30.jQvFGTYOq7_pT8hwd4PVPz8N4gRouGfcV_4jqlS-7Hk",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/delete-replycomment/23",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"delete-replycomment",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete post",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMTgxODkzLCJpYXQiOjE2NzIxODE4OTMsImp0aSI6IjU2ODRhYTJmMTdlNjRiOWU5OTJkYzhlZGZlMjZlNDZhIiwidXNlcl9pZCI6M30.jQvFGTYOq7_pT8hwd4PVPz8N4gRouGfcV_4jqlS-7Hk",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/delete-post/51",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"delete-post",
+						"51"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delet comment",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMTgxODkzLCJpYXQiOjE2NzIxODE4OTMsImp0aSI6IjU2ODRhYTJmMTdlNjRiOWU5OTJkYzhlZGZlMjZlNDZhIiwidXNlcl9pZCI6M30.jQvFGTYOq7_pT8hwd4PVPz8N4gRouGfcV_4jqlS-7Hk",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/delete-comment/28",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"delete-comment",
+						"28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMTgxODkzLCJpYXQiOjE2NzIxODE4OTMsImp0aSI6IjU2ODRhYTJmMTdlNjRiOWU5OTJkYzhlZGZlMjZlNDZhIiwidXNlcl9pZCI6M30.jQvFGTYOq7_pT8hwd4PVPz8N4gRouGfcV_4jqlS-7Hk",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/delete-user/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"delete-user",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete message",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyMTgzMTY1LCJpYXQiOjE2NzIxODMxNjUsImp0aSI6IjRmOGZiMGM4ZmQzMjRjNTk4N2FmNjY2MDMyYjgyNjRkIiwidXNlcl9pZCI6MTB9.3fn5JPDXmNselB8CTJqZfazEF6LdZbAy7jzttqHzuAM",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/chat/delete-message/29",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"chat",
+						"delete-message",
+						"29"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "report",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNTI0NzcxLCJpYXQiOjE2NzM1MjQ3NzEsImp0aSI6IjgzMjQzZjA0ODA4NTQ5ZjdhMjZjMTY2MTY5NTZkMGFkIiwidXNlcl9pZCI6MX0.VCnsVX6XDO5C8w01tsIl05VG9ql4jIEzwpxofgV9AOY",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "post",
+							"value": "44",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/report/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"report",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNTI0NzcxLCJpYXQiOjE2NzM1MjQ3NzEsImp0aSI6IjgzMjQzZjA0ODA4NTQ5ZjdhMjZjMTY2MTY5NTZkMGFkIiwidXNlcl9pZCI6MX0.VCnsVX6XDO5C8w01tsIl05VG9ql4jIEzwpxofgV9AOY",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://rollupp.co/post/allreport/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"post",
+						"allreport",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single comment",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNzI1NzUwLCJpYXQiOjE2NzM3MjU3NTAsImp0aSI6IjlhNDVkZTE0ZGU4NDRiNmQ4MDZiMzA0OTk5MmYwMWRiIiwidXNlcl9pZCI6MX0.mRGmrBYGGdXHwWItVdUU25zf3mfIlxZivrqJGwWTqxw",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://rollupp.co/post/getcomment/29/",
+					"protocol": "http",
+					"host": [
+						"rollupp",
+						"co"
+					],
+					"path": [
+						"post",
+						"getcomment",
+						"29",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single comment reply",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzNzI1NzUwLCJpYXQiOjE2NzM3MjU3NTAsImp0aSI6IjlhNDVkZTE0ZGU4NDRiNmQ4MDZiMzA0OTk5MmYwMWRiIiwidXNlcl9pZCI6MX0.mRGmrBYGGdXHwWItVdUU25zf3mfIlxZivrqJGwWTqxw",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/post/getcommentreply/24/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"post",
+						"getcommentreply",
+						"24",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
