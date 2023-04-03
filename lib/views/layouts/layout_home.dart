@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:badges/badges.dart';
@@ -5,10 +6,12 @@ import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:paulineife_user/models/api/HomeResponse.dart';
 import 'package:paulineife_user/views/screens/screen_chat_list.dart';
 import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
 
 import '../../constant/constant.dart';
 import '../../controller/otp_controller.dart';
@@ -24,6 +27,8 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout> {
   var controller = Get.put(OtpController());
+  HomeResponse? homeResponse;
+
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +134,6 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                 ListTile(
                                                   onTap: () {
                                                     Get.back();
-
                                                     getFromGalleryimg();
                                                   },
                                                   leading: Icon(
@@ -234,7 +238,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                         )),
                                     child: CircleAvatar(
                                       backgroundImage:
-                                          AssetImage('assets/images/12.png'),
+                                      AssetImage('assets/images/12.png'),
                                     ),
                                   ),
                                   SizedBox(
@@ -244,7 +248,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                     mainAxisSize: MainAxisSize.min,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Asad Ullah',

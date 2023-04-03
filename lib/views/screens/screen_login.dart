@@ -64,6 +64,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
           ),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        Get.to(HomeScreen());
       }
     } catch (e) {}
   }

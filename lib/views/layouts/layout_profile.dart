@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/views/screens/screen_edit_profile.dart';
@@ -5,10 +7,12 @@ import 'package:paulineife_user/views/screens/screen_following.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
 
 import '../../constant/constant.dart';
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
+import '../../models/api/ProfileResponse.dart';
 import '../screens/screen_follower.dart';
 import '../screens/screen_setting.dart';
 
@@ -24,13 +28,34 @@ class ProfileLayout extends StatefulWidget {
 }
 
 class _ProfileLayoutState extends State<ProfileLayout> {
+  ProfileResponse? profileResponse;
+
+  Future<ProfileResponse> fetchProfile() async {
+    final response =
+        await http.get(Uri.parse('https://rollupp.co/api/profile/testing'));
+
+    if (response.statusCode == 200) {
+      var data = jsonDecode(response.body.toString());
+      profileResponse = ProfileResponse(
+          profile: data['profile'],
+          followed: data['followed'],
+          ids: data['ids'],
+          posts: data['post']);
+      return profileResponse!;
+    } else {
+      return profileResponse!;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        backgroundColor:
+            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
-          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          backgroundColor:
+              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text(
             'Asad',
             style: getAppbarTextTheme(),
@@ -43,60 +68,81 @@ class _ProfileLayoutState extends State<ProfileLayout> {
             physics: BouncingScrollPhysics(),
             child: Column(
               children: [
-                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Row(
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Color(0xff3AA0FF), width: 3.sp)),
-                        child: CircleAvatar(
-                          radius: 30.sp,
-                          backgroundImage: AssetImage('assets/images/12.png'),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                            text: 'Asad\n',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
-                            children: [
-                              TextSpan(
-                                text: '@asad',
+                      Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                  color: Color(0xff3AA0FF), width: 3.sp),
+                            ),
+                            child: CircleAvatar(
+                              radius: 30.sp,
+                              backgroundImage:
+                                  AssetImage('assets/images/12.png'),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(
+                                text: 'Asad\n',
                                 style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w500,
-                                    color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
-                                ),
-                              )
-                            ]),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: ThemeService.isSavedDarkMode()
+                                        ? Colors.white
+                                        : Colors.black),
+                                children: [
+                                  TextSpan(
+                                    text: '@asad',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                      color: ThemeService.isSavedDarkMode()
+                                          ? Colors.white
+                                          : Color(0xff2A70C8),
+                                    ),
+                                  )
+                                ]),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.settings,
-                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                      size: 27.sp,
-                    ),
-                    onPressed: () async {
-                      await Get.to(SettingScreen());
-                      setState(() {});
-                      widget.onThemeUpdate();
-                    },
-                  ),
-                ]),
+                      IconButton(
+                        icon: Icon(
+                          Icons.settings,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.black,
+                          size: 27.sp,
+                        ),
+                        onPressed: () async {
+                          await Get.to(SettingScreen());
+                          setState(() {});
+                          widget.onThemeUpdate();
+                        },
+                      ),
+                    ]),
                 SizedBox(
                   height: 10.sp,
                 ),
                 RichText(
                   textAlign: TextAlign.justify,
                   text: TextSpan(
-                      text: 'Lorem ipsum dolor sit amet, consectetur eliteita adipiscing elit. Morbi at malesuada mi.',
-                      style:
-                          TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                      text:
+                          'Lorem ipsum dolor sit amet, consectetur eliteita adipiscing elit. Morbi at malesuada mi.',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.black),
                       children: [
                         TextSpan(
                           text: '\nwww.google.com',
@@ -124,14 +170,20 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                         text: TextSpan(
                             text: '10k\n',
                             style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                                fontSize: 16,
+                                fontWeight: FontWeight.w700,
+                                color: ThemeService.isSavedDarkMode()
+                                    ? Colors.white
+                                    : Colors.black),
                             children: [
                               TextSpan(
                                 text: 'Followers',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
-                                    color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
+                                  color: ThemeService.isSavedDarkMode()
+                                      ? Colors.white
+                                      : Color(0xff79869F),
                                 ),
                               )
                             ]),
@@ -146,14 +198,20 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                         text: TextSpan(
                           text: '1.1k\n',
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                              color: ThemeService.isSavedDarkMode()
+                                  ? Colors.white
+                                  : Colors.black),
                           children: [
                             TextSpan(
                               text: 'Following',
                               style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w500,
-                                color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
+                                color: ThemeService.isSavedDarkMode()
+                                    ? Colors.white
+                                    : Color(0xff79869F),
                               ),
                             )
                           ],
@@ -171,12 +229,16 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                     textStyle: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                      color: ThemeService.isSavedDarkMode()
+                          ? Colors.white
+                          : Colors.black,
                     ),
                     elevation: 0,
                     height: Get.height / 16,
                     width: Get.width / 1.2,
-                    color:ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
+                    color: ThemeService.isSavedDarkMode()
+                        ? Color(0xff3d3d3d)
+                        : Color(0xffE2E4EB),
                     onPressed: () {
                       Get.to(ProfileEditScreen());
                     }),
@@ -190,7 +252,10 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: 16,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 2.sp, mainAxisSpacing: 2.sp),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 2.sp,
+                      mainAxisSpacing: 2.sp),
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
@@ -200,7 +265,9 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                         alignment: Alignment.bottomRight,
                         // padding: EdgeInsets.only(bottom: 5),
                         decoration: BoxDecoration(
-                          image: DecorationImage(image: AssetImage('assets/images/12.png'), fit: BoxFit.cover),
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/12.png'),
+                              fit: BoxFit.cover),
                         ),
                         child: Stack(
                           children: [
@@ -243,7 +310,9 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 child: Text(
                                   '5',
                                   style: TextStyle(
-                                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                    color: ThemeService.isSavedDarkMode()
+                                        ? Colors.white
+                                        : Colors.white,
                                   ),
                                 ),
                               ),
@@ -256,7 +325,9 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 children: [
                                   Icon(
                                     Icons.remove_red_eye_outlined,
-                                    color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                    color: ThemeService.isSavedDarkMode()
+                                        ? Colors.black
+                                        : Colors.white,
                                     size: 15.sp,
                                   ),
                                   SizedBox(
@@ -265,7 +336,9 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                   Text(
                                     '20.5K',
                                     style: TextStyle(
-                                      color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                      color: ThemeService.isSavedDarkMode()
+                                          ? Colors.black
+                                          : Colors.white,
                                       fontSize: 6.sp,
                                       fontWeight: FontWeight.w500,
                                       fontFamily: fontFamilyD,

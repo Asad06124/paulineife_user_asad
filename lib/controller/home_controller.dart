@@ -8,7 +8,6 @@ import 'package:paulineife_user/models/api/ProfileResponse.dart';
 class HomeController extends GetxController {
   @override
   void onInit() {
-    startTestApi();
 
     super.onInit();
   }
