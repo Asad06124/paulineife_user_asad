@@ -15,6 +15,7 @@ class OtpController extends GetxController {
   var firebaseVerificationId = "";
   var statusMessage = "".obs;
   var statusMessageColor = Colors.black.obs;
+  final _auth = FirebaseAuth.instance;
 
   var timer;
 
@@ -25,64 +26,117 @@ class OtpController extends GetxController {
     super.onInit();
   }
 
-  getOtp() async {
-    FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+' +
-          countryCode.toString().trim() +
-          phoneController.value.text.toString().trim(),
-      verificationCompleted: (PhoneAuthCredential credential) {},
-      verificationFailed: (FirebaseAuthException e) {},
-      codeSent: (String verificationId, int? resendToken) {
-        firebaseVerificationId = verificationId;
-        isOtpSent.value = true;
-        statusMessage.value =
-            "OTP re-sent to ${countryCode}" + phoneController.value.text;
-        startResendOtpTimer();
+  // getOtp() async {
+  //   FirebaseAuth.instance.verifyPhoneNumber(
+  //     phoneNumber: '+' +
+  //         countryCode.toString().trim() +
+  //         phoneController.value.text.toString().trim(),
+  //     verificationCompleted: (PhoneAuthCredential credential) {},
+  //     verificationFailed: (FirebaseAuthException e) {},
+  //     codeSent: (String verificationId, int? resendToken) {
+  //       firebaseVerificationId = verificationId;
+  //       isOtpSent.value = true;
+  //       statusMessage.value =
+  //           "OTP re-sent to ${countryCode}" + phoneController.value.text;
+  //       startResendOtpTimer();
+  //     },
+  //     codeAutoRetrievalTimeout: (String verificationId) {},
+  //   );
+  // }
+
+  Future<void> getOtp() async {
+    String response = '';
+    String phone = phoneController.value.text;
+
+    String full_phone = '+' +
+        countryCode.toString().trim() +
+        phoneController.value.text.toString().trim();
+    print(full_phone);
+
+    await _auth.verifyPhoneNumber(
+      phoneNumber: (full_phone),
+      timeout: Duration(seconds: 60),
+      verificationCompleted: (PhoneAuthCredential credential) {
+        _auth.signInWithCredential(credential).then((value) {
+          pinController.value.text = credential.smsCode ?? "";
+        }).catchError((error) {
+          Get.snackbar('Alert', error.toString());
+
+          print(error.toString());
+        });
       },
-      codeAutoRetrievalTimeout: (String verificationId) {},
+      verificationFailed: (FirebaseAuthException e) {
+        Get.snackbar('Alert', e.message.toString());
+        Get.back();
+      },
+      codeSent: (String verificationId, int? resendToken) {
+        isOtpSent.value = true;
+        firebaseVerificationId = verificationId;
+      },
+      codeAutoRetrievalTimeout: (String verificationId) {
+        isOtpSent.value = true;
+        firebaseVerificationId = verificationId;
+      },
     );
   }
 
-  resendOtp() async {
-    resendOTP.value = false;
-    FirebaseAuth.instance.verifyPhoneNumber(
-      phoneNumber: '+' +
-          countryCode.toString().trim() +
-          phoneController.value.text.toString().trim(),
-      verificationCompleted: (PhoneAuthCredential credential) {},
-      verificationFailed: (FirebaseAuthException e) {},
-      codeSent: (String verificationId, int? resendToken) {
-        firebaseVerificationId = verificationId;
-        isOtpSent.value = true;
-        statusMessage.value =
-            "OTP re-sent to ${countryCode}" + phoneController.value.text;
-        startResendOtpTimer();
-      },
-      codeAutoRetrievalTimeout: (String verificationId) {},
-    );
-  }
 
-  verifyOTP() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
+  Future<void> verifyOTP() async {
+    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(verificationId: firebaseVerificationId, smsCode: pinController.value.text.toString());
+
     try {
-      statusMessage.value = "Verifying... " + pinController.value.text;
-      await auth.setSettings(
-          forceRecaptchaFlow: true, appVerificationDisabledForTesting: true,);
-      PhoneAuthCredential credential = PhoneAuthProvider.credential(
-          verificationId: firebaseVerificationId,
-          smsCode: pinController.value.text.toString() );
-
-      await auth.signInWithCredential(credential).then(
-        (value) {
-          Get.off(SignUpDetailsScreen());
-        },
-      );
-    } catch (e) {
-      statusMessage.value = "Invalid  OTP";
-      statusMessageColor = Colors.red.obs;
+      await _auth.signInWithCredential(phoneAuthCredential).then((value) {
+        return Get.to(SignUpDetailsScreen());
+      });
+    } on FirebaseAuthException catch (e) {
       Get.snackbar('Alert', 'Invalid  OTP');
     }
   }
+
+
+
+  // resendOtp() async {
+  //   resendOTP.value = false;
+  //   FirebaseAuth.instance.verifyPhoneNumber(
+  //     phoneNumber: '+' +
+  //         countryCode.toString().trim() +
+  //         phoneController.value.text.toString().trim(),
+  //     verificationCompleted: (PhoneAuthCredential credential) {},
+  //     verificationFailed: (FirebaseAuthException e) {},
+  //     codeSent: (String verificationId, int? resendToken) {
+  //       firebaseVerificationId = verificationId;
+  //       isOtpSent.value = true;
+  //       statusMessage.value =
+  //           "OTP re-sent to ${countryCode}" + phoneController.value.text;
+  //       startResendOtpTimer();
+  //     },
+  //     codeAutoRetrievalTimeout: (String verificationId) {},
+  //   );
+  // }
+
+  // verifyOTP() async {
+  //   FirebaseAuth auth = FirebaseAuth.instance;
+  //   try {
+  //     statusMessage.value = "Verifying... " + pinController.value.text;
+  //     await auth.setSettings(
+  //       forceRecaptchaFlow: true,
+  //       appVerificationDisabledForTesting: true,
+  //     );
+  //     PhoneAuthCredential credential = PhoneAuthProvider.credential(
+  //         verificationId: firebaseVerificationId,
+  //         smsCode: pinController.value.text.toString());
+  //
+  //     await auth.signInWithCredential(credential).then(
+  //       (value) {
+  //         Get.off(SignUpDetailsScreen());
+  //       },
+  //     );
+  //   } catch (e) {
+  //     statusMessage.value = "Invalid  OTP";
+  //     statusMessageColor = Colors.red.obs;
+  //     Get.snackbar('Alert', 'Invalid  OTP');
+  //   }
+  // }
 
   startResendOtpTimer() async {
     resendOTP.value = false;

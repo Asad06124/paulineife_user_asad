@@ -16,10 +16,7 @@ class ItemAudioPlay extends StatefulWidget {
   _ItemAudioPlayState createState() => _ItemAudioPlayState();
 
   ItemAudioPlay({required this.url, this.isPlaying, this.disabled});
-// ItemAudioPlay({
-//   required this.audiosList,
-//   required this.index,
-// });
+
 }
 
 class _ItemAudioPlayState extends State<ItemAudioPlay> {
