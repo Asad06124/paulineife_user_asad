@@ -15,6 +15,7 @@ class HomeController extends GetxController {
   List<File> images = [];
   File? StoryImg;
   File? vid;
+
   RxBool liked = true.obs;
   var posts = Rx<List<Post>>([]);
   var stories = Rx<List<Story>>([]);
