@@ -9,6 +9,7 @@ import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/helpers/theme.dart';
 import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/layouts/layout_home.dart';
@@ -34,7 +35,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var controller = Get.put(OtpController());
+  var controller = Get.put(HomeController());
 
   PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
@@ -553,7 +554,7 @@ class MyGallery extends StatefulWidget {
 class _MyGalleryState extends State<MyGallery> {
   var galleryController = GalleryController(type: AssetType.image);
   File? clickedImage;
-  var controller = Get.put(OtpController());
+  var controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,5 @@
+import 'package:paulineife_user/models/api/PostModel.dart';
+
 class HomeResponse {
   List<int> postIds;
   Map<int, Story> stories;
@@ -10,16 +12,19 @@ class HomeResponse {
   });
 
   factory HomeResponse.fromJson(Map<String, dynamic> json) {
-    final postIds = json['post_id'] != null ? List<int>.from(json['post_id']) : <int>[];
+    final postIds =
+        json['post_id'] != null ? List<int>.from(json['post_id']) : <int>[];
 
     final storiesJson = json['stories'] ?? {};
     final stories = Map<int, Story>.from(
-      storiesJson.map((key, value) => MapEntry(int.parse(key), Story.fromJson(value))),
+      storiesJson
+          .map((key, value) => MapEntry(int.parse(key), Story.fromJson(value))),
     );
 
     final postJson = json['post'] ?? {};
     final post = Map<int, Post>.from(
-      postJson.map((key, value) => MapEntry(int.parse(key), Post.fromJson(value))),
+      postJson
+          .map((key, value) => MapEntry(int.parse(key), Post.fromJson(value))),
     );
 
     return HomeResponse(
@@ -29,11 +34,11 @@ class HomeResponse {
     );
   }
 
-  List<Post> getPostList() {
+  List<Post> get getPostList {
     return postIds.map((id) => post[id]!).toList();
   }
 
-  List<Story> getStoryList() {
+  List<Story> get getStoryList {
     return stories.values.toList();
   }
 }
@@ -73,42 +78,3 @@ class Story {
   }
 }
 
-class Post {
-  int id;
-  String caption;
-  String? image;
-  String? video;
-  DateTime timestamp;
-  bool isThread;
-  int views;
-  int user;
-  List<int> likes;
-
-  Post({
-    required this.id,
-    required this.caption,
-    this.image,
-    this.video,
-    required this.timestamp,
-    required this.isThread,
-    required this.views,
-    required this.user,
-    required this.likes,
-  });
-
-  factory Post.fromJson(Map<String, dynamic> json) {
-    final likes = json['likes'] != null ? List<int>.from(json['likes']) : <int>[];
-
-    return Post(
-      id: json['id'],
-      caption: json['caption'],
-      image: json['image'],
-      video: json['video'],
-      timestamp: DateTime.parse(json['timestamp']),
-      isThread: json['is_thread'],
-      views: json['views'],
-      user: json['user'],
-      likes: likes,
-    );
-  }
-}

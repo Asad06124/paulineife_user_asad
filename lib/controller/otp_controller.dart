@@ -6,12 +6,6 @@ import 'package:get/get.dart';
 import '../views/screens/screen_signup_details.dart';
 
 class OtpController extends GetxController {
-  RxBool isChecked = false.obs;
-  File? img;
-  List<File> images = [];
-  File? StoryImg;
-  File? vid;
-  RxBool liked = true.obs;
   var countryCode = ''.obs;
   var phoneController = TextEditingController().obs;
   var pinController = TextEditingController().obs;

@@ -44,9 +44,9 @@ class _ScreenLoginState extends State<ScreenLogin> {
           content: Text(
             data.toString(),
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w500,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
           ),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -58,9 +58,9 @@ class _ScreenLoginState extends State<ScreenLogin> {
           content: Text(
             data['errors'].toString(),
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w500,
-            ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                ),
           ),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -335,8 +335,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                       alignment: Alignment.center,
                       child: GestureDetector(
                         onTap: () {
-                          // Get.to(HomeScreen());
-                          Get.find<HomeController>().startTestApi();
+                          Get.to(HomeScreen());
                         },
                         child: Container(
                           alignment: Alignment.center,

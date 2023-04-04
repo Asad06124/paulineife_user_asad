@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
@@ -23,7 +24,7 @@ class PostImageScreen extends StatefulWidget {
 }
 
 class _PostImageScreenState extends State<PostImageScreen> {
-  var controller = Get.find<OtpController>();
+  var controller = Get.find<HomeController>();
   bool isNormal = false;
   List TextEditController = [];
 
@@ -96,7 +97,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
         ),
         backgroundColor:
             ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-        body: GetBuilder<OtpController>(builder: (controller) {
+        body: GetBuilder<HomeController>(builder: (controller) {
           return SingleChildScrollView(
             child: Column(
               children: [

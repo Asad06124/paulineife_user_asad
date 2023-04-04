@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:sizer/sizer.dart';
 
@@ -9,7 +10,7 @@ import '../../widgets/custom_buttom.dart';
 
 class ReportScreen extends StatelessWidget {
   ReportScreen({Key? key}) : super(key: key);
-  var controller = Get.put(OtpController());
+  var controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {

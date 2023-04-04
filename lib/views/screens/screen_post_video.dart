@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:helpers/helpers/transition.dart';
+import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
@@ -22,7 +23,7 @@ class PostVideoScreen extends StatefulWidget {
   PostVideoScreen({
     Key? key,
   }) : super(key: key);
-  var controller = Get.put(OtpController());
+  var controller = Get.put(HomeController());
   @override
   State<PostVideoScreen> createState() => _PostVideoScreenState();
 }

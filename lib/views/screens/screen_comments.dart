@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:sizer/sizer.dart';
 import 'package:social_media_recorder/audio_encoder_type.dart';
@@ -19,7 +20,7 @@ class CommentsScreen extends StatefulWidget {
 }
 
 class _CommentsScreenState extends State<CommentsScreen> {
-  var controller = Get.put(OtpController());
+  var controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {

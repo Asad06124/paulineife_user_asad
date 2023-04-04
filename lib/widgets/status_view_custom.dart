@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class StatusViewCustom extends StatelessWidget {
@@ -13,19 +14,21 @@ class StatusViewCustom extends StatelessWidget {
   final Color seenColor;
   final Color unSeenColor;
   final VoidCallback onTap;
+  final String type;
 
-  StatusViewCustom(
-      {this.numberOfStatus = 10,
-      this.indexOfSeenStatus = 0,
-      this.spacing = 10.0,
-      this.radius = 50,
-      this.padding = 5,
-      required this.centerImageUrl,
-      this.strokeWidth = 4,
-      this.seenColor = Colors.grey,
-      this.unSeenColor = Colors.blue,
-      required this.onTap})
-      : assert(centerImageUrl != null, "Please provide centerImageUrl");
+  StatusViewCustom({
+    this.numberOfStatus = 10,
+    this.indexOfSeenStatus = 0,
+    this.spacing = 10.0,
+    this.radius = 50,
+    this.padding = 5,
+    required this.centerImageUrl,
+    this.strokeWidth = 4,
+    this.seenColor = Colors.grey,
+    this.unSeenColor = Colors.blue,
+    required this.onTap,
+    required this.type,
+  }) : assert(centerImageUrl != null, "Please provide centerImageUrl");
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +53,11 @@ class StatusViewCustom extends StatelessWidget {
             ),
             CircleAvatar(
               radius: radius - padding,
-              backgroundImage: AssetImage(centerImageUrl),
+              child: (type == 'story')
+                  ? CachedNetworkImage(
+                      imageUrl: centerImageUrl,
+                    )
+                  : Image.asset(centerImageUrl),
             ),
           ],
         ),
@@ -77,10 +84,23 @@ class Arc extends CustomPainter {
 
   double doubleToAngle(double angle) => angle * pi / 180.0;
 
-  void drawArcWithRadius(Canvas canvas, Offset center, double radius, double angle, Paint seenPaint, Paint unSeenPaint, double start, double spacing,
-      int number, int alreadyWatch) {
+  void drawArcWithRadius(
+      Canvas canvas,
+      Offset center,
+      double radius,
+      double angle,
+      Paint seenPaint,
+      Paint unSeenPaint,
+      double start,
+      double spacing,
+      int number,
+      int alreadyWatch) {
     for (var i = 0; i < number; i++) {
-      canvas.drawArc(Rect.fromCircle(center: center, radius: radius), doubleToAngle((start + ((angle + spacing) * i))), doubleToAngle(angle), false,
+      canvas.drawArc(
+          Rect.fromCircle(center: center, radius: radius),
+          doubleToAngle((start + ((angle + spacing) * i))),
+          doubleToAngle(angle),
+          false,
           alreadyWatch - 1 >= i ? seenPaint : unSeenPaint);
     }
   }
@@ -104,7 +124,8 @@ class Arc extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..color = unSeenColor;
 
-    drawArcWithRadius(canvas, center, radius, angle, seenPaint, unSeenPaint, startingAngle, spacing, numberOfArc, alreadyWatch);
+    drawArcWithRadius(canvas, center, radius, angle, seenPaint, unSeenPaint,
+        startingAngle, spacing, numberOfArc, alreadyWatch);
   }
 
   @override
