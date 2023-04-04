@@ -7,6 +7,7 @@ import 'package:paulineife_user/widgets/status_view_custom.dart';
 import 'package:sizer/sizer.dart';
 
 import '../constant/constant.dart';
+import '../controller/home_controller.dart';
 import '../helpers/theme_service.dart';
 
 class CameraCard extends StatefulWidget {
@@ -17,108 +18,112 @@ class CameraCard extends StatefulWidget {
 }
 
 class _CameraCardState extends State<CameraCard> {
-  File? storyImg;
+  var controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(
-            top: 1.sp,
-            bottom: 2.sp,
-            left: 4.sp,
-            right: 4.sp,
-          ),
-          child: StatusViewCustom(
-            onTap: () {
-              Get.bottomSheet(
-                Container(
-                  height: 18.h,
-                  child: Column(
-                    children: [
-                      ListTile(
-                        onTap: () {
-                          Get.back();
-                          getFromCameraImg();
-                        },
-                        leading: Icon(
-                          Icons.camera_alt_outlined,
-                          color: Color(
-                            0xff97A1B4,
-                          ),
-                          size: 20.sp,
-                        ),
-                        title: Text(
-                          'Camera',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+    return Obx(() {
+      return Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              top: 1.sp,
+              bottom: 2.sp,
+              left: 4.sp,
+              right: 4.sp,
+            ),
+            child: StatusViewCustom(
+              onTap: () {
+                Get.bottomSheet(
+                  Container(
+                    height: 18.h,
+                    child: Column(
+                      children: [
+                        ListTile(
+                          onTap: () {
+                            Get.back();
+                            controller.update();
+                            getFromCameraImg();
+                          },
+                          leading: Icon(
+                            Icons.camera_alt_outlined,
                             color: Color(
-                              0xff000000,
+                              0xff97A1B4,
+                            ),
+                            size: 20.sp,
+                          ),
+                          title: Text(
+                            'Camera',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Color(
+                                0xff000000,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Divider(
-                        color: Color(0xffE2E4EB),
-                        thickness: 2.sp,
-                      ),
-                      ListTile(
-                        onTap: () {
-                          Get.back();
-                          getFromGalleryImg();
-                        },
-                        leading: Icon(
-                          Icons.photo,
-                          color: Color(
-                            0xff97A1B4,
-                          ),
-                          size: 20.sp,
+                        Divider(
+                          color: Color(0xffE2E4EB),
+                          thickness: 2.sp,
                         ),
-                        title: Text(
-                          'Gallery',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
+                        ListTile(
+                          onTap: () {
+                            Get.back();
+                            controller.update();
+                            getFromGalleryImg();
+                          },
+                          leading: Icon(
+                            Icons.photo,
                             color: Color(
-                              0xff000000,
+                              0xff97A1B4,
+                            ),
+                            size: 20.sp,
+                          ),
+                          title: Text(
+                            'Gallery',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Color(
+                                0xff000000,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                backgroundColor: ThemeService.isSavedDarkMode()
-                    ? Colors.black
-                    : Colors.white,
-                elevation: 0,
-              );
-            },
-            radius: 25.sp,
-            type: 'camera',
-            spacing: 8.sp,
-            strokeWidth: 2,
-            indexOfSeenStatus: 1,
-            numberOfStatus: 1,
-            padding: 4,
-            centerImageUrl: 'assets/images/camera.png',
-            seenColor: Color(0xff3AA0FF),
-            unSeenColor: Colors.red,
+                  backgroundColor: ThemeService.isSavedDarkMode()
+                      ? Colors.black
+                      : Colors.white,
+                  elevation: 0,
+                );
+              },
+              radius: 25.sp,
+              type: 'camera',
+              spacing: 8.sp,
+              strokeWidth: 2,
+              indexOfSeenStatus: 1,
+              numberOfStatus: 1,
+              padding: 4,
+              centerImageUrl: 'assets/images/camera.png',
+              seenColor: Color(0xff3AA0FF),
+              unSeenColor: Colors.red,
+            ),
           ),
-        ),
-        Text(
-          'Your Story',
-          style: TextStyle(
-              color:
-                  ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-              fontSize: font12,
-              fontWeight: FontWeight5,
-              fontFamily: fontFamilyD),
-        )
-      ],
-    );
+          Text(
+            'Your Story',
+            style: TextStyle(
+                color:
+                ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                fontSize: font12,
+                fontWeight: FontWeight5,
+                fontFamily: fontFamilyD),
+          )
+        ],
+      );
+    });
   }
 
   void getFromCameraImg() async {
@@ -129,7 +134,8 @@ class _CameraCardState extends State<CameraCard> {
     );
     if (pickedFile != null) {
       setState(() {
-        storyImg = File(pickedFile.path);
+        controller.StoryImg = File(pickedFile.path);
+        controller.update();
       });
     }
   }
@@ -142,7 +148,8 @@ class _CameraCardState extends State<CameraCard> {
     );
     if (pickedFile != null) {
       setState(() {
-        storyImg = File(pickedFile.path);
+        controller.StoryImg = File(pickedFile.path);
+        controller.update();
       });
     }
   }

@@ -26,7 +26,9 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    var size = MediaQuery
+        .of(context)
+        .size;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -65,163 +67,172 @@ class _HomeLayoutState extends State<HomeLayout> {
           ],
           elevation: 0,
           backgroundColor:
-              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         ),
         backgroundColor:
-            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-        body: Padding(
-          padding: EdgeInsets.all(10.sp),
-          child: Column(
-            children: [
-              Expanded(
-                  child: Container(
-                width: size.width / 1.08,
-                child: ListView.builder(
-                  physics: BouncingScrollPhysics(),
-                  itemCount: controller.stories.value.length + 1,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int index) {
-                    if (index == 0) {
-                      return CameraCard();
-                    } else {
-                      Story story = controller.stories.value[index - 1];
-                      return ProfileCard(
-                        story: story,
-                      );
-                    }
-                  },
-                ),
-              )),
-              SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(StoryViewScreen());
-                      },
-                      child: Obx(() {
-                        ImageProvider<Object>? imageProvider;
-                        if (controller.posts.value.first != null &&
-                            controller.posts.value.first.image
-                                is ImageProvider) {
-                          imageProvider = controller.posts.value.first.image
-                              as ImageProvider<Object>?;
-                        } else {
-                          imageProvider = AssetImage('assets/images/post.png');
-                        }
-                        return Container(
-                          height: size.height / 1.8 + 15,
-                          alignment: Alignment.bottomLeft,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.sp),
-                            image: DecorationImage(
-                              image: imageProvider!,
-                              fit: BoxFit.cover,
+        ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        body: Obx(() {
+          return Padding(
+            padding: EdgeInsets.all(10.sp),
+            child: Column(
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      controller.StoryImg == null ? CameraCard() : SizedBox(),
+                      Expanded(
+                          child: Container(
+                            width: size.width / 1.08,
+                            child: ListView.builder(
+                              physics: BouncingScrollPhysics(),
+                              itemCount: controller.stories.value.length,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (BuildContext context, int index) {
+                                Story story = controller.stories.value[index -
+                                    1];
+                                return ProfileCard(
+                                  story: story,
+                                );
+                              },
                             ),
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              Get.to(ProfileScreen());
-                            },
-                            child: Container(
-                              color: Colors.transparent,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      height: 40.sp,
-                                      width: 40.sp,
-                                      padding: EdgeInsets.all(2.sp),
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Colors.white,
-                                          )),
-                                      child: CircleAvatar(
-                                        backgroundImage:
-                                            AssetImage('assets/images/12.png'),
+                          )),
+                    ],
+                  ),
+                ),
+                SingleChildScrollView(
+                  physics: BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(StoryViewScreen());
+                        },
+                        child: Obx(() {
+                          ImageProvider<Object>? imageProvider;
+                          if (controller.posts.value.first != null &&
+                              controller.posts.value.first.image
+                              is ImageProvider) {
+                            imageProvider = controller.posts.value.first.image
+                            as ImageProvider<Object>?;
+                          } else {
+                            imageProvider =
+                                AssetImage('assets/images/post.png');
+                          }
+                          return Container(
+                            height: size.height / 1.8 + 15,
+                            alignment: Alignment.bottomLeft,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.sp),
+                              image: DecorationImage(
+                                image: imageProvider!,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(ProfileScreen());
+                              },
+                              child: Container(
+                                color: Colors.transparent,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Container(
+                                        height: 40.sp,
+                                        width: 40.sp,
+                                        padding: EdgeInsets.all(2.sp),
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                              color:
+                                              ThemeService.isSavedDarkMode()
+                                                  ? Colors.white
+                                                  : Colors.white,
+                                            )),
+                                        child: CircleAvatar(
+                                          backgroundImage:
+                                          AssetImage('assets/images/12.png'),
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      width: 10.sp,
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Asad Ullah',
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w700,
-                                            color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Colors.white,
+                                      SizedBox(
+                                        width: 10.sp,
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment
+                                            .end,
+                                        crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Asad Ullah',
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                              color:
+                                              ThemeService.isSavedDarkMode()
+                                                  ? Colors.white
+                                                  : Colors.white,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: 2.sp,
-                                        ),
-                                        Text(
-                                          '2 hours ago',
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w500,
-                                            color:
-                                                ThemeService.isSavedDarkMode()
-                                                    ? Colors.white
-                                                    : Colors.white,
+                                          SizedBox(
+                                            height: 2.sp,
                                           ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
+                                          Text(
+                                            '2 hours ago',
+                                            textAlign: TextAlign.start,
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w500,
+                                              color:
+                                              ThemeService.isSavedDarkMode()
+                                                  ? Colors.white
+                                                  : Colors.white,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      }),
-                    ),
-                    SizedBox(
-                      height: size.height / 50,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            controller.fetchRefreshPost();
-                          },
-                          child: SvgPicture.asset('assets/images/refresh.svg'),
-                        ),
-                        GestureDetector(
+                          );
+                        }),
+                      ),
+                      SizedBox(
+                        height: size.height / 50,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
                             onTap: () {
-                              controller.fetchRandomPost();
+                              controller.fetchRefreshPost();
                             },
-                            child:
-                                SvgPicture.asset('assets/images/repeat.svg')),
-                      ],
-                    ),
-                  ],
+                            child: SvgPicture.asset(
+                                'assets/images/refresh.svg'),
+                          ),
+                          GestureDetector(
+                              onTap: () {
+                                controller.fetchRandomPost();
+                              },
+                              child:
+                              SvgPicture.asset('assets/images/repeat.svg')),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
+              ],
+            ),
+          );
+        }),
       ),
     );
   }

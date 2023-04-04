@@ -349,7 +349,6 @@ class _ScreeSignUpWithLayoutsState extends State<ScreeSignUpWithLayouts> {
                         width: 115.sp,
                         color: Color(0xff2A70C8),
                         onPressed: () {
-                          Get.to(SignUpDetailsScreen());
                           if (formKey1.currentState!.validate()) {
                             otpController.verifyOTP();
                           }
