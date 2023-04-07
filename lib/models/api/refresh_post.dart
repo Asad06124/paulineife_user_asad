@@ -34,6 +34,15 @@ class RefreshPost {
   }
 
   List<Post> get getPost {
-    return ids.map((e) => data[e]!).toList();
+    List<Post> posts = [];
+    ids.forEach((id) {
+      Post? post = data[id.toString()];
+      if (post != null) {
+        posts.add(post);
+      }
+    });
+    print(posts);
+    return posts;
   }
+
 }

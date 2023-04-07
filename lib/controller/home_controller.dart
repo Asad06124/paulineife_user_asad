@@ -8,6 +8,7 @@ import 'package:paulineife_user/models/api/random_post.dart';
 
 import '../models/api/PostModel.dart';
 import '../models/api/refresh_post.dart';
+import '../models/post.dart';
 
 class HomeController extends GetxController {
   RxBool isChecked = false.obs;
@@ -61,6 +62,38 @@ class HomeController extends GetxController {
     );
     var obj = RandomPost.fromJson(jsonDecode(response.body));
     posts.value = obj.getPost;
-    print(posts.value.first.image);
+  }
+
+
+
+  Future<void> uploadPosts(List<ThreadPost> posts) async {
+    var request = http.MultipartRequest('POST', Uri.parse("http://rollupp.co/post/uploadthread"));
+
+
+    for (var post in posts) {
+      request.fields['post[${posts.indexOf(post)}][caption]'] = post.caption;
+
+      var imageFile = await post.getImageFile();
+      if (imageFile != null) {
+        request.files.add(imageFile);
+      }
+
+      var videoFile = await post.getVideoFile();
+      if (videoFile != null) {
+        request.files.add(videoFile);
+      }
+    }
+
+    request.headers.addAll({
+      "Authorization": "Bearer "
+    });
+
+    var response = await request.send();
+
+    if (response.statusCode == 200) {
+      print('Posts uploaded successfully.');
+    } else {
+      print('Failed to upload posts.');
+    }
   }
 }

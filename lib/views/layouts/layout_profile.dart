@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/controller/profile_controller.dart';
 import 'package:paulineife_user/views/screens/screen_edit_profile.dart';
 import 'package:paulineife_user/views/screens/screen_following.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
@@ -28,24 +30,7 @@ class ProfileLayout extends StatefulWidget {
 }
 
 class _ProfileLayoutState extends State<ProfileLayout> {
-  ProfileResponse? profileResponse;
-
-  Future<ProfileResponse> fetchProfile() async {
-    final response =
-        await http.get(Uri.parse('https://rollupp.co/api/profile/testing'));
-
-    if (response.statusCode == 200) {
-      var data = jsonDecode(response.body.toString());
-      profileResponse = ProfileResponse(
-          profile: data['profile'],
-          followed: data['followed'],
-          ids: data['ids'],
-          posts: data['post']);
-      return profileResponse!;
-    } else {
-      return profileResponse!;
-    }
-  }
+  var controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +42,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
           backgroundColor:
               ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text(
-            'Asad',
+            "Profile",
             style: getAppbarTextTheme(),
           ),
           centerTitle: true,
@@ -251,7 +236,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                 GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: 16,
+                  itemCount: controller.posts.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
                       crossAxisSpacing: 2.sp,
@@ -266,7 +251,8 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                         // padding: EdgeInsets.only(bottom: 5),
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage('assets/images/12.png'),
+                              image: CachedNetworkImageProvider(
+                                  controller.posts[index].image ?? ""),
                               fit: BoxFit.cover),
                         ),
                         child: Stack(

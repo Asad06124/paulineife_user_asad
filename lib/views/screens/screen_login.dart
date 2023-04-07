@@ -8,6 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:paulineife_user/controller/home_controller.dart';
+import 'package:paulineife_user/controller/login_controller.dart';
 import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_forget_password_with_layouts.dart';
@@ -28,46 +29,8 @@ class _ScreenLoginState extends State<ScreenLogin> {
   bool isPasswordField = false;
   final _formKey = GlobalKey<FormState>();
 
-  var controller = Get.put(OtpController());
+  var controller = Get.put(LoginController());
   late TapGestureRecognizer _longPressRecognizer;
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  void login(String phone, password) async {
-    try {
-      http.Response response = await http.post(
-          Uri.parse('https://rollupp.co/api/login/'),
-          body: {'phone': phone, 'password': password});
-      if (response.statusCode == 200) {
-        var data = jsonDecode(response.body.toString());
-        var snackBar = SnackBar(
-          content: Text(
-            data.toString(),
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
-          ),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        Get.to(HomeScreen());
-      } else {
-        var data = jsonDecode(response.body.toString());
-        print(data['errors']);
-        var snackBar = SnackBar(
-          content: Text(
-            data['errors'].toString(),
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                ),
-          ),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackBar);
-        Get.to(HomeScreen());
-      }
-    } catch (e) {}
-  }
 
   @override
   void initState() {
@@ -127,7 +90,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                           Padding(
                             padding: EdgeInsets.only(left: 5.0, top: 2),
                             child: Text(
-                              'Phone / Username / Email',
+                              'Phone',
                               style: TextStyle(
                                   color: Color(0xff79869F),
                                   fontSize: 12,
@@ -140,7 +103,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             child: Container(
                               height: WHeight.height / 20,
                               child: TextFormField(
-                                controller: emailController,
+                                controller: controller.phoneController.value,
                                 style: TextStyle(
                                   color: ThemeService.isSavedDarkMode()
                                       ? Colors.white
@@ -207,7 +170,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                           Container(
                             height: WHeight.height / 18,
                             child: TextFormField(
-                              controller: passwordController,
+                              controller: controller.passwordController.value,
                               style: TextStyle(
                                 color: ThemeService.isSavedDarkMode()
                                     ? Colors.white
@@ -315,7 +278,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                             : Colors.white,
                       ),
                       onPressed: () {
-                        login(emailController.text, passwordController.text);
+                        controller.login();
                       },
                     ),
                     Text(

@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:paulineife_user/constant/constant.dart';
+
 class ProfileResponse {
   final Profile profile;
   final bool followed;
@@ -62,7 +64,6 @@ class ProfileResponse {
       }
     });
 
-
     return ProfileResponse(
       profile: profile,
       followed: json['followed'],
@@ -73,17 +74,14 @@ class ProfileResponse {
 
   List<PostOrThread> getPostOrThreadList() {
     final postOrThreadList = <PostOrThread>[];
-    for (final postOrThreadList in posts.values) {
-      postOrThreadList.forEach((postOrThread) {
+    for (final postList in posts.values) {
+      postList.forEach((postOrThread) {
         postOrThreadList.add(postOrThread);
       });
     }
     return postOrThreadList;
   }
 }
-
-
-
 
 class Profile {
   final int id;
@@ -121,7 +119,7 @@ class Profile {
       username: json['username'],
       firstname: json['firstname'],
       lastname: json['lastname'],
-      image: json['image'],
+      image: "$domainProtocol$domainUrl/" + json['image'].toString(),
       numberOfFollowers: json['number_of_followers'],
       numberOfFollowing: json['number_of_following'],
       phone: json['phone'],
@@ -150,9 +148,6 @@ class Profile {
   }
 }
 
-
-
-
 class Thread {
   final int id;
   final String caption;
@@ -166,8 +161,6 @@ class Thread {
     this.postId,
   });
 }
-
-
 
 class PostOrThread {
   final int id;
@@ -198,7 +191,7 @@ class PostOrThread {
     return PostOrThread(
       id: json['id'],
       caption: json['caption'],
-      image: json['image'],
+      image: "$domainProtocol$domainUrl"+json['image'].toString(),
       video: json['video'],
       timestamp: json['timestamp'],
       isThread: json['is_thread'],
@@ -229,5 +222,3 @@ class PostOrThread {
     return data;
   }
 }
-
-

@@ -74,7 +74,12 @@ class _PostImageScreenState extends State<PostImageScreen> {
               text: 'Post',
               textStyle: TextStyle(color: Colors.white),
               onPressed: () {
-                Get.to(HomeScreen());
+                // Get.to(HomeScreen());
+                if (isNormal){
+                  
+                } else {
+                  Get.find<HomeController>().uploadPosts("url", posts);
+                }
               },
               color: Color(0xff2A70C8),
               height: 35.sp,
@@ -97,7 +102,9 @@ class _PostImageScreenState extends State<PostImageScreen> {
         ),
         backgroundColor:
             ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-        body: GetBuilder<HomeController>(builder: (controller) {
+        body: GetBuilder<HomeController>(
+            init: Get.find<HomeController>(),
+            builder: (controller) {
           return SingleChildScrollView(
             child: Column(
               children: [
@@ -177,8 +184,8 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                       width: Get.width,
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
-                                            image: FileImage(
-                                                controller.images[a]),
+                                            image:
+                                                FileImage(controller.images[a]),
                                             fit: BoxFit.cover),
                                       ),
                                       child: Column(
@@ -192,18 +199,18 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                                   onTap: () {
                                                     setState(() {});
                                                     if (a ==
-                                                        controller.images
-                                                                .length -
+                                                        controller
+                                                                .images.length -
                                                             1) {
-                                                      if (controller.images
-                                                              .length >=
+                                                      if (controller
+                                                              .images.length >=
                                                           3) {
                                                         controller.images
                                                             .removeAt(a);
                                                         a = a - 2;
                                                       }
-                                                      if (controller.images
-                                                              .length ==
+                                                      if (controller
+                                                              .images.length ==
                                                           2) {
                                                         controller.images
                                                             .removeAt(1);
@@ -248,17 +255,16 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                         controller: TextEditController[a],
                                         hint: 'Add a caption',
                                         textStyle: TextStyle(
-                                          color:
-                                              ThemeService.isSavedDarkMode()
-                                                  ? Colors.white
-                                                  : Colors.black,
+                                          color: ThemeService.isSavedDarkMode()
+                                              ? Colors.white
+                                              : Colors.black,
                                         ),
-                                        hintStyle: TextStyle(
-                                            color: Color(0xff666666)),
+                                        hintStyle:
+                                            TextStyle(color: Color(0xff666666)),
                                         maxLines: 5,
                                         minLines: 1,
-                                        contentPadding: EdgeInsets.only(
-                                            left: 5, right: 5),
+                                        contentPadding:
+                                            EdgeInsets.only(left: 5, right: 5),
                                       ),
                                     ),
                                   ],
@@ -293,18 +299,14 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                               if (a ==
                                                   controller.images.length -
                                                       1) {
-                                                if (controller
-                                                        .images.length >=
+                                                if (controller.images.length >=
                                                     3) {
-                                                  controller.images
-                                                      .removeAt(a);
+                                                  controller.images.removeAt(a);
                                                   a = a - 2;
                                                 }
-                                                if (controller
-                                                        .images.length ==
+                                                if (controller.images.length ==
                                                     2) {
-                                                  controller.images
-                                                      .removeAt(1);
+                                                  controller.images.removeAt(1);
                                                   a = 0;
                                                 }
                                               } else if (controller
@@ -383,8 +385,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                     height: 70.sp,
                                     width: 50.sp,
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(5.sp),
+                                      borderRadius: BorderRadius.circular(5.sp),
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Colors.black,
@@ -424,8 +425,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
                                     height: 70.sp,
                                     width: 50.sp,
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(5.sp),
+                                      borderRadius: BorderRadius.circular(5.sp),
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
                                           : Colors.black,

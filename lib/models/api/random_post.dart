@@ -4,7 +4,7 @@ import 'PostModel.dart';
 
 class RandomPost {
   List<int> ids;
-  Map<String, Post> data;
+  Map<String, dynamic> data;
 
   RandomPost({
     required this.ids,
@@ -13,9 +13,17 @@ class RandomPost {
 
   factory RandomPost.fromJson(Map<String, dynamic> json) {
     Map<String, dynamic> dataJson = json['data'];
-    Map<String, Post> data = {};
+    Map<String, dynamic> data = {};
     dataJson.forEach((key, value) {
-      data[key] = Post.fromJson(value);
+      if (value is List<dynamic>) {
+        List<Post> posts = [];
+        value.forEach((element) {
+          posts.add(Post.fromJson(element));
+        });
+        data[key] = posts;
+      } else {
+        data[key] = Post.fromJson(value);
+      }
     });
     return RandomPost(
       ids: List<int>.from(json['ids']),
@@ -27,13 +35,26 @@ class RandomPost {
     RandomPost apiResponse = RandomPost.fromJson(jsonDecode(jsonString));
     List<Post> posts = [];
     apiResponse.ids.forEach((id) {
-      Post post = apiResponse.data[id.toString()]!;
-      posts.add(post);
+      var data = apiResponse.data[id.toString()];
+      if (data is Post) {
+        posts.add(data);
+      } else if (data is List<Post>) {
+        posts.addAll(data);
+      }
     });
     return posts;
   }
 
   List<Post> get getPost {
-    return ids.map((e) => data[e]!).toList();
+    List<Post> posts = [];
+    ids.forEach((id) {
+      var data = this.data[id.toString()];
+      if (data is Post) {
+        posts.add(data);
+      } else if (data is List<Post>) {
+        posts.addAll(data);
+      }
+    });
+    return posts;
   }
 }
