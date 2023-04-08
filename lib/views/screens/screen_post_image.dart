@@ -78,7 +78,7 @@ class _PostImageScreenState extends State<PostImageScreen> {
                 if (isNormal){
                   
                 } else {
-                  Get.find<HomeController>().uploadPosts("url", posts);
+
                 }
               },
               color: Color(0xff2A70C8),
