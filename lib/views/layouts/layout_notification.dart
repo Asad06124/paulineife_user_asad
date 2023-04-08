@@ -78,7 +78,7 @@ class NotificationLayouts extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                              color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                           ),
                         ),
                         trailing: Icon(

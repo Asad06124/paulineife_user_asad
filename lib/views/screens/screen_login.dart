@@ -35,7 +35,8 @@ class _ScreenLoginState extends State<ScreenLogin> {
   @override
   void initState() {
     super.initState();
-    _longPressRecognizer = TapGestureRecognizer()..onTap = _handlePress;
+    _longPressRecognizer = TapGestureRecognizer()
+      ..onTap = _handlePress;
   }
 
   @override
@@ -52,11 +53,13 @@ class _ScreenLoginState extends State<ScreenLogin> {
 
   @override
   Widget build(BuildContext context) {
-    var WHeight = MediaQuery.of(context).size;
+    var WHeight = MediaQuery
+        .of(context)
+        .size;
     return SafeArea(
       child: Scaffold(
         backgroundColor:
-            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: Form(
           key: _formKey,
           child: SingleChildScrollView(
@@ -211,7 +214,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                                     fontSize: 30.sp,
                                     fontWeight: FontWeight.w400),
                                 contentPadding:
-                                    EdgeInsets.only(left: 5, bottom: 5),
+                                EdgeInsets.only(left: 5, bottom: 5),
                               ),
 
                               // decoration: InputDecoration(
@@ -258,29 +261,31 @@ class _ScreenLoginState extends State<ScreenLogin> {
                         ),
                       ),
                     ),
-                    CustomButton1(
-                      margin: EdgeInsets.symmetric(
-                        horizontal: 0,
-                        vertical: 20,
-                      ),
-                      text: 'Sign in',
-                      color: Color(0xff2A70C8),
-                      width: Get.width,
-                      height: WHeight.height / 15,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(25.sp)),
-                      ),
-                      textStyle: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: ThemeService.isSavedDarkMode()
-                            ? Colors.white
-                            : Colors.white,
-                      ),
-                      onPressed: () {
-                        controller.login();
-                      },
-                    ),
+                    Obx(() {
+                      return CustomButton1(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 0,
+                          vertical: 20,
+                        ),
+                        text: controller.loginLoading.isTrue ? "Signing In" : 'Sign in',
+                        color: Color(0xff2A70C8),
+                        width: Get.width,
+                        height: WHeight.height / 15,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(25.sp)),
+                        ),
+                        textStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: ThemeService.isSavedDarkMode()
+                              ? Colors.white
+                              : Colors.white,
+                        ),
+                        onPressed: controller.loginLoading.isTrue ? null : () {
+                          controller.login();
+                        },
+                      );
+                    }),
                     Text(
                       'Or Sign in with',
                       style: TextStyle(

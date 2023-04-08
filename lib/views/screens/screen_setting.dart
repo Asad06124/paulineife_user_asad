@@ -1,7 +1,9 @@
+import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
+import 'package:paulineife_user/views/screens/screen_login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
@@ -29,7 +31,10 @@ class _SettingScreenState extends State<SettingScreen> {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,)),
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+              )),
           centerTitle: true,
         ),
         body: Column(
@@ -91,6 +96,20 @@ class _SettingScreenState extends State<SettingScreen> {
                   Icons.logout,
                   color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                 ),
+                onTap: () {
+                  showIosDialog(
+                    context: context,
+                    title: "Logout",
+                    message: "Are you sure to logout?",
+                    onConfirm: () async {
+                      var prefs = await SharedPreferences.getInstance();
+                      prefs.clear();
+                      Get.offAll(ScreenLogin());
+                    },
+                    confirmText: "Logout",
+                    cancelText: "Dismiss"
+                  );
+                },
                 title: "Logout",
                 trailing: Icon(
                   Icons.arrow_forward_ios,

@@ -19,23 +19,25 @@ class LoginController extends GetxController {
   var passwordController = TextEditingController().obs;
   BehaviorSubject<LoginResponse> loginResponse =
       BehaviorSubject<LoginResponse>();
+  RxBool loginLoading = false.obs;
 
   Future<void> login() async {
     String phone = phoneController.value.text.toString();
     String password = passwordController.value.text.toString();
+    loginLoading.value = true;
     var response = await http.post(Uri.parse('https://rollupp.co/api/login/'),
         body: {'phone': phone, 'password': password});
     if (response.statusCode == 200) {
       var data = LoginResponse.fromJson(jsonDecode(response.body));
-
       if(data.message == 'Login Success'){
         final prefs = await SharedPreferences.getInstance();
         final key = 'login_response_key';
         final value = jsonEncode(data.toJson());
         prefs.setString(key, value);
       }
-
+      Get.offAll(HomeScreen());
     }
+    loginLoading.value = false;
   }
 
   static Future<String?> getLoginResponse() async {

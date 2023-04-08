@@ -1,38 +1,52 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/models/api/user.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:paulineife_user/models/api/user_search_model.dart';
+
+import '../models/Login.dart';
+import 'login_controller.dart';
 
 class UserSearchController extends GetxController {
-  RxList<User> users = RxList<User>([]);
-  RxList<User> filteredUsers = RxList<User>([]);
+  RxList<SearchUser> users = RxList<SearchUser>([]);
+  RxList<SearchUser> filteredUsers = RxList<SearchUser>([]);
+  var textController = TextEditingController().obs;
+  var searchLoading = false.obs;
+  LoginResponse? loginData;
 
   @override
   void onInit() {
-    fetchUsers();
+
     super.onInit();
   }
 
-  void fetchUsers() async {
+  void fetchUsers(String query) async {
+    if (query.isEmpty){
+      filteredUsers.clear();
+      return;
+    }
+    searchLoading.value = true;
+    if (loginData == null) {
+      await getloginResponse();
+    }
     var response = await http.get(
         Uri.parse(
-          "https://rollupp.co/api/search/test",
+          "https://rollupp.co/api/search/$query",
         ),
         headers: {
-          "Authorization": "Bearer ",
+          "Authorization": "Bearer ${loginData?.token?.accessToken}",
         });
     var data = jsonDecode(response.body);
-    List<User> userList = List<User>.from(data.map((x) => User.fromMap(x)));
+    List<SearchUser> userList = List<SearchUser>.from(data.map((x) => SearchUser.fromMap(x)));
     users.value = userList;
     filteredUsers.value = userList;
+    searchLoading.value = false;
   }
 
-  static Future<String?> getLoginResponse() async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'login_response_key';
-    final value = prefs.getString(key);
-    return value;
+  Future<void> getloginResponse() async {
+    var loginResponse = await LoginController.getLoginResponse();
+    print("loginResponse: $loginResponse");
+    loginData = LoginResponse.fromJson(jsonDecode(loginResponse ?? ""));
   }
 }

@@ -17,6 +17,7 @@ var FontWeight7 = FontWeight.w700;
 var FontWeight8 = FontWeight.w800;
 const domainProtocol = "https://";
 const domainUrl = "rollupp.co";
+const domainUrlWithProtocol = "$domainProtocol$domainUrl";
 const baseUrl = "$domainProtocol$domainUrl/api";
 const registerUserApi = "$baseUrl/register";
 const loginUserApi = "$baseUrl/login";

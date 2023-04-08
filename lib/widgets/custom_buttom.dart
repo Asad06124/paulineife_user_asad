@@ -10,7 +10,7 @@ class CustomButton1 extends StatefulWidget {
   final double? height;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final VoidCallback? onLongPressed;
   final TextStyle? textStyle;
   final TextAlign? textAlign;

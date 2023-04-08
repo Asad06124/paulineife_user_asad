@@ -3,9 +3,11 @@ import 'dart:io';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:paulineife_user/controller/login_controller.dart';
 import 'package:paulineife_user/models/api/HomeResponse.dart';
 import 'package:paulineife_user/models/api/random_post.dart';
 
+import '../models/Login.dart';
 import '../models/api/PostModel.dart';
 import '../models/api/refresh_post.dart';
 import '../models/post.dart';
@@ -20,6 +22,8 @@ class HomeController extends GetxController {
   RxBool liked = true.obs;
   var posts = Rx<List<Post>>([]);
   var stories = Rx<List<Story>>([]);
+  var uploadPostsLoading = false.obs;
+
 
   @override
   void onInit() {
@@ -28,24 +32,35 @@ class HomeController extends GetxController {
   }
 
   void fetchHomeData() async {
+
+    var loginResponse = await LoginController.getLoginResponse();
+    print("loginResponse: $loginResponse");
+    var data = LoginResponse.fromJson(jsonDecode(loginResponse??""));
+
     final response = await http.get(
       Uri.parse("https://rollupp.co/api/home/?page=1"),
       headers: {
         "Authorization":
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYxNTk5LCJpYXQiOjE2NzI3NjE1OTksImp0aSI6ImRkMmJkNWJiMmRlMzRjZjdhYjRlZGQ1YmQxZmVkMmRmIiwidXNlcl9pZCI6MTJ9.dKB5IwpXWOQpRe0WTZPZ_jAI241KbELuj50epbv0PSU"
+            "Bearer ${data.token?.accessToken}"
       },
     );
+    print("fetchHomeData: ${response.body}");
     var obj = HomeResponse.fromJson(jsonDecode(response.body));
     posts.value = obj.getPostList;
     stories.value = obj.getStoryList;
   }
 
   void fetchRefreshPost() async {
+
+
+    var loginResponse = await LoginController.getLoginResponse();
+    var data = LoginResponse.fromJson(jsonDecode(loginResponse??""));
+
     final response = await http.get(
       Uri.parse("https://rollupp.co/api/refereshpost/"),
       headers: {
         "Authorization":
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYxNTk5LCJpYXQiOjE2NzI3NjE1OTksImp0aSI6ImRkMmJkNWJiMmRlMzRjZjdhYjRlZGQ1YmQxZmVkMmRmIiwidXNlcl9pZCI6MTJ9.dKB5IwpXWOQpRe0WTZPZ_jAI241KbELuj50epbv0PSU"
+            "Bearer ${data.token?.accessToken}"
       },
     );
     var obj = RefreshPost.fromJson(jsonDecode(response.body));
@@ -53,13 +68,20 @@ class HomeController extends GetxController {
   }
 
   void fetchRandomPost() async {
+
+
+    var loginResponse = await LoginController.getLoginResponse();
+    var data = LoginResponse.fromJson(jsonDecode(loginResponse??""));
+
     final response = await http.get(
-      Uri.parse('https://rollupp.co/api/randompost/?page=2'),
+      Uri.parse('https://rollupp.co/api/randompost/?page=1'),
       headers: {
         "Authorization":
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMyNzYxNTk5LCJpYXQiOjE2NzI3NjE1OTksImp0aSI6ImRkMmJkNWJiMmRlMzRjZjdhYjRlZGQ1YmQxZmVkMmRmIiwidXNlcl9pZCI6MTJ9.dKB5IwpXWOQpRe0WTZPZ_jAI241KbELuj50epbv0PSU"
+            "Bearer ${data.token?.accessToken}"
       },
     );
+    print("fetchRandomPost: ${response.body}");
+
     var obj = RandomPost.fromJson(jsonDecode(response.body));
     posts.value = obj.getPost;
   }
@@ -67,8 +89,12 @@ class HomeController extends GetxController {
 
 
   Future<void> uploadPosts(List<ThreadPost> posts) async {
+    uploadPostsLoading.value = true;
+
     var request = http.MultipartRequest('POST', Uri.parse("http://rollupp.co/post/uploadthread"));
 
+    var loginResponse = await LoginController.getLoginResponse();
+    var data = LoginResponse.fromJson(jsonDecode(loginResponse??""));
 
     for (var post in posts) {
       request.fields['post[${posts.indexOf(post)}][caption]'] = post.caption;
@@ -85,10 +111,15 @@ class HomeController extends GetxController {
     }
 
     request.headers.addAll({
-      "Authorization": "Bearer "
+      "Authorization": "Bearer ${data.token?.accessToken}"
     });
 
-    var response = await request.send();
+    var response = await request.send().catchError((_){
+      uploadPostsLoading.value = false;
+    });
+    uploadPostsLoading.value = false;
+
+    print(response);
 
     if (response.statusCode == 200) {
       print('Posts uploaded successfully.');
