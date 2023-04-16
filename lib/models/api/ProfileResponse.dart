@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:paulineife_user/constant/constant.dart';
+import 'package:paulineife_user/helpers/helpers.dart';
 
 class ProfileResponse {
   final Profile profile;
@@ -113,13 +114,18 @@ class Profile {
   });
 
   factory Profile.fromJson(Map<String, dynamic> json) {
+
+    var image = "$domainProtocol$domainUrl/" + json['image'].toString().replaceAll('$domainProtocol$domainUrl//', "$domainProtocol$domainUrl/");
+    if (image.endsWith('null')){
+      image = userPlaceholder;
+    }
     return Profile(
       id: json['id'],
       email: json['email'],
       username: json['username'],
       firstname: json['firstname'],
       lastname: json['lastname'],
-      image: "$domainProtocol$domainUrl/" + json['image'].toString(),
+      image: image,
       numberOfFollowers: json['number_of_followers'],
       numberOfFollowing: json['number_of_following'],
       phone: json['phone'],
@@ -128,6 +134,8 @@ class Profile {
       bio: json['bio'],
     );
   }
+
+  String get fullName => "$firstname $lastname";
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{
@@ -191,7 +199,7 @@ class PostOrThread {
     return PostOrThread(
       id: json['id'],
       caption: json['caption'],
-      image: "$domainProtocol$domainUrl"+json['image'].toString(),
+      image: "$domainProtocol$domainUrl/"+json['image'].toString(),
       video: json['video'],
       timestamp: json['timestamp'],
       isThread: json['is_thread'],

@@ -20,29 +20,33 @@ import '../screens/screen_setting.dart';
 
 class ProfileLayout extends StatefulWidget {
   VoidCallback onThemeUpdate;
+  String userName;
 
   @override
   State<ProfileLayout> createState() => _ProfileLayoutState();
 
   ProfileLayout({
     required this.onThemeUpdate,
+    required this.userName,
   });
 }
 
 class _ProfileLayoutState extends State<ProfileLayout> {
-  var controller = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(ProfileController(username: widget.userName), tag: widget.userName);
+
+
     return SafeArea(
       child: Scaffold(
         backgroundColor:
-            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           backgroundColor:
-              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text(
-            "Profile",
+            "My Profile",
             style: getAppbarTextTheme(),
           ),
           centerTitle: true,
@@ -68,35 +72,37 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                             child: CircleAvatar(
                               radius: 30.sp,
                               backgroundImage:
-                                  AssetImage('assets/images/12.png'),
+                              AssetImage('assets/images/12.png'),
                             ),
                           ),
                           SizedBox(
                             width: 5,
                           ),
-                          RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(
-                                text: 'Asad\n',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
-                                    color: ThemeService.isSavedDarkMode()
-                                        ? Colors.white
-                                        : Colors.black),
-                                children: [
-                                  TextSpan(
-                                    text: '@asad',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
+                          Obx(() {
+                            return RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                  text: '${controller.profile.value?.fullName ?? "Full Name"}\n',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
                                       color: ThemeService.isSavedDarkMode()
                                           ? Colors.white
-                                          : Color(0xff2A70C8),
-                                    ),
-                                  )
-                                ]),
-                          ),
+                                          : Colors.black),
+                                  children: [
+                                    TextSpan(
+                                      text: '@${controller.profile.value?.username ?? "username"}',
+                                      style: TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500,
+                                        color: ThemeService.isSavedDarkMode()
+                                            ? Colors.white
+                                            : Color(0xff2A70C8),
+                                      ),
+                                    )
+                                  ]),
+                            );
+                          }),
                         ],
                       ),
                       IconButton(
@@ -117,28 +123,30 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                 SizedBox(
                   height: 10.sp,
                 ),
-                RichText(
-                  textAlign: TextAlign.justify,
-                  text: TextSpan(
-                      text:
-                          'Lorem ipsum dolor sit amet, consectetur eliteita adipiscing elit. Morbi at malesuada mi.',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black),
-                      children: [
-                        TextSpan(
-                          text: '\nwww.google.com',
-                          style: TextStyle(
+                Obx(() {
+                  return RichText(
+                    textAlign: TextAlign.justify,
+                    text: TextSpan(
+                        text:
+                        "${controller.profile.value?.bio ?? "bio"}",
+                        style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff2A70C8),
-                          ),
-                        )
-                      ]),
-                ),
+                            fontWeight: FontWeight.w500,
+                            color: ThemeService.isSavedDarkMode()
+                                ? Colors.white
+                                : Colors.black),
+                        children: [
+                          // TextSpan(
+                          //   text: '\nwww.google.com',
+                          //   style: TextStyle(
+                          //     fontSize: 14,
+                          //     fontWeight: FontWeight.w700,
+                          //     color: Color(0xff2A70C8),
+                          //   ),
+                          // )
+                        ]),
+                  );
+                }),
                 SizedBox(
                   height: Get.height / 20,
                 ),
@@ -224,8 +232,9 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                     color: ThemeService.isSavedDarkMode()
                         ? Color(0xff3d3d3d)
                         : Color(0xffE2E4EB),
-                    onPressed: () {
-                      Get.to(ProfileEditScreen());
+                    onPressed: () async {
+                      await Get.to(ProfileEditScreen());
+                      controller.fetchUserProfile(widget.userName);
                     }),
                 Divider(
                   color: Color(0xffa4a4a4),
@@ -244,7 +253,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        Get.to(StoryViewScreen());
+                        Get.to(StoryViewScreen(storiesList: [],));
                       },
                       child: Container(
                         alignment: Alignment.bottomRight,

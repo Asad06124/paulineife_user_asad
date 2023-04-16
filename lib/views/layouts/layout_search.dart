@@ -1,13 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/user_search_controller.dart';
 import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 import 'package:paulineife_user/widgets/custom_input_field1.dart';
-import 'package:sizer/sizer.dart';
 
 import '../../constant/constant.dart';
+import '../../helpers/search_helper_sharedprefs.dart';
 import '../../helpers/theme_service.dart';
 
 class SearchLayout extends StatelessWidget {
@@ -70,26 +71,26 @@ class SearchLayout extends StatelessWidget {
                                 itemCount: controller.filteredUsers.length,
                                 shrinkWrap: true,
                                 itemBuilder: (BuildContext context, int index) {
-
                                   var user = controller.filteredUsers[index];
 
                                   return Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: ListTile(
                                       contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                                      onTap: () {
-                                        Get.to(ProfileScreen());
+                                      onTap: () async {
+                                        addSearchUserToSharedPreferences(user);
+                                        await Get.to(ProfileScreen(
+                                          username: user.username,
+                                        ));
+                                        controller.refreshRecentSearches();
                                       },
                                       leading: Container(
                                         height: 35.sp,
                                         width: 35.sp,
                                         decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image:  CachedNetworkImageProvider(domainUrlWithProtocol + user.image),
-                                            fit: BoxFit.cover
-                                          ),
-                                          shape: BoxShape.circle
-                                        ),
+                                            image: DecorationImage(
+                                                image: CachedNetworkImageProvider(domainUrlWithProtocol + user.image), fit: BoxFit.cover),
+                                            shape: BoxShape.circle),
                                       ),
                                       title: Text(
                                         user.username.toString(),
@@ -125,42 +126,64 @@ class SearchLayout extends StatelessWidget {
                             : SizedBox(),
                   );
                 }),
+                SizedBox(
+                  height: 10.sp,
+                ),
                 Text(
                   'Recent Searches',
                   textAlign: TextAlign.left,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                 ),
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: 2,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                      leading: CircleAvatar(
-                        radius: 25.sp,
-                        backgroundImage: AssetImage('assets/images/12.png'),
-                      ),
-                      title: Text(
-                        'Asad',
-                        style:
-                            TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
-                      ),
-                      subtitle: Text(
-                        'Flutter Developer',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
-                        ),
-                      ),
-                      trailing: SvgPicture.asset(
-                        'assets/images/Vector.svg',
-                        color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
-                      ),
-                    );
-                  },
-                )
+                SizedBox(
+                  height: 10.sp,
+                ),
+                Obx(() {
+                  return controller.recentSearches.value.isNotEmpty
+                      ? ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: controller.recentSearches.value.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            var user = controller.recentSearches.value[index];
+
+                            return ListTile(
+                              onTap: () {
+                                Get.to(ProfileScreen(
+                                  username: user.username,
+                                ));
+                              },
+                              contentPadding: EdgeInsets.zero,
+                              leading: Container(
+                                height: 35.sp,
+                                width: 35.sp,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(image: CachedNetworkImageProvider(domainUrlWithProtocol + user.image), fit: BoxFit.cover),
+                                    shape: BoxShape.circle),
+                              ),
+                              title: Text(
+                                user.username,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                              ),
+                              trailing: IconButton(onPressed: (){
+
+                                showIosDialog(
+                                    context: context,
+                                    title: "Remove",
+                                    message: "Remove from recent",
+                                    onConfirm: () async {
+                                      await removeSearchUserFromSharedPreferences(user);
+                                      controller.refreshRecentSearches();
+                                      Get.back();
+                                    },
+                                    confirmText: "Remove",
+                                    cancelText: "Dismiss");
+                              }, icon: Icon(Icons.close)),
+                            );
+                          },
+                        )
+                      : NotFound(message: "No recent searches");
+                })
               ],
             ),
           ),

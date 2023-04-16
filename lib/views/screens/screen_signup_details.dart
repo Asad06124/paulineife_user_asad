@@ -115,7 +115,7 @@ class SignUpDetailsScreen extends StatelessWidget {
                     child: TextFormField(
                       controller: controller1.emailController.value,
                       // keyboardType: TextInputType.phone,
-                      readOnly: controller.isOtpSent.value,
+                      // readOnly: controller.isOtpSent.value,
                       style: TextStyle(
                         color: ThemeService.isSavedDarkMode()
                             ? Colors.white
@@ -537,7 +537,7 @@ class SignUpDetailsScreen extends StatelessWidget {
                   ),
                   TextButton(
                       onPressed: () {
-                        Get.to(ScreenLogin());
+                        Get.offAll(ScreenLogin());
                       },
                       child: RichText(
                         text: TextSpan(
@@ -551,7 +551,7 @@ class SignUpDetailsScreen extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                                  text: ' Sign up',
+                                  text: ' Sign in',
                                   style: TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w700,

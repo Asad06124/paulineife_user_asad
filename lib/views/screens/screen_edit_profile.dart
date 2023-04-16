@@ -293,6 +293,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white, fontSize: 16.sp, fontWeight: FontWeight.w800),
                     text: 'Save',
                     onPressed: () async {
+                      await controller.updateProfilePic();
                       Get.back();
                     }),
               ],

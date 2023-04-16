@@ -27,7 +27,7 @@ class ProfileCard extends StatelessWidget {
           ),
           child: StatusViewCustom(
             onTap: () {
-              Get.to(StoryViewScreen());
+              Get.to(StoryViewScreen(storiesList: [],));
             },
             radius: 25.sp,
             spacing: 8.sp,

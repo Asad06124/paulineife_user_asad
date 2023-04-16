@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:paulineife_user/models/api/user_search_model.dart';
 
+import '../helpers/search_helper_sharedprefs.dart';
 import '../models/Login.dart';
 import 'login_controller.dart';
 
@@ -14,15 +15,16 @@ class UserSearchController extends GetxController {
   var textController = TextEditingController().obs;
   var searchLoading = false.obs;
   LoginResponse? loginData;
+  var recentSearches = Rx<List<SearchUser>>([]);
 
   @override
   void onInit() {
-
+    refreshRecentSearches();
     super.onInit();
   }
 
   void fetchUsers(String query) async {
-    if (query.isEmpty){
+    if (query.isEmpty) {
       filteredUsers.clear();
       return;
     }
@@ -48,5 +50,9 @@ class UserSearchController extends GetxController {
     var loginResponse = await LoginController.getLoginResponse();
     print("loginResponse: $loginResponse");
     loginData = LoginResponse.fromJson(jsonDecode(loginResponse ?? ""));
+  }
+
+  void refreshRecentSearches() async {
+    recentSearches.value = (await fetchSearchUserListFromSharedPreferences()).reversed.toList();
   }
 }

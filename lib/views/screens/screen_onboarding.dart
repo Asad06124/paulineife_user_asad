@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:paulineife_user/views/screens/screen_login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,7 +41,6 @@ class _ScreenOnboardingState extends State<ScreenOnboarding> {
   void initState() {
     isOpen();
     _pageController = PageController(initialPage: 0);
-    Get.put(HomeController());
     super.initState();
   }
 

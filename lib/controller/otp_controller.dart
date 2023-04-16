@@ -61,12 +61,12 @@ class OtpController extends GetxController {
           pinController.value.text = credential.smsCode ?? "";
         }).catchError((error) {
           Get.snackbar('Alert', error.toString());
-
           print(error.toString());
         });
       },
       verificationFailed: (FirebaseAuthException e) {
         Get.snackbar('Alert', e.message.toString());
+        print(e.toString());
         Get.back();
       },
       codeSent: (String verificationId, int? resendToken) {
@@ -89,6 +89,7 @@ class OtpController extends GetxController {
         return Get.to(SignUpDetailsScreen());
       });
     } on FirebaseAuthException catch (e) {
+      print(e.toString());
       Get.snackbar('Alert', 'Invalid  OTP');
     }
   }

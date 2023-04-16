@@ -21,28 +21,31 @@ class CustomButton1 extends StatefulWidget {
   final double? elevation;
   final Color? shadowColor;
   final Duration? animationDuration;
-
-  CustomButton1(
-      {this.color,
-      required this.text,
-      required this.onPressed,
-      this.width,
-      this.margin,
-      this.decuration,
-      this.height,
-      this.textStyle,
-      this.shape,
-      this.padding,
-      this.textAlign,
-      this.onLongPressed,
-      this.enabled,
-      this.loading,
-      this.elevation,
-      this.shadowColor,
-      this.animationDuration});
+  final Color? borderColor;
 
   @override
   _CustomButton1State createState() => _CustomButton1State();
+
+  const CustomButton1({
+    this.color,
+    required this.text,
+    this.width,
+    this.height,
+    this.margin,
+    this.padding,
+    this.onPressed,
+    this.onLongPressed,
+    this.textStyle,
+    this.textAlign,
+    this.shape,
+    this.decuration,
+    this.enabled,
+    this.loading,
+    this.elevation,
+    this.shadowColor,
+    this.animationDuration,
+    this.borderColor,
+  });
 }
 
 class _CustomButton1State extends State<CustomButton1> {
@@ -72,6 +75,10 @@ class _CustomButton1State extends State<CustomButton1> {
             shape: widget.shape ??
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
+                  side: BorderSide(
+                    color: widget.borderColor ?? widget.color ?? buttonColor,
+                    width: 1.sp
+                  )
                 ),
           ),
           child: (widget.loading != null && widget.loading == true)

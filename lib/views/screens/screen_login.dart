@@ -267,7 +267,7 @@ class _ScreenLoginState extends State<ScreenLogin> {
                           horizontal: 0,
                           vertical: 20,
                         ),
-                        text: controller.loginLoading.isTrue ? "Signing In" : 'Sign in',
+                        text: LoginController.loginLoading.isTrue ? "Signing In" : 'Sign in',
                         color: Color(0xff2A70C8),
                         width: Get.width,
                         height: WHeight.height / 15,
@@ -281,8 +281,8 @@ class _ScreenLoginState extends State<ScreenLogin> {
                               ? Colors.white
                               : Colors.white,
                         ),
-                        onPressed: controller.loginLoading.isTrue ? null : () {
-                          controller.login();
+                        onPressed: LoginController.loginLoading.isTrue ? null : () {
+                          LoginController.login(controller.phoneController.value.text, controller.passwordController.value.text);
                         },
                       );
                     }),

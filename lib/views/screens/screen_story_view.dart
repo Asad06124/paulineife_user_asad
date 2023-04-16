@@ -18,6 +18,12 @@ import 'screen_story_view_more_text.dart';
 class StoryViewScreen extends StatefulWidget {
   @override
   State<StoryViewScreen> createState() => _StoryViewScreenState();
+
+  List<dynamic> storiesList;
+
+  StoryViewScreen({
+    required this.storiesList,
+  });
 }
 
 class _StoryViewScreenState extends State<StoryViewScreen> {
@@ -26,14 +32,14 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
 
   StoryController controller = StoryController();
   List<StoryItem> storyItems = [];
-  int randomNumber = 1;
+  // int randomNumber = 1;
   var StryCount;
 
   @override
   void initState() {
     super.initState();
-    _generateRandomNumber();
-    StryCount = randomNumber;
+    // _generateRandomNumber();
+    StryCount = widget.storiesList.length;
     super.initState();
     _controller.addListener(listenerController);
     initStoryPageItems();
@@ -41,15 +47,15 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
 
   List<int> numbers = [10, 12, 15, 5, 8, 7, 9, 6];
 
-  void _generateRandomNumber() {
-    // Generate a random index using the Random class
-    int randomIndex = Random().nextInt(numbers.length);
-
-    // Access the element at the random index
-    setState(() {
-      randomNumber = numbers[randomIndex];
-    });
-  }
+  // void _generateRandomNumber() {
+  //   // Generate a random index using the Random class
+  //   int randomIndex = Random().nextInt(numbers.length);
+  //
+  //   // Access the element at the random index
+  //   setState(() {
+  //     randomNumber = numbers[randomIndex];
+  //   });
+  // }
 
   void listenerController() {
     _isPanelVisible.value = _controller.isPanelOpen;
@@ -70,42 +76,26 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
         controller: controller,
       ));
     }
+
+    storyItems = widget.storiesList.map((e) => StoryItem.pageImage(
+      url:
+      '',
+      controller: controller,
+    )).toList();
   }
 
   void initi() {
     _controller.addListener(listenerController);
     initStoryPageItems();
-    _generateRandomNumber();
-    StryCount = randomNumber;
+    // _generateRandomNumber();
+    // StryCount = randomNumber;
   }
 
   bool isExpanded = false;
 
   @override
   Widget build(BuildContext context) {
-    void _generateRandomNumber() {
-      // Generate a random index using the Random class
-      int randomIndex = Random().nextInt(numbers.length);
 
-      // Access the element at the random index
-      setState(() {
-        randomNumber = numbers[randomIndex];
-      });
-    }
-
-    void listenerController() {
-      _isPanelVisible.value = _controller.isPanelOpen;
-    }
-
-    void initStoryPageItems() {
-      for (int i = 0; i < StryCount; i++) {
-        storyItems.add(StoryItem.pageImage(
-          url:
-              'https://images.pexels.com/photos/213780/pexels-photo-213780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-          controller: controller,
-        ));
-      }
-    }
 
     return SafeArea(
       child: Scaffold(

@@ -40,6 +40,10 @@ import 'package:device_info/device_info.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+
+const userPlaceholder = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+const placeholderUrl = "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png";
+
 Future<bool> getStoragePermission() async {
   var status = await Permission.manageExternalStorage.request();
   if (status == PermissionStatus.permanentlyDenied){
