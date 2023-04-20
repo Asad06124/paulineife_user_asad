@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:paulineife_user/helpers/helpers.dart';
 import 'package:paulineife_user/models/api/user_search_model.dart';
 
 import '../helpers/search_helper_sharedprefs.dart';
@@ -37,8 +38,11 @@ class UserSearchController extends GetxController {
           "https://rollupp.co/api/search/$query",
         ),
         headers: {
-          "Authorization": "Bearer ${loginData?.token?.accessToken}",
-        });
+          "Authorization": "Bearer ${loginData?.accessToken}",
+        }).catchError((error){
+          print(error.toString());
+          showMessageSheet("Error", error.toString(), sheetType: BottomSheetType.error);
+    });
     var data = jsonDecode(response.body);
     List<SearchUser> userList = List<SearchUser>.from(data.map((x) => SearchUser.fromMap(x)));
     users.value = userList;

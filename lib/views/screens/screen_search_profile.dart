@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:custom_utils/custom_utils.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/controller/profile_controller.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
-import 'package:paulineife_user/views/screens/screen_follower.dart';
 import 'package:paulineife_user/views/screens/screen_following.dart';
 import 'package:paulineife_user/views/screens/screen_report.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
@@ -32,7 +32,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     var controller = Get.put(
       ProfileController(username: widget.username),
       tag: widget.username,
-      permanent: true,
+      // permanent: true,
     );
 
     return SafeArea(
@@ -103,7 +103,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Row(
                     children: [
-                      Builder(builder: (context) {
+                      Obx(() {
+                        print(controller.profile.value?.image);
+
                         var url = domainUrlWithProtocol + (controller.profile.value?.image ?? "null");
                         url = url.endsWith('null') ? userPlaceholder : url;
 
@@ -113,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(color: Color(0xff3AA0FF), width: 3.sp),
-                              image: DecorationImage(image: CachedNetworkImageProvider(url))),
+                              image: DecorationImage(image: CachedNetworkImageProvider(url), fit: BoxFit.cover)),
                         );
                       }),
                       SizedBox(
@@ -175,95 +177,116 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     SizedBox(),
                     GestureDetector(
                       onTap: () {
-                        Get.to(FollowerScreen());
+                        Get.to(FollowingScreen(
+                          username: controller.username,
+                          type: 'followers',
+                        ));
                       },
-                      child: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                            text: '${controller.profile.value?.numberOfFollowers ?? 0}\n',
+                      child: Obx(() {
+                        return RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              text: '${controller.profile.value?.numberOfFollowers ?? 0}\n',
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                              children: [
+                                TextSpan(
+                                  text: 'Followers',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
+                                  ),
+                                )
+                              ]),
+                        );
+                      }),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(FollowingScreen(
+                          username: controller.username,
+                          type: 'following',
+                        ));
+                      },
+                      child: Obx(() {
+                        return RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            text: '${controller.profile.value?.numberOfFollowing ?? 0}\n',
                             style: TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
                             children: [
                               TextSpan(
-                                text: 'Followers',
+                                text: 'Following',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w500,
                                   color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                                 ),
                               )
-                            ]),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.to(FollowingScreen());
-                      },
-                      child: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                          text: '${controller.profile.value?.numberOfFollowing ?? 0}\n',
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
-                          children: [
-                            TextSpan(
-                              text: 'Following',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                            ],
+                          ),
+                        );
+                      }),
                     ),
                     SizedBox(),
                   ],
                 ),
-                Row(
-                  children: [
-                    Obx(() {
-                      return CustomButton1(
-                          text: controller.followed.isTrue ? 'Following' : '+ Follow',
-                          // shape: RoundedRectangleBorder(
-                          //   borderRadius: BorderRadius.circular(10.sp),
-                          // ),
-                          textStyle: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
-                          ),
-                          elevation: 0,
-                          height: Get.height / 16,
-                          width: Get.width / 2.5,
-                          borderColor: Color(0xff2A70C8),
-                          color: controller.followed.isFalse ? Color(0xff2A70C8) : Colors.white,
-                          onPressed: () {
-                            controller.followOrUnfollowUser();
-                          });
-                    }),
-                    CustomButton1(
-                        text: 'Message',
-                        decuration: BoxDecoration(
-                            border: Border.all(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
-                            borderRadius: BorderRadius.circular(10.sp)),
-                        // shape: RoundedRectangleBorder(
-                        //   borderRadius: BorderRadius.circular(10.sp),
-                        // ),
-                        textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                        ),
-                        elevation: 0,
-                        height: Get.height / 16,
-                        width: Get.width / 2.5,
-                        color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-                        onPressed: () {
-                          Get.to(ChatScreen());
-                        }),
-                  ],
+                Obx(() {
+                  return (controller.isLoggedInUser.isFalse)
+                      ? Row(
+                          children: [
+                            Obx(() {
+                              return CustomButton1(
+                                  text: controller.followed.isTrue ? 'Following' : '+ Follow',
+                                  // shape: RoundedRectangleBorder(
+                                  //   borderRadius: BorderRadius.circular(10.sp),
+                                  // ),
+                                  textStyle: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: controller.followed.isTrue ? Colors.black : Colors.white,
+                                  ),
+                                  elevation: 0,
+                                  height: Get.height / 16,
+                                  width: Get.width / 2.5,
+                                  borderColor: Color(0xff2A70C8),
+                                  color: controller.followed.isFalse ? Color(0xff2A70C8) : Colors.white,
+                                  onPressed: () {
+                                    controller.followOrUnfollowUser();
+                                  });
+                            }),
+                            CustomButton1(
+                                text: 'Message',
+                                decuration: BoxDecoration(
+                                    border: Border.all(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                                    borderRadius: BorderRadius.circular(10.sp)),
+                                // shape: RoundedRectangleBorder(
+                                //   borderRadius: BorderRadius.circular(10.sp),
+                                // ),
+                                textStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                ),
+                                elevation: 0,
+                                height: Get.height / 16,
+                                width: Get.width / 2.5,
+                                color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                                onPressed: controller.profile.value == null
+                                    ? null
+                                    : () {
+                                        Get.to(ChatScreen(
+                                          userId: controller.profile.value!.id.toString(),
+                                        ));
+                                      }),
+                          ],
+                        )
+                      : SizedBox();
+                }),
+                SizedBox(
+                  height: 10.sp,
                 ),
                 Divider(
                   color: Color(0xffa4a4a4),
@@ -272,6 +295,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: 10.sp,
                 ),
                 Obx(() {
+                  print(controller.posts.length);
                   return controller.posts.isNotEmpty
                       ? GridView.builder(
                           shrinkWrap: true,
@@ -280,21 +304,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 2.sp, mainAxisSpacing: 2.sp),
                           itemBuilder: (BuildContext context, int index) {
                             var post = controller.posts[index];
-                            var url = domainUrlWithProtocol + post.image.toString();
-                            url = url.endsWith('null') ? placeholderUrl : url;
+                            // var url = domainUrlWithProtocol + post.image.toString();
+                            // url = url.endsWith('null') ? placeholderUrl : url;
+                            print("index $index ${post.getImage}");
+                            var data = post.decodeImageFromBase64();
+
+                            if (data == null) {
+                              return SizedBox();
+                            }
 
                             return GestureDetector(
                               onTap: () {
                                 // _generateRandomNumber();
                                 Get.to(StoryViewScreen(
-                                  storiesList: [],
+                                  storiesList: post.isThread ? post.asThread.childPosts : [post],
                                 ));
                               },
                               child: Container(
                                 alignment: Alignment.bottomRight,
                                 // padding: EdgeInsets.only(bottom: 5),
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(image: CachedNetworkImageProvider(url), fit: BoxFit.cover),
+                                  image: DecorationImage(image: ExtendedMemoryImageProvider(data), fit: BoxFit.cover),
                                 ),
                                 child: Stack(
                                   children: [

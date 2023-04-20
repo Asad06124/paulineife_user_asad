@@ -1,80 +1,45 @@
-import 'package:paulineife_user/models/api/PostModel.dart';
+import 'package:flutter/material.dart';
+
+import 'PostModel.dart';
+import 'StoryModel.dart';
+import 'ThreadModel.dart';
 
 class HomeResponse {
-  List<int> postIds;
-  Map<int, Story> stories;
-  Map<int, Post> post;
+  final List<Post> posts;
+  final List<Story> stories;
 
-  HomeResponse({
-    required this.postIds,
-    required this.stories,
-    required this.post,
-  });
+  HomeResponse({required this.posts, required this.stories});
 
   factory HomeResponse.fromJson(Map<String, dynamic> json) {
-    final postIds =
-        json['post_id'] != null ? List<int>.from(json['post_id']) : <int>[];
+    final postIds = (json['post_id'] as List<dynamic>).cast<int>();
+    final storyIds = (json['story_id'] as List<dynamic>).cast<int>();
+    final postData = Map<String, dynamic>.from(json['post']);
+    final storyData = Map<String, dynamic>.from(json['stories']);
 
-    final storiesJson = json['stories'] ?? {};
-    final stories = Map<int, Story>.from(
-      storiesJson
-          .map((key, value) => MapEntry(int.parse(key), Story.fromJson(value))),
-    );
+    final posts = <Post>[];
+    final stories = <Story>[];
 
-    final postJson = json['post'] ?? {};
-    final post = Map<int, Post>.from(
-      postJson
-          .map((key, value) => MapEntry(int.parse(key), Post.fromJson(value))),
-    );
+    for (final id in postIds) {
+      final postJson = postData[id.toString()];
 
-    return HomeResponse(
-      postIds: postIds,
-      stories: stories,
-      post: post,
-    );
-  }
+      if (postJson is List<dynamic>) {
+        final threadPost = ThreadPost.fromJson(postJson.first as Map<String, dynamic>);
+        final childPosts = postJson.skip(1).map((post) => Post.fromJson(post as Map<String, dynamic>)).toList();
+        threadPost.childPosts = childPosts;
 
-  List<Post> get getPostList {
-    return postIds.map((id) => post[id]!).toList();
-  }
+        posts.add(threadPost);
+      } else {
+        final post = Post.fromJson(postJson as Map<String, dynamic>);
+        posts.add(post);
+      }
+    }
 
-  List<Story> get getStoryList {
-    return stories.values.toList();
-  }
-}
+    for (final id in storyIds) {
+      final storyJson = storyData[id.toString()];
+      final story = Story.fromJson(storyJson as Map<String, dynamic>);
+      stories.add(story);
+    }
 
-class Story {
-  int id;
-  String caption;
-  String? image;
-  String? video;
-  DateTime timestamp;
-  bool isThread;
-  int views;
-  int user;
-
-  Story({
-    required this.id,
-    required this.caption,
-    this.image,
-    this.video,
-    required this.timestamp,
-    required this.isThread,
-    required this.views,
-    required this.user,
-  });
-
-  factory Story.fromJson(Map<String, dynamic> json) {
-    return Story(
-      id: json['id'],
-      caption: json['caption'],
-      image: json['image'],
-      video: json['video'],
-      timestamp: DateTime.parse(json['timestamp']),
-      isThread: json['is_thread'],
-      views: json['views'],
-      user: json['user'],
-    );
+    return HomeResponse(posts: posts, stories: stories);
   }
 }
-

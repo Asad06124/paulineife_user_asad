@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 import '../constant/constant.dart';
 import '../helpers/theme_service.dart';
 import '../models/api/HomeResponse.dart';
+import '../models/api/StoryModel.dart';
 import '../views/screens/screen_story_view.dart';
 
 class ProfileCard extends StatelessWidget {

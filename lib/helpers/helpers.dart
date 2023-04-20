@@ -35,25 +35,27 @@
 //   }
 // }
 
-
 import 'package:device_info/device_info.dart';
 import 'package:extended_image/extended_image.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:paulineife_user/extensions/my_extensions.dart';
+import 'package:paulineife_user/helpers/theme_service.dart';
 import 'package:permission_handler/permission_handler.dart';
-
+import 'package:sizer/sizer.dart';
 
 const userPlaceholder = "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
 const placeholderUrl = "https://talentclick.com/wp-content/uploads/2021/08/placeholder-image.png";
 
 Future<bool> getStoragePermission() async {
   var status = await Permission.manageExternalStorage.request();
-  if (status == PermissionStatus.permanentlyDenied){
+  if (status == PermissionStatus.permanentlyDenied) {
     openAppSettings();
   }
   return status.isGranted;
 }
 
 Future<int> get getAndroidVersion async {
-
   var androidInfo = await DeviceInfoPlugin().androidInfo;
   var release = androidInfo.version.release;
   return (int.tryParse(release) ?? 0);
@@ -72,3 +74,68 @@ GestureConfig getImageZoomScale() {
     initialAlignment: InitialAlignment.center,
   );
 }
+
+Color get getThemeBlack => ThemeService.isSavedDarkMode() ? Colors.white : Colors.black;
+
+Color get getThemeWhite => ThemeService.isSavedDarkMode() ? Colors.black : Colors.white;
+
+void showMessageSheet(String title, String message,
+    {BottomSheetType sheetType = BottomSheetType.none, bool showButton = true, String buttonText = 'Dismiss', VoidCallback? onTap}) {
+  var color = sheetType.statusColor;
+
+  Get.bottomSheet(
+    Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+      child: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: Get.height * .2),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.horizontal_rule_rounded,
+                size: 50,
+                color: color,
+              ),
+              Text(
+                title,
+                style: TextStyle(
+                  fontSize: 20.sp,
+                  fontWeight: FontWeight.w900,
+                  color: color
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: ListTile(
+                  title: Text(message.replaceAll(RegExp(r':.*$'), '')),
+                ),
+              ),
+              if (showButton)
+                ElevatedButton(
+                  onPressed: onTap ?? (){
+                    Get.back();
+                  },
+                  child: Text(
+                    buttonText,
+                    style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: color,
+                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                ),
+              SizedBox(
+                height: 20.sp,
+              )
+            ],
+          ),
+        ),
+      ),
+    ),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    backgroundColor: getThemeWhite,
+  );
+}
+
+enum BottomSheetType { success, error, warning, none }

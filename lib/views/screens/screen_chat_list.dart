@@ -57,7 +57,7 @@ class ChatListScreen extends StatelessWidget {
                     return ListTile(
                       contentPadding: EdgeInsets.symmetric(horizontal: 0),
                       onTap: () {
-                        Get.to(ChatScreen());
+                        Get.to(ChatScreen(userId: '',));
                       },
                       leading: CircleAvatar(
                         radius: 25.sp,

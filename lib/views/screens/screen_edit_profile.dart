@@ -1,10 +1,11 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:paulineife_user/controller/home_controller.dart';
-import 'package:paulineife_user/controller/otp_controller.dart';
+import 'package:paulineife_user/controller/profile_controller.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helpers/theme.dart';
@@ -12,12 +13,38 @@ import '../../helpers/theme_service.dart';
 import '../../widgets/custom_buttom.dart';
 
 class ProfileEditScreen extends StatefulWidget {
+  String username;
+
   @override
   State<ProfileEditScreen> createState() => _ProfileEditScreenState();
+
+  ProfileEditScreen({
+    required this.username,
+  });
 }
 
 class _ProfileEditScreenState extends State<ProfileEditScreen> {
   var controller = Get.put(HomeController());
+  late ProfileController profileController;
+
+  var firstNameController = TextEditingController();
+  var lastNameController = TextEditingController();
+  var usernameController = TextEditingController();
+  var websiteController = TextEditingController();
+  var bioController = TextEditingController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    profileController = Get.find<ProfileController>(tag: widget.username);
+    firstNameController.text = profileController.profile.value!.firstname;
+    lastNameController.text = profileController.profile.value!.lastname;
+    usernameController.text = profileController.profile.value!.username;
+    websiteController.text = profileController.profile.value!.website;
+    bioController.text = profileController.profile.value!.bio;
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,13 +79,13 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                   radius: 50.sp,
                   backgroundImage: controller.img != null
                       ? FileImage(
-                          File(
-                            controller.img!.path,
-                          ),
-                        ) as ImageProvider
-                      : AssetImage(
-                          'assets/images/12.png',
-                        ),
+                    File(
+                      controller.img!.path,
+                    ),
+                  ) as ImageProvider
+                      : CachedNetworkImageProvider(
+                    profileController.imageUrl.value,
+                  ),
                 ),
                 TextButton(
                   onPressed: () {
@@ -130,13 +157,13 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      controller: TextEditingController(text: 'Asad'),
+                      controller: firstNameController,
                       style: TextStyle(
                         color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                       ),
                       decoration: InputDecoration(
                         label: Text(
-                          'Name',
+                          'First Name',
                           style: TextStyle(
                             color: Color(0xff79869F),
                           ),
@@ -168,13 +195,13 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      controller: TextEditingController(text: 'AsadBalqani'),
+                      controller: lastNameController,
                       style: TextStyle(
                         color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                       ),
                       decoration: InputDecoration(
                         label: Text(
-                          'UserName',
+                          'Last Name',
                           style: TextStyle(
                             color: Color(0xff79869F),
                           ),
@@ -206,7 +233,45 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      controller: TextEditingController(text: 'www.microprogramers.org'),
+                      controller: usernameController,
+                      style: TextStyle(
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                      ),
+                      decoration: InputDecoration(
+                        label: Text(
+                          'Username',
+                          style: TextStyle(
+                            color: Color(0xff79869F),
+                          ),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          borderSide: BorderSide.none,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          borderSide: BorderSide.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.sp,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    padding: EdgeInsets.only(top: 12.sp),
+                    height: Get.height / 12,
+                    width: Get.width / 1.1,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Color(0xffD6D9E3),
+                        ),
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      controller: websiteController,
                       style: TextStyle(
                         color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                       ),
@@ -244,7 +309,7 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                         ),
                         borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
-                      controller: TextEditingController(text: 'Flutter Developer'),
+                      controller: bioController,
                       style: TextStyle(
                         color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                       ),
@@ -267,35 +332,43 @@ class _ProfileEditScreenState extends State<ProfileEditScreen> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Personal Information Settings',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff2A70C8),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                CustomButton1(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                    height: Get.height / 16,
-                    width: Get.width / 1.2,
-                    color: Color(0xff2A70C8),
-                    textStyle:
-                        TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white, fontSize: 16.sp, fontWeight: FontWeight.w800),
-                    text: 'Save',
-                    onPressed: () async {
-                      await controller.updateProfilePic();
-                      Get.back();
-                    }),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Align(
+                //     alignment: Alignment.centerLeft,
+                //     child: TextButton(
+                //       onPressed: () {},
+                //       child: Text(
+                //         'Personal Information Settings',
+                //         style: TextStyle(
+                //           fontSize: 16,
+                //           fontWeight: FontWeight.w500,
+                //           color: Color(0xff2A70C8),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+                Obx(() {
+                  return CustomButton1(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      height: Get.height / 16,
+                      width: Get.width / 1.2,
+                      color: Color(0xff2A70C8),
+                      textStyle:
+                      TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white, fontSize: 16.sp, fontWeight: FontWeight.w800),
+                      text: controller.loadingUpdateProfile.isTrue ? "Updating" : 'Save',
+                      onPressed: controller.loadingUpdateProfile.isTrue ? null : () async {
+                        await controller.updateUserProfile(
+                          firstNameController.text,
+                          lastNameController.text,
+                          usernameController.text,
+                          websiteController.text,
+                          bioController.text,
+                        );
+                        Get.back();
+                      });
+                }),
               ],
             ),
           ),

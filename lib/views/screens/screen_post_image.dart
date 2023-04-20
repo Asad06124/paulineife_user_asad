@@ -75,6 +75,10 @@ class _PostImageScreenState extends State<PostImageScreen> {
                     : () {
                         // Get.to(HomeScreen());
                         if (isNormal) {
+                          Get.find<HomeController>().uploadNormalPost(
+                            textEditControllers.map((e) => e.text).toList(),
+                            controller.images,
+                          );
                         } else {
                           // List<ThreadPost> postsList = [];
                           // controller.images.forEach((element) {

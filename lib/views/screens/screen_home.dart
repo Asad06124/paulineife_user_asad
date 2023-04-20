@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:album_image/album_image.dart';
 import 'package:badges/badges.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,7 +23,6 @@ import 'package:paulineife_user/views/screens/screen_post_video.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../controller/otp_controller.dart';
 import '../../helpers/gallery_grid/src/grid_gallery.dart';
 import '../../helpers/helpers.dart';
 import '../../widgets/custom_buttom.dart';
@@ -37,14 +37,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var controller = Get.put(HomeController());
 
-  PersistentTabController _controller =
-      PersistentTabController(initialIndex: 0);
+  PersistentTabController _controller = PersistentTabController(initialIndex: 0);
 
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
       context,
       controller: _controller,
+      popAllScreensOnTapAnyTabs: true,
       screens: [
         HomeLayout(),
         SearchLayout(),
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onThemeUpdate: () {
             setState(() {});
           },
-          userName: "",
+          userName: controller.userName.value,
         ),
       ],
       items: [
@@ -74,8 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
               : ThemeService.isSavedDarkMode()
                   ? SvgPicture.asset("assets/svgs/Home_closed_black.svg")
                   : SvgPicture.asset("assets/svgs/Home_closed.svg"),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -98,8 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? SvgPicture.asset("assets/svgs/Search_closed_black.svg")
                       : SvgPicture.asset("assets/svgs/search_closed.svg"),
                 ),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           title: ("Settings"),
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
@@ -117,9 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     topLeft: Radius.circular(20.sp),
                     topRight: Radius.circular(20.sp),
                   ),
-                  color: ThemeService.isSavedDarkMode()
-                      ? Color(0xff3D3D3D)
-                      : Colors.white,
+                  color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                 ),
                 child: Column(
                   children: [
@@ -130,9 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w700,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -149,9 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   topLeft: Radius.circular(20.sp),
                                   topRight: Radius.circular(20.sp),
                                 ),
-                                color: ThemeService.isSavedDarkMode()
-                                    ? Color(0xff3D3D3D)
-                                    : Colors.white,
+                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                               ),
                               height: 18.h,
                               child: Column(
@@ -175,9 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -214,9 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -242,9 +230,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -270,9 +256,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -290,9 +274,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   topLeft: Radius.circular(20.sp),
                                   topRight: Radius.circular(20.sp),
                                 ),
-                                color: ThemeService.isSavedDarkMode()
-                                    ? Color(0xff3D3D3D)
-                                    : Colors.white,
+                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
                               ),
                               height: 18.h,
                               child: Column(
@@ -316,9 +298,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -347,9 +327,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode()
-                                            ? Colors.white
-                                            : Colors.black,
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                                       ),
                                     ),
                                   ),
@@ -375,9 +353,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Colors.black,
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                         ),
                       ),
                     ),
@@ -390,12 +366,9 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           icon: Padding(
             padding: EdgeInsets.only(bottom: 6.0),
-            child: ThemeService.isSavedDarkMode()
-                ? SvgPicture.asset("assets/svgs/Add_black.svg")
-                : SvgPicture.asset("assets/svgs/add.svg"),
+            child: ThemeService.isSavedDarkMode() ? SvgPicture.asset("assets/svgs/Add_black.svg") : SvgPicture.asset("assets/svgs/add.svg"),
           ),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
@@ -412,17 +385,14 @@ class _HomeScreenState extends State<HomeScreen> {
             position: BadgePosition.topEnd(end: -7, top: -13),
             child: _controller.index == 3
                 ? ThemeService.isSavedDarkMode()
-                    ? SvgPicture.asset(
-                        "assets/svgs/Notification_opened_black.svg")
+                    ? SvgPicture.asset("assets/svgs/Notification_opened_black.svg")
                     : SvgPicture.asset("assets/svgs/Notification_opened.svg")
                 : ThemeService.isSavedDarkMode()
-                    ? SvgPicture.asset(
-                        "assets/svgs/Notification_closed_black.svg")
+                    ? SvgPicture.asset("assets/svgs/Notification_closed_black.svg")
                     : SvgPicture.asset("assets/svgs/Notification_closed.svg"),
           ),
           title: ("Settings"),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
         PersistentBottomNavBarItem(
@@ -434,22 +404,20 @@ class _HomeScreenState extends State<HomeScreen> {
           icon: Padding(
             padding: EdgeInsets.only(bottom: 3.0),
             child: Container(
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(color: Color(0xff3AA0FF), width: 2.sp)),
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/images/12.png'),
-                )),
+                decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Color(0xff3AA0FF), width: 2.sp)),
+                child: Obx(() {
+                  return CircleAvatar(
+                    backgroundImage: CachedNetworkImageProvider(controller.profileImage.value),
+                  );
+                })),
           ),
           title: ("Settings"),
-          activeColorPrimary:
-              ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+          activeColorPrimary: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
           inactiveColorPrimary: CupertinoColors.systemGrey,
         ),
       ],
       confineInSafeArea: true,
-      backgroundColor:
-          ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+      backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       // Default is Colors.white.
       handleAndroidBackButtonPress: true,
       // Default is true.
@@ -461,8 +429,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar:
-            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        colorBehindNavBar: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -477,14 +444,12 @@ class _HomeScreenState extends State<HomeScreen> {
         curve: Curves.ease,
         duration: Duration(milliseconds: 200),
       ),
-      navBarStyle:
-          NavBarStyle.style13, // Choose the nav bar style with this property.
+      navBarStyle: NavBarStyle.style13, // Choose the nav bar style with this property.
     );
   }
 
   void getFromGalleryvid() async {
-    final pickedFile = await FilePicker.platform
-        .pickFiles(type: FileType.video, allowMultiple: false);
+    final pickedFile = await FilePicker.platform.pickFiles(type: FileType.video, allowMultiple: false);
     if (pickedFile != null) {
       setState(() {
         Get.to(PostVideoScreen());
@@ -564,8 +529,7 @@ class _MyGalleryState extends State<MyGallery> {
         return false;
       },
       child: Scaffold(
-        backgroundColor:
-            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         appBar: AppBar(
           title: Text(
             "Create Post",
@@ -578,9 +542,7 @@ class _MyGalleryState extends State<MyGallery> {
               },
               icon: Icon(
                 Icons.arrow_back,
-                color: ThemeService.isSavedDarkMode()
-                    ? Colors.white
-                    : Colors.black,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
               )),
           centerTitle: true,
           elevation: 0,
@@ -588,8 +550,7 @@ class _MyGalleryState extends State<MyGallery> {
         body: Column(
           children: [
             Container(
-              color:
-                  ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+              color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
               child: Column(
                 children: [
                   if (controller.images.isNotEmpty)
@@ -613,11 +574,8 @@ class _MyGalleryState extends State<MyGallery> {
                                               height: Get.width * .17,
                                               width: Get.width * .2,
                                               decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(5.sp),
-                                                image: DecorationImage(
-                                                    image: FileImage(e),
-                                                    fit: BoxFit.cover),
+                                                borderRadius: BorderRadius.circular(5.sp),
+                                                image: DecorationImage(image: FileImage(e), fit: BoxFit.cover),
                                               ),
                                             ),
                                             onTap: () {
@@ -643,8 +601,7 @@ class _MyGalleryState extends State<MyGallery> {
                         ),
                         CustomButton1(
                           text: 'Select',
-                          textStyle:
-                              TextStyle(color: Colors.black, fontSize: 13.sp),
+                          textStyle: TextStyle(color: Colors.black, fontSize: 13.sp),
                           onPressed: () {
                             // setState(() {
                             //   Get.bottomSheet(
@@ -792,8 +749,7 @@ class _MyGalleryState extends State<MyGallery> {
                           color: Color(0xffE2E4EB),
                           height: 25.sp,
                           width: 65.sp,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30)),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                         ),
                       ],
                     ),
@@ -818,10 +774,7 @@ class _MyGalleryState extends State<MyGallery> {
                   onSelected: (items) async {
                     // controller.images = items.map((e) => e.);
 
-                    var selectedFiles =
-                        (await Future.wait(items.map((e) => e.file).toList()))
-                            .map((e) => e!)
-                            .toList();
+                    var selectedFiles = (await Future.wait(items.map((e) => e.file).toList())).map((e) => e!).toList();
                     controller.images = selectedFiles;
                     setState(() {});
                   },
@@ -846,27 +799,12 @@ class _MyGalleryState extends State<MyGallery> {
                   // albumBackGroundColor: Colors.black,
                   appBarHeight: 45,
                   itemBackgroundColor: Colors.grey[100]!,
-                  albumDividerColor: ThemeService.isSavedDarkMode()
-                      ? Colors.black
-                      : Colors.white,
-                  appBarColor: ThemeService.isSavedDarkMode()
-                      ? Colors.black
-                      : Colors.white,
-                  albumHeaderTextStyle: TextStyle(
-                      color: ThemeService.isSavedDarkMode()
-                          ? Colors.white
-                          : Colors.black,
-                      fontSize: 13.sp),
-                  albumBackGroundColor: ThemeService.isSavedDarkMode()
-                      ? Colors.black
-                      : Colors.white,
-                  albumTextStyle: TextStyle(
-                      color: ThemeService.isSavedDarkMode()
-                          ? Colors.white
-                          : Colors.black,
-                      fontSize: 14),
-                  albumSubTextStyle:
-                      const TextStyle(color: Colors.grey, fontSize: 10),
+                  albumDividerColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  appBarColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  albumHeaderTextStyle: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, fontSize: 13.sp),
+                  albumBackGroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                  albumTextStyle: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, fontSize: 14),
+                  albumSubTextStyle: const TextStyle(color: Colors.grey, fontSize: 10),
                   type: AlbumType.image,
                   // closeWidget: const BackButton(
                   //   color: Colors.black,

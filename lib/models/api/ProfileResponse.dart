@@ -1,13 +1,14 @@
 import 'dart:convert';
+import 'dart:typed_data';
+import 'package:paulineife_user/models/api/refresh_post.dart';
 
-import 'package:paulineife_user/constant/constant.dart';
-import 'package:paulineife_user/helpers/helpers.dart';
+import 'PostModel.dart';
 
 class ProfileResponse {
   final Profile profile;
   final bool followed;
   final List<int> ids;
-  final Map<int, List<PostOrThread>> posts;
+  final List<Post> posts;
 
   ProfileResponse({
     required this.profile,
@@ -18,7 +19,7 @@ class ProfileResponse {
 
   factory ProfileResponse.fromJson(Map<String, dynamic> json) {
     final profileJson = json['profile'] as Map<String, dynamic>;
-    final postJson = json['post'] as Map<String, dynamic>;
+    // final postJson = json['post'] as Map<String, dynamic>;
 
     final profile = Profile(
       id: profileJson['id'],
@@ -36,34 +37,11 @@ class ProfileResponse {
     );
 
     final ids = List<int>.from(json['ids'].map((id) => id));
+    Map<String, dynamic> tempJson = {};
+    tempJson['ids'] = json['ids'];
+    tempJson['data'] = json['post'];
 
-    final posts = <int, List<PostOrThread>>{};
-    postJson.forEach((key, value) {
-      if (value is List) {
-        final threadList = <PostOrThread>[]; // change Thread to PostOrThread
-        for (final threadJson in value) {
-          final thread = PostOrThread(
-            id: threadJson['id'],
-            caption: threadJson['caption'],
-            image: threadJson['image'],
-            video: threadJson['video'],
-            timestamp: threadJson['timestamp'],
-            isThread: true,
-            views: threadJson['views'],
-            user: threadJson['user'],
-            likes: threadJson['likes'] != null
-                ? List<int>.from(threadJson['likes'].map((x) => x))
-                : null,
-            postId: threadJson['post_id'],
-          );
-          threadList.add(thread);
-        }
-        posts[int.parse(key)] = threadList;
-      } else {
-        final postOrThread = PostOrThread.fromJson(value);
-        posts[int.parse(key)] = [postOrThread];
-      }
-    });
+    var posts = RefreshPost.fromJson(tempJson).posts;
 
     return ProfileResponse(
       profile: profile,
@@ -73,15 +51,6 @@ class ProfileResponse {
     );
   }
 
-  List<PostOrThread> getPostOrThreadList() {
-    final postOrThreadList = <PostOrThread>[];
-    for (final postList in posts.values) {
-      postList.forEach((postOrThread) {
-        postOrThreadList.add(postOrThread);
-      });
-    }
-    return postOrThreadList;
-  }
 }
 
 class Profile {
@@ -115,17 +84,13 @@ class Profile {
 
   factory Profile.fromJson(Map<String, dynamic> json) {
 
-    var image = "$domainProtocol$domainUrl/" + json['image'].toString().replaceAll('$domainProtocol$domainUrl//', "$domainProtocol$domainUrl/");
-    if (image.endsWith('null')){
-      image = userPlaceholder;
-    }
     return Profile(
       id: json['id'],
       email: json['email'],
       username: json['username'],
       firstname: json['firstname'],
       lastname: json['lastname'],
-      image: image,
+      image: json['image'],
       numberOfFollowers: json['number_of_followers'],
       numberOfFollowing: json['number_of_following'],
       phone: json['phone'],
@@ -136,6 +101,14 @@ class Profile {
   }
 
   String get fullName => "$firstname $lastname";
+
+  // String get imageUrl {
+  //   String url = "$domainUrlWithProtocol$image";
+  //   if (url.endsWith('null') || url.endsWith(domainUrlWithProtocol)){
+  //     url = userPlaceholder;
+  //   }
+  //   return url;
+  // }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{
@@ -156,77 +129,3 @@ class Profile {
   }
 }
 
-class Thread {
-  final int id;
-  final String caption;
-  final String? image;
-  final int? postId;
-
-  Thread({
-    required this.id,
-    required this.caption,
-    this.image,
-    this.postId,
-  });
-}
-
-class PostOrThread {
-  final int id;
-  final String caption;
-  final String? image;
-  final String? video;
-  final String timestamp;
-  final bool isThread;
-  final int views;
-  final int user;
-  final List<int>? likes;
-  final int? postId;
-
-  PostOrThread({
-    required this.id,
-    required this.caption,
-    this.image,
-    this.video,
-    required this.timestamp,
-    required this.isThread,
-    required this.views,
-    required this.user,
-    this.likes,
-    this.postId,
-  });
-
-  factory PostOrThread.fromJson(Map<String, dynamic> json) {
-    return PostOrThread(
-      id: json['id'],
-      caption: json['caption'],
-      image: "$domainProtocol$domainUrl/"+json['image'].toString(),
-      video: json['video'],
-      timestamp: json['timestamp'],
-      isThread: json['is_thread'],
-      views: json['views'],
-      user: json['user'],
-      likes: json['likes'] != null
-          ? List<int>.from(json['likes'].map((x) => x))
-          : null,
-      postId: json['post_id'],
-    );
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{
-      'id': id,
-      'caption': caption,
-      'image': image,
-      'video': video,
-      'timestamp': timestamp,
-      'is_thread': isThread,
-      'views': views,
-      'user': user,
-      'post_id': postId,
-    };
-    if (likes != null) {
-      data['likes'] = likes;
-    }
-    return data;
-  }
-}

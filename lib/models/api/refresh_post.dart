@@ -1,48 +1,35 @@
-import 'dart:convert';
-
 import 'PostModel.dart';
+import 'ThreadModel.dart';
 
 class RefreshPost {
-  List<int> ids;
-  Map<String, Post> data;
+  final List<Post> posts;
 
-  RefreshPost({
-    required this.ids,
-    required this.data,
-  });
+  RefreshPost({required this.posts});
 
   factory RefreshPost.fromJson(Map<String, dynamic> json) {
-    Map<String, dynamic> dataJson = json['data'];
-    Map<String, Post> data = {};
-    dataJson.forEach((key, value) {
-      data[key] = Post.fromJson(value);
-    });
-    return RefreshPost(
-      ids: List<int>.from(json['ids']),
-      data: data,
-    );
-  }
+    final ids = (json['ids'] as List<dynamic>).cast<int>();
+    final data = Map<String, dynamic>.from(json['data']);
 
-  static List<Post> parsePostsFromJson(String jsonString) {
-    RefreshPost apiResponse = RefreshPost.fromJson(jsonDecode(jsonString));
-    List<Post> posts = [];
-    apiResponse.ids.forEach((id) {
-      Post post = apiResponse.data[id.toString()]!;
-      posts.add(post);
-    });
-    return posts;
-  }
+    final posts = <Post>[];
 
-  List<Post> get getPost {
-    List<Post> posts = [];
-    ids.forEach((id) {
-      Post? post = data[id.toString()];
-      if (post != null) {
+    for (final id in ids) {
+      final postData = data[id.toString()];
+
+      if (postData is List<dynamic>) {
+        final threadPost = ThreadPost.fromJson(postData.first as Map<String, dynamic>);
+        final childPosts = postData.skip(1).map((post) => Post.fromJson(post as Map<String, dynamic>)).toList();
+
+        threadPost.childPosts = childPosts;
+
+        posts.add(threadPost);
+        // posts.addAll(childPosts);
+      } else {
+        final post = Post.fromJson(postData as Map<String, dynamic>);
         posts.add(post);
       }
-    });
-    print(posts);
-    return posts;
-  }
+    }
 
+    return RefreshPost(posts: posts);
+  }
 }
+

@@ -9,9 +9,10 @@ import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
 class ChatScreen extends StatelessWidget {
-  ChatScreen({Key? key}) : super(key: key);
 
-  // var controller =Get.put(BusinessControllers());
+  String userId;
+  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -113,7 +114,7 @@ class ChatScreen extends StatelessWidget {
                   Text(
                     'Online',
                     style: TextStyle(
-                      color: ThemeService.isSavedDarkMode() ? Colors.white :  hintColor,
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : hintColor,
                       fontWeight: FontWeight.w400,
                       fontSize: 11.sp,
                     ),
@@ -126,7 +127,10 @@ class ChatScreen extends StatelessWidget {
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,)),
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+              )),
           foregroundColor: Colors.black,
           actions: [
             PopupMenuButton(
@@ -136,7 +140,7 @@ class ChatScreen extends StatelessWidget {
               ),
               icon: Icon(
                 Icons.more_vert,
-                color: ThemeService.isSavedDarkMode() ?  Colors.white : Color(0xff97A1B4),
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff97A1B4),
               ),
               itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                 PopupMenuItem(
@@ -193,7 +197,7 @@ class ChatScreen extends StatelessWidget {
                       // ),
                       DateChip(
                         date: DateTime.now(),
-                        color: ThemeService.isSavedDarkMode() ? Colors.white :  Color(0x558AD3D5),
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0x558AD3D5),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -206,7 +210,7 @@ class ChatScreen extends StatelessWidget {
                             seen: true,
                             bubbleRadius: 12,
                             sent: true,
-                            color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) :  Color(0xffE2E4EB),
+                            color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
                             tail: true,
                             textStyle: TextStyle(
                               fontSize: 12.sp,
@@ -218,7 +222,7 @@ class ChatScreen extends StatelessWidget {
                             child: Text(
                               '9:32 am',
                               style: TextStyle(
-                                color: ThemeService.isSavedDarkMode() ? Colors.white :  hintColor,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : hintColor,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10.sp,
                               ),
@@ -279,7 +283,7 @@ class ChatScreen extends StatelessWidget {
                             child: Text(
                               '9:30 am',
                               style: TextStyle(
-                                color: ThemeService.isSavedDarkMode() ? Colors.white :  hintColor,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : hintColor,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10.sp,
                               ),
@@ -298,7 +302,10 @@ class ChatScreen extends StatelessWidget {
                           width: Get.width / 1.4,
                           child: Row(
                             children: [
-                              SvgPicture.asset('assets/svgs/share.svg',color: ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xff97A1B4),),
+                              SvgPicture.asset(
+                                'assets/svgs/share.svg',
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff97A1B4),
+                              ),
                               SizedBox(
                                 width: 15.sp,
                               ),
@@ -330,7 +337,9 @@ class ChatScreen extends StatelessWidget {
                                         color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB)),
                                     child: Text(
                                       'Hey, Check it out!!',
-                                      style: TextStyle(color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,),
+                                      style: TextStyle(
+                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -354,7 +363,7 @@ class ChatScreen extends StatelessWidget {
                             seen: true,
                             bubbleRadius: 12,
                             sent: true,
-                            color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) :  Color(0xffE2E4EB),
+                            color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
                             tail: true,
                             textStyle: TextStyle(
                               fontSize: 12.sp,
@@ -366,7 +375,7 @@ class ChatScreen extends StatelessWidget {
                             child: Text(
                               '9:32 am',
                               style: TextStyle(
-                                color: ThemeService.isSavedDarkMode() ? Colors.white :  hintColor,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : hintColor,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 10.sp,
                               ),
@@ -520,12 +529,18 @@ class ChatScreen extends StatelessWidget {
             ),
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 1.h),
-                decoration: BoxDecoration(color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,),
+                decoration: BoxDecoration(
+                  color: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+                ),
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) :  Color(0xffE2E4EB)),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50), color: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB)),
                   child: TextFormField(
-                    style: TextStyle(fontSize: 16, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black, ),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    ),
                     onChanged: (value) {},
                     decoration: InputDecoration(
                       // prefixIconConstraints: BoxConstraints(
@@ -544,9 +559,12 @@ class ChatScreen extends StatelessWidget {
                               thickness: 1.sp,
                               indent: 14.sp,
                               endIndent: 14.sp,
-                              color: ThemeService.isSavedDarkMode() ? Colors.white :  Color(0xffBBBFD0),
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xffBBBFD0),
                             ),
-                            SvgPicture.asset('assets/svgs/imoj.svg', color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),),
+                            SvgPicture.asset(
+                              'assets/svgs/imoj.svg',
+                              color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
+                            ),
                             SizedBox(
                               width: 10.sp,
                             ),
@@ -555,7 +573,10 @@ class ChatScreen extends StatelessWidget {
                       ),
                       suffixIcon: IconButton(
                         onPressed: () {},
-                        icon: SvgPicture.asset('assets/svgs/send.svg', color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff3AA0FF),),
+                        icon: SvgPicture.asset(
+                          'assets/svgs/send.svg',
+                          color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff3AA0FF),
+                        ),
                       ),
                       contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
                       hintText: 'Type Message...',
@@ -622,4 +643,8 @@ class ChatScreen extends StatelessWidget {
       ),
     );
   }
+
+  ChatScreen({
+    required this.userId,
+  });
 }

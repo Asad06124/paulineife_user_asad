@@ -1,0 +1,130 @@
+{
+  "profile": {
+    "id": 32,
+    "email": "mubashar@test.com",
+    "username": "mubasharhussain",
+    "firstname": "Mubashar",
+    "lastname": "",
+    "image": "/media/user/image_picker_961CE0B9-66EC-4D0D-B6B9-34FC281274D4-43341-000000E031954557.jpg",
+    "number_of_followers": 0,
+    "number_of_following": 1,
+    "phone": "923086765898",
+    "dob": "09/04/2005",
+    "website": "",
+    "bio": ""
+  },
+  "followed": false,
+  "ids": [
+    70,
+    69,
+    68
+  ],
+  "post": {
+    "70": [
+      {
+        "id": 70,
+        "caption": "",
+        "image": "",
+        "video": null,
+        "timestamp": "2023-04-19T20:28:16.606559Z",
+        "is_thread": true,
+        "views": 0,
+        "user": 32,
+        "likes": [],
+        "username": "mubasharhussain",
+        "userimage": "/media/user/image_picker_961CE0B9-66EC-4D0D-B6B9-34FC281274D4-43341-000000E031954557.jpg"
+      },
+      {
+        "id": 55,
+        "caption": "",
+        "image": "",
+        "post_id": 70
+      },
+      {
+        "id": 56,
+        "caption": "",
+        "image": "/9j/4AAQSkZJRgABAQAASABIAAD/4QBYRXhpZgAATU0AKgAAAAgAAgESAAMAAAABAAEAAIdpAAQAAAABAAAAJgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAD6KADAAQAAAABAAAF2wAAAADTp8/0IrT7w/wB7+lZ1Onz/AEMzYi/10H/XRP8A2tWZpT6/L9SK+6n6y/yraHwr5/mdFPr8v1Mv+9/uRfyn/wA//qqanT5/oTP4n8vyP//Z",
+        "post_id": 70
+      }
+    ],
+    "69": [
+      {
+        "id": 69,
+        "caption": "",
+        "image": "",
+        "video": null,
+        "timestamp": "2023-04-19T20:27:02.170881Z",
+        "is_thread": true,
+        "views": 0,
+        "user": 32,
+        "likes": [],
+        "username": "mubasharhussain",
+        "userimage": "/media/user/image_picker_961CE0B9-66EC-4D0D-B6B9-34FC281274D4-43341-000000E031954557.jpg"
+      },
+      {
+        "id": 52,
+        "caption": "",
+        "image": "",
+        "post_id": 69
+      },
+      {
+        "id": 53,
+        "caption": "",
+        "image": "",
+        "post_id": 69
+      },
+      {
+        "id": 54,
+        "caption": "",
+        "image": "",
+        "post_id": 69
+      }
+    ],
+    "68": [
+      {
+        "id": 68,
+        "caption": "thread caption",
+        "image": "",
+        "video": null,
+        "timestamp": "2023-04-19T20:24:28.560806Z",
+        "is_thread": true,
+        "views": 0,
+        "user": 32,
+        "likes": [],
+        "username": "mubasharhussain",
+        "userimage": "/media/user/image_picker_961CE0B9-66EC-4D0D-B6B9-34FC281274D4-43341-000000E031954557.jpg"
+      },
+      {
+        "id": 49,
+        "caption": "thread caption",
+        "image": "",
+        "post_id": 68
+      },
+      {
+        "id": 50,
+        "caption": "",
+        "image": "",
+        "post_id": 68
+      },
+      {
+        "id": 51,
+        "caption": "",
+        "image": "",
+        "post_id": 68
+      }
+    ],
+    "62": {
+      "id": 62,
+      "caption": "normal post",
+      "image": "efiefhveikhfeuwopfhehewehevueuwp",
+      "video": null,
+      "timestamp": "2023-04-17T11:09:24.493571Z",
+      "is_thread": false,
+      "views": 0,
+      "user": 1,
+      "likes": [],
+      "username": "manidon123",
+      "userimage": "/media/user/HITS_PERFECTION.png"
+    }
+  }
+}

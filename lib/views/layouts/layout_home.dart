@@ -3,12 +3,15 @@ import 'dart:io';
 import 'package:badges/badges.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:custom_utils/custom_utils.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:paulineife_user/constant/constant.dart';
 import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/extensions/cap_extension.dart';
+import 'package:paulineife_user/helpers/helpers.dart';
 import 'package:paulineife_user/views/screens/screen_chat_list.dart';
 import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 import 'package:paulineife_user/views/screens/screen_story_view.dart';
@@ -79,10 +82,6 @@ class _HomeLayoutState extends State<HomeLayout> {
                       .toList(),
                 ],
               ),
-
-
-
-
               Expanded(
                 child: Obx(() {
                   return Column(
@@ -92,39 +91,51 @@ class _HomeLayoutState extends State<HomeLayout> {
                       if (controller.posts.value.isNotEmpty)
                         GestureDetector(
                           onTap: () {
-                            Get.to(StoryViewScreen(storiesList: controller.posts.value,));
+                            Get.to(StoryViewScreen(
+                              storiesList: controller.posts.value,
+                            ));
                           },
                           child: Builder(builder: (_) {
+                            var firstPost = controller.posts.value.first;
+                            var image = firstPost.getImage;
+                            var video = firstPost.getVideo;
+
                             Widget content;
-                            if (controller.posts.value.first.image != null) {
-                              // Show image
-                              content = CachedNetworkImage(
-                                imageUrl: controller.posts.value.first.image!,
+                            if (image != null && (video == null || video.isEmpty)) {
+                              var imageData;
+                              try {
+                                imageData = firstPost.decodeImageFromBase64();
+                              } catch (e) {
+                                imageData = null;
+                              }
+
+                              content = Container(
                                 height: size.height / 1.8 + 15,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                                placeholder: (context, url) => Container(
-                                  height: size.height / 1.8 + 15,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
+                                decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.sp),
-                                    color: Colors.grey[300],
-                                  ),
-                                  child: CircularProgressIndicator(),
-                                ),
-                                errorWidget: (context, url, error) => Container(
-                                  height: size.height / 1.8 + 15,
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.sp),
-                                    color: Colors.grey[300],
-                                  ),
-                                  child: Icon(Icons.error),
-                                ),
+                                    image: DecorationImage(
+                                      image: image.isNotEmpty && imageData != null
+                                          ? ExtendedMemoryImageProvider(imageData)
+                                          : ExtendedNetworkImageProvider(placeholderUrl) as ImageProvider,
+                                      fit: BoxFit.cover,
+                                    )),
                               );
 
-                            } else if (controller.posts.value.first.video != null) {
-                              final String videoUrl = controller.posts.value.first.video!;
+                              // content = image.isNotEmpty && imageData != null
+                              //     ? Image.memory(
+                              //         imageData,
+                              //         height: size.height / 1.8 + 15,
+                              //         width: double.infinity,
+                              //         fit: BoxFit.cover,
+                              //       )
+                              //     : CachedNetworkImage(
+                              //         imageUrl: placeholderUrl,
+                              //         height: size.height / 1.8 + 15,
+                              //         width: double.infinity,
+                              //         fit: BoxFit.cover,
+                              //       );
+                            } else if (video != null && video.isNotEmpty) {
+                              final String videoUrl = video;
                               content = FutureBuilder<File>(
                                 future: getVideoThumbnail(videoUrl),
                                 builder: (context, snapshot) {
@@ -143,7 +154,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                                       ),
                                       child: GestureDetector(
                                         onTap: () {
-                                          Get.to(ProfileScreen(username: "",));
+                                          Get.to(ProfileScreen(
+                                            username: firstPost.username,
+                                          ));
                                         },
                                         child: Container(
                                           color: Colors.transparent,
@@ -175,7 +188,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                       ),
                                                       child: CircleAvatar(
                                                         backgroundImage: CachedNetworkImageProvider(
-                                                          controller.posts.value.first.userImage,
+                                                          firstPost.userImage,
                                                         ),
                                                       ),
                                                     ),
@@ -262,16 +275,17 @@ class _HomeLayoutState extends State<HomeLayout> {
                                   right: 0,
                                   child: GestureDetector(
                                     onTap: () {
-                                      Get.to(ProfileScreen(username: '',));
+                                      Get.to(ProfileScreen(
+                                        username: firstPost.username,
+                                      ));
                                     },
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: Colors.grey.withOpacity(.5),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10.sp),
-                                          bottomRight: Radius.circular(10.sp),
-                                        )
-                                      ),
+                                          color: Colors.grey.withOpacity(.5),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(10.sp),
+                                            bottomRight: Radius.circular(10.sp),
+                                          )),
                                       width: Get.width,
                                       child: Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -292,7 +306,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                               ),
                                               child: CircleAvatar(
                                                 backgroundImage: CachedNetworkImageProvider(
-                                                  controller.posts.value.first.userImage,
+                                                  "$domainUrlWithProtocol${firstPost.userImage}",
                                                 ),
                                               ),
                                             ),
@@ -305,7 +319,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                               crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  controller.posts.value.first.username,
+                                                  firstPost.username,
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
                                                     fontSize: 16,
@@ -317,7 +331,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                   height: 2.sp,
                                                 ),
                                                 Text(
-                                                  controller.posts.value.first.timestamp.toRelativeTime,
+                                                  firstPost.timestamp.toRelativeTime,
                                                   textAlign: TextAlign.start,
                                                   style: TextStyle(
                                                     fontSize: 12,
@@ -349,11 +363,6 @@ class _HomeLayoutState extends State<HomeLayout> {
                   );
                 }),
               ),
-
-
-
-
-
               SizedBox(
                 height: size.height / 50,
               ),
@@ -380,14 +389,13 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-
-  Future<File> getVideoThumbnail (String url) async {
-
+  Future<File> getVideoThumbnail(String url) async {
     var thumbTempPath = await VideoThumbnail.thumbnailFile(
       video: url,
       thumbnailPath: (await getTemporaryDirectory()).path,
       imageFormat: ImageFormat.WEBP,
-      maxHeight: 64, // specify the height of the thumbnail, let the width auto-scaled to keep the source aspect ratio
+      maxHeight: 64,
+      // specify the height of the thumbnail, let the width auto-scaled to keep the source aspect ratio
       quality: 75, // you can change the thumbnail quality here
     );
     return File(thumbTempPath!);

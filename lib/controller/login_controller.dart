@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -23,6 +24,7 @@ class LoginController extends GetxController {
   static Future<void> login(String emailOrPhone, String password) async {
     loginLoading.value = true;
     var response = await http.post(Uri.parse('https://rollupp.co/api/login/'), body: {'phone': emailOrPhone, 'password': password});
+    log("Login response: ${response.body}");
     if (response.statusCode == 200) {
       var data = LoginResponse.fromJson(jsonDecode(response.body));
       if (data.message == 'Login Success') {

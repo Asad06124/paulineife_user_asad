@@ -1,13 +1,36 @@
+import 'dart:convert';
+
+import 'package:custom_utils/custom_utils.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sizer/sizer.dart';
+import 'package:http/http.dart' as http;
+import 'package:listview_infinite_pagination/listview_infinite_pagination.dart';
+import 'package:paulineife_user/models/following_response.dart';
+import 'package:paulineife_user/views/screens/screen_search_profile.dart';
 
+import '../../controller/login_controller.dart';
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
+import '../../models/Login.dart';
 import '../../widgets/custom_input_field1.dart';
 
-class FollowingScreen extends StatelessWidget {
-  const FollowingScreen({Key? key}) : super(key: key);
+class FollowingScreen extends StatefulWidget {
+  String username;
+  String type;
+
+  @override
+  State<FollowingScreen> createState() => _FollowingScreenState();
+
+  FollowingScreen({
+    required this.username,
+    required this.type,
+  });
+}
+
+class _FollowingScreenState extends State<FollowingScreen> {
+  String _accessToken = "";
+  var _searchQuery = '';
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +42,17 @@ class FollowingScreen extends StatelessWidget {
           foregroundColor: Colors.black,
           elevation: 0,
           title: Text(
-            'Following',
+            widget.type.capitalizeFirst.toString(),
             style: getAppbarTextTheme(),
           ),
           leading: IconButton(
               onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,)),
+              icon: Icon(
+                Icons.arrow_back,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+              )),
           centerTitle: true,
         ),
         body: Padding(
@@ -41,70 +67,98 @@ class FollowingScreen extends StatelessWidget {
                 padding: EdgeInsets.all(8.sp),
                 child: CustomInputField1(
                   textStyle: TextStyle(
-                    color: ThemeService.isSavedDarkMode()
-                        ? Colors.white
-                        : Colors.black,
+                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10.sp),
                     borderSide: BorderSide.none,
                   ),
-                  fillColor:ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
-                  prefix: Icon(Icons.search,color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xffE2E4EB)),
+                  onChange: (value) {
+                    setState(() {
+                      _searchQuery = value.toString();
+                    });
+                  },
+                  fillColor: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffE2E4EB),
+                  prefix: Icon(Icons.search, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xffE2E4EB)),
                   contentPadding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 15.sp),
                   hint: 'Search',
-                  hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w400,  color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
+                  hintStyle:
+                      TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
                 ),
               ),
               Expanded(
-                child: ListView.builder(
+                child: ListviewInfinitePagination<FollowingResult>(
                   physics: BouncingScrollPhysics(),
-                  itemCount: 12,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTile(
-                      contentPadding: EdgeInsets.symmetric(horizontal: 0),
-                      leading: Container(
-                        padding: EdgeInsets.all(2.sp),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              width: 1.sp,
-                              color: Color(0xff2A70C8),
-                            )),
-                        child: CircleAvatar(
-                          radius: 25.sp,
-                          backgroundImage: AssetImage('assets/images/12.png'),
-                        ),
-                      ),
-                      title: Text(
-                        'Asad',
-                        style:
-                            TextStyle(fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
-                      ),
-                      subtitle: Text(
-                        '@asad',
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color:ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
-                        ),
-                      ),
-                      trailing: ElevatedButton(
-                          child: Text(
-                            'Following',
-                            style: TextStyle(
-                              fontSize: 11.sp,
-                              fontWeight: FontWeight.w400,
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                  initialLoader: Center(
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
+                  ),
+                  padding: EdgeInsets.zero,
+                  onFinished: SizedBox(),
+                  itemBuilder: (index, item) {
+                    var result = item as FollowingResult;
+                    var size = 30.sp;
+
+                    return item.username.startsWith(_searchQuery)
+                        ? ListTile(
+                            onTap: () {
+                              Get.to(ProfileScreen(username: result.username));
+                            },
+                            contentPadding: EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                            leading: Container(
+                              padding: EdgeInsets.all(2.sp),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    width: 1.sp,
+                                    color: Color(0xff2A70C8),
+                                  )),
+                              child: ExtendedImage.network(
+                                result.image,
+                                height: size,
+                                width: size,
+                                shape: BoxShape.circle,
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                          ),
-                          style: ButtonStyle(
-                            elevation: MaterialStateProperty.all(0),
-                            backgroundColor: MaterialStateProperty.all( ThemeService.isSavedDarkMode() ? Colors.black : Color(0xdfffffff)),
-                          ),
-                          onPressed: () {}),
-                    );
+                            title: Text(
+                              result.username,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black),
+                            ),
+                            // subtitle: Text(
+                            //   '@asad',
+                            //   style: TextStyle(
+                            //     fontSize: 14,
+                            //     fontWeight: FontWeight.w400,
+                            //     color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
+                            //   ),
+                            // ),
+                            trailing: ElevatedButton(
+                                child: Text(
+                                  'Following',
+                                  style: TextStyle(
+                                    fontSize: 11.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                  ),
+                                ),
+                                style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(0),
+                                  backgroundColor: MaterialStateProperty.all(ThemeService.isSavedDarkMode() ? Colors.black : Color(0xdfffffff)),
+                                ),
+                                onPressed: () {}),
+                          )
+                        : SizedBox();
                   },
+                  onEmpty: NotFound(
+                    message: "No data",
+                  ),
+                  onError: (error) {
+                    return Text("Something went wrong\n[${error.toString()}]");
+                  },
+                  dataFetcher: (int currentListSize) => getFollowings(currentListSize),
                 ),
               ),
             ],
@@ -112,5 +166,30 @@ class FollowingScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<List<FollowingResult>> getFollowings(int page) async {
+    var url = "https://rollupp.co/api/get-${widget.type}/${widget.username}?page=$page";
+    var accessToken = await getAccessToken();
+    var response = await http.get(
+      Uri.parse(url),
+      headers: {"Authorization": "Bearer $accessToken"},
+    );
+    if (response.statusCode != 200) {
+      return [];
+    }
+    var followingResponse = FollowingResponse.fromJson(jsonDecode(response.body));
+    return followingResponse.results;
+  }
+
+  Future<String> getAccessToken() async {
+    if (_accessToken.isNotEmpty) {
+      return _accessToken;
+    }
+
+    var loginResponse = await LoginController.getLoginResponse();
+    var data = LoginResponse.fromJson(jsonDecode(loginResponse ?? "{}"));
+    _accessToken = data.accessToken;
+    return _accessToken;
   }
 }
