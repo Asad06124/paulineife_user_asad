@@ -317,7 +317,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               onTap: () {
                                 // _generateRandomNumber();
                                 Get.to(StoryViewScreen(
-                                  storiesList: post.isThread ? post.asThread.childPosts : [post],
+                                  storiesList: post.isThread ? post.asThread.childPosts.skip(1).toList() : [post],
+                                  username: post.username,
+                                  userImage: post.userImage,
                                 ));
                               },
                               child: Container(

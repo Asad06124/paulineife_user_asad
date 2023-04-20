@@ -232,6 +232,8 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                             onTap: () {
                               Get.to(StoryViewScreen(
                                 storiesList: [],
+                                userImage: '',
+                                username: '',
                               ));
                             },
                             child: Container(

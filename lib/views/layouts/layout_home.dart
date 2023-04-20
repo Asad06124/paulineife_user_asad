@@ -30,6 +30,7 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout> {
   var controller = Get.put(HomeController());
+  GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,321 +69,335 @@ class _HomeLayoutState extends State<HomeLayout> {
           backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         ),
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
-        body: Padding(
-          padding: EdgeInsets.all(10.sp),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  CameraCard(),
-                  ...controller.stories.value
-                      .map((e) => ProfileCard(
-                            story: e,
-                          ))
-                      .toList(),
-                ],
-              ),
-              Expanded(
-                child: Obx(() {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      if (controller.posts.value.isNotEmpty)
-                        GestureDetector(
-                          onTap: () {
-                            Get.to(StoryViewScreen(
-                              storiesList: controller.posts.value,
-                            ));
-                          },
-                          child: Builder(builder: (_) {
-                            var firstPost = controller.posts.value.first;
-                            var image = firstPost.getImage;
-                            var video = firstPost.getVideo;
-
-                            Widget content;
-                            if (image != null && (video == null || video.isEmpty)) {
-                              var imageData;
-                              try {
-                                imageData = firstPost.decodeImageFromBase64();
-                              } catch (e) {
-                                imageData = null;
+        body: RefreshIndicator(
+          key: _refreshIndicatorKey,
+          onRefresh: () => controller.fetchRefreshPost(),
+          child: Padding(
+            padding: EdgeInsets.all(10.sp),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    CameraCard(),
+                    ...controller.stories.value
+                        .map((e) => ProfileCard(
+                              story: e,
+                            ))
+                        .toList(),
+                  ],
+                ),
+                Expanded(
+                  child: Obx(() {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        if (controller.posts.value.isNotEmpty)
+                          GestureDetector(
+                            onTap: () {
+                              var firstPost = controller.posts.value.first;
+                              var posts;
+                              if (firstPost.isThread) {
+                                posts = firstPost.asThread.childPosts.skip(1).toList();
+                              } else {
+                                posts = [firstPost];
                               }
 
-                              content = Container(
-                                height: size.height / 1.8 + 15,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.sp),
-                                    image: DecorationImage(
-                                      image: image.isNotEmpty && imageData != null
-                                          ? ExtendedMemoryImageProvider(imageData)
-                                          : ExtendedNetworkImageProvider(placeholderUrl) as ImageProvider,
-                                      fit: BoxFit.cover,
-                                    )),
-                              );
+                              Get.to(StoryViewScreen(
+                                storiesList: posts,
+                                userImage: firstPost.userImage,
+                                username: firstPost.username,
+                              ));
+                            },
+                            child: Builder(builder: (_) {
+                              var firstPost = controller.posts.value.first;
+                              var image = firstPost.getImage;
+                              var video = firstPost.getVideo;
 
-                              // content = image.isNotEmpty && imageData != null
-                              //     ? Image.memory(
-                              //         imageData,
-                              //         height: size.height / 1.8 + 15,
-                              //         width: double.infinity,
-                              //         fit: BoxFit.cover,
-                              //       )
-                              //     : CachedNetworkImage(
-                              //         imageUrl: placeholderUrl,
-                              //         height: size.height / 1.8 + 15,
-                              //         width: double.infinity,
-                              //         fit: BoxFit.cover,
-                              //       );
-                            } else if (video != null && video.isNotEmpty) {
-                              final String videoUrl = video;
-                              content = FutureBuilder<File>(
-                                future: getVideoThumbnail(videoUrl),
-                                builder: (context, snapshot) {
-                                  if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-                                    final thumbnailFile = snapshot.data!;
+                              Widget content;
+                              if (image != null && (video == null || video.isEmpty)) {
+                                var imageData;
+                                try {
+                                  imageData = firstPost.decodeImageFromBase64();
+                                } catch (e) {
+                                  imageData = null;
+                                }
 
-                                    return Container(
-                                      height: size.height / 1.8 + 15,
-                                      alignment: Alignment.bottomLeft,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10.sp),
-                                        image: DecorationImage(
-                                          image: FileImage(thumbnailFile),
-                                          fit: BoxFit.cover,
+                                content = Container(
+                                  height: size.height / 1.8 + 15,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10.sp),
+                                      image: DecorationImage(
+                                        image: image.isNotEmpty && imageData != null
+                                            ? ExtendedMemoryImageProvider(imageData)
+                                            : ExtendedNetworkImageProvider(placeholderUrl) as ImageProvider,
+                                        fit: BoxFit.cover,
+                                      )),
+                                );
+
+                                // content = image.isNotEmpty && imageData != null
+                                //     ? Image.memory(
+                                //         imageData,
+                                //         height: size.height / 1.8 + 15,
+                                //         width: double.infinity,
+                                //         fit: BoxFit.cover,
+                                //       )
+                                //     : CachedNetworkImage(
+                                //         imageUrl: placeholderUrl,
+                                //         height: size.height / 1.8 + 15,
+                                //         width: double.infinity,
+                                //         fit: BoxFit.cover,
+                                //       );
+                              } else if (video != null && video.isNotEmpty) {
+                                final String videoUrl = video;
+                                content = FutureBuilder<File>(
+                                  future: getVideoThumbnail(videoUrl),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
+                                      final thumbnailFile = snapshot.data!;
+
+                                      return Container(
+                                        height: size.height / 1.8 + 15,
+                                        alignment: Alignment.bottomLeft,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10.sp),
+                                          image: DecorationImage(
+                                            image: FileImage(thumbnailFile),
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
-                                      ),
-                                      child: GestureDetector(
-                                        onTap: () {
-                                          Get.to(ProfileScreen(
-                                            username: firstPost.username,
-                                          ));
-                                        },
-                                        child: Container(
-                                          color: Colors.transparent,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Stack(
-                                              children: [
-                                                Center(
-                                                  child: Icon(
-                                                    Icons.play_circle_fill,
-                                                    size: 50.sp,
-                                                    color: Colors.white,
+                                        child: GestureDetector(
+                                          onTap: () {
+                                            Get.to(ProfileScreen(
+                                              username: firstPost.username,
+                                            ));
+                                          },
+                                          child: Container(
+                                            color: Colors.transparent,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Stack(
+                                                children: [
+                                                  Center(
+                                                    child: Icon(
+                                                      Icons.play_circle_fill,
+                                                      size: 50.sp,
+                                                      color: Colors.white,
+                                                    ),
                                                   ),
-                                                ),
-                                                Row(
-                                                  mainAxisSize: MainAxisSize.min,
-                                                  mainAxisAlignment: MainAxisAlignment.start,
-                                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                                  children: [
-                                                    Container(
-                                                      height: 40.sp,
-                                                      width: 40.sp,
-                                                      padding: EdgeInsets.all(2.sp),
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
-                                                        ),
-                                                      ),
-                                                      child: CircleAvatar(
-                                                        backgroundImage: CachedNetworkImageProvider(
-                                                          firstPost.userImage,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: 10.sp,
-                                                    ),
-                                                    Column(
-                                                      mainAxisSize: MainAxisSize.min,
-                                                      mainAxisAlignment: MainAxisAlignment.end,
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Text(
-                                                          controller.posts.value.first.username,
-                                                          textAlign: TextAlign.start,
-                                                          style: TextStyle(
-                                                            fontSize: 16,
-                                                            fontWeight: FontWeight.w700,
+                                                  Row(
+                                                    mainAxisSize: MainAxisSize.min,
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                                    children: [
+                                                      Container(
+                                                        height: 40.sp,
+                                                        width: 40.sp,
+                                                        padding: EdgeInsets.all(2.sp),
+                                                        decoration: BoxDecoration(
+                                                          shape: BoxShape.circle,
+                                                          border: Border.all(
                                                             color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                                                           ),
                                                         ),
-                                                        SizedBox(
-                                                          height: 2.sp,
-                                                        ),
-                                                        Text(
-                                                          controller.posts.value.first.timestamp.toRelativeTime,
-                                                          textAlign: TextAlign.start,
-                                                          style: TextStyle(
-                                                            fontSize: 12,
-                                                            fontWeight: FontWeight.w500,
-                                                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                                        child: CircleAvatar(
+                                                          backgroundImage: CachedNetworkImageProvider(
+                                                            firstPost.userImage,
                                                           ),
                                                         ),
-                                                      ],
-                                                    )
-                                                  ],
-                                                ),
-                                              ],
+                                                      ),
+                                                      SizedBox(
+                                                        width: 10.sp,
+                                                      ),
+                                                      Column(
+                                                        mainAxisSize: MainAxisSize.min,
+                                                        mainAxisAlignment: MainAxisAlignment.end,
+                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                        children: [
+                                                          Text(
+                                                            controller.posts.value.first.username,
+                                                            textAlign: TextAlign.start,
+                                                            style: TextStyle(
+                                                              fontSize: 16,
+                                                              fontWeight: FontWeight.w700,
+                                                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                                            ),
+                                                          ),
+                                                          SizedBox(
+                                                            height: 2.sp,
+                                                          ),
+                                                          Text(
+                                                            controller.posts.value.first.timestamp.toRelativeTime,
+                                                            textAlign: TextAlign.start,
+                                                            style: TextStyle(
+                                                              fontSize: 12,
+                                                              fontWeight: FontWeight.w500,
+                                                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      )
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    );
-                                  } else {
-                                    // Show placeholder while loading thumbnail
-                                    return Container(
-                                      height: size.height / 1.8 + 15,
-                                      alignment: Alignment.bottomLeft,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10.sp),
-                                        color: Colors.grey.shade200,
-                                      ),
-                                      child: Center(
-                                        child: CircularProgressIndicator(),
-                                      ),
-                                    );
-                                  }
-                                },
-                              );
-                            } else {
+                                      );
+                                    } else {
+                                      // Show placeholder while loading thumbnail
+                                      return Container(
+                                        height: size.height / 1.8 + 15,
+                                        alignment: Alignment.bottomLeft,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10.sp),
+                                          color: Colors.grey.shade200,
+                                        ),
+                                        child: Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                      );
+                                    }
+                                  },
+                                );
+                              } else {
 // Show text
-                              content = Container(
-                                height: size.height / 1.8 + 15,
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10.sp),
-                                  color: Colors.grey[300],
-                                ),
-                                child: Text(
-                                  controller.posts.value.first.caption,
-                                  style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                content = Container(
+                                  height: size.height / 1.8 + 15,
+                                  alignment: Alignment.center,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10.sp),
+                                    color: Colors.grey[300],
                                   ),
-                                ),
-                              );
-                            }
-                            return Stack(
-                              children: [
-                                content,
-                                Positioned(
-                                  bottom: 0,
-                                  left: 0,
-                                  right: 0,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      Get.to(ProfileScreen(
-                                        username: firstPost.username,
-                                      ));
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.grey.withOpacity(.5),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(10.sp),
-                                            bottomRight: Radius.circular(10.sp),
-                                          )),
-                                      width: Get.width,
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              height: 40.sp,
-                                              width: 40.sp,
-                                              padding: EdgeInsets.all(2.sp),
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
-                                                ),
-                                              ),
-                                              child: CircleAvatar(
-                                                backgroundImage: CachedNetworkImageProvider(
-                                                  "$domainUrlWithProtocol${firstPost.userImage}",
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 10.sp,
-                                            ),
-                                            Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment: MainAxisAlignment.end,
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  firstPost.username,
-                                                  textAlign: TextAlign.start,
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w700,
+                                  child: Text(
+                                    controller.posts.value.first.caption,
+                                    style: TextStyle(
+                                      fontSize: 18.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                );
+                              }
+                              return Stack(
+                                children: [
+                                  content,
+                                  Positioned(
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Get.to(ProfileScreen(
+                                          username: firstPost.username,
+                                        ));
+                                      },
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Colors.grey.withOpacity(.5),
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(10.sp),
+                                              bottomRight: Radius.circular(10.sp),
+                                            )),
+                                        width: Get.width,
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                height: 40.sp,
+                                                width: 40.sp,
+                                                padding: EdgeInsets.all(2.sp),
+                                                decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  border: Border.all(
                                                     color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  height: 2.sp,
-                                                ),
-                                                Text(
-                                                  firstPost.timestamp.toRelativeTime,
-                                                  textAlign: TextAlign.start,
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                                child: CircleAvatar(
+                                                  backgroundImage: CachedNetworkImageProvider(
+                                                    "$domainUrlWithProtocol${firstPost.userImage}",
                                                   ),
                                                 ),
-                                              ],
-                                            )
-                                          ],
+                                              ),
+                                              SizedBox(
+                                                width: 10.sp,
+                                              ),
+                                              Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    firstPost.username,
+                                                    textAlign: TextAlign.start,
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.w700,
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 2.sp,
+                                                  ),
+                                                  Text(
+                                                    firstPost.timestamp.toRelativeTime,
+                                                    textAlign: TextAlign.start,
+                                                    style: TextStyle(
+                                                      fontSize: 12,
+                                                      fontWeight: FontWeight.w500,
+                                                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            );
-                          }),
-                        )
-                      else
-                        Center(
-                          child: NotFound(
-                            message: "No posts",
-                            showImage: true,
-                            color: Colors.blue.shade900,
+                                ],
+                              );
+                            }),
+                          )
+                        else
+                          Center(
+                            child: NotFound(
+                              message: "No posts",
+                              showImage: true,
+                              color: Colors.blue.shade900,
+                            ),
                           ),
-                        ),
-                    ],
-                  );
-                }),
-              ),
-              SizedBox(
-                height: size.height / 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      controller.fetchRefreshPost();
-                    },
-                    child: SvgPicture.asset('assets/images/refresh.svg'),
-                  ),
-                  GestureDetector(
+                      ],
+                    );
+                  }),
+                ),
+                SizedBox(
+                  height: size.height / 50,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
                       onTap: () {
-                        controller.fetchRandomPost();
+                        _refreshIndicatorKey.currentState?.show();
                       },
-                      child: SvgPicture.asset('assets/images/repeat.svg')),
-                ],
-              ),
-            ],
+                      child: SvgPicture.asset('assets/images/refresh.svg'),
+                    ),
+                    GestureDetector(
+                        onTap: () {
+                          controller.fetchRandomPost();
+                        },
+                        child: SvgPicture.asset('assets/images/repeat.svg')),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

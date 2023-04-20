@@ -28,4 +28,22 @@ extension MyDateTime on DateTime {
       return "Just now";
     }
   }
+  String get toRelativeTimeShort {
+    Duration difference = DateTime.now().difference(this);
+    if (difference.inDays >= 365) {
+      return "${(difference.inDays / 365).floor()}y";
+    } else if (difference.inDays >= 30) {
+      return "${(difference.inDays / 30).floor()} mon";
+    } else if (difference.inDays >= 7) {
+      return "${(difference.inDays / 7).floor()}w";
+    } else if (difference.inDays > 0) {
+      return "${difference.inDays}d";
+    } else if (difference.inHours > 0) {
+      return "${difference.inHours}h";
+    } else if (difference.inMinutes > 0) {
+      return "${difference.inMinutes} min";
+    } else {
+      return "Just now";
+    }
+  }
 }

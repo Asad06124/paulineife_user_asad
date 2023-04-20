@@ -29,7 +29,7 @@ class HomeController extends GetxController {
 
   RxBool liked = true.obs;
   var posts = Rx<List<Post>>([]);
-  var stories = Rx<List<Story>>([]);
+  var stories = Rx<List<Post>>([]);
   var uploadPostsLoading = false.obs;
   var userName = "".obs;
   var profileImage = '$userPlaceholder'.obs;
@@ -83,7 +83,7 @@ class HomeController extends GetxController {
   //   posts.value = obj.getPost;
   // }
 
-  void fetchRefreshPost() async {
+  Future<void> fetchRefreshPost() async {
     var loginResponse = await LoginController.getLoginResponse();
     var data = LoginResponse.fromJson(jsonDecode(loginResponse ?? ""));
     print(data.accessToken);

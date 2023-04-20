@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:paulineife_user/helpers/helpers.dart';
 import 'package:paulineife_user/widgets/status_view_custom.dart';
 import 'package:sizer/sizer.dart';
 
 import '../constant/constant.dart';
 import '../helpers/theme_service.dart';
-import '../models/api/HomeResponse.dart';
-import '../models/api/StoryModel.dart';
+import '../models/api/PostModel.dart';
 import '../views/screens/screen_story_view.dart';
 
 class ProfileCard extends StatelessWidget {
   const ProfileCard({
-    Key? key, required this.story,
+    Key? key,
+    required this.story,
   }) : super(key: key);
-  final Story story;
+  final Post story;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,10 @@ class ProfileCard extends StatelessWidget {
           ),
           child: StatusViewCustom(
             onTap: () {
-              Get.to(StoryViewScreen(storiesList: [],));
+              Get.to(StoryViewScreen(
+                storiesList: [],
+                username: '', userImage: userPlaceholder,
+              ));
             },
             radius: 25.sp,
             spacing: 8.sp,

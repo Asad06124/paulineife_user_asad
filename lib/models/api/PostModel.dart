@@ -106,4 +106,8 @@ class Post {
       return video;
     }
   }
+
+  bool get isImage {
+    return image != null && image!.isNotEmpty;
+  }
 }

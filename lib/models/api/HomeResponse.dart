@@ -6,7 +6,7 @@ import 'ThreadModel.dart';
 
 class HomeResponse {
   final List<Post> posts;
-  final List<Story> stories;
+  final List<Post> stories;
 
   HomeResponse({required this.posts, required this.stories});
 
@@ -17,7 +17,7 @@ class HomeResponse {
     final storyData = Map<String, dynamic>.from(json['stories']);
 
     final posts = <Post>[];
-    final stories = <Story>[];
+    final stories = <Post>[];
 
     for (final id in postIds) {
       final postJson = postData[id.toString()];
@@ -36,7 +36,7 @@ class HomeResponse {
 
     for (final id in storyIds) {
       final storyJson = storyData[id.toString()];
-      final story = Story.fromJson(storyJson as Map<String, dynamic>);
+      final story = Post.fromJson(storyJson as Map<String, dynamic>);
       stories.add(story);
     }
 
