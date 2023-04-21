@@ -234,6 +234,7 @@ class _ProfileLayoutState extends State<ProfileLayout> {
                                 storiesList: [],
                                 userImage: '',
                                 username: '',
+                                timestamp: DateTime.now(),
                               ));
                             },
                             child: Container(

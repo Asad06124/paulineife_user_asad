@@ -107,6 +107,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                 storiesList: posts,
                                 userImage: firstPost.userImage,
                                 username: firstPost.username,
+                                timestamp: controller.posts.value.first.timestamp,
                               ));
                             },
                             child: Builder(builder: (_) {

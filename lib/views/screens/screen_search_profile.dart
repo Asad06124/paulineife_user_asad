@@ -319,6 +319,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 Get.to(StoryViewScreen(
                                   storiesList: post.isThread ? post.asThread.childPosts.skip(1).toList() : [post],
                                   username: post.username,
+                                  timestamp: DateTime.now(),
                                   userImage: post.userImage,
                                 ));
                               },

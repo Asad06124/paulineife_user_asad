@@ -25,11 +25,13 @@ class StoryViewScreen extends StatefulWidget {
 
   List<Post> storiesList;
   String username, userImage;
+  DateTime timestamp;
 
   StoryViewScreen({
     required this.storiesList,
     required this.username,
     required this.userImage,
+    required this.timestamp,
   });
 }
 
@@ -88,9 +90,9 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
     storyItems = widget.storiesList.map((e) {
       return e.isImage
           ? StoryItem.pageImage(
-        url: e.image!,
-        controller: controller,
-      )
+              url: e.image!,
+              controller: controller,
+            )
           : StoryItem.pageVideo(e.video.toString(), controller: controller);
     }).toList();
   }
@@ -179,27 +181,25 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                       ),
                     ),
-                    subtitle: Obx(() {
-                      return RichText(
-                        text: TextSpan(
-                            text: 'Good Football   ',
-                            style: TextStyle(
-                              fontSize: 10.sp,
-                              fontWeight: FontWeight.w500,
-                              color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
-                            ),
-                            children: [
-                              TextSpan(
-                                text: widget.storiesList[indexController.currentIndex.value].timestamp.toRelativeTimeShort,
-                                style: TextStyle(
-                                  fontSize: 10.sp,
-                                  fontWeight: FontWeight.w500,
-                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
-                                ),
+                    subtitle: RichText(
+                      text: TextSpan(
+                          text: 'Good Football   ',
+                          style: TextStyle(
+                            fontSize: 10.sp,
+                            fontWeight: FontWeight.w500,
+                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: widget.timestamp.toRelativeTimeShort,
+                              style: TextStyle(
+                                fontSize: 10.sp,
+                                fontWeight: FontWeight.w500,
+                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                               ),
-                            ]),
-                      );
-                    }),
+                            ),
+                          ]),
+                    ),
                     trailing: Container(
                       height: 30.sp,
                       width: 100.sp,
@@ -240,8 +240,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                               Icons.more_vert,
                               color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                             ),
-                            itemBuilder: (BuildContext context) =>
-                            <PopupMenuEntry>[
+                            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                               PopupMenuItem(
                                 onTap: () {
                                   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -409,8 +408,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
     );
   }
 
-  Widget _buildListPanel() =>
-      Column(
+  Widget _buildListPanel() => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
@@ -425,11 +423,13 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   )),
               child: CircleAvatar(
                 radius: 20.sp,
-                backgroundImage: AssetImage('assets/images/12.png'),
+                backgroundImage: ExtendedNetworkImageProvider(
+                  "$domainUrlWithProtocol${widget.userImage}",
+                ),
               ),
             ),
             title: Text(
-              'Asad_Official',
+              widget.username,
               style: TextStyle(
                 fontSize: 11.sp,
                 fontWeight: FontWeight.w700,
@@ -446,7 +446,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
             child: Container(
               child: ReadMoreText(
                 text:
-                '''Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.''',
+                    '''${widget.storiesList[indexController.currentIndex.value].caption}${" "*250}''',
                 maxLength: 250,
               ),
             ),
@@ -454,8 +454,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
         ],
       );
 
-  Widget _buildGridList() =>
-      Container(
+  Widget _buildGridList() => Container(
         height: Get.height,
         width: Get.width,
         child: Stack(
@@ -574,8 +573,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                           Icons.more_vert,
                           color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
                         ),
-                        itemBuilder: (BuildContext context) =>
-                        <PopupMenuEntry>[
+                        itemBuilder: (BuildContext context) => <PopupMenuEntry>[
                           PopupMenuItem(
                             onTap: () {
                               WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -735,6 +733,9 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                       Get.to(
                         StoryTextViewScreen(
                           strl: _controller,
+                          username: widget.username,
+                          userImage: '$domainUrlWithProtocol${widget.userImage}',
+                          text: widget.storiesList[indexController.currentIndex.value].caption,
                         ),
                       );
                     },
@@ -749,6 +750,9 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                 Get.to(
                   StoryTextViewScreen(
                     strl: _controller,
+                    username: widget.username,
+                    userImage: '$domainUrlWithProtocol${widget.userImage}',
+                    text: widget.storiesList[indexController.currentIndex.value].caption,
                   ),
                 );
               },

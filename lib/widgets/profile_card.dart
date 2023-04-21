@@ -31,6 +31,7 @@ class ProfileCard extends StatelessWidget {
             onTap: () {
               Get.to(StoryViewScreen(
                 storiesList: [],
+                timestamp: DateTime.now(),
                 username: '', userImage: userPlaceholder,
               ));
             },

@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:custom_utils/custom_utils.dart';
+import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sliding_top_panel/sliding_top_panel.dart';
@@ -7,11 +8,18 @@ import 'package:sliding_top_panel/sliding_top_panel.dart';
 import '../../helpers/theme_service.dart';
 
 class StoryTextViewScreen extends StatelessWidget {
-  StoryTextViewScreen({Key? key, required this.strl}) : super(key: key);
   SlidingPanelTopController strl;
+
+  String text;
+  String username, userImage;
 
   @override
   Widget build(BuildContext context) {
+
+    print(text);
+    print(username);
+    print(userImage);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
@@ -29,11 +37,11 @@ class StoryTextViewScreen extends StatelessWidget {
                     )),
                 child: CircleAvatar(
                   radius: 20.sp,
-                  backgroundImage: AssetImage('assets/images/12.png'),
+                  backgroundImage: ExtendedNetworkImageProvider(userImage),
                 ),
               ),
               title: Text(
-                'Asad_Official',
+                username,
                 style: TextStyle(
                   fontSize: 11.sp,
                   fontWeight: FontWeight.w700,
@@ -50,7 +58,7 @@ class StoryTextViewScreen extends StatelessWidget {
               child: Container(
                 height: 80.h,
                 child: AutoSizeText(
-                  '''Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Vivamus ac hendrerit leo, vel volutpat lectus. Cras finibus mi diam. Donec nisi orci, varius nec lectus at, tincidunt posuere mauris. Cras cursus quis mi sed tempor. Praesent ac lectus ut libero pharetra egestas. Morbi pharetra malesuada dictum. Nam ultrices tempor ultrices. Mauris accumsan nisl et justo convallis, in scelerisquedolor placerat.Sed et est rhoncus, blandit ligula et, mattis ligula.Curabitur cursus cursus eros sit amet iaculis. Morbi eget efficitur mi. Sed tincidunt dignissim libero, id placerat urna varius at. Donec ultrices, odio at tempor congue, massa ex  molestie arcu, sit amet tristique nulla mauris blandit sapien.  Donec rutrum, lacus ac placerat porta, eros lectus dignissim   dui, ac rhoncus felis tortor nec libero. Nulla facilisi.''',
+                  text,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.start,
                   maxLines: 40,
@@ -87,4 +95,11 @@ class StoryTextViewScreen extends StatelessWidget {
       ),
     );
   }
+
+  StoryTextViewScreen({
+    required this.strl,
+    required this.text,
+    required this.username,
+    required this.userImage,
+  });
 }
