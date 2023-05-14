@@ -1,21 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:helpers/helpers/transition.dart';
 import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/views/screens/screen_home.dart';
 import 'package:paulineife_user/widgets/custom_buttom.dart';
-import 'package:paulineife_user/widgets/custom_input_field1.dart';
 import 'package:sizer/sizer.dart';
-
 import 'package:video_editor/domain/bloc/controller.dart';
-import 'package:video_editor/ui/cover/cover_selection.dart';
-import 'package:video_editor/ui/cover/cover_viewer.dart';
 import 'package:video_editor/ui/trim/trim_slider.dart';
 import 'package:video_editor/ui/video_viewer.dart';
-// import 'package:video_trimmer/video_trimmer.dart';
-// import 'package:video_trimmer/video_trimmer.dart';
-import '../../controller/otp_controller.dart';
+
 import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 
@@ -24,6 +19,7 @@ class PostVideoScreen extends StatefulWidget {
     Key? key,
   }) : super(key: key);
   var controller = Get.put(HomeController());
+
   @override
   State<PostVideoScreen> createState() => _PostVideoScreenState();
 }
@@ -50,17 +46,17 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
   //   _trimmer.loadVideo(videoFile: controller.vid!);
   // }
 
-
   final double height = 60;
   bool button = false;
 
   late VideoEditorController _controller;
 
+  String caption = "";
+  File? file;
+
   @override
   void initState() {
-
-    _controller = VideoEditorController.file(widget.controller.vid!,
-        maxDuration:  Duration(seconds: 120))
+    _controller = VideoEditorController.file(widget.controller.vid!, maxDuration: Duration(seconds: 120))
       ..initialize(aspectRatio: 16 / 16).then((_) => setState(() {}));
     super.initState();
   }
@@ -70,15 +66,15 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
     _controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
-   var Sze = MediaQuery.of(context).size;
+    var Sze = MediaQuery.of(context).size;
     bool swtch = true;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor:
-              ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+          backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
           title: Text(
             'Create Post',
             style: getAppbarTextTheme(),
@@ -90,9 +86,7 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
               },
               icon: Icon(
                 Icons.arrow_back,
-                color: ThemeService.isSavedDarkMode()
-                    ? Colors.white
-                    : Colors.black,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
               )),
           actions: [
             CustomButton1(
@@ -100,24 +94,20 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
               textStyle: TextStyle(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w400,
-                color: ThemeService.isSavedDarkMode()
-                    ? Colors.white
-                    : Colors.white,
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.white,
               ),
               onPressed: () {
-                Get.to(HomeScreen());
+                Get.find<HomeController>().uploadNormalVideo(caption, widget.controller.vid!);
               },
               color: Color(0xff2A70C8),
               height: 35.sp,
               width: 60.sp,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
             ),
           ],
           toolbarHeight: 65.sp,
         ),
-        backgroundColor:
-            ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
+        backgroundColor: ThemeService.isSavedDarkMode() ? Colors.black : Colors.white,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -130,9 +120,7 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                   children: [
                     Icon(
                       CupertinoIcons.chat_bubble,
-                      color: ThemeService.isSavedDarkMode()
-                          ? Colors.white
-                          : Colors.black,
+                      color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                     ),
                     SizedBox(
                       width: 6.sp,
@@ -143,24 +131,15 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w400,
-                        color: ThemeService.isSavedDarkMode()
-                            ? Colors.white
-                            : Colors.black,
+                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
                       ),
                     ),
                     Spacer(),
-                    StatefulBuilder(
-                        builder: (BuildContext context, StateSetter setState) {
+                    StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
                       return Switch(
-                          activeColor: ThemeService.isSavedDarkMode()
-                              ? Colors.white
-                              : Color(0xff3AA0FF),
-                          activeTrackColor: ThemeService.isSavedDarkMode()
-                              ? Color(0xff3d3d3d)
-                              : Color(0xffD5EBFF),
-                          inactiveTrackColor: ThemeService.isSavedDarkMode()
-                              ? Colors.grey
-                              : Color(0xffD5EBFF),
+                          activeColor: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff3AA0FF),
+                          activeTrackColor: ThemeService.isSavedDarkMode() ? Color(0xff3d3d3d) : Color(0xffD5EBFF),
+                          inactiveTrackColor: ThemeService.isSavedDarkMode() ? Colors.grey : Color(0xffD5EBFF),
                           value: swtch,
                           onChanged: (val) {
                             setState(() {
@@ -252,10 +231,6 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
               //   ),
               // ),
 
-
-
-
-
               // Expanded(
               //     child: DefaultTabController(
               //         length: 2,
@@ -334,53 +309,52 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
               //           )
               //         ]))),
               _controller.initialized
-                  ?  Container(
-                height:Sze.height*0.70 ,
-                child: Column(
-                  children:[
-                    AnimatedBuilder(
-                      animation: _controller.video,
-                      builder: (_, __) => GestureDetector(
-                        onTap: _controller.isPlaying?_controller.video.pause:_controller.video.play,
-                        child: Container(
+                  ? Container(
+                      height: Sze.height * 0.70,
+                      child: Column(
+                        children: [
+                          AnimatedBuilder(
+                            animation: _controller.video,
+                            builder: (_, __) => GestureDetector(
+                              onTap: _controller.isPlaying ? _controller.video.pause : _controller.video.play,
+                              child: Container(
+                                child: Container(
+                                  height: 50.h,
+                                  width: Get.width,
+                                  child: VideoViewer(
+                                    controller: _controller,
+                                  ),
+                                ),
 
-                         child: Container(
-                                height: 50.h,
-                                width: Get.width,
-                                child: VideoViewer( controller: _controller,),
+                                height: Sze.height * 0.49,
+                                width: Sze.width,
+                                decoration: const BoxDecoration(
+                                  color: Colors.transparent,
+                                  shape: BoxShape.circle,
+                                ),
+                                // child:  Icon(
+                                //   _controller.isPlaying?Icons.pause : Icons.play_arrow,
+                                //   color: Colors.black.withOpacity(0.05),
+                                //   size: 100,
+                                // ),
                               ),
-
-
-                          height: Sze.height*0.49 ,
-                          width: Sze.width,
-                          decoration: const BoxDecoration(
-                            color: Colors.transparent,
-                            shape: BoxShape.circle,
+                            ),
                           ),
-                          // child:  Icon(
-                          //   _controller.isPlaying?Icons.pause : Icons.play_arrow,
-                          //   color: Colors.black.withOpacity(0.05),
-                          //   size: 100,
-                          // ),
-                        ),
+                          Column(mainAxisAlignment: MainAxisAlignment.center, children: _trimSlider()),
+                          SizedBox(
+                            height: 10.sp,
+                          ),
+                        ],
                       ),
-                    ),
-                    Column(
-                        mainAxisAlignment:
-                        MainAxisAlignment.center,
-                        children: _trimSlider()),
-                    SizedBox(
-                      height: 10.sp,
-                    ),
-                  ],
-                ),
-              ) :  Center(child: CircularProgressIndicator()),
+                    )
+                  : Center(child: CircularProgressIndicator()),
             ],
           ),
         ),
       ),
     );
   }
+
   // String formatter(Duration duration) => [
   //   duration.inMinutes.remainder(60).toString().padLeft(2, '0'),
   //   duration.inSeconds.remainder(60).toString().padLeft(2, '0')
@@ -402,8 +376,11 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
-                  child: const TextField(
+                  child: TextField(
                     keyboardType: TextInputType.text,
+                    onChanged: (value){
+                      this.caption = value;
+                    },
                     decoration: InputDecoration(
                         hintText: "Add a caption",
                         hintStyle: TextStyle(
@@ -442,9 +419,7 @@ class _PostVideoScreenState extends State<PostVideoScreen> {
           //     controller: _controller,
           //     margin: const EdgeInsets.only(top: 10))
         ),
-        
       ),
     ];
   }
-
 }

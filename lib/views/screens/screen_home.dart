@@ -46,9 +46,24 @@ class _HomeScreenState extends State<HomeScreen> {
       controller: _controller,
       popAllScreensOnTapAnyTabs: true,
       screens: [
-        HomeLayout(),
+        HomeLayout(
+          onStoryPressed: (selectedType) {
+            switch (selectedType){
+              case StoryType.gallery:
+                testPicker();
+                break;
+              case StoryType.camera:
+                getFromCameraimg(false);
+                break;
+            }
+          },
+        ),
         SearchLayout(),
-        HomeLayout(),
+        HomeLayout(
+          onStoryPressed: (_) {
+
+          },
+        ),
         NotificationLayouts(),
         ProfileLayout(
           onThemeUpdate: () {
@@ -135,86 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     ListTile(
                       onTap: () {
-                        setState(() {
-                          Get.bottomSheet(
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20.sp),
-                                  topRight: Radius.circular(20.sp),
-                                ),
-                                color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
-                              ),
-                              height: 18.h,
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    onTap: () {
-                                      Get.back();
-                                      getFromCameraimg(false);
-                                    },
-                                    leading: Icon(
-                                      Icons.camera_alt_outlined,
-                                      color: ThemeService.isSavedDarkMode()
-                                          ? Colors.white
-                                          : Color(
-                                              0xff97A1B4,
-                                            ),
-                                      size: 20.sp,
-                                    ),
-                                    title: Text(
-                                      'Camera',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                  Divider(
-                                    color: Color(0xffE2E4EB),
-                                    thickness: 2.sp,
-                                  ),
-                                  ListTile(
-                                    onTap: () {
-                                      // Get.back();
-                                      // getFromGalleryimg(true);
-                                      // Get.to(CustomGalleryPicker(
-                                      //   onPicked: (files, isNormal) {
-                                      //     controller.images = files;
-                                      //     controller.img = controller.images[0];
-                                      //
-                                      //     Get.to(PostImageScreen(isNormal: isNormal));
-                                      //   },
-                                      // ));
-
-                                      testPicker();
-                                    },
-                                    leading: Icon(
-                                      Icons.photo,
-                                      color: ThemeService.isSavedDarkMode()
-                                          ? Colors.white
-                                          : Color(
-                                              0xff97A1B4,
-                                            ),
-                                      size: 20.sp,
-                                    ),
-                                    title: Text(
-                                      'Gallery',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            backgroundColor: Colors.transparent,
-                            elevation: 0,
-                          );
-                        });
+                        showPostBottomSheet();
                       },
                       leading: Icon(
                         Icons.camera_alt_outlined,
@@ -509,6 +445,87 @@ class _HomeScreenState extends State<HomeScreen> {
   void testPicker() async {
     // Get.to(CustomGalleryPicker(onPicked: (files, isNormal) {}));
     Get.to(MyGallery());
+  }
+
+  void showPostBottomSheet() {
+    Get.bottomSheet(
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20.sp),
+            topRight: Radius.circular(20.sp),
+          ),
+          color: ThemeService.isSavedDarkMode() ? Color(0xff3D3D3D) : Colors.white,
+        ),
+        height: 18.h,
+        child: Column(
+          children: [
+            ListTile(
+              onTap: () {
+                Get.back();
+                getFromCameraimg(false);
+              },
+              leading: Icon(
+                Icons.camera_alt_outlined,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Color(
+                  0xff97A1B4,
+                ),
+                size: 20.sp,
+              ),
+              title: Text(
+                'Camera',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                ),
+              ),
+            ),
+            Divider(
+              color: Color(0xffE2E4EB),
+              thickness: 2.sp,
+            ),
+            ListTile(
+              onTap: () {
+                // Get.back();
+                // getFromGalleryimg(true);
+                // Get.to(CustomGalleryPicker(
+                //   onPicked: (files, isNormal) {
+                //     controller.images = files;
+                //     controller.img = controller.images[0];
+                //
+                //     Get.to(PostImageScreen(isNormal: isNormal));
+                //   },
+                // ));
+
+                testPicker();
+              },
+              leading: Icon(
+                Icons.photo,
+                color: ThemeService.isSavedDarkMode()
+                    ? Colors.white
+                    : Color(
+                  0xff97A1B4,
+                ),
+                size: 20.sp,
+              ),
+              title: Text(
+                'Gallery',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+    );
   }
 }
 

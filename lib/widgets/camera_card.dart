@@ -9,12 +9,18 @@ import 'package:sizer/sizer.dart';
 import '../constant/constant.dart';
 import '../controller/home_controller.dart';
 import '../helpers/theme_service.dart';
+import '../views/layouts/layout_home.dart';
 
 class CameraCard extends StatefulWidget {
-  const CameraCard({Key? key}) : super(key: key);
+
+  Function(StoryType type) onStoryPressed;
 
   @override
   State<CameraCard> createState() => _CameraCardState();
+
+  CameraCard({
+    required this.onStoryPressed,
+  });
 }
 
 class _CameraCardState extends State<CameraCard> {
@@ -46,8 +52,9 @@ class _CameraCardState extends State<CameraCard> {
                                 ListTile(
                                   onTap: () {
                                     Get.back();
-                                    controller.update();
-                                    getFromCameraImg();
+                                    // controller.update();
+                                    // getFromCameraImg();
+                                    widget.onStoryPressed(StoryType.camera);
                                   },
                                   leading: Icon(
                                     Icons.camera_alt_outlined,
@@ -74,8 +81,9 @@ class _CameraCardState extends State<CameraCard> {
                                 ListTile(
                                   onTap: () {
                                     Get.back();
-                                    controller.update();
-                                    getFromGalleryImg();
+                                    // controller.update();
+                                    // getFromGalleryImg();
+                                    widget.onStoryPressed(StoryType.gallery);
                                   },
                                   leading: Icon(
                                     Icons.photo,

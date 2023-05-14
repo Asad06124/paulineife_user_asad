@@ -53,11 +53,11 @@ class StatusViewCustom extends StatelessWidget {
             ),
             CircleAvatar(
               radius: radius - padding,
-              child: (type == 'story')
-                  ? CachedNetworkImage(
-                      imageUrl: centerImageUrl,
+              backgroundImage: (type == 'story')
+                  ? CachedNetworkImageProvider(
+                      centerImageUrl,
                     )
-                  : Image.asset(centerImageUrl),
+                  : AssetImage(centerImageUrl) as ImageProvider,
             ),
           ],
         ),
@@ -84,23 +84,10 @@ class Arc extends CustomPainter {
 
   double doubleToAngle(double angle) => angle * pi / 180.0;
 
-  void drawArcWithRadius(
-      Canvas canvas,
-      Offset center,
-      double radius,
-      double angle,
-      Paint seenPaint,
-      Paint unSeenPaint,
-      double start,
-      double spacing,
-      int number,
-      int alreadyWatch) {
+  void drawArcWithRadius(Canvas canvas, Offset center, double radius, double angle, Paint seenPaint, Paint unSeenPaint, double start, double spacing,
+      int number, int alreadyWatch) {
     for (var i = 0; i < number; i++) {
-      canvas.drawArc(
-          Rect.fromCircle(center: center, radius: radius),
-          doubleToAngle((start + ((angle + spacing) * i))),
-          doubleToAngle(angle),
-          false,
+      canvas.drawArc(Rect.fromCircle(center: center, radius: radius), doubleToAngle((start + ((angle + spacing) * i))), doubleToAngle(angle), false,
           alreadyWatch - 1 >= i ? seenPaint : unSeenPaint);
     }
   }
@@ -124,8 +111,7 @@ class Arc extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..color = unSeenColor;
 
-    drawArcWithRadius(canvas, center, radius, angle, seenPaint, unSeenPaint,
-        startingAngle, spacing, numberOfArc, alreadyWatch);
+    drawArcWithRadius(canvas, center, radius, angle, seenPaint, unSeenPaint, startingAngle, spacing, numberOfArc, alreadyWatch);
   }
 
   @override

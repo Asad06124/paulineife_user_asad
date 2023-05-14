@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paulineife_user/helpers/helpers.dart';
@@ -30,9 +31,9 @@ class ProfileCard extends StatelessWidget {
           child: StatusViewCustom(
             onTap: () {
               Get.to(StoryViewScreen(
-                storiesList: [],
+                storiesList: story.isThread ? story.asThread.childPosts : [story],
                 timestamp: DateTime.now(),
-                username: '', userImage: userPlaceholder,
+                username: story.username, userImage: userPlaceholder,
               ));
             },
             radius: 25.sp,
@@ -42,18 +43,27 @@ class ProfileCard extends StatelessWidget {
             numberOfStatus: 1,
             padding: 4,
             type: 'story',
-            centerImageUrl: story.image!,
+            centerImageUrl: "$domainUrlWithProtocol${story.userImage}",
             seenColor: Color(0xff3AA0FF),
             unSeenColor: Colors.red,
           ),
         ),
-        Text(
-          'Asad',
-          style: TextStyle(
-            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-            fontSize: font12,
-            fontWeight: FontWeight5,
-            fontFamily: fontFamilyD,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: SizedBox(
+            width: Get.width * .2,
+            child: AutoSizeText(
+              story.username,
+              maxLines: 1,
+              minFontSize: 14,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                fontSize: font12,
+                fontWeight: FontWeight5,
+                fontFamily: fontFamilyD,
+              ),
+            ),
           ),
         )
       ],

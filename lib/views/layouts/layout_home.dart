@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'dart:developer';
+import 'dart:typed_data';
 
 import 'package:badges/badges.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -7,7 +8,6 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart' hide Badge;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:paulineife_user/constant/constant.dart';
 import 'package:paulineife_user/controller/home_controller.dart';
 import 'package:paulineife_user/extensions/cap_extension.dart';
@@ -22,10 +22,14 @@ import '../../widgets/camera_card.dart';
 import '../../widgets/profile_card.dart';
 
 class HomeLayout extends StatefulWidget {
-  HomeLayout({Key? key}) : super(key: key);
+  Function(StoryType type) onStoryPressed;
 
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
+
+  HomeLayout({
+    required this.onStoryPressed,
+  });
 }
 
 class _HomeLayoutState extends State<HomeLayout> {
@@ -34,7 +38,9 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    var size = MediaQuery
+        .of(context)
+        .size;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -76,16 +82,21 @@ class _HomeLayoutState extends State<HomeLayout> {
             padding: EdgeInsets.all(10.sp),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    CameraCard(),
-                    ...controller.stories.value
-                        .map((e) => ProfileCard(
-                              story: e,
-                            ))
-                        .toList(),
-                  ],
-                ),
+                Obx(() {
+                  return Row(
+                    children: [
+                      CameraCard(
+                        onStoryPressed: widget.onStoryPressed,
+                      ),
+                      ...controller.stories.value
+                          .map((e) =>
+                          ProfileCard(
+                            story: e,
+                          ))
+                          .toList(),
+                    ],
+                  );
+                }),
                 Expanded(
                   child: Obx(() {
                     return Column(
@@ -115,11 +126,13 @@ class _HomeLayoutState extends State<HomeLayout> {
                               var image = firstPost.getImage;
                               var video = firstPost.getVideo;
 
+                              log(firstPost.toJson().toString());
+
                               Widget content;
                               if (image != null && (video == null || video.isEmpty)) {
                                 var imageData;
                                 try {
-                                  imageData = firstPost.decodeImageFromBase64();
+                                  imageData = image.toString();
                                 } catch (e) {
                                   imageData = null;
                                 }
@@ -130,7 +143,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                       borderRadius: BorderRadius.circular(10.sp),
                                       image: DecorationImage(
                                         image: image.isNotEmpty && imageData != null
-                                            ? ExtendedMemoryImageProvider(imageData)
+                                            ? ExtendedNetworkImageProvider(imageData)
                                             : ExtendedNetworkImageProvider(placeholderUrl) as ImageProvider,
                                         fit: BoxFit.cover,
                                       )),
@@ -151,26 +164,34 @@ class _HomeLayoutState extends State<HomeLayout> {
                                 //       );
                               } else if (video != null && video.isNotEmpty) {
                                 final String videoUrl = video;
-                                content = FutureBuilder<File>(
+                                print(videoUrl);
+
+                                content = FutureBuilder<Uint8List>(
                                   future: getVideoThumbnail(videoUrl),
                                   builder: (context, snapshot) {
-                                    if (snapshot.connectionState == ConnectionState.done && snapshot.hasData) {
-                                      final thumbnailFile = snapshot.data!;
+                                    if (snapshot.connectionState != ConnectionState.waiting) {
+                                      final thumbnailData = snapshot.data;
 
                                       return Container(
                                         height: size.height / 1.8 + 15,
                                         alignment: Alignment.bottomLeft,
-                                        decoration: BoxDecoration(
+                                        decoration: thumbnailData != null ? BoxDecoration(
                                           borderRadius: BorderRadius.circular(10.sp),
                                           image: DecorationImage(
-                                            image: FileImage(thumbnailFile),
+                                            image: MemoryImage(thumbnailData),
                                             fit: BoxFit.cover,
                                           ),
+                                        ) : BoxDecoration(
+                                            borderRadius: BorderRadius.circular(10.sp),
+                                            color: getThemeBlack
                                         ),
                                         child: GestureDetector(
                                           onTap: () {
-                                            Get.to(ProfileScreen(
+                                            Get.to(StoryViewScreen(
+                                              storiesList: [firstPost],
+                                              userImage: firstPost.userImage,
                                               username: firstPost.username,
+                                              timestamp: controller.posts.value.first.timestamp,
                                             ));
                                           },
                                           child: Container(
@@ -203,7 +224,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                                                         ),
                                                         child: CircleAvatar(
                                                           backgroundImage: CachedNetworkImageProvider(
-                                                            firstPost.userImage,
+                                                            "$domainUrlWithProtocol${firstPost.userImage}",
                                                           ),
                                                         ),
                                                       ),
@@ -392,7 +413,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                     ),
                     GestureDetector(
                         onTap: () {
-                          controller.fetchRandomPost();
+                          controller.fetchRandomPost;
                         },
                         child: SvgPicture.asset('assets/images/repeat.svg')),
                   ],
@@ -405,15 +426,22 @@ class _HomeLayoutState extends State<HomeLayout> {
     );
   }
 
-  Future<File> getVideoThumbnail(String url) async {
-    var thumbTempPath = await VideoThumbnail.thumbnailFile(
+  Future<Uint8List> getVideoThumbnail(String url) async {
+    var thumbTempData = await VideoThumbnail.thumbnailData(
       video: url,
-      thumbnailPath: (await getTemporaryDirectory()).path,
-      imageFormat: ImageFormat.WEBP,
+      // thumbnailPath: (await getTemporaryDirectory()).path,
+      imageFormat: ImageFormat.PNG,
       maxHeight: 64,
       // specify the height of the thumbnail, let the width auto-scaled to keep the source aspect ratio
       quality: 75, // you can change the thumbnail quality here
-    );
-    return File(thumbTempPath!);
+    ).catchError((e) {
+      print(e);
+    }).onError((error, stackTrace) {
+      print(error);
+    });
+    print(thumbTempData);
+    return thumbTempData!;
   }
 }
+
+enum StoryType { gallery, camera }

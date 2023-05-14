@@ -44,7 +44,7 @@ class Post {
       user: json['user'],
       likes: json['likes'] != null ? List<int>.from(json['likes'].map((x) => x)) : null,
       username: json['username'],
-      userImage: "$domainProtocol$domainUrl" + json['userimage'].toString(),
+      userImage: /*"$domainProtocol$domainUrl" + */json['userimage'].toString(),
     );
   }
 
@@ -103,7 +103,7 @@ class Post {
 
   String? get getVideo {
     if (!this.isThread) {
-      return video;
+      return "$domainUrlWithProtocol$video";
     }
   }
 

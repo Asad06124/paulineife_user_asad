@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:paulineife_user/constant/constant.dart';
 import 'package:paulineife_user/extensions/cap_extension.dart';
 import 'package:paulineife_user/views/screens/screen_chat.dart';
@@ -15,7 +18,10 @@ import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/utils.dart';
 import 'package:story_view/widgets/story_view.dart';
 
+import '../../controller/login_controller.dart';
+import '../../helpers/helpers.dart';
 import '../../helpers/theme_service.dart';
+import '../../models/Login.dart';
 import '../../models/api/PostModel.dart';
 import 'screen_story_view_more_text.dart';
 
@@ -90,10 +96,10 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
     storyItems = widget.storiesList.map((e) {
       return e.isImage
           ? StoryItem.pageImage(
-              url: e.image!,
+              url: "$domainUrlWithProtocol${e.getImage!}",
               controller: controller,
             )
-          : StoryItem.pageVideo(e.video.toString(), controller: controller);
+          : StoryItem.pageVideo(e.getVideo.toString(), controller: controller);
     }).toList();
   }
 
@@ -146,6 +152,13 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                         //   _index = storyItems.indexOf(item);
                         // });
                         indexController.currentIndex.value = storyItems.indexOf(item);
+                        var story = widget.storiesList[indexController.currentIndex.value];
+                        indexController.updateViews(story.id);
+
+                        var index = storyItems.indexOf(item);
+                        print("Index: $index");
+                        print("Image: ${widget.storiesList[index].getImage}");
+                        print("Video: ${widget.storiesList[index].getVideo}");
                       }
                     },
                     onComplete: () {
@@ -352,7 +365,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                       GestureDetector(
                         onTap: () {
                           Get.to(CommentsScreen(
-                            COntroller: controller,
+                            postId: widget.storiesList[indexController.currentIndex.value].id.toString(),
                           ));
                           controller.pause();
                         },
@@ -445,8 +458,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
             padding: EdgeInsets.all(8.0),
             child: Container(
               child: ReadMoreText(
-                text:
-                    '''${widget.storiesList[indexController.currentIndex.value].caption}${" "*250}''',
+                text: '''${widget.storiesList[indexController.currentIndex.value].caption}${" " * 250}''',
                 maxLength: 250,
               ),
             ),
@@ -472,13 +484,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                     initi();
                   }
                 },
-                onStoryShow: (item) {
-                  if (mounted) {
-                    // setState(() {
-                    //   _index = storyItems.indexOf(item);
-                    // });
-                  }
-                },
+                onStoryShow: (item) {},
                 onComplete: () {
                   Navigator.pop(context);
                 },
@@ -684,9 +690,9 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(CommentsScreen(
-                        COntroller: controller,
-                      ));
+                      // Get.to(CommentsScreen(
+                      //   COntroller: controller,
+                      // ));
                       controller.pause();
                     },
                     child: Column(
@@ -770,4 +776,21 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
 
 class MyStoryController extends GetxController {
   var currentIndex = 0.obs;
+
+  void updateViews(int id) async {
+    var loginResponse = await LoginController.getLoginResponse();
+    var data = LoginResponse.fromJson(jsonDecode(loginResponse ?? ""));
+
+    var response = await http.get(
+      Uri.parse('https://rollupp.co/post/updateviews/$id'),
+      headers: {
+        "Authorization": "Bearer ${data.accessToken}",
+        "Content-Type": "application/json" // Set the content type to JSON
+      },
+    ).catchError((error) {
+      showMessageSheet("Error", error.toString(), sheetType: BottomSheetType.error);
+    });
+
+    print(response.body);
+  }
 }

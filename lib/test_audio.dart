@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:custom_utils/custom_utils.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +48,13 @@ class _ItemAudioPlayState extends State<ItemAudioPlay> {
     audioPlayer.onDurationChanged.listen((newDuration) {
       setState(() {
         duration = newDuration;
+        print(duration);
       });
     });
     audioPlayer.onPositionChanged.listen((newPosition) {
       setState(() {
         position = newPosition;
+        log("Position: $position");
       });
     });
     super.initState();
@@ -93,7 +97,7 @@ class _ItemAudioPlayState extends State<ItemAudioPlay> {
             children: [
               Slider(
                   min: 0,
-                  max: duration.inSeconds.toDouble(),
+                  max: duration.inSeconds == 0 ? 30 : duration.inSeconds.toDouble(),
                   value: position.inSeconds.toDouble(),
                   activeColor: Color(0xffD5EBFF),
                   inactiveColor: Colors.grey,

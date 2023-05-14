@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:async/async.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
@@ -17,7 +18,6 @@ import 'package:paulineife_user/views/screens/screen_home.dart';
 
 import '../models/Login.dart';
 import '../models/api/PostModel.dart';
-import '../models/api/StoryModel.dart';
 import '../models/api/refresh_post.dart';
 
 class HomeController extends GetxController {
@@ -46,7 +46,7 @@ class HomeController extends GetxController {
     print("loginResponse: $loginResponse");
     var data = LoginResponse.fromJson(jsonDecode(loginResponse ?? "{}"));
 
-    String url = domainUrlWithProtocol + data.image;
+    String url = "$domainUrlWithProtocol${data.image}";
     if (url.endsWith('null') || url.endsWith(".co")) {
       url = userPlaceholder;
     }
@@ -320,6 +320,120 @@ class HomeController extends GetxController {
     }
   }
 
+  Future<void> uploadNormalVideo(String caption, File file) async {
+    uploadPostsLoading.value = true;
+
+    var request = http.MultipartRequest('POST', Uri.parse("https://rollupp.co/post/upload/"));
+
+    var loginResponse = await LoginController.getLoginResponse();
+    var data = LoginResponse.fromJson(jsonDecode(loginResponse ?? ""));
+
+    // var token = data.accessToken;
+    // var userId = data.userId;
+
+    // var posts = [
+    //   // {"caption": caption},
+    //   ...files.map((e) => {
+    //         'image': base64Encode(e.readAsBytesSync()),
+    //         "is_thread": 1,
+    //       })
+    // ];
+    // var posts = [];
+
+    // captions.removeLast();
+    //
+    // print(images.map((e) => e.path).toList());
+    // print(captions);
+    //
+    // for (int i = 0; i < captions.length; i++) {
+    //   var caption = captions[i];
+    //   var image = base64Encode(images[i].readAsBytesSync());
+    //   posts.add({"caption": caption, "image": image, "is_thread": 0});
+    // }
+    //
+    // var response = await http.post(
+    //   Uri.parse('https://rollupp.co/post/upload/'),
+    //   body: /*{'post': jsonEncode(posts)}*/ jsonEncode({"post": posts}),
+    //   headers: {
+    //     "Authorization": "Bearer ${data.accessToken}",
+    //     "Content-Type": "application/json" // Set the content type to JSON
+    //   },
+    // ).catchError((error) {
+    //   showMessageSheet("Error", error.toString(), sheetType: BottomSheetType.error);
+    // });
+
+    if (caption.isNotEmpty){
+      // Add the caption object to the request
+      request.fields['caption'] = caption;
+    }
+
+    // final bytes = file.readAsBytesSync();
+    // final encoded = base64Encode(bytes);
+    // request.files.add(await http.MultipartFile.fromPath('post[1][video]', file.path));
+
+    var stream = new http.ByteStream(DelegatingStream.typed(file.openRead()));
+    var length = await file.length(); //imageFile is your image file
+
+    request.files.add(await http.MultipartFile(
+      "video",
+      stream,
+      length,
+      contentType: MediaType("file", _getContentTypeFromFileName(file)),
+      filename: basename(file.path),
+    ));
+
+    // request.fields['post[0][image]'] = '';
+    // request.fields['post[0][is_thread]'] = '0';
+    // request.fields['post[0][user]'] = data.userId.toString();
+
+    request.fields.addAll({
+      "image": "",
+      "is_thread": '0',
+      "user": data.userId.toString()
+    });
+
+
+    request.headers.addAll({"Authorization": "Bearer ${data.accessToken}", "Content-Type": "application/json"});
+
+
+
+    print(request.fields);
+
+    var streamedResponse = await request.send().catchError((e) {
+      uploadPostsLoading.value = false;
+      print(e);
+    });
+
+
+
+    uploadPostsLoading.value = false;
+
+    print(streamedResponse.statusCode);
+
+    if (streamedResponse.statusCode == 301) {
+      var newUrl = streamedResponse.headers['location'];
+      final newRequest = http.Request(request.method, Uri.parse(newUrl.toString()));
+      newRequest.headers.addAll(request.headers);
+      newRequest.followRedirects = request.followRedirects;
+      newRequest.maxRedirects = request.maxRedirects;
+      streamedResponse = await newRequest.send();
+    }
+
+    final response = await http.Response.fromStream(streamedResponse);
+
+    print(response.body);
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      print('Posts uploaded successfully.');
+      Get.offAll(HomeScreen());
+    } else {
+      print('Failed to upload posts.');
+      showMessageSheet(response.statusCode.toString(), response.body.toString(), buttonText: "Dismiss");
+      Clipboard.setData(ClipboardData(text: response.body));
+    }
+  }
+
   Future<File> compressImage(File file) async {
     ImageFile input = ImageFile(filePath: file.path, rawBytes: file.readAsBytesSync()); // set the input image file
     Configuration config = Configuration(
@@ -381,4 +495,34 @@ class HomeController extends GetxController {
     print(response.body);
     print(response.statusCode);
   }
+
+  String _getContentTypeFromFileName(File file) {
+    final extension = file.path.split('.').last.toLowerCase();
+    switch (extension) {
+      case 'jpg':
+      case 'jpeg':
+        return 'image/jpeg';
+      case 'png':
+        return 'image/png';
+      case 'gif':
+        return 'image/gif';
+      case 'webp':
+        return 'image/webp';
+      case 'pdf':
+        return 'application/pdf';
+      case 'doc':
+      case 'docx':
+        return 'application/msword';
+      case 'xls':
+      case 'xlsx':
+        return 'application/vnd.ms-excel';
+      case 'ppt':
+      case 'pptx':
+        return 'application/vnd.ms-powerpoint';
+      default:
+        return '';
+    }
+  }
+
+
 }
