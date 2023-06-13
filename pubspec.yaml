@@ -60,7 +60,7 @@ dependencies:
   status_view: ^0.0.2
   chat_bubbles: any
   sliding_top_panel: ^0.0.7
-  ola_like_country_picker: ^0.1.2
+#  ola_like_country_picker: ^0.1.2
   pinput: any
   social_media_recorder: any
   badges: ^3.0.2
@@ -72,7 +72,7 @@ dependencies:
   helpers: ^1.2.0
   custom_gallery_display: ^0.5.0
   album_image: ^0.0.2+1
-  extended_image: ^7.0.2
+  extended_image: ^8.0.2
   http: ^0.13.5
   firebase_auth: ^4.3.0
   shared_preferences: ^2.1.0
@@ -81,6 +81,8 @@ dependencies:
   path_provider: ^2.0.14
   image_compression_flutter: ^1.0.2
   listview_infinite_pagination: ^0.0.14
+  foundation: ^0.0.5
+  intl_phone_field: ^3.1.0
 
 dev_dependencies:
   flutter_test:

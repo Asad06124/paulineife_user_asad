@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import '../views/screens/screen_signup_details.dart';
 
 class OtpController extends GetxController {
-  var countryCode = ''.obs;
+  var countryCode = '+92'.obs;
   var phoneController = TextEditingController().obs;
   var pinController = TextEditingController().obs;
   var isOtpSent = false.obs;

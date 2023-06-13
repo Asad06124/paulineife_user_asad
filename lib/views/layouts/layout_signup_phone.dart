@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ola_like_country_picker/ola_like_country_picker.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
+// import 'package:ola_like_country_picker/ola_like_country_picker.dart';
 import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:paulineife_user/views/screens/screen_signup_details.dart';
 import 'package:pinput/pinput.dart';
@@ -20,8 +21,8 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
   var controller = Get.put(OtpController());
-  late CountryPicker c;
-  Country country = Country.fromJson(countryCodes[94]);
+  // late CountryPicker c;
+  // Country country = Country.fromJson(countryCodes[94]);
 
   final focusNode = FocusNode();
   var first = true;
@@ -35,13 +36,13 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
   @override
   void initState() {
     super.initState();
-    c = CountryPicker(onCountrySelected: (Country country) {
-      print(country);
-      setState(() {
-        this.country = country;
-        controller.countryCode.value = country.dialCode;
-      });
-    });
+    // c = CountryPicker(onCountrySelected: (Country country) {
+    //   print(country);
+    //   setState(() {
+    //     this.country = country;
+    //     controller.countryCode.value = country.dialCode;
+    //   });
+    // });
   }
 
   @override
@@ -62,64 +63,65 @@ class _SignUpPhoneScreenState extends State<SignUpPhoneScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      GestureDetector(
-                        child: Container(
-                          height: Get.height / 12,
-                          width: 60.sp,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.sp),
-                            border: Border.all(
-                              color: Color(0xffD6D9E3),
-                            ),
-                            color: ThemeService.isSavedDarkMode()
-                                ? Colors.black
-                                : Color(0xffFFFFFF),
-                          ),
-                          child: Column(
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '${country.code} ',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 15.sp,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xff79869F)),
-                                  ),
-                                  Icon(
-                                    Icons.keyboard_arrow_down_outlined,
-                                    color: ThemeService.isSavedDarkMode()
-                                        ? Color(0xff79869F)
-                                        : Color(0xff79869F),
-                                  )
-                                ],
-                              ),
-                              SizedBox(
-                                height: 1.sp,
-                              ),
-                              Text(
-                                '${country.dialCode}',
-                                style: TextStyle(
-                                  fontSize: 16.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: ThemeService.isSavedDarkMode()
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        onTap: () {
-                          controller.isOtpSent.value ? null : c.launch(context);
-                          // setState(() {
-                          // controller.countryCode.value = country.dialCode;
-                          //  });
-                        },
-                      ),
+
+                      // GestureDetector(
+                      //   child: Container(
+                      //     height: Get.height / 12,
+                      //     width: 60.sp,
+                      //     decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(10.sp),
+                      //       border: Border.all(
+                      //         color: Color(0xffD6D9E3),
+                      //       ),
+                      //       color: ThemeService.isSavedDarkMode()
+                      //           ? Colors.black
+                      //           : Color(0xffFFFFFF),
+                      //     ),
+                      //     child: Column(
+                      //       children: [
+                      //         Row(
+                      //           crossAxisAlignment: CrossAxisAlignment.center,
+                      //           mainAxisAlignment: MainAxisAlignment.center,
+                      //           children: [
+                      //             Text(
+                      //               '${country.code} ',
+                      //               textAlign: TextAlign.center,
+                      //               style: TextStyle(
+                      //                   fontSize: 15.sp,
+                      //                   fontWeight: FontWeight.w500,
+                      //                   color: Color(0xff79869F)),
+                      //             ),
+                      //             Icon(
+                      //               Icons.keyboard_arrow_down_outlined,
+                      //               color: ThemeService.isSavedDarkMode()
+                      //                   ? Color(0xff79869F)
+                      //                   : Color(0xff79869F),
+                      //             )
+                      //           ],
+                      //         ),
+                      //         SizedBox(
+                      //           height: 1.sp,
+                      //         ),
+                      //         Text(
+                      //           '${country.dialCode}',
+                      //           style: TextStyle(
+                      //             fontSize: 16.sp,
+                      //             fontWeight: FontWeight.w400,
+                      //             color: ThemeService.isSavedDarkMode()
+                      //                 ? Colors.white
+                      //                 : Colors.black,
+                      //           ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      //   onTap: () {
+                      //     controller.isOtpSent.value ? null : c.launch(context);
+                      //     // setState(() {
+                      //     // controller.countryCode.value = country.dialCode;
+                      //     //  });
+                      //   },
+                      // ),
                       Form(
                         key: formKey,
                         child: Container(

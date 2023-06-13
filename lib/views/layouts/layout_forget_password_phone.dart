@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ola_like_country_picker/ola_like_country_picker.dart';
+// import 'package:ola_like_country_picker/ola_like_country_picker.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
 
@@ -18,8 +18,8 @@ class ForgetPasswordPhoneScreen extends StatefulWidget {
 class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController controller = TextEditingController();
-  late CountryPicker c;
-  Country country = Country.fromJson(countryCodes[94]);
+  // late CountryPicker c;
+  // Country country = Country.fromJson(countryCodes[94]);
   final pinController = TextEditingController();
   final focusNode = FocusNode();
 
@@ -33,12 +33,12 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
   @override
   void initState() {
     super.initState();
-    c = CountryPicker(onCountrySelected: (Country country) {
-      print(country);
-      setState(() {
-        this.country = country;
-      });
-    });
+    // c = CountryPicker(onCountrySelected: (Country country) {
+    //   print(country);
+    //   setState(() {
+    //     this.country = country;
+    //   });
+    // });
   }
 
   @override
@@ -57,52 +57,52 @@ class _ForgetPasswordPhoneScreenState extends State<ForgetPasswordPhoneScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                      child: Container(
-                        height: Get.height / 12,
-                        width: 60.sp,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.sp),
-                          border: Border.all(
-                            color: Color(0xffD6D9E3),
-                          ),
-                          color: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xffFFFFFF),
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  '${country.code} ',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Color(0xff79869F)),
-                                ),
-                                Icon(
-                                  Icons.keyboard_arrow_down_outlined,
-                                  color: ThemeService.isSavedDarkMode() ? Color(0xff79869F) : Color(0xff79869F),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: 1.sp,
-                            ),
-                            Text(
-                              '${country.dialCode}',
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.w400,
-                                color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      onTap: () {
-                        c.launch(context);
-                      },
-                    ),
+                    // GestureDetector(
+                    //   child: Container(
+                    //     height: Get.height / 12,
+                    //     width: 60.sp,
+                    //     decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(10.sp),
+                    //       border: Border.all(
+                    //         color: Color(0xffD6D9E3),
+                    //       ),
+                    //       color: ThemeService.isSavedDarkMode() ? Colors.black : Color(0xffFFFFFF),
+                    //     ),
+                    //     child: Column(
+                    //       children: [
+                    //         Row(
+                    //           crossAxisAlignment: CrossAxisAlignment.center,
+                    //           mainAxisAlignment: MainAxisAlignment.center,
+                    //           children: [
+                    //             Text(
+                    //               '${country.code} ',
+                    //               textAlign: TextAlign.center,
+                    //               style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w500, color: Color(0xff79869F)),
+                    //             ),
+                    //             Icon(
+                    //               Icons.keyboard_arrow_down_outlined,
+                    //               color: ThemeService.isSavedDarkMode() ? Color(0xff79869F) : Color(0xff79869F),
+                    //             )
+                    //           ],
+                    //         ),
+                    //         SizedBox(
+                    //           height: 1.sp,
+                    //         ),
+                    //         Text(
+                    //           '${country.dialCode}',
+                    //           style: TextStyle(
+                    //             fontSize: 16.sp,
+                    //             fontWeight: FontWeight.w400,
+                    //             color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    //   onTap: () {
+                    //     c.launch(context);
+                    //   },
+                    // ),
                     Container(
                       margin: EdgeInsets.only(left: 5.sp),
                       padding: EdgeInsets.only(top: 12.sp),

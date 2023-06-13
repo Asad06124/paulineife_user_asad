@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ola_like_country_picker/ola_like_country_picker.dart';
+// import 'package:ola_like_country_picker/ola_like_country_picker.dart';
 import 'package:paulineife_user/views/screens/screen_signup_details.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sizer/sizer.dart';
@@ -18,8 +18,8 @@ class SignUpEmailScreen extends StatefulWidget {
 class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController controller = TextEditingController();
-  late CountryPicker c;
-  Country country = Country.fromJson(countryCodes[94]);
+  // late CountryPicker c;
+  // Country country = Country.fromJson(countryCodes[94]);
   final pinController = TextEditingController();
   final focusNode = FocusNode();
 
@@ -33,12 +33,12 @@ class _SignUpEmailScreenState extends State<SignUpEmailScreen> {
   @override
   void initState() {
     super.initState();
-    c = CountryPicker(onCountrySelected: (Country country) {
-      print(country);
-      setState(() {
-        this.country = country;
-      });
-    });
+    // c = CountryPicker(onCountrySelected: (Country country) {
+    //   print(country);
+    //   setState(() {
+    //     this.country = country;
+    //   });
+    // });
   }
 
   List PinCodes = ['2', '3', '5', '6', '2', '4'];
