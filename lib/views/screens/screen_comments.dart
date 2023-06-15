@@ -13,7 +13,7 @@ import '../../helpers/theme.dart';
 import '../../helpers/theme_service.dart';
 import '../../test_audio.dart';
 
-const url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3';
+// const url = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3';
 
 class CommentsScreen extends StatelessWidget {
   String postId;
@@ -21,6 +21,7 @@ class CommentsScreen extends StatelessWidget {
   var controller = Get.put(HomeController());
   var selectedUserName = ''.obs;
   var selectedCommentId = 0;
+  var textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,23 +54,22 @@ class CommentsScreen extends StatelessWidget {
               child: Obx(() {
                 return commentsController.loading.isTrue
                     ? Center(
-                  child: Text("Loading Comments..."),
-                )
+                        child: Text("Loading Comments..."),
+                      )
                     : ListView.builder(
-                  itemCount: commentsController.comments.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    var comment = commentsController.comments[index];
+                        itemCount: commentsController.comments.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          var comment = commentsController.comments[index];
 
-                    return _getCommentWidget(comment);
-                  },
-                );
+                          return _getCommentWidget(comment);
+                        },
+                      );
               }),
             ),
             Obx(() {
               return Column(
                 children: [
-                  if (selectedUserName.isNotEmpty)
-                    Text("Replying to ${selectedUserName.value}"),
+                  if (selectedUserName.isNotEmpty) Text("Replying to ${selectedUserName.value}"),
                   Row(
                     children: [
                       Expanded(
@@ -82,6 +82,7 @@ class CommentsScreen extends StatelessWidget {
                           child: TextFormField(
                             style: TextStyle(fontSize: 16, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff9C9EB9)),
                             onChanged: (value) {},
+
                             decoration: InputDecoration(
                               // prefixIconConstraints: BoxConstraints(
                               //   maxWidth: 150,
@@ -103,18 +104,26 @@ class CommentsScreen extends StatelessWidget {
                                 width: 50.sp,
                                 child: Align(
                                     alignment: Alignment.centerRight,
-                                    child: Text(
-                                      'Post',
-                                      style: TextStyle(
-                                          color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
-                                          fontSize: 11.sp,
-                                          fontWeight: FontWeight.w700),
-                                    )),
+                                    child: TextButton(
+                                        onPressed: () {
+                                          var comment = textEditingController.text;
+                                          if (comment.isNotEmpty){
+                                            commentsController.postComment(comment);
+                                            textEditingController.clear();
+                                          }
+                                        },
+                                        child: Text(
+                                          'Post',
+                                          style: TextStyle(
+                                              color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff2A70C8),
+                                              fontSize: 11.sp,
+                                              fontWeight: FontWeight.w700),
+                                        ))),
                               ),
                               contentPadding: EdgeInsets.only(
                                 top: 13.0,
                               ),
-                              hintText: 'Comment as Ronaldo',
+                              hintText: 'Your comment here...',
                               hintStyle: TextStyle(
                                 color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F),
                               ),
@@ -123,6 +132,7 @@ class CommentsScreen extends StatelessWidget {
                               errorBorder: InputBorder.none,
                               disabledBorder: InputBorder.none,
                             ),
+                            controller: textEditingController,
                           ),
                         ),
                       ),
@@ -203,20 +213,20 @@ class CommentsScreen extends StatelessWidget {
                         width: (isReplyWidget ? 55 : 65).w,
                         child: (comment.voice != null && comment.voice!.isNotEmpty)
                             ? Container(
-                          width: (isReplyWidget ? 15 : 20).w,
-                          child: ItemAudioPlay(
-                            url: comment.getVoice,
-                          ),
-                        )
+                                width: (isReplyWidget ? 15 : 20).w,
+                                child: ItemAudioPlay(
+                                  url: comment.getVoice,
+                                ),
+                              )
                             : Text(
-                          comment.comment,
-                          style: TextStyle(
-                            fontSize: (isReplyWidget ? 8 : 9).sp,
-                            fontWeight: FontWeight.w400,
-                            color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
-                          ),
-                          textAlign: TextAlign.justify,
-                        ),
+                                comment.comment,
+                                style: TextStyle(
+                                  fontSize: (isReplyWidget ? 8 : 9).sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: ThemeService.isSavedDarkMode() ? Colors.white : Colors.black,
+                                ),
+                                textAlign: TextAlign.justify,
+                              ),
                       ),
                     ],
                   ),
@@ -258,38 +268,40 @@ class CommentsScreen extends StatelessWidget {
               Text(
                 '22 Likes',
                 style:
-                TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
+                    TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
               ),
               SizedBox(
                 width: 8.sp,
               ),
               if (!isReplyWidget)
-                TextButton(onPressed: (){
-                  selectedUserName.value = 'Asad';
-                }, child: Text(
-                  'Reply',
-                  style:
-                  TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
-                )),
+                TextButton(
+                    onPressed: () {
+                      selectedUserName.value = 'Asad';
+                    },
+                    child: Text(
+                      'Reply',
+                      style: TextStyle(
+                          fontSize: 10.sp, fontWeight: FontWeight.w700, color: ThemeService.isSavedDarkMode() ? Colors.white : Color(0xff79869F)),
+                    )),
             ],
           ),
           comment.replies.isNotEmpty
               ? ExpansionTile(
-            shape: Border(),
-            expandedAlignment: Alignment.centerRight,
-            title: Row(
-              children: [
-                SizedBox(
-                  width: Get.width / 4.6,
-                ),
-                Text(
-                  'View ${comment.replies.length} Replies',
-                  style: TextStyle(fontSize: 9.sp, color: Color(0xff2A70C8), fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-            children: comment.replies.map((e) => Container(child: _getCommentWidget(e, isReplyWidget: true))).toList(),
-          )
+                  shape: Border(),
+                  expandedAlignment: Alignment.centerRight,
+                  title: Row(
+                    children: [
+                      SizedBox(
+                        width: Get.width / 4.6,
+                      ),
+                      Text(
+                        'View ${comment.replies.length} Replies',
+                        style: TextStyle(fontSize: 9.sp, color: Color(0xff2A70C8), fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  children: comment.replies.map((e) => Container(child: _getCommentWidget(e, isReplyWidget: true))).toList(),
+                )
               : SizedBox(),
         ],
       ),

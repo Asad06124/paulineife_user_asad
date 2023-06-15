@@ -87,7 +87,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
                 ),
               ),
               Expanded(
-                child: ListviewInfinitePagination<FollowingResult>(
+                child: ListviewInfinitePagination<FollowingUser>(
                   physics: BouncingScrollPhysics(),
                   initialLoader: Center(
                     child: CircularProgressIndicator(
@@ -97,7 +97,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
                   padding: EdgeInsets.zero,
                   onFinished: SizedBox(),
                   itemBuilder: (index, item) {
-                    var result = item as FollowingResult;
+                    var result = item as FollowingUser;
                     var size = 30.sp;
 
                     return item.username.startsWith(_searchQuery)
@@ -156,6 +156,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
                     message: "No data",
                   ),
                   onError: (error) {
+                    print(error.toString());
                     return Text("Something went wrong\n[${error.toString()}]");
                   },
                   dataFetcher: (int currentListSize) => getFollowings(currentListSize),
@@ -168,7 +169,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
     );
   }
 
-  Future<List<FollowingResult>> getFollowings(int page) async {
+  Future<List<FollowingUser>> getFollowings(int page) async {
     var url = "https://rollupp.co/api/get-${widget.type}/${widget.username}?page=$page";
     var accessToken = await getAccessToken();
     var response = await http.get(
@@ -178,6 +179,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
     if (response.statusCode != 200) {
       return [];
     }
+    print("response: ${response.body}");
     var followingResponse = FollowingResponse.fromJson(jsonDecode(response.body));
     return followingResponse.results;
   }

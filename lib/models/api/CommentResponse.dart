@@ -69,7 +69,7 @@ class Comment {
       comment: json['comment'],
       voice: json['voice'],
       isReply: json['is_reply'],
-      timestamp: json['timestamp'],
+      timestamp: json['timestump'],
       posts: json['posts'],
       user: json['user'],
       parent: json['parent'],

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 // import 'package:ola_like_country_picker/ola_like_country_picker.dart';
 import 'package:paulineife_user/controller/otp_controller.dart';
 import 'package:paulineife_user/views/screens/screen_signup_details.dart';

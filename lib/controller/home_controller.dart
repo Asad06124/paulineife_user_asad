@@ -525,4 +525,5 @@ class HomeController extends GetxController {
   }
 
 
+
 }
